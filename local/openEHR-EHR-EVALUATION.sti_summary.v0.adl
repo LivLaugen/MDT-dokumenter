@@ -1,0 +1,463 @@
+archetype (adl_version=1.4; uid=3a8ddae3-7dac-4c81-97a0-9a59f34570d6)
+	openEHR-EHR-EVALUATION.sti_summary.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2015-11-12">
+		["name"] = <"DIPS ASA">
+		["organisation"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			misuse = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Preliminary archetype to be used in Olafia Clinic, Oslo University Hospital, Norway.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Preliminary archetype to be used in Olafia Clinic, Oslo University Hospital, Norway.">
+			misuse = <"Preliminary archetype to be used in Olafia Clinic, Oslo University Hospital, Norway.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"EEF4E3CC942A855A9BE77FB4F6C049A5">
+		["build_uid"] = <"30c766c8-12b2-40cd-a1fc-82649f430439">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Sti summary
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Ever tested for a sexually transmitted infection (STI)?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0034,    -- Yes
+									at0035,    -- No
+									at0036]    -- Unsure
+								}
+							}
+						}
+					}
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Previously had STI?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003,    -- Yes
+									at0004,    -- No
+									at0005]    -- Unsure
+								}
+							}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..*} matches {    -- Which types of STI?
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0046] occurrences matches {0..1} matches {    -- Chlamydia
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+					ELEMENT[at0047] occurrences matches {0..1} matches {    -- Gonorrhea
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+					ELEMENT[at0048] occurrences matches {0..1} matches {    -- Mycoplasma
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+					ELEMENT[at0025] occurrences matches {0..1} matches {    -- If other, specify
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					CLUSTER[at0006] occurrences matches {0..*} matches {    -- Infection
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0045] occurrences matches {0..1} matches {    -- Type of STI
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0010] occurrences matches {0..1} matches {    -- Degree of certainty
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0011] occurrences matches {0..1} matches {    -- Diagnosed by
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0029,    -- Self tested
+											at0030,    -- Healthcare professional
+											at0031]    -- Other
+										}
+									}
+								}
+							}
+							ELEMENT[at0032] occurrences matches {0..1} matches {    -- If other, specify
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0012] occurrences matches {0..1} matches {    -- Diagnosed at
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0013] occurrences matches {0..1} matches {    -- Treatment
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0037] occurrences matches {0..1} matches {    -- Completed treatment
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0038,    -- Yes
+											at0039,    -- No
+											at0040]    -- Unsure
+										}
+									}
+								}
+							}
+							ELEMENT[at0015] occurrences matches {0..1} matches {    -- Outcome
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0041] occurrences matches {0..1} matches {    -- Treatment of partner
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0042,    -- Yes
+											at0043,    -- No
+											at0044]    -- Unsure
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"SOI-sammendrag">
+					description = <"Sammendrag av et individs historie knyttet til Seksuelt Overførbare Infeksjoner, SOI">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Tidligere SOI?">
+					description = <"Om individet tidligere har hatt SOI.">
+				>
+				["at0003"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Usikker">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Infeksjon">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0007"] = <
+					text = <"Hvilke typer SOI?">
+					description = <"Navn på SOI individet tidligere har hatt.">
+				>
+				["at0010"] = <
+					text = <"Grad av sikkerhet">
+					description = <"Gradering av hvor sikker tidligere SOI-diagnose er.">
+				>
+				["at0011"] = <
+					text = <"Diagnostisert av">
+					description = <"Om diagnosen er satt av helsearbeider, selvdiagnostisert eller annet.">
+				>
+				["at0012"] = <
+					text = <"Diagnostisert ved">
+					description = <"Sted tidligere SOI-diagnose er satt.">
+				>
+				["at0013"] = <
+					text = <"Behandling">
+					description = <"Fritekstlig beskrivelse av hvilken behandling tidligere SOI har fått.">
+				>
+				["at0014"] = <
+					text = <"Tidligere testet for seksuelt overførbare sykdommer (SOI)?">
+					description = <"Om individet er testet for SOI før.">
+				>
+				["at0015"] = <
+					text = <"Resultat">
+					description = <"Resultatet av behandling av tidligere SOI.">
+				>
+				["at0025"] = <
+					text = <"Hvis annen, spesifiser">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0029"] = <
+					text = <"Pasienten selv">
+					description = <"Selvdiagnostisert">
+				>
+				["at0030"] = <
+					text = <"Helsearbeider">
+					description = <"Diagnostisert av helsearbeider.">
+				>
+				["at0031"] = <
+					text = <"Annen">
+					description = <"Diagnostisert av annen.">
+				>
+				["at0032"] = <
+					text = <"Hvis annen, spesifiser">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0034"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Usikker">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Fullført behandling">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Usikker">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Behandling av partner">
+					description = <"Om individets partner er behandlet for SOI.">
+				>
+				["at0042"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Usikker">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Type SOI">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0046"] = <
+					text = <"Klamydia">
+					description = <"Veredisett for type SOI.">
+				>
+				["at0047"] = <
+					text = <"Gonoré">
+					description = <"Veredisett for type SOI.">
+				>
+				["at0048"] = <
+					text = <"Mykoplasma">
+					description = <"Veredisett for type SOI.">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sti summary">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Previously had STI?">
+					description = <"Whether the individual ever have had a STI.">
+				>
+				["at0003"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Unsure">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Infection">
+					description = <"STI">
+				>
+				["at0007"] = <
+					text = <"Which types of STI?">
+					description = <"Types of STI the individual have had previously.">
+				>
+				["at0010"] = <
+					text = <"Degree of certainty">
+					description = <"Degree of certainty of previous STI.">
+				>
+				["at0011"] = <
+					text = <"Diagnosed by">
+					description = <"Whether previous STI were diagnosed by health personell, self-diagnosed or other.">
+				>
+				["at0012"] = <
+					text = <"Diagnosed at">
+					description = <"Should be a description here.">
+				>
+				["at0013"] = <
+					text = <"Treatment">
+					description = <"Narrative description of how and when previous STI were treated.">
+				>
+				["at0014"] = <
+					text = <"Ever tested for a sexually transmitted infection (STI)?">
+					description = <"Whether the patient ever have been tested for a STI.">
+				>
+				["at0015"] = <
+					text = <"Outcome">
+					description = <"Result of previos STI treatment.">
+				>
+				["at0025"] = <
+					text = <"If other, specify">
+					description = <"Narrative description of other STI's, if any.">
+				>
+				["at0029"] = <
+					text = <"Self tested">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"Healthcare professional">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"Other">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"If other, specify">
+					description = <"Should be a decription here.">
+				>
+				["at0034"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Unsure">
+					description = <"">
+				>
+				["at0037"] = <
+					text = <"Completed treatment">
+					description = <"Whether tratment of STI were completed.">
+				>
+				["at0038"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"Unsure">
+					description = <"">
+				>
+				["at0041"] = <
+					text = <"Treatment of partner">
+					description = <"Whether the individuals partner were treated or not.">
+				>
+				["at0042"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0044"] = <
+					text = <"Unsure">
+					description = <"">
+				>
+				["at0045"] = <
+					text = <"Type of STI">
+					description = <"Type of STI.">
+				>
+				["at0046"] = <
+					text = <"Chlamydia">
+					description = <"Number of chlammydia.">
+				>
+				["at0047"] = <
+					text = <"Gonorrhea">
+					description = <"Number of gonorrhea.">
+				>
+				["at0048"] = <
+					text = <"Mycoplasma">
+					description = <"Number of mycoplasma.">
+				>
+			>
+		>
+	>
