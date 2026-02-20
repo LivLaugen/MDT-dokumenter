@@ -1,0 +1,125 @@
+archetype (adl_version=1.4; uid=020d1dda-7c5c-4666-bca3-c8b15f00e397)
+	openEHR-EHR-ACTION.permankat.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"7BEE456BC6245DB3320904AE42CC2116">
+		["build_uid"] = <"6141231d-794e-4651-ad38-234deae1d94c">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Permankat
+		description matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Kateter
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003,    -- standard
+									at0004]    -- treveis
+								}
+							}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Dato for kateter
+						value matches {
+							DV_DATE matches {
+								value matches {yyyy-mm-dd}
+							}
+						}
+					}
+					CLUSTER[at0009] occurrences matches {0..1} matches {    -- bildediagnostikk
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0010] occurrences matches {0..1} matches {    -- Hist
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0012] occurrences matches {0..1} matches {    -- Cyt
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0013] occurrences matches {0..1} matches {    -- New element
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Permankat">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Kateter">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"standard">
+					description = <"standard">
+				>
+				["at0004"] = <
+					text = <"treveis">
+					description = <"treveis">
+				>
+				["at0005"] = <
+					text = <"Dato for kateter">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"bildediagnostikk">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Hist">
+					description = <"Hist">
+				>
+				["at0012"] = <
+					text = <"Cyt">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"New element">
+					description = <"*">
+				>
+			>
+		>
+	>
