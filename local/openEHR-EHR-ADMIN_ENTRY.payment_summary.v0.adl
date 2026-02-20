@@ -1,0 +1,456 @@
+archetype (adl_version=1.4; uid=09973d0a-27bb-4d46-b074-e0b176c3f41b)
+	openEHR-EHR-ADMIN_ENTRY.payment_summary.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en-gb"] = <
+			language = <[ISO_639-1::en-gb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Håndtere betalingskrav til pasient og refusjonskrav til tredjeparts betaler som følge av en eller flere pasientkontakter.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Håndtere betalingskrav til pasient og refusjonskrav til tredjeparts betaler som følge av en eller flere pasientkontakter.">
+			misuse = <"All annen bruk.">
+		>
+		["en-gb"] = <
+			language = <[ISO_639-1::en-gb]>
+			purpose = <"Manage payment demands to patient and reimbursement request to third party related to a patient encounter.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Manage payment demands to patient and reimbursement request to third party related to a patient encounter.">
+			misuse = <"Any other use.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"5291DC7865B4285D2F9E51B5B66EADFE">
+		["build_uid"] = <"7b57d86d-5cdf-4601-9a51-36fc99049180">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {    -- Regningskort
+		data matches {
+			ITEM_TREE[at0001] matches {    -- *Tree(nb)
+				items cardinality matches {3..*; unordered} matches {
+					CLUSTER[at0002] matches {    -- Pasientkontakter
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0003] occurrences matches {1..*} matches {    -- Pasientkontakt
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] matches {    -- Beregningsregel
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0007,    -- Normal
+									at0008,    -- Pasienten betaler alt
+									at0009,    -- Frikort
+									at0033,    -- Barn
+									at0010,    -- Svangerskap
+									at0011,    -- Yrkesskade
+									at0032,    -- Militær
+									at0012,    -- Krigsskade
+									at0013,    -- Kommunalt frikort.
+									at0034,    -- Smittefarlig sykdom
+									at0035,    -- HIV
+									at0036,    -- Pasientens tilstand til hinder for avkreving av egenandel
+									at0037,    -- Innsatt
+									at0038]    -- Behandling ved voldtektsmottak
+								}
+							}
+						}
+					}
+					ELEMENT[at0015] matches {    -- Regningstidspunkt
+						value matches {
+							DV_DATE_TIME matches {
+								value matches {yyyy-mm-ddTHH:MM:SS}
+							}
+						}
+					}
+					CLUSTER[at0017] occurrences matches {0..1} matches {    -- Diagnoser
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0016] occurrences matches {0..*} matches {    -- Diagnose
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0018] occurrences matches {0..1} matches {    -- Takster
+						items cardinality matches {1..*; unordered} matches {
+							CLUSTER[at0019] occurrences matches {0..*} matches {    -- Takst
+								items cardinality matches {2..*; unordered} matches {
+									ELEMENT[at0020] occurrences matches {0..1} matches {    -- Takstkode
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0021] matches {    -- Egenandel
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::118]>											>
+										}
+									}
+									ELEMENT[at0022] matches {    -- Refusjon
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::118]>											>
+										}
+									}
+								}
+							}
+						}
+					}
+					ELEMENT[at0023] occurrences matches {0..1} matches {    -- Betalingsstatus pasient
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0024,    -- Utkast
+									at0025,    -- Til betaling
+									at0026]    -- Betalt
+								}
+							}
+						}
+					}
+					ELEMENT[at0027] occurrences matches {0..1} matches {    -- Betalingsstatus tredjeparts betaler
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0028,    -- Utkast
+									at0029,    -- Sendt
+									at0030,    -- Akseptert
+									at0031]    -- Avvist
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en-gb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Payment summary">
+					description = <"Summary of payments related to a patient encounter. Payments may partially be payable for patient and partially payable for third party.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Patient encounters">
+					description = <"The patient encounter(s) related to this payment summary">
+				>
+				["at0003"] = <
+					text = <"Patient encounter">
+					description = <"A patient encounter related to this payment summary">
+				>
+				["at0006"] = <
+					text = <"Patient payment rules">
+					description = <"Rules that determine which parts of the bill that is covered by third party, and which prats the patient has to pay for.">
+				>
+				["at0007"] = <
+					text = <"Normal">
+					description = <"No special rules apply">
+				>
+				["at0008"] = <
+					text = <"Patient pays in full">
+					description = <"Patient pays everything">
+				>
+				["at0009"] = <
+					text = <"Maximum yearly amount reached">
+					description = <"Patient has already this year payed the maximum amonut, third party takes over">
+				>
+				["at0010"] = <
+					text = <"Pregnancy">
+					description = <"Patient is pregnant and third party covers the payment">
+				>
+				["at0011"] = <
+					text = <"Occupational injury">
+					description = <"Third party pays due to occupational injury.">
+				>
+				["at0012"] = <
+					text = <"War injury">
+					description = <"Patient suffers form war injury, and third party pays">
+				>
+				["at0013"] = <
+					text = <"Municipality free card">
+					description = <"Arrangement for poor people, making third party pay all.">
+				>
+				["at0015"] = <
+					text = <"Time for payment summary registration">
+					description = <"Date and time the payment summary was issued for.">
+				>
+				["at0016"] = <
+					text = <"Diagnose">
+					description = <"Diagnose used for this/these payment encounter(s).">
+				>
+				["at0017"] = <
+					text = <"Diagnosis">
+					description = <"Diagnoses for the relevant patient enounters">
+				>
+				["at0018"] = <
+					text = <"Fares">
+					description = <"Fares contained within this payment summary.">
+				>
+				["at0019"] = <
+					text = <"Fare">
+					description = <"Fare used for this payment summary.">
+				>
+				["at0020"] = <
+					text = <"Fare id">
+					description = <"Third party fare identifier.">
+				>
+				["at0021"] = <
+					text = <"Patient part of fare">
+					description = <"Part of fare that is due for patient.">
+				>
+				["at0022"] = <
+					text = <"Third party part of fare">
+					description = <"Part of fare that is due for thrid party.">
+				>
+				["at0023"] = <
+					text = <"Patient payment status">
+					description = <"Status for payment by the patient for this payment summary">
+				>
+				["at0024"] = <
+					text = <"Draft">
+					description = <"Payment summary is drafted.">
+				>
+				["at0025"] = <
+					text = <"Payment due">
+					description = <"Invoice issued to patient">
+				>
+				["at0026"] = <
+					text = <"Payment recieved">
+					description = <"Payment recieved">
+				>
+				["at0027"] = <
+					text = <"Third party payment status">
+					description = <"Status for payment by the third party for this payment summary">
+				>
+				["at0028"] = <
+					text = <"Draft">
+					description = <"Payment summary is drafted.">
+				>
+				["at0029"] = <
+					text = <"Sent">
+					description = <"Reimbursement request sent to third party payer.">
+				>
+				["at0030"] = <
+					text = <"Accepted">
+					description = <"Reimbursement request accepted by third party payer.">
+				>
+				["at0031"] = <
+					text = <"Rejected">
+					description = <"Reimbursement request rejected by third party payer. Payment summary needs to be modified and resubmitted.">
+				>
+				["at0032"] = <
+					text = <"Military coverage">
+					description = <"Third party pays due to military enrollment.">
+				>
+				["at0033"] = <
+					text = <"Child">
+					description = <"Third party pays because patient is less than 16 years old.">
+				>
+				["at0034"] = <
+					text = <"Infectious disease">
+					description = <"Treatment of infectious disease. Third party pays all.">
+				>
+				["at0035"] = <
+					text = <"HIV">
+					description = <"Treatment of HIV. Third party pays all.">
+				>
+				["at0036"] = <
+					text = <"Patient unable to pay due to special condition">
+					description = <"If the patient's condition (i.e unconscious, anaccountable)  at the time makes him/her unable to pay. Third party pays all.">
+				>
+				["at0037"] = <
+					text = <"Imprisoned">
+					description = <"Imprisonend patient. Third party pays all.">
+				>
+				["at0038"] = <
+					text = <"Treatment of rape victim">
+					description = <"Treatment of rape victim. Third party pays all.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Regningskort">
+					description = <"Regningskort til bruk ved legekontor for å håndtere betalingskrav til pasient og refusjon fra tredjeparts betaler.">
+				>
+				["at0001"] = <
+					text = <"*Tree(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0002"] = <
+					text = <"Pasientkontakter">
+					description = <"Pasientkontaktene tilknyttet dette regningskortet.">
+				>
+				["at0003"] = <
+					text = <"Pasientkontakt">
+					description = <"En pasientkontakt tilknyttet dette regningskortet.">
+				>
+				["at0006"] = <
+					text = <"Beregningsregel">
+					description = <"Beregningsregler for fordelingen av betalingen mellom pasienten og tredjepartsbetaler.">
+				>
+				["at0007"] = <
+					text = <"Normal">
+					description = <"Ingen spesielle beregningsregler.">
+				>
+				["at0008"] = <
+					text = <"Pasienten betaler alt">
+					description = <"Pasienten betaler alt. Ingen refusjonkrav sendes til tredjeparts betaler.">
+				>
+				["at0009"] = <
+					text = <"Frikort">
+					description = <"Pasienten har betalt det årlige maksimalbeløpet. Tredjeparts betaler dekker alle utlegg.">
+				>
+				["at0010"] = <
+					text = <"Svangerskap">
+					description = <"Pasienten er gravid og utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0011"] = <
+					text = <"Yrkesskade">
+					description = <"Pasienten har yrkesskade. Utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0012"] = <
+					text = <"Krigsskade">
+					description = <"Pasienten er krigsskadet. Utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0013"] = <
+					text = <"Kommunalt frikort.">
+					description = <"Pasienten faller inn under kriteriene for kommunalt frikort. Utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0015"] = <
+					text = <"Regningstidspunkt">
+					description = <"Dato og klokkeslett regningskortet gjelder for.">
+				>
+				["at0016"] = <
+					text = <"Diagnose">
+					description = <"Diagnose tilknyttet regningskortet.">
+				>
+				["at0017"] = <
+					text = <"Diagnoser">
+					description = <"Diagnoser tilknyttet regningskortet.">
+				>
+				["at0018"] = <
+					text = <"Takster">
+					description = <"Takster definert av tredjeparts betaler brukt i dette regningskortet.">
+				>
+				["at0019"] = <
+					text = <"Takst">
+					description = <"Takst definert av tredjeparts betaler brukt i dette regningskortet.">
+				>
+				["at0020"] = <
+					text = <"Takstkode">
+					description = <"Tredjeparts betaler sin identifikator for taksten.">
+				>
+				["at0021"] = <
+					text = <"Egenandel">
+					description = <"Delbeløpet av taksten som pasienten skal betale.">
+				>
+				["at0022"] = <
+					text = <"Refusjon">
+					description = <"Delbeløpet av taksten som refunderes av tredjepart.">
+				>
+				["at0023"] = <
+					text = <"Betalingsstatus pasient">
+					description = <"Betalingsstatus for pasientens delbeløp av regningskortet.">
+				>
+				["at0024"] = <
+					text = <"Utkast">
+					description = <"Regningskortutkast. Ikke utstedt til pasient ennå.">
+				>
+				["at0025"] = <
+					text = <"Til betaling">
+					description = <"Regning utstedt til pasient for betaling.">
+				>
+				["at0026"] = <
+					text = <"Betalt">
+					description = <"Pasienten har betalt sin andel av regningskortet.">
+				>
+				["at0027"] = <
+					text = <"Betalingsstatus tredjeparts betaler">
+					description = <"Betalingsstatus for tredjeparts betaler sitt delbeløp av regningskortet.">
+				>
+				["at0028"] = <
+					text = <"Utkast">
+					description = <"Regningskortutkast. Ikke oversendt tredjeparts betaler ennå.">
+				>
+				["at0029"] = <
+					text = <"Sendt">
+					description = <"Krav om refusjon oversendt til tredjeparts betaler.">
+				>
+				["at0030"] = <
+					text = <"Akseptert">
+					description = <"Krav om refusjon er akseptert av tredjeparts betaler.">
+				>
+				["at0031"] = <
+					text = <"Avvist">
+					description = <"Tredjeparts betaler har avvist krav om refusjon. Regningskortet må korrigeres og sendes på nytt.">
+				>
+				["at0032"] = <
+					text = <"Militær">
+					description = <"Pasienten er militærperson/vernepliktig. Utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0033"] = <
+					text = <"Barn">
+					description = <"Pasienten er under 16 år. Utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0034"] = <
+					text = <"Smittefarlig sykdom">
+					description = <"Behandling av smittefarlig sykdom. Utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0035"] = <
+					text = <"HIV">
+					description = <"Behandling av HIV. Utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0036"] = <
+					text = <"Pasientens tilstand til hinder for avkreving av egenandel">
+					description = <"Pasientens tilstand til hinder for avkreving av egenandel (f.eks. bevisstløs, utilregnelig). Utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0037"] = <
+					text = <"Innsatt">
+					description = <"Pasienten er innsatt i fengsel/sikringsanstalt. Utlegg dekkes av tredjeparts betaler.">
+				>
+				["at0038"] = <
+					text = <"Behandling ved voldtektsmottak">
+					description = <"Behandling ved voldtektsmottak. Utlegg dekkes av tredjeparts betaler.">
+				>
+			>
+		>
+	>
