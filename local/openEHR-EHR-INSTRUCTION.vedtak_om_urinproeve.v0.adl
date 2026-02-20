@@ -1,0 +1,60 @@
+archetype (adl_version=1.4; uid=5bec32db-5f95-4c91-aeb3-d465d8cfa298)
+	openEHR-EHR-INSTRUCTION.vedtak_om_urinproeve.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"50D553B1C0C7080807CF383D8538B37D">
+		["build_uid"] = <"6b294fed-4cc4-48c3-9c68-d6eb2164f783">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	INSTRUCTION[at0000] matches {    -- Vedtak om urinproeve
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0001] occurrences matches {0..1} matches {    -- Vedtak om urinprøve
+				description matches {
+					allow_archetype ITEM_TREE matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.om_vedtak_om_urinproeve(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vedtak om urinproeve">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Vedtak om urinprøve">
+					description = <"">
+				>
+			>
+		>
+	>
