@@ -1,0 +1,100 @@
+archetype (adl_version=1.4; uid=89343265-22fb-4318-a6a5-2c549b0a1eef)
+	openEHR-EHR-ACTION.vedta_us_av_rom_og_eiendeler.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2014-02-07">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For registrering av vedtak om undersøkelse av rom og eiendeler og/eller kroppsvisitasjon.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes til registrering av vedtak om undersøkelse av rom og eiendeler og/eller kroppsvisitasjon.">
+			misuse = <"Alt annet.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"112300BD48C08BDC0F00F5E4AA208B8F">
+		["build_uid"] = <"1d8d6548-d3df-48ea-be15-85a37f15f54e">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Vedta us av rom og eiendeler
+		ism_transition matches {
+			ISM_TRANSITION[at0002] matches {    -- Pågående
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::245]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0002]    -- Pågående
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0001] matches {    -- Opphørt
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0001]    -- Opphørt
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			allow_archetype ITEM_TREE matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.om_us_av_rom_og_eiendeler(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vedta us av rom og eiendeler">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Opphørt">
+					description = <"">
+				>
+				["at0002"] = <
+					text = <"Pågående">
+					description = <"">
+				>
+			>
+		>
+	>
