@@ -1,0 +1,165 @@
+archetype (adl_version=1.4; uid=10415d2a-6239-4fcb-a88c-5951e91ab23b)
+	openEHR-EHR-OBSERVATION.cpc.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2019-03-08">
+		["name"] = <"John Tore Valand">
+		["organisation"] = <"Helse Bergen HF">
+		["email"] = <"john.tore.valand@helse-bergen.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record">
+			keywords = <"resuscitation", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to record">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Safar P. Resuscitation after Brain Ischemia, in Grenvik A and Safar P Eds: Brain Failure and Resuscitation, Churchill Livingstone, New York, 1981; 155-184.">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"4531AC5BC4B2654CBB56643CF214492C">
+		["build_uid"] = <"1066a2e9-6d53-48ed-824b-8d4910553f8b">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- CPC Scale
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {0..*; unordered} matches {
+					POINT_EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- ItemTree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- CPC scale
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005,    -- CPC 1
+													at0006,    -- CPC 2
+													at0007,    -- CPC 3
+													at0008,    -- CPC 4
+													at0009]    -- CPC 5
+												}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {    -- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0011] matches {    -- ItemTree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0012] occurrences matches {0..1} matches {    -- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0013] matches {    -- ItemTree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0014] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"CPC Scale">
+					description = <"CPC Scale (Cerebral Performance Categories Scale)">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Unspecified point in time event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"CPC scale">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"CPC 1">
+					description = <"Good cerebral performance: conscious, alert, able to work, might have mild neurologic or psychologic deficit.">
+				>
+				["at0006"] = <
+					text = <"CPC 2">
+					description = <"Moderate cerebral disability: conscious, sufficient cerebral function for independent activities of daily life. Able to work in sheltered environment.">
+				>
+				["at0007"] = <
+					text = <"CPC 3">
+					description = <"Severe cerebral disability: conscious, dependent on others for daily support because of impaired brain function. Ranges from ambulatory state to severe dementia or paralysis.">
+				>
+				["at0008"] = <
+					text = <"CPC 4">
+					description = <"Coma or vegetative state: any degree of coma without the presence of all brain death criteria. Unawareness, even if appears awake (vegetative state) without interaction with environment; may have spontaneous eye opening and sleep/awake cycles. Cerebral unresponsiveness.">
+				>
+				["at0009"] = <
+					text = <"CPC 5">
+					description = <"Brain death: apnea, areflexia, EEG silence, etc.">
+				>
+				["at0010"] = <
+					text = <"Comment">
+					description = <"Additional narrative about the CPC scale not captured in other fields.">
+				>
+				["at0011"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0012"] = <
+					text = <"Confounding factors">
+					description = <"Note: If patient is anesthetized, paralyzed, or intubated, use “as is” clinical
+condition to calculate scores.">
+				>
+				["at0013"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0014"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local context or to align with other reference models/formalisms.">
+					comment = <"For example: Local hospital departmental infomation or additional metadata to align with FHIR or CIMI equivalents.">
+				>
+			>
+		>
+	>
