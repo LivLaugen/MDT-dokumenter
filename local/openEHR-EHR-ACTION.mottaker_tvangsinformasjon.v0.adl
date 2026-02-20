@@ -1,0 +1,74 @@
+archetype (adl_version=1.4; uid=70ad98b6-308a-4619-bc64-bf1ed55adc5d)
+	openEHR-EHR-ACTION.mottaker_tvangsinformasjon.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"F270D6BAABB53F0EFA16B54C8560D08F">
+		["build_uid"] = <"817c1bc0-7e9c-4cb7-b437-6f10b1f9932d">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Mottaker av informasjon om tvang
+		ism_transition matches {
+			ISM_TRANSITION[at0001] matches {    -- Mottaker registrert
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::245]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0001]    -- Mottaker registrert
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			allow_archetype ITEM_TREE matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.mottaker_informasjon_tvang(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Mottaker av informasjon om tvang">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Mottaker registrert">
+					description = <"">
+				>
+			>
+		>
+	>
