@@ -1,0 +1,86 @@
+archetype (adl_version=1.4; uid=3fdc4bd5-4f42-491d-b3c5-a03a42848eff)
+	openEHR-EHR-CLUSTER.prosedyredetaljer.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-01-16">
+		["name"] = <"Tomas Nordheim Alme">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"tna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Benyttes til å beskrive detaljert innhold i en gjennomført prosedyre. Ved for eksempel en ERCP-prosedyre (endoskopisk tilgang til galle og bukspyttkjertel gjennom spiserøret) kan det bli gjennomført flere del-prosedyrer som må detaljeres og i mange tilfeller rapporteres. 
+
+Arketypen gir rom for å koble flere prosedyrer (og prosedyrekoder) til en action-prosedyre der det er hensiktsmessig at prosedyren kun fremstår som én activity.
+
+">
+			keywords = <"Procedure", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes sammen med ACTION.procedure">
+			misuse = <"All annen bruk">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["current_contact"] = <"Tomas Nordheim Alme, DIPS ASA, tna@dips.no">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"11AEED5A5967CB95B87785A05ED66FF5">
+		["build_uid"] = <"fe2d3a87-0dd0-4f20-a42b-113de6e09c8f">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Prosedyredetaljer
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Prosedyrenavn
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {    -- Lokalisasjon
+				include
+					archetype_id/value matches {/.*/}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Kommentar
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Prosedyredetaljer">
+					description = <"Benyttes for å beskrive detaljer knyttet til en prosedyre">
+				>
+				["at0001"] = <
+					text = <"Prosedyrenavn">
+					description = <"Angir navn på prosedyre utført. Kodeverk bør benyttes der dette finnes tilgjengelig.">
+				>
+				["at0003"] = <
+					text = <"Kommentar">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Lokalisasjon">
+					description = <"Benyttes for å angi anatomisk lokalisasjon">
+				>
+			>
+		>
+	>
