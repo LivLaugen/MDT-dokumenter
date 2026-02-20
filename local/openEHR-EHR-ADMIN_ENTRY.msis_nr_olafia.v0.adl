@@ -1,0 +1,154 @@
+archetype (adl_version=1.4; uid=9a7d8b9d-fef6-41c1-8296-c2ec6edf1099)
+	openEHR-EHR-ADMIN_ENTRY.msis_nr_olafia.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-10-29">
+		["name"] = <"Nasrin Jamedari">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"nja@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Midlertidig arketype til bruk i MSIS skjema.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Svært midlertidig arketype kun til bruk for OUS Olafiaklinikken fra november 2015.">
+			misuse = <"Skal ikke brukes noe annet sted enn midlertidig for OUS.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"35C8C972F67EC5D2AD3AD6D1A4D3B40B">
+		["build_uid"] = <"9fff1f04-98f6-43cb-a1fb-df1c58c0db65">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {    -- Msis nr olafia
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- MSIS nr
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Status
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0004,    -- Registrert
+									at0005,    -- Kladdet
+									at0006,    -- Utfylt
+									at0007,    -- Signert
+									at0008]    -- Innsendt
+								}
+							}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Infeksjon
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {    -- Utfyllende opplysninger
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {    -- Fødeland
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {    -- Fars fødeland
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Mors fødeland
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Msis nr olafia">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"MSIS nr">
+					description = <"Identifikator til skjema sendt til Folkehelseinstituttet.">
+				>
+				["at0003"] = <
+					text = <"Status">
+					description = <"Status for MSIS-skjema">
+				>
+				["at0004"] = <
+					text = <"Registrert">
+					description = <"Skjemaet er registrert">
+				>
+				["at0005"] = <
+					text = <"Kladdet">
+					description = <"Skjemaet er i kladdestatus">
+				>
+				["at0006"] = <
+					text = <"Utfylt">
+					description = <"Skjemaet er ferdig fylt ut">
+				>
+				["at0007"] = <
+					text = <"Signert">
+					description = <"Skjemaet er signert">
+				>
+				["at0008"] = <
+					text = <"Innsendt">
+					description = <"Skjemaet er sendt inn">
+				>
+				["at0009"] = <
+					text = <"Infeksjon">
+					description = <"Infeksjonstilstanden det er vaksinert for.">
+				>
+				["at0010"] = <
+					text = <"Fødeland">
+					description = <"Navn på landet individet er født.">
+				>
+				["at0011"] = <
+					text = <"Fars fødeland">
+					description = <"Navn på landet individets far er født.">
+				>
+				["at0012"] = <
+					text = <"Mors fødeland">
+					description = <"Navn på landet individets mor er født.">
+				>
+				["at0013"] = <
+					text = <"Utfyllende opplysninger">
+					description = <"Fritekstlig beskrivelse av opplysninger som ikke dekkes annet sted.">
+				>
+			>
+		>
+	>
