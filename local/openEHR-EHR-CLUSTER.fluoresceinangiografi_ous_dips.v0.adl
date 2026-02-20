@@ -1,0 +1,105 @@
+archetype (adl_version=1.4; uid=25a0c4ec-1815-4c14-a97a-36c997cefa7c)
+	openEHR-EHR-CLUSTER.fluoresceinangiografi_ous_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-03-25">
+		["name"] = <"Thomas Pedersen Baerland">
+		["organisation"] = <"Oslo University Hospital / DIPS ASA">
+		["email"] = <"tba@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Arne Løberg Sæter", ...>
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© OUS HF / DIPS ASA">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"56FEAB5CA06620A378B908560F6C42D0">
+		["build_uid"] = <"b216adaa-0729-4eae-a90a-2bc7813ff789">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Fluoresceinangiografi
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Beskrivelse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Hyperfluorescence
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Hypofluorescence
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Fylningsdefekt
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Konklusjon/Diagnose
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0006] occurrences matches {0..*} matches {    -- Detaljer fluoresceinangiografi
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Fluoresceinangiografi">
+					description = <"Beskrivelse og resultater fra øyeundersøkelse med fluoresceinangiografi.Undersøkelsen kan enten gjøres med foto eller video.">
+				>
+				["at0001"] = <
+					text = <"Beskrivelse">
+					description = <"Kvalitativ beskrivelse av hva fluorescein bilder eller video viser.">
+				>
+				["at0002"] = <
+					text = <"Hyperfluorescence">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Konklusjon/Diagnose">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Hypofluorescence">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Fylningsdefekt">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Detaljer fluoresceinangiografi">
+					description = <"*">
+				>
+			>
+		>
+	>
