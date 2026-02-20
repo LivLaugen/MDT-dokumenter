@@ -1,0 +1,80 @@
+archetype (adl_version=1.4; uid=8847e364-a06b-4a31-a4c0-c76109a86571)
+	openEHR-EHR-ADMIN_ENTRY.henv_fysio_behandleropplysninger.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-10-29">
+		["name"] = <"Nasrin Amele Jamedari">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"nja@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Administrativ arketype for å legge i henvisningsskjema til fysioterapi.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Administrativ arketype for å legge i henvisningsskjema til fysioterapi. Foreløpig arketype, kun for OUS.">
+			misuse = <"Foreløpig arketype, kun for OUS.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"7F3A96DBC7DA9E569B25F779C04EACA1">
+		["build_uid"] = <"89afabaa-71c5-44c7-9b10-d5b8f3c502ff">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {    -- Henv fysio behandleropplysninger
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Henvisende behandler
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Dato
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Henv fysio behandleropplysninger">
+					description = <"Opplysninger">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Henvisende behandler">
+					description = <"Navn på henviser">
+				>
+				["at0004"] = <
+					text = <"Dato">
+					description = <"Dato på henvisning">
+				>
+			>
+		>
+	>
