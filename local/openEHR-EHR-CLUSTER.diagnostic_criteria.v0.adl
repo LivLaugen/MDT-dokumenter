@@ -1,0 +1,221 @@
+archetype (adl_version=1.4; uid=cc7b15fb-b705-4a8e-b063-d6cb55b94f61)
+	openEHR-EHR-CLUSTER.diagnostic_criteria.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en-gb"] = <
+			language = <[ISO_639-1::en-gb]>
+			author = <
+				["name"] = <"Sabine Leh">
+				["organisation"] = <"Haukeland University Hospital, Bergen, Norway">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2014-10-09">
+		["name"] = <"Sabine Leh">
+		["organisation"] = <"Haukeland University Hospital">
+		["email"] = <"sabine.leh@helse-bergen.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Silje Bakke, Helse Bergen HF, Norway (Editor)","Sabine Leh, Helse-Bergen, Norway (Editor)","Heather Leslie, Ocean Informatics, Australia","Ian McNicoll, FreshEHR, UK","Micaela Thierley, Helse Bergen, Norway (Editor)">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Å dokumentere definisjonen og kriteriene brukt til å lage diagnosen.">
+			keywords = <"Diagnose", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes til å oppgi definisjon og diagnostiske kriterier for en diagnose. Dette vil ofte være forhåndsutfylte datafelt, som dokumenterer definisjonen og kriteriene brukt i timelig og lokal kontekst. Forhåndsutfylte datafelt vil samtidig gi helsepersonell informasjonsstøtte i en diagnostisk situasjon. Inneholder en erklæring, om  kriteriene er oppfylt.  Kan også brukes til å angi foreldede definisjoner eller diagnostiske kriterier, som ikke skal brukes eller er brukt i den diagnostiske situasjonen.">
+			misuse = <"Skal ikke brukes til å nedtegne observerte data. Til dette brukes relevante OBSERVATION-arketyper.">
+		>
+		["en-gb"] = <
+			language = <[ISO_639-1::en-gb]>
+			purpose = <"To document the definition and criteria used to confirm a formal diagnosis for a disease or condition.">
+			keywords = <"Diagnosis", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to specify the definition and diagnostic criteria for confirmation of a diagnosis. 
+
+This archetype is designed to be used within the SLOT in the EVALUATION.problem_diagnosis archetype.
+
+It is possible that actual 'Criteria' may be pre-filled by the clinical application upon the user entering a 'Criteria set' name. 
+
+The CLUSTER.citation can be used to link directly and explicitly to supportive data held elsewhere within the health record.">
+			misuse = <"Not to be used to record the diagnosis itself. Use the EVALUATION.problem_diagnosis archetype.
+
+Not to be used to record observed data - use relevant OBSERVATION archetypes instead.
+
+">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["current_contact"] = <"Sabine Leh, Haukeland University Hospital, sabine.leh@helse-bergen.no">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"AE78DB8DE1696C3DA1899DE030E16112">
+		["build_uid"] = <"06052ca2-5520-4937-8a12-57ea0e90d67d">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Diagnostic criteria
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0016] occurrences matches {0..1} matches {    -- *New element(nb)
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..*} matches {    -- Kriterier
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0015] occurrences matches {0..*} matches {    -- *Cluster(nb)
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.citation(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			ELEMENT[at0011] occurrences matches {0..1} matches {    -- Fullstendighet
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0013,    -- *Partially Met(nb)
+							at0014]    -- *Fully Met(nb)
+						}
+					}
+				}
+			}
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Definisjon
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..*} matches {    -- Kilder til definisjonen
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Kommentar
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0017] occurrences matches {0..1} matches {    -- *New element(nb)
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en-gb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diagnostic criteria">
+					description = <"Definition and criteria a diagnosis is based on.">
+				>
+				["at0001"] = <
+					text = <"Disease definition">
+					description = <"Specification of the diagnosis, for which the criteria are designed.">
+				>
+				["at0002"] = <
+					text = <"Definition source">
+					description = <"Sources for current definition.">
+					comment = <"For example: a reference to a textbook,  a consensus paper or a conference proceeding; or the name of a guideline.">
+				>
+				["at0003"] = <
+					text = <"Criteria">
+					description = <"Narrative descriptions of the signs, symptoms and/or test results used to reach the diagnosis.">
+				>
+				["at0011"] = <
+					text = <"Completeness">
+					description = <"Assertion about whether the degree by which the criteria for diagnosis are met.">
+					comment = <"Note: If the criteria are not met, this archetype is not suitable for use.">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"Additional narrative about the diagnostic criteria, not captured in other fields.">
+				>
+				["at0013"] = <
+					text = <"Incomplete">
+					description = <"Some specified diagnostic criteria were met, but not all.">
+				>
+				["at0014"] = <
+					text = <"Complete">
+					description = <"All specified diagnostic criteria were met.">
+				>
+				["at0015"] = <
+					text = <"Criteria citation">
+					description = <"Details about a citation to data included elsewhere in a health record.">
+					comment = <"For example: a URI to a HBA1c result that is used to support the diagnosis of Type 2 Diabetes.">
+				>
+				["at0016"] = <
+					text = <"Criteria set">
+					description = <"Name of the group of criteria that are required to confirm the diagnosis.">
+				>
+				["at0017"] = <
+					text = <"Last updated">
+					description = <"The date this diagnostic criteria was last updated.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diagnostic criteria">
+					description = <"Kriteriene og definisjonen en diagnose er basert på.">
+				>
+				["at0001"] = <
+					text = <"Definisjon">
+					description = <"Sykdomsdefinisjon for tiden brukt av deltakende helseinstitusjon eller 
+av deltakende helsepersonell.">
+				>
+				["at0002"] = <
+					text = <"Kilder til definisjonen">
+					description = <"Kilder for aktuell definisjon. Dette kan for eksempel være referanser til en lærebok, til en artikkel med retningslinjer, til en \"consensus\" artikkel eller til et møteprotokoll.">
+				>
+				["at0003"] = <
+					text = <"Kriterier">
+					description = <"Den spesifikke kombinasjonen av tegn, symptomer eller testresultater, som er brukt for å stille diagnosen.">
+				>
+				["at0011"] = <
+					text = <"Fullstendighet">
+					description = <"En uttalelse om kriteriene er oppfylt. Dataelementet skal bare brukes om aktivitetsstatus er satt til \"aktiv\".">
+				>
+				["at0012"] = <
+					text = <"Kommentar">
+					description = <"En kommentar om utvalg, status eller fullstendighet av kriteriene.">
+				>
+				["at0013"] = <
+					text = <"*Partially Met(nb)">
+					description = <"**(nb)">
+				>
+				["at0014"] = <
+					text = <"*Fully Met(nb)">
+					description = <"**(nb)">
+				>
+				["at0015"] = <
+					text = <"*Cluster(nb)">
+					description = <"**(nb)">
+				>
+				["at0016"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0017"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+			>
+		>
+	>
