@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=46333cc0-bfa7-48d5-b604-c1b0369d57ca)
+﻿archetype (adl_version=1.4; uid=3af37d47-2a31-4bfd-bb2c-13d5cc457888)
 	openEHR-EHR-OBSERVATION.body_segment_length.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Body segment length
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -24,21 +23,17 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2019-03-07">
 		["name"] = <"Heather Leslie">
 		["organisation"] = <"Atomica Informatics, Australia">
 		["email"] = <"heather.leslie@atomicainformatics.com">
+		["date"] = <"2019-03-07">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Andreas Abildgaard, OUS, Norway","Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Heidi Aursand, Oslo universitetssykehus, Norway","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","Malin Berg, DIPS ASA, Norway","Randi Brendberg, Helse Nord RHF, Norway","Angela Crovetti, CDC/NIOSH, United States","Mikkel Gaup Grønmo, FSE, Helse Nord, Norway (Nasjonal IKT redaktør)","Heather Grain, Llewelyn Grain Informatics, Australia","Anne M Gromsrud, DIPS AS, Norway","Mikkel Johan Gaup Grønmo, Helse Nord IKT, Norway (Nasjonal IKT redaktør)","Alfred Honore, Haukeland, Norway","Evelyn Hovenga, EJSH Consulting, Australia","Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway","Heidi Koikkalainen, United Kingdom (openEHR Editor)","Ronald Krawec, Alberta Health Services, Canada","Tomi Laptoš, Marand, Slovenia","Liv Laugen, Oslo universitetssykehus, Norway","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","Brit Jorun Liseth, Haukeland Universitetssykehus, Norway","Priscila Maranhão, MEDCIDS-FMUP, Portugal","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Lars Ivar Mehlum, Nasjonal IKT HF, Norway","Svenne Naumann, Finnmarkssykehuset, Norway","Bjørn Næss, DIPS ASA, Norway","Jayashree Panickar, Karolinska Institute, Sweden","Norwegian Review Summary, Nasjonal IKT HF, Norway","Stein Arne Rimehaug, Sunnaas sykehus, Norway","Line Silsand, Universitetssykehuset i Nord-Norge, Norway","Trine Strand, Oslo Universitetssykehus (OUS), Norway","Johannes Michael Strehle, Helse-Nord, Norway","Micaela Thierley, Helse Bergen, Norway","John Tore Valand, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Marit Alice Venheim, Helse Vest IKT, Norway">
 	details = <
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att mäta avståndet mellan två ytanatomiska punkter.">
-			keywords = <"antropometri","mätning","längd","höjd","bredd","spann","kroppssegment">
 			use = <"Används för att mäta avståndet mellan två ytanatomiska punkter. 
 
 Mätningar av kroppssegment som ofta förekommer vid kartläggning av tillväxtsmönster hos barn har modellerats som separata arketyper. Avsikten med denna arketyp är att använda ett gemensamt förfarande för mätningar av flera olika kroppssegment, registrerade med dataelementet \"Benämning på kroppssegment\". På så vis undviks onödigt skapande av flera arketyper för respektive mätning. 
@@ -46,6 +41,7 @@ Mätningar av kroppssegment som ofta förekommer vid kartläggning av tillväxts
 Mätningar av detta slag kan registreras och observeras över tid. Till exempel för att övervaka barns tillväxt eller för att förse kliniska, antropometriska eller ergonomiska bedömningar med exempelvis kroppens form och proportioner. Arketypen kan även användas för att urskilja abnormala kliniska fynd vid uppföljning av sjukdomsprocess. 
 
 Parametrar vars avstånd mellan två punkter vanligen mäts, är tillagda som datatyp DV_CODED_TEXT i dataelementet \"Benämning på kroppssegment\". Vartefter ytterligare parametrar identifieras, kan dessa tilläggas i samma lista.">
+			keywords = <"antropometri", "mätning", "längd", "höjd", "bredd", "spann", "kroppssegment">
 			misuse = <"Ska inte användas för att registrera mätningar för kroppssegment som har modellerats som separata arketyper. Dessa inkluderar bland annat: 
 -för huvudomfång, använd OBSERVATION.head_circumference;
 -för höftomfång, använd OBSERVATION.hip_circumference;
@@ -63,7 +59,6 @@ Ska inte användas för att registrera Crown-rump length för ett foster med hj�
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere måling av avstanden mellom to definerte punkter på kroppsoverflaten.">
-			keywords = <"antropometri","måling","lengde","høyde","bredde","avstand","spenn">
 			use = <"Brukes for å registrere måling av avstanden mellom to definerte punkter på kroppsoverflaten.
 
 Antropometriske målinger som er vanlige, og ofte er brukt som en del av vekstdiagrammer i barndommen, er modellert som egne arketyper. Hensikten med denne arketypen er å tilby en standard måte å registrere en eller alle mulige målinger mellom to identifiserte punkter på kroppen, identifisert av dataelementelementet \"Kroppsdel\", heller enn å lage en egen/ separat arketype for alle mulige målinger.
@@ -71,6 +66,7 @@ Antropometriske målinger som er vanlige, og ofte er brukt som en del av vekstdi
 Denne målingen kan registreres og følges over tid, for eksempel å følge utvikling av et barns vekst, eller for å gi innblikk i formen og proporsjonene av et individs kropp i en klinisk, antropometrisk eller ergonomisk vurdering. Man kan også følge utviklingen av en tilstand eller sykdom ved å registrere målinger av unormale kliniske funn eller observasjoner i denne arketypen.
 
 De vanligste parametrene som blir målt mellom to definerte punkter er lagt til DV_CODED_TEXT-datatype i elementet \"Kroppsdel\". Når behovet flere målinger blir identifisert kan disse etter hvert bli lagt til listen.">
+			keywords = <"antropometri", "måling", "lengde", "høyde", "bredde", "avstand", "spenn">
 			misuse = <"Brukes ikke til å registrere allment utbredte kliniske målinger, som har sine egne spesifikke arketyper, for eksempel:
 
 - bruk OBSERVATION.height (Høyde/lengde) for for å måle en persons høyde eller lengde.
@@ -94,8 +90,6 @@ Brukes ikke for å registrere måling av sideforskjell i lengde mellom parvise k
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the measurement of the distance between two points of surface anatomy.">
-			keywords = <"anthropometry","measurement","length","height","width","span">
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record the measurement of the distance between two points of surface anatomy.
 
 Body segment measurements that are ubiquitous and, most commonly, used as part of growth charting in childhood have been modelled as unique and discrete archetypes. Rather than create an archetype for every single possible body segment measurement, the intent of this archetype is to use a common recording pattern to capture any, or all, other possible measurements between two identified body points, identified by the 'Body segment name' data element.
@@ -103,6 +97,7 @@ Body segment measurements that are ubiquitous and, most commonly, used as part o
 This measurement may be recorded and tracked over time, for example tracking child growth parameters, or used to provide insight into the shape and proportions of an individual's body for purposes of clinical, anthropometric or ergonomic assessment. It may also be used to record the measurement of abnormal clinical findings or observations in order to track the progress of a condition or disease.
 
 Common parameters that are measured between two identified points have been added to the DV_CODED_TEXT data type in the 'Body segment name' data element. As further parameters are identified, these can be added to this list over time.">
+			keywords = <"anthropometry", "measurement", "length", "height", "width", "span">
 			misuse = <"Not to be used to record common body segment measurements that have been modelled as separate archetypes, including, but not limited to:
 - for Head circumference - use OBSERVATION.head_circumference;
 - for Hip circumference - use OBSERVATION.hip_circumference;
@@ -120,8 +115,11 @@ Not to be used to record skinfold measurements - use archetypes that are specifi
 Not to be used to measure the Crown-rump length for a fetus, using imaging technology.
 
 Not to be used to record the measurement of the difference in length between paired body segments. Use the OBSERVATION.body_segment_length_discrepancy archetype for this purpose.">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Andreas Abildgaard, OUS, Norway", "Marit Alice Venheim, Helse Vest IKT, Norway", "Stein Arne Rimehaug, Sunnaas sykehus, Norway", "Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)", "Heidi Aursand, Oslo universitetssykehus, Norway", "Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)", "Malin Berg, DIPS ASA, Norway", "Randi Brendberg, Helse Nord RHF, Norway", "Angela Crovetti, CDC/NIOSH, United States", "Mikkel Gaup Grønmo, FSE, Helse Nord, Norway (Nasjonal IKT redaktør)", "Heather Grain, Llewelyn Grain Informatics, Australia", "Alfred Honore, Haukeland, Norway", "Evelyn Hovenga, EJSH Consulting, Australia", "Lars Ivar Mehlum, Nasjonal IKT HF, Norway", "Brit Jorun Liseth, Haukeland Universitetssykehus, Norway", "Lars Morgan Karlsen, DIPS ASA, Norway", "Heidi Koikkalainen, United Kingdom (openEHR Editor)", "Ronald Krawec, Alberta Health Services, Canada", "Tomi Laptoš, Marand, Slovenia", "Liv Laugen, Oslo universitetssykehus, Norway", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "Anne M Gromsrud, DIPS AS, Norway", "Priscila Maranhão, MEDCIDS-FMUP, Portugal", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Johannes Michael Strehle, Helse-Nord, Norway", "Svenne Naumann, Finnmarkssykehuset, Norway", "Bjørn Næss, DIPS ASA, Norway", "Jayashree Panickar, Karolinska Institute, Sweden", "Line Silsand, univertsity hospital of northern norway, Norway (openEHR Editor)", "Trine Strand, Oslo Universitetssykehus (OUS), Norway", "Norwegian Review Summary, Nasjonal IKT HF, Norway", "Micaela Thierley, Helse Bergen, Norway", "John Tore Valand, Helse Bergen, Norway (openEHR Editor)">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -135,15 +133,13 @@ Júlíusson, P.B., Vinsjansen, S., Nilsen, B., Sælensminde, H., Vågset, R. and
 
 Man-Systems Integration Standards,Volume 1, Section 3. [Internet]. National Aeronautics and Space Administration. Anthropometry and biomechanics; [cited 2019 Mar 25]. Available from: https://msis.jsc.nasa.gov/sections/section03.htm.
 
-National health and nutrition examination survey III: Body Measurements (Anthropometry) [Internet]. Rockville, MD: Westat, Inc; 1988 Oct [cited 2019 May 10]. Available from: https://wwwn.cdc.gov/nchs/data/nhanes3/manuals/anthro.pdf.
-
-Avgrenet fra: Body segment length, Published archetype [Internet]. openEHR Foundation, openEHR Clinical Knowledge Manager [cited: 2023-07-11]. Available from: https://ckm.openehr.org/ckm/archetypes/1013.1.3669">
+National health and nutrition examination survey III: Body Measurements (Anthropometry) [Internet]. Rockville, MD: Westat, Inc; 1988 Oct [cited 2019 May 10]. Available from: https://wwwn.cdc.gov/nchs/data/nhanes3/manuals/anthro.pdf.">
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"EB9FDF0C0ECE3F3AE63FC49122FDE4F6">
-		["build_uid"] = <"151c38f4-d53e-44f3-8243-867bb6987f9a">
-		["revision"] = <"1.1.0">
+		["MD5-CAM-1.0.1"] = <"330A4816E3F831C82CCFB8C96F226918">
+		["build_uid"] = <"e3feccd4-cb10-4369-ac1d-79c3f595ff7b">
+		["revision"] = <"1.1.1">
 	>
 
 definition
@@ -301,6 +297,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
