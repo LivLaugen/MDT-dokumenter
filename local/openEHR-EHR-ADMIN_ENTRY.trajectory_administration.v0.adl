@@ -1,0 +1,136 @@
+archetype (adl_version=1.4; uid=6ab3298e-126b-4655-9a26-2702428f71a2)
+	openEHR-EHR-ADMIN_ENTRY.trajectory_administration.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2015-09-18">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Benyttes for å administrere et pasientforløp. Det vil si å kunne markere at forløpet er avsluttet eller gjenåpne et forløp som har blitt avsluttet ved en feil. ">
+			keywords = <"pasientforløp", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Benyttes for å administrere et pasientforløp. Det vil si å kunne markere at forløpet er avsluttet eller gjenåpne et forløp som har blitt avsluttet ved en feil. ">
+			misuse = <"Skal ikke brukes som primær arketype for å lukke pasientforøp. Det skal være egne trajectory follow up med koder for dette. Denne arketypen har kun som funksjon å gjøre adminstrative endringer, f.eks. ved feilregisteringer. ">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["current_contact"] = <"Bjørn Næss, DIPS ASA<bna@dips.no>">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"17036B8B00CBFF8FE217D3E4756FE4CF">
+		["build_uid"] = <"50cd942b-b645-4b60-99a0-97555e01bd20">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {    -- Trajectory administration
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Action
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003,    -- Re-open
+									at0004]    -- Close
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Closed date
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Trajectory administration">
+					description = <"Provides functionality to administrate a trajectory process. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Action">
+					description = <"Defines which action took place ">
+				>
+				["at0003"] = <
+					text = <"Re-open">
+					description = <"Reopens a closed trajectory ">
+				>
+				["at0004"] = <
+					text = <"Close">
+					description = <"Close a open trajectory">
+				>
+				["at0006"] = <
+					text = <"Closed date">
+					description = <"*">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Administrasjon av pasientforløp">
+					description = <"Tilbyr funksjonalitet for å administrere pasientforløp">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Hendelse">
+					description = <"Angir hvilken hendelse som utføres">
+				>
+				["at0003"] = <
+					text = <"Gjenåpne">
+					description = <"Gjenåpner et lukket pasientforløp">
+				>
+				["at0004"] = <
+					text = <"Avslutt">
+					description = <"Avslutter et åpent pasientforløp (administrativt)">
+				>
+				["at0006"] = <
+					text = <"Lukket dato">
+					description = <"Tidspunktet hvor pasientforløpet skal markeres som lukket">
+				>
+			>
+		>
+	>
