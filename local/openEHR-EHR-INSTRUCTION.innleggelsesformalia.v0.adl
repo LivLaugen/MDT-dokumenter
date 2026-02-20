@@ -1,0 +1,61 @@
+archetype (adl_version=1.4; uid=625b06db-f5fa-4f70-ad4c-45ecdd88f6d4)
+	openEHR-EHR-INSTRUCTION.innleggelsesformalia.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"227EB964ECC483BB9D05108A1445C856">
+		["build_uid"] = <"6f083d5d-0be1-405e-b2f2-3420df594c83">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	INSTRUCTION[at0000] matches {    -- Innleggelsesformalia
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0001] matches {    -- Innleggelsesformalia
+				action_archetype_id matches {/openEHR-EHR-ACTION\.registrer_innleggelsesformalia\.v1/}
+				description matches {
+					allow_archetype ITEM_TREE matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.innleggelsesformaila(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Innleggelsesformalia">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Innleggelsesformalia">
+					description = <"">
+				>
+			>
+		>
+	>
