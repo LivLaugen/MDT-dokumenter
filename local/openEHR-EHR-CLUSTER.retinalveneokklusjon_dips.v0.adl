@@ -1,0 +1,157 @@
+archetype (adl_version=1.4; uid=17e2738c-8663-42d3-b6b1-ec523f806782)
+	openEHR-EHR-CLUSTER.retinalveneokklusjon_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-03-29">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA / OUS HF">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Thomas Bærland", ...>
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Til registrering av relevante data for vurdering av retinalveneokklusjon. Data som finnes andre steder i journalen bør hvis mulig hentes inn for å hindre dobbeltregistrering. ">
+			copyright = <"© OUS HF / DIPS ASA">
+			use = <"Til registrering av relevante data for vurdering av retinalveneokklusjon. Data som finnes andre steder i journalen bør hvis mulig hentes inn for å hindre dobbeltregistrering. ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"F8A64AC1D448A632751A1243867D3107">
+		["build_uid"] = <"b4b07842-c9d2-4e12-8498-b7fa88481843">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Retinalveneokklusjon dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..*} matches {    -- Kompliksjoner
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..*} matches {    -- Risikofaktorer
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0003] occurrences matches {0..*} matches {    -- Ekstra detaljer
+				include
+					archetype_id/value matches {/.*/}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Øye
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0005,    -- Høyre
+							at0006]    -- Venstre
+						}
+					}
+				}
+			}
+			CLUSTER[at0007] occurrences matches {0..1} matches {    -- Type og alvorlighetsgrad
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Type
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					CLUSTER[at0010] occurrences matches {0..1} matches {    -- Prognostiske faktorer ved CRVO
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0011] occurrences matches {0..1} matches {    -- Desimalvisus
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::380]>									>
+								}
+							}
+							ELEMENT[at0009] occurrences matches {0..1} matches {    -- Iskemisk areale på fluoresceinangiografi i PD
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::380]>									>
+								}
+							}
+							ELEMENT[at0012] occurrences matches {0..*} matches {    -- Funn
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Retinalveneokklusjon dips">
+					description = <"Til registrering av relevante data for vurdering av retinalveneokklusjon. Data som finnes andre steder i journalen bør hvis mulig hentes inn for å hindre dobbeltregistrering.  Disse dataene danner grunlaget for vurdering av risiko for progresjon og anbefalt behandling.">
+				>
+				["at0001"] = <
+					text = <"Kompliksjoner">
+					description = <"For strukturert registrering av komplikasjoner.">
+				>
+				["at0002"] = <
+					text = <"Risikofaktorer">
+					description = <"Strukturert liste over risikofaktorer.">
+				>
+				["at0003"] = <
+					text = <"Ekstra detaljer">
+					description = <"For ekstra detaljer inkl. anatomisk_lokalisasjon.">
+				>
+				["at0004"] = <
+					text = <"Øye">
+					description = <"Hvilket øye registreringen gjelder.">
+				>
+				["at0005"] = <
+					text = <"Høyre">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Venstre">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Type og alvorlighetsgrad">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Type">
+					description = <"Tiltenkt strukturert inndeling i BRVO/CRVO.">
+				>
+				["at0009"] = <
+					text = <"Iskemisk areale på fluoresceinangiografi i PD">
+					description = <"Iskemisk areale på fluoresceinangiografi målt i PD">
+				>
+				["at0010"] = <
+					text = <"Prognostiske faktorer ved CRVO">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Desimalvisus">
+					description = <"Pasientens visus, hvis mulig referert inn uten dobbeltregistrering.">
+				>
+				["at0012"] = <
+					text = <"Funn">
+					description = <"For registrering av funn som har prognostisk verdi, som RAPD, tett sentralskotom.">
+				>
+			>
+		>
+	>
