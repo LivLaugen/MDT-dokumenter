@@ -1,0 +1,142 @@
+archetype (adl_version=1.4; uid=caeeacd4-1d65-4e8d-88ed-3a6fe97de7fd)
+	openEHR-EHR-CLUSTER.samtale_kontroll.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-11-12">
+		["name"] = <"DIPS ASA">
+		["organisation"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			misuse = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"4F462F37B0A544607BFB904964ACDD2F">
+		["build_uid"] = <"4b528767-0e84-4208-a7f9-bb066a531aec">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Samtale kontroll
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0006] occurrences matches {0..*} matches {    -- Årsak til kontroll
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Etterkontroll syfilisbehandling
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0023] occurrences matches {0..1} matches {    -- Etterkontroll profylaktisk behandling
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0011] occurrences matches {0..1} matches {    -- Status på behandling
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..*} matches {    -- Status på partners behandling
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0026] occurrences matches {0..*} matches {    -- Symptomer
+				include
+					archetype_id/value matches {/.*/}
+			}
+			ELEMENT[at0008] occurrences matches {0..1} matches {    -- Resmitte/Behandlingssvikt
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0015] occurrences matches {0..*} matches {    -- Hatt sex under behandling?
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0016] occurrences matches {0..*} matches {    -- Hatt sex etter behandling?
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0022] occurrences matches {0..1} matches {    -- Utfyllende opplysninger
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Samtale kontroll">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0005"] = <
+					text = <"Status på partners behandling">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0006"] = <
+					text = <"Årsak til kontroll">
+					description = <"Infeksjoner.">
+				>
+				["at0008"] = <
+					text = <"Resmitte/Behandlingssvikt">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0010"] = <
+					text = <"Etterkontroll syfilisbehandling">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0011"] = <
+					text = <"Status på behandling">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0015"] = <
+					text = <"Hatt sex under behandling?">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0016"] = <
+					text = <"Hatt sex etter behandling?">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0022"] = <
+					text = <"Utfyllende opplysninger">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0023"] = <
+					text = <"Etterkontroll profylaktisk behandling">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0026"] = <
+					text = <"Symptomer">
+					description = <"Beskrivelse burde vært her.">
+				>
+			>
+		>
+	>
