@@ -1,0 +1,159 @@
+archetype (adl_version=1.4; uid=99b036f6-67ec-4862-a1e6-d554083ae436)
+	openEHR-EHR-EVALUATION.diagnostic_summary.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2017-12-22">
+		["name"] = <"John Tore Valand">
+		["organisation"] = <"Helse Bergen University Hospital">
+		["email"] = <"john.tore.valand@helse-bergen.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Heather Leslie, Ocean Health Systems, Australia","Ingrid Heitmann, Oslo universitetssykehus HF, Norway","Mikkel Gaup Grønmo, FSE, Helse Nord, Norway","Vebjørn Arntzen, Oslo Univeristy Hospital HF, Norway","Silje Ljosland Bakke, Nasjonal IKT HF, Norway">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For recording summary information about examinations, tests or procedures performed with a diagnostic intent.">
+			keywords = <"report", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to record summary information about examinations, tests or procedures performed with a diagnostic intent.
+
+Use cases: Summary information in discharge notes, reporting, clinical synopsis etc.">
+			misuse = <"Not to be used for recording an instruction for a procedure, test or examination to be perfomerd - use specific INSTRUCTION-archetypes for this purpose.
+
+Not to be used for recording the performing of a procedure, test or examination - use specific ACTION-archetypes for this purpose.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"33D0C7172828A895C307BA2B13DBDCDF">
+		["build_uid"] = <"19de7a51-2adb-4aa4-ac31-71d9b1bdf69a">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Diagnostic summary
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Test name
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Description
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					CLUSTER[at0004] occurrences matches {0..*} matches {    -- Per test detail
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0005] occurrences matches {0..1} matches {    -- Date of test
+								value matches {
+									DV_DATE_TIME matches {*}
+								}
+							}
+							ELEMENT[at0006] occurrences matches {0..1} matches {    -- Description
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0007] occurrences matches {0..1} matches {    -- Finding
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {    -- Citation
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0010] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0011] occurrences matches {0..*} matches {    -- Cluster
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diagnostic summary">
+					description = <"Summary information about examinations, tests or procedures performed with a diagnostic intent.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Test name">
+					description = <"Name of the examination, test or procedure performed.">
+					comment = <"It is recommended that 'Test name' should be coded with a terminology, where possible.">
+				>
+				["at0003"] = <
+					text = <"Description">
+					description = <"Narrative description about the examination, test or procedure performed.">
+				>
+				["at0004"] = <
+					text = <"Per test detail">
+					description = <"Details about each episode of the  examination, test or procedure performed.">
+				>
+				["at0005"] = <
+					text = <"Date of test">
+					description = <"The date when the examination, test or procedure was performed.">
+				>
+				["at0006"] = <
+					text = <"Description">
+					description = <"Narrative description about the episode of the examination, test or procedure performed.">
+				>
+				["at0007"] = <
+					text = <"Finding">
+					description = <"Identification of the finding of the Narrative description about the examination, test or procedure performed.">
+					comment = <"For example: Regional lymph node metastasis. It is recommended that 'Finding' should be coded with a terminology, where possible.">
+				>
+				["at0008"] = <
+					text = <"Citation">
+					description = <"Detailed data available about the evidence held in another part of the health record.">
+				>
+				["at0009"] = <
+					text = <"Comment">
+					description = <"Additional narrative about the examination, test or procedure not captured in other fields.">
+				>
+				["at0010"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"Cluster">
+					description = <"Additional information required to capture local content or to align with other reference models/formalisms.">
+					comment = <"For example: local information requirements or additional metadata to align with FHIR or CIMI equivalents.">
+				>
+			>
+		>
+	>
