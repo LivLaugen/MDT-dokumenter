@@ -1,0 +1,194 @@
+archetype (adl_version=1.4; uid=a48f0720-13cd-4110-b38c-bd18fc18d9b9)
+	openEHR-EHR-EVALUATION.wildlife_nutrition_preference.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2019-04-10">
+		["name"] = <"Vebjørn Arntzen">
+		["organisation"] = <"In a safe house with nice people in white clothes looking after me">
+		["email"] = <"varntzen@ous-hf.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"To record a summary or persistent and up to date information of favourite food of wild animals.">
+			keywords = <"Food","Yummy","Crave for">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to record a summary or persistent and up to date information of favourite food of wild animals.
+
+">
+			misuse = <"Do not use for favourite food for domestic animals, like dogs, cats and catle.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"5E2589B4B15367B40D22AB82B64BE166">
+		["build_uid"] = <"908692c9-db00-402c-b914-b22cbb2821d9">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Wildlifte nutrition preference
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Animal
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Description
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {    -- Animal details
+						include
+							archetype_id/value matches {/.*/}
+					}
+					CLUSTER[at0005] occurrences matches {0..4} matches {    -- Per season
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0007] occurrences matches {0..1} matches {    -- Season
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0008,    -- Spring
+											at0009,    -- Summer
+											at0010,    -- Autumn
+											at0011]    -- Winter
+										}
+									}
+								}
+							}
+							ELEMENT[at0006] occurrences matches {0..1} matches {    -- Food name
+								value matches {
+									DV_CODED_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0012] occurrences matches {0..1} matches {    -- Hibernating
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {true}
+									}
+								}
+							}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {    -- Overall comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0014] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0015] occurrences matches {0..1} matches {    -- Extension
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0016] occurrences matches {0..1} matches {    -- Last updated
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Wildlifte nutrition preference">
+					description = <"Summary or persistent information on favourite food of wild animals.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Animal">
+					description = <"Name of animal.">
+				>
+				["at0003"] = <
+					text = <"Description">
+					description = <"Narrative description of animal">
+					comment = <"For example: Furry roaring animal with big claws and foul smell.">
+				>
+				["at0004"] = <
+					text = <"Animal details">
+					description = <"Additional structured details about the animal.">
+				>
+				["at0005"] = <
+					text = <"Per season">
+					description = <"Repeatable cluster to identify favourite food according to season.">
+					comment = <"Can be repeated four times, one for each season.">
+				>
+				["at0006"] = <
+					text = <"Food name">
+					description = <"Name of favourite food.">
+				>
+				["at0007"] = <
+					text = <"Season">
+					description = <"Name of season.">
+					comment = <"Note: Season will vary between northern and southern hemisphere.">
+				>
+				["at0008"] = <
+					text = <"Spring">
+					description = <"The months of cherry blossom, grass is getting green, temperature rising, and other nice things.">
+				>
+				["at0009"] = <
+					text = <"Summer">
+					description = <"The months of sunshine, outdoor swimming, holiday and mosquito bites.">
+				>
+				["at0010"] = <
+					text = <"Autumn">
+					description = <"The depressing months of going back to work, rain, yellow leaves and in general - nature is saying goodbye">
+				>
+				["at0011"] = <
+					text = <"Winter">
+					description = <"The months where any intelligent living creature go hibernating.">
+				>
+				["at0012"] = <
+					text = <"Hibernating">
+					description = <"True if the animal is hibernating in the actual season.">
+					comment = <"Which is GOOD if the season is \"Winter\".">
+				>
+				["at0013"] = <
+					text = <"Overall comment">
+					description = <"Additional narrative about yummy food that has not been captured in other fields.">
+				>
+				["at0014"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0015"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local content or to align with other reference models/formalisms.">
+					comment = <"For example: local information requirements or additional metadata to align with Animal Food Safety Regulation Board equivalents.">
+				>
+				["at0016"] = <
+					text = <"Last updated">
+					description = <"The date this wildlife animal nutrition preference summary was last updated.">
+				>
+			>
+		>
+	>
