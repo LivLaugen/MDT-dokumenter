@@ -1,0 +1,62 @@
+archetype (adl_version=1.4; uid=e9bc8473-e642-4362-aed0-ce0d007e2194)
+	openEHR-EHR-INSTRUCTION.tvangsvedtak.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"AC12160BC01BEB0E2444D399F74DFEC7">
+		["build_uid"] = <"e439ed34-9a53-4d97-8261-1ac725c7d6d6">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	INSTRUCTION[at0000] matches {    -- Tvungent psykisk helsevern
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0004] matches {    -- Tvungent psykisk helsevern
+				action_archetype_id matches {/openEHR-EHR-ACTION\.tvangsform_institusjon\.v1/}
+				description matches {
+					ITEM_TREE[at0005] matches {*}    -- Tree
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tvungent psykisk helsevern">
+					description = <"unknown">
+				>
+				["at0004"] = <
+					text = <"Tvungent psykisk helsevern">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+			>
+		>
+	>
