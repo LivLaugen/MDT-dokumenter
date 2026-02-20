@@ -1,0 +1,55 @@
+archetype (adl_version=1.4; uid=b6cc7bdb-ef94-49ee-a148-ed507d7c93c2)
+	openEHR-EHR-ACTION.gjennomfoert_tvangsbehandling.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For registrering av gjennomført tvangsbehandling.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes til registrering av gjennomført tvangsbehandling.">
+			misuse = <"Alt annet.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"8AC5C271B65FEA60CD92D0443CFF24CD">
+		["build_uid"] = <"8a115ddf-b3fe-4403-9343-1c9fe2333c0c">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Gjennomført tvangsbehandling
+		description matches {
+			allow_archetype ITEM_TREE matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.gjennomfoert_tvangsbehandling(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gjennomført tvangsbehandling">
+					description = <"">
+				>
+			>
+		>
+	>
