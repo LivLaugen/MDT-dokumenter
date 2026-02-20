@@ -1,0 +1,182 @@
+archetype (adl_version=1.4; uid=3407e01f-b663-4038-8605-55916e75316f)
+	openEHR-EHR-OBSERVATION.bodily_functions.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"John Tore Valand">
+				["organisation"] = <"Helse Bergen HF">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2016-03-17">
+		["name"] = <"Hallvard Lærum">
+		["organisation"] = <"Oslo Universitetssykehus HF">
+		["email"] = <"hallar@ous-hf.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)","Hallvard Lærum, Oslo Universitetssykehus HF, Norway","John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere en beskrivelse om oppfatninger og observasjoner av naturlige funksjoner, slik de beskrevet av individet selv. Arketypen gir et rammeverk der en kan nøste detaljerte CLUSTER-arketyper som beskriver ulike aspekter av naturlige funksjoner mer i detalj.">
+			use = <"For å registrere en beskrivelse om oppfatninger og observasjoner av naturlige funksjoner, slik de beskrevet av individet selv.
+
+Brukes for å inkludere fritekstbeskrivelser av naturlige funksjoner som allerede er registrert i eksisterende kliniske systemer til et arketypeformat.
+
+Bruk som en kontainer arketype for å gi en felles gjenfinnbar ENTRY-arketype som kan inneholde detaljerte CLUSTER-arketyper. Eksempler på passende CLUSTER-arketyper kan være søvn, vannlatning, avføring og menstruasjon.
+
+Bruken av uttrykket \"Naturlige funksjoner\" har stor variasjon. Arketypen er utviklet for å tillate representasjon av ulike konsepter som utrykker naturlige funksjoner i ulike kliniske sammenhenger ved hjelp av gjenbrukbare CLUSTER-arketyper.">
+			misuse = <"Brukes ikke til å angi faktiske målinger av naturlige funksjoner, eller en klinikers observasjoner av dem, dette legges i egne arketyper.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record a description about the notion and observation of bodily functions as described by the individual, and to provide a framework in which to nest detailed CLUSTER archetypes, each of which will describe the various aspects of the bodily functions in detail.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to record a description about the notion and observation of bodily functions as described by the individual.
+
+Use to incorporate the narrative descriptions of the bodily functions already captured within existing clinical systems into an archetyped format.
+
+Use as a container archetype - to provide a common, queryable ENTRY archetype in which specific, detailed CLUSTER archetypes can be nested. Examples of appropriate CLUSTER archetypes may include, and are not limited to, sleep, appetite, urination, faeces and menstruation.
+
+The use of the term 'Bodily functions' varies enormously in practice. This archetype has been designed to allow the concepts that Express bodily functions in varying clincial contexts to be represented with the appropriate mix of re-useable archetypes.">
+			misuse = <"Not to be used to record actual measurements of bodily functions, or the observation of the bodily functions by a clinician. Use spesific archetypes for this purpuse.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"667A538D7F6AA8EF1A775D746497DF2C">
+		["build_uid"] = <"4088408d-a095-4db5-bc0d-61449d3ab228">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Bodily functions
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Bodily functions
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									allow_archetype CLUSTER[at0005] occurrences matches {0..*} matches {    -- Details
+										include
+											archetype_id/value matches {/.*/}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0006] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0007] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Bodily functions">
+					description = <"The bodily functions of an individual, as told to a clinician or recorded directly by an individual/patient.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Bodily functions">
+					description = <"Narrative description about bodily functions such as sleep, appetite, faeces and urination.">
+					comment = <"May be used to record a narrative description of the bodily functions or key aspects of bodily functions which will be supported by additional structured data, or to import textual data from existing/legacy clinical systems. Details of specific structured findings can be included using CLUSTER archetypes in the Details' slot.">
+				>
+				["at0005"] = <
+					text = <"Details">
+					description = <"Structured details about the bodily functions.">
+				>
+				["at0006"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0007"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local content or to align with other reference models/formalisms.
+">
+					comment = <"For example: local information requirements or additional metadata to align with FHIR or CIMI equivalents.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Naturlige funksjoner">
+					description = <"Beskrivelse av naturlige funksjoner som fortalt til en kliniker eller registrert direkte av et individ/pasient.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Uspesifisert hendelse">
+					description = <"Standard, uspesifisert tidspunkt eller tidsintervall som kan defineres mer eksplisitt i en template eller i en applikasjon.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Naturlige funksjoner">
+					description = <"Fritekstsammendrag om naturlige funksjoner som søvn, apetitt, avføring og vannlating.">
+					comment = <"Kan brukes for å registrere en fritekstbeskrivelse om de naturlige funksjonene eller nøkkelaspekter ved naturlige funksjoner, støttet av ytterligere strukturerte data, eller for å importere fritekstdata fra eksisterende/tidligere kliniske system. Spesifikke funn kan struktureres ved bruk av CLUSTER-arketyper i SLOTet \"Detaljer\".">
+				>
+				["at0005"] = <
+					text = <"Detaljer">
+					description = <"Strukturerte detaljer om individets naturlige funksjoner.">
+				>
+				["at0006"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0007"] = <
+					text = <"Utvidelse">
+					description = <"Ytterligere informasjon som trengs for å kunne registrere lokalt definert innhold eller for å tilpasse til andre referansemodeller/formalismer.">
+					comment = <"For eksempel lokale informasjonsbehov eller ytterligere metadata for å kunne tilpasse til tilsvarende konsepter i FHIR eller CIMI.">
+				>
+			>
+		>
+	>
