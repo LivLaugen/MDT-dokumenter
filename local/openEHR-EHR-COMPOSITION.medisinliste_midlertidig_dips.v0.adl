@@ -1,0 +1,58 @@
+archetype (adl_version=1.4; uid=11fb05c6-6505-45da-a80a-a9d96e600e54)
+	openEHR-EHR-COMPOSITION.medisinliste_midlertidig_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-03-29">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA / OUS HF">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Midlertidig medisinliste inntil godkjente arketyper for dette er tilgjengelig. ">
+			copyright = <"© DIPS ASA / OUS HF">
+			use = <"Midlertidig medisinliste inntil godkjente arketyper for dette er tilgjengelig. ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"910B3BE5E1C266F437A0B3B0D7D3C59F">
+		["build_uid"] = <"5ccc914f-bcce-4d70-92bd-bf24914caab4">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	COMPOSITION[at0000] matches {    -- Medisinliste midlertidig dips
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {
+					[openehr::431]
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Medisinliste midlertidig dips">
+					description = <"Midlertidig medisinliste inntil godkjente arketyper for dette er tilgjengelig. ">
+				>
+			>
+		>
+	>
