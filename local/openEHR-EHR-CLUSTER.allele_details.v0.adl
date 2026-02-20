@@ -1,0 +1,278 @@
+archetype (adl_version=1.4; uid=dec00bdd-d77c-405f-a01a-c73ca5a64a49)
+	openEHR-EHR-CLUSTER.allele_details.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2016-02-09">
+		["name"] = <"Hallvard Lærum">
+		["organisation"] = <"Oslo Universitetssykehus HF">
+		["email"] = <"hallar@ous-hf.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)","Hallvard Lærum, Oslo Universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Lars Retterstøl MD PhD, Department of medical genetics, Oslo University Hospital HF, Norway">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To describe the genetic sequence and mutations of one allele.">
+			keywords = <"allele","DNA","mRNA","mutation","inheritance","genetic variant">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"To be used  as part of genetic_variant.">
+			misuse = <"Not to be used to describe chromosomes or chromosomal abnormalities.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Ginsbury G & Huntington FW: Essentials of genomic and personalized medicine. Academic press 2010 ISBN 978-0-12-374934-5">
+		["current_contact"] = <"Hallvard Lærum, Oslo Universitetssykehus HF<hallar@ous-hf.no>">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"41D519229F0D4D675D2219C18D25F040">
+		["build_uid"] = <"fa972eb4-d31d-4d35-a8da-fb952f41c3fd">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Allele details
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0045] occurrences matches {0..1} matches {    -- NM notation name
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Star notation variant
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0052] occurrences matches {0..1} matches {    -- RefSeq number
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..*} matches {    -- Molecular effect
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0030] occurrences matches {0..*} matches {    -- Small-scale mutations
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0032] occurrences matches {0..1} matches {    -- Structural type
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0033,    -- Point mutation
+									at0034,    -- Deletion
+									at0035]    -- Insertion
+								}
+							}
+						}
+					}
+					ELEMENT[at0022] occurrences matches {0..1} matches {    -- Point mutation type
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0023,    -- Silent mutation
+									at0024,    -- Missense mutation
+									at0025]    -- Nonsense mutation
+								}
+							}
+						}
+					}
+					ELEMENT[at0037] occurrences matches {0..1} matches {    -- mRNA effect
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0038,    -- None or non significant
+									at0039,    -- Frameshift mutation
+									at0040,    -- Splice site mutation
+									at0058]    -- Unknown
+								}
+							}
+						}
+					}
+					ELEMENT[at0001] occurrences matches {0..1} matches {    -- Sequence data
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0031] occurrences matches {0..*} matches {    -- Large-scale mutations
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0041] occurrences matches {0..1} matches {    -- Structural type
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0042,    -- Duplication
+									at0043,    -- Deletion
+									at0044]    -- Other
+								}
+							}
+						}
+					}
+					ELEMENT[at0051] occurrences matches {0..1} matches {    -- Sequence data
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0053] occurrences matches {0..1} matches {    -- Mode of inheritance
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0054,    -- Autosomal dominant
+							at0055,    -- Autosomal recessive
+							at0056,    -- X-linked dominant
+							at0057]    -- X-linked recessive
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Allele details">
+					description = <"Details of a genetic sequence on one allele.">
+				>
+				["at0001"] = <
+					text = <"Sequence data">
+					description = <"The raw string of specific nucleotid bases, e.g. TTGACA.">
+				>
+				["at0003"] = <
+					text = <"Star notation variant">
+					description = <"The star notation description of the variant, e.g. *1, *2 or *3.">
+				>
+				["at0005"] = <
+					text = <"Molecular effect">
+					description = <"A description of the direct molecular effects of the mutation, eg. disruption of active site of enzyme, configuration change of protein.">
+				>
+				["at0022"] = <
+					text = <"Point mutation type">
+					description = <"The direct effect of a point mutation on amino acid translation.">
+				>
+				["at0023"] = <
+					text = <"Silent mutation">
+					description = <"The mutation codes for the same or sufficiently similar amino acid.">
+				>
+				["at0024"] = <
+					text = <"Missense mutation">
+					description = <"The mutation codes for a differenct amino acid.">
+				>
+				["at0025"] = <
+					text = <"Nonsense mutation">
+					description = <"The mutation codes for a stop codon and can truncate the protein.">
+				>
+				["at0030"] = <
+					text = <"Small-scale mutations">
+					description = <"Details on mutations involving one single or a few nucleotids.">
+				>
+				["at0031"] = <
+					text = <"Large-scale mutations">
+					description = <"Details on mutations involving several nucletoids or continous sequences of nucleotids, but less than a chromosome.">
+				>
+				["at0032"] = <
+					text = <"Structural type">
+					description = <"The principal type of small-scale mutation of structure.">
+				>
+				["at0033"] = <
+					text = <"Point mutation">
+					description = <"One single nucleotid has been changed.">
+				>
+				["at0034"] = <
+					text = <"Deletion">
+					description = <"One or more nucleotids have been removed from the sequence.">
+				>
+				["at0035"] = <
+					text = <"Insertion">
+					description = <"One or more nucleotids have been inserted into the sequence.">
+				>
+				["at0037"] = <
+					text = <"mRNA effect">
+					description = <"The effect of the mutation on transcripted mRNA.">
+				>
+				["at0038"] = <
+					text = <"None or non significant">
+					description = <"The mutation does not change the overall structure of the mRNA.">
+				>
+				["at0039"] = <
+					text = <"Frameshift mutation">
+					description = <"The mutation produces a frameshift, i.e. a shift in triplet reading frame for amino acid translation.">
+				>
+				["at0040"] = <
+					text = <"Splice site mutation">
+					description = <"The mutation changes how the mRNA strand is spliced after transcription.">
+				>
+				["at0041"] = <
+					text = <"Structural type">
+					description = <"Type of large-scale mutation based on structural changes.">
+				>
+				["at0042"] = <
+					text = <"Duplication">
+					description = <"Multiple copies of chromosomal regions, increasing the dosage of the genes located within them.">
+				>
+				["at0043"] = <
+					text = <"Deletion">
+					description = <"Deletion of large chromosomal regions, leading to loss of the genes within those regions.">
+				>
+				["at0044"] = <
+					text = <"Other">
+					description = <"Other large-scale mutations.">
+				>
+				["at0045"] = <
+					text = <"NM notation name">
+					description = <"Name of the variant as defined by standard mutation.">
+				>
+				["at0051"] = <
+					text = <"Sequence data">
+					description = <"The raw string of specific nucleotid bases, e.g. TTGACA.">
+				>
+				["at0052"] = <
+					text = <"RefSeq number">
+					description = <"Number of the variant as defined by NCBI Reference sequence database.">
+				>
+				["at0053"] = <
+					text = <"Mode of inheritance">
+					description = <"How the variant has been inherited.">
+				>
+				["at0054"] = <
+					text = <"Autosomal dominant">
+					description = <"Autosomal dominant mode of inheritance.">
+				>
+				["at0055"] = <
+					text = <"Autosomal recessive">
+					description = <"Autosomal recessive mode of inheritance.">
+				>
+				["at0056"] = <
+					text = <"X-linked dominant">
+					description = <"X-linked dominant mode of inheritance.">
+				>
+				["at0057"] = <
+					text = <"X-linked recessive">
+					description = <"X-linked recessive mode of inheritance.">
+				>
+				["at0058"] = <
+					text = <"Unknown">
+					description = <"The effect of the mutation on transcripted mRNA is not known or undecided.">
+				>
+			>
+		>
+	>
