@@ -1,0 +1,152 @@
+archetype (adl_version=1.4; uid=aac5df0d-7216-4d5f-9ec5-841cd63605d6)
+	openEHR-EHR-ITEM_TREE.om_motatt_begjaering.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"ECD5A04C93215AF5F760D7ABA299F288">
+		["build_uid"] = <"4b799325-2897-4e07-9b2b-5d3fa474b1c7">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ITEM_TREE[at0000] occurrences matches {0..*} matches {    -- Om motatt begjaering
+		items cardinality matches {0..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Dato begjæringen ble motatt
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Tvangsform begjæringen gjelder
+				value matches {
+					0|[local::at0003],
+					1|[local::at0004]
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Instans som fremsatte begjæringen
+				value matches {
+					0|[local::at0006],
+					1|[local::at0007],
+					2|[local::at0008],
+					3|[local::at0009]
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Kontaktopplysninger til begjærer
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0011] occurrences matches {0..1} matches {    -- Supplerende opplysninger/merknad
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Faglig ansvarlig
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[ac0001]
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"DIPS", ...>
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Om motatt begjaering">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Dato begjæringen ble motatt">
+					description = <"">
+				>
+				["at0002"] = <
+					text = <"Tvangsform begjæringen gjelder">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tvungen observasjon">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Tvungent psykisk helsevern">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Instans som fremsatte begjæringen">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Kommunelegen">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Sosialtjenesten">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Politiet">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Ansvarlig fengselsmyndighet">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Kontaktopplysninger til begjærer">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Supplerende opplysninger/merknad">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Faglig ansvarlig">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["nb"] = <
+			items = <
+				["ac0001"] = <
+					text = <"New constraint">
+					description = <"">
+				>
+			>
+		>
+	>
+	constraint_binding = <
+		["DIPS"] = <
+			items = <
+				["ac0001"] = <terminology:DIPS?subset=healthcareparty>
+			>
+		>
+	>
