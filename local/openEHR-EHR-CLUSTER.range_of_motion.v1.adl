@@ -1,12 +1,23 @@
-archetype (adl_version=1.4; uid=77d9abbd-b90a-4113-8c1a-f935b3664525)
+﻿archetype (adl_version=1.4; uid=5502b586-c238-46bd-b08d-8fa0b7a826eb)
 	openEHR-EHR-CLUSTER.range_of_motion.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Range of motion of a joint
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			author = <
+				["name"] = <"Thomas Weikert">
+				["organisation"] = <"USB">
+				["email"] = <"t.weikert@usb.ch">
+			>
+			accreditation = <"Universitätsspital Basel">
+			other_details = <
+				["other_contributors"] = <"Sol Fustina, Ohla Nikolaieva">
+			>
+		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			author = <
@@ -16,21 +27,28 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2023-11-01">
 		["name"] = <"Hanne Marte Sandal Bårholm">
 		["organisation"] = <"Helse Vest IKT">
 		["email"] = <"hanne.marte.sandal.barholm@helse-vest-ikt.no">
+		["date"] = <"2023-11-01">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","Ivar Berge, Oslo Universitetssykehus, Norway","SB Bhattacharyya, Bhattacharyyas Clinical Records Research & Informatics LLP, India","Hanne Marte Bårholm, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Grant Forrest, Lunaria Ltd, United Kingdom","Mikkel Johan Gaup Grønmo, Helse Nord IKT, Norway (Nasjonal IKT redaktør)","Evelyn Hovenga, EJSH Consulting, Australia","Kanika Kuwelker, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Jörgen Kuylenstierna, eWeave AB, Sweden","Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","Michael Lutz, BITsoft, Germany","Svenne Naumann, Finnmarkssykehuset, Norway","Mikael Nyström, Cambio Healthcare Systems AB, Sweden","Bjørn Næss, DIPS ASA, Norway","Hallvard Reigstad, Haukeland us, Norway","Norwegian Review Summary, Norwegian Public Hospitals, Norway","Stein Arne Rimehaug, Sunnaas sykehus, Norway","Terje Sagmyr, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Bodil Salvesen, Barneklinikken Haukeland Universitetssykehus, Norway","Kanthan Theivendran, NHS, United Kingdom","John Tore Valand, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Sara-Petrine Solli Veierød, Haukeland Universitetssykehus, Norway","Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)">
 	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Um die Messung des Bewegungsumfangs für eine bestimmte einfache oder komplexe Bewegung um ein identifiziertes Gelenk oder einen Abschnitt der Wirbelsäule aufzuzeichnen.">
+			use = <"Wird verwendet, um die Messung des Bewegungsumfangs für eine bestimmte einfache oder komplexe Bewegung um ein identifiziertes Gelenk oder einen Abschnitt der Wirbelsäule aufzuzeichnen.
+Dieses Archetyp wurde speziell dafür entwickelt, im „Untersuchungsbefunde“ (Examination findings)-SLOT innerhalb des CLUSTER.exam oder einer Spezialisierung von CLUSTER.exam für ein bestimmtes Gelenk verwendet zu werden. Es kann jedoch auch in anderen ENTRY- oder CLUSTER-Archetypen eingesetzt werden, sofern dies klinisch angemessen ist.
+Das untersuchte Gelenk wird im Element „System oder Struktur untersucht“ (System or structure examined) des CLUSTER.exam-Archetyps identifiziert, in dem dieses Archetyp eingebettet ist. Um mehrere Bewegungen aufzeichnen zu können, müssen mehrere Instanzen dieses Archetyps verwendet werden.
+Häufige Bewegungen um ein Gelenk wurden dem Datentyp DV_CODED_TEXT im Datenelement „Bewegung“ (Movement) hinzugefügt. Wenn im Laufe der Zeit weitere Gelenkbewegungen identifiziert werden, können diese in diese Liste aufgenommen werden.
+">
+			keywords = <"ROM, AAROM, PROM, AROM, Gelenk, Bewegung, Winkel, Bewegungsvorgang, Umfang", ...>
+			misuse = <"Nicht zur Aufzeichnung der Ergebnisse spezifischer, benannter Tests verwendet werden, die an einem Gelenk durchgeführt wurden. Beispielsweise beim Hüftgelenk der Thomas-Test oder Ortolani-Test. Für diese Zwecke sollte der exam-hip_joint-Archetyp verwendet werden.">
+		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"Måling av bevegelsesutslag for en spesifisert enkel eller sammensatt bevegelse i et ledd eller segment av ryggraden.">
-			keywords = <"ROM, AAROM, PROM, AROM, ledd, bevegelse, vinkel", ...>
 			use = <"Brukes for måling av bevegelsesutslag for en enkel eller sammensatt bevegelse i et ledd eller segment av ryggraden.
 
 Denne arketypen har vært designet spesifikt for å kunne brukes i SLOT'et \"Undersøkelsesdetaljer\" i arketypen OBSERVATION.exam (Funn ved fysisk undersøkelse) eller i en spesialisering av arketypen CLUSTER.exam for et spesifikt ledd, men kan også bli brukt i andre ENTRY- eller CLUSTER-arketyper der det er klinisk passende.
@@ -38,13 +56,12 @@ Denne arketypen har vært designet spesifikt for å kunne brukes i SLOT'et \"Und
 Hvilket spesifikt ledd undersøkelsen omfatter registeres i dataelementet \"Undersøkt organsystem eller struktur\" i den CLUSTER.exam arketypen hvor denne arketypen er nøstet inn. For å registrere flere ulike bevegelser må man bruke flere instanser av denne arketypen.
 
 Vanlige leddbevegelser er lagt til DV_CODED_TEXT datatypen i elementet \"Bevegelse\". Om det er behov for å registrere ytterligere bevegelser kan disse legges til listen over tid.">
+			keywords = <"ROM, AAROM, PROM, AROM, ledd, bevegelse, vinkel", ...>
 			misuse = <"Benyttes ikke for å registrere spesifikke, navngitte undersøkelser som utføres på et ledd. For eksempel Thomas test eller Ortolani test for hofteleddet. Bruk exam-hip_joint arketypen for dette formålet.">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record measurement of the extent of motion for a specified simple or complex movement around an indentified joint or section of the spine.">
-			keywords = <"ROM, AAROM, PROM, AROM, joint, movement, angle, motion, range", ...>
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record the measurement of the extent of motion for a specified simple or complex movement around an indentified joint or section of the spine.
 			
 This archetype has been specifically designed to be used in the 'Examination findings' SLOT within the CLUSTER.exam or a specialisation of CLUSTER.exam for a specific joint, but can also be used within other ENTRY or CLUSTER archetypes where clinically appropriate.
@@ -52,18 +69,22 @@ This archetype has been specifically designed to be used in the 'Examination fin
 The examined joint is identified in the 'System or structure examined' element of the CLUSTER.exam archetype in which this archetype is nested.  In order to be able to record multiple movements several instances of this archetype will need to be used.
 
 Common motions around a joint have been added to the DV_CODED_TEXT data type in the 'Movement' data element. As further joint movements are identified, these can be added to this list over time.">
+			keywords = <"ROM, AAROM, PROM, AROM, joint, movement, angle, motion, range", ...>
 			misuse = <"Not to be used to record the results of specific named tests performed on a joint. For example in the hip the Thomas test or Ortolani test. Use the exam-hip_joint archetype for these purposes.">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Stein Arne Rimehaug, Sunnaas sykehus, Norway", "Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)", "Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)", "Ivar Berge, Oslo University Hospital, Norway (openEHR Editor)", "SB Bhattacharyya, Bhattacharyyas Clinical Records Research & Informatics LLP, India", "Hanne Marte Bårholm, Helse Vest IKT, Norway (openEHR Editor)", "Grant Forrest, Lunaria Ltd, United Kingdom", "Mikkel Johan Gaup Grønmo, Helse Nord IKT, Norway (openEHR Editor)", "Evelyn Hovenga, EJSH Consulting, Australia", "Kanika Kuwelker, Helse Vest IKT, Norway (openEHR Editor)", "Jörgen Kuylenstierna, eWeave AB, Sweden", "Liv Laugen, ​Oslo University Hospital, Norway, Norway (openEHR Editor)", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "Michael Lutz, BITsoft, Germany", "Svenne Naumann, Finnmarkssykehuset, Norway", "Mikael Nyström, Cambio Healthcare Systems AB, Sweden", "Bjørn Næss, DIPS ASA, Norway", "Hallvard Reigstad, Haukeland us, Norway", "Terje Sagmyr, Helse Vest IKT, Norway (openEHR Editor)", "Bodil Salvesen, Barneklinikken Haukeland Universitetssykehus, Norway", "Sara-Petrine Solli Veierød, Haukeland Universitetssykehus, Norway", "Norwegian Review Summary, Norwegian Public Hospitals, Norway", "Kanthan Theivendran, NHS, United Kingdom", "John Tore Valand, Helse Vest IKT, Norway (openEHR Editor)", "Marit Alice Venheim, Helse Vest IKT, Norway (openEHR Editor)">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"DEC31CD247679183D1FB2BED40B37BD8">
-		["build_uid"] = <"a13566ce-0d56-471d-84b0-3d2ae6f6af91">
-		["revision"] = <"1.0.0">
+		["MD5-CAM-1.0.1"] = <"C1AD0FA5719084FEBE28A07246D96C64">
+		["build_uid"] = <"f479f56c-2226-48c3-bb50-5ff3602b9c91">
+		["revision"] = <"1.0.1">
 	>
 
 definition
@@ -168,6 +189,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
@@ -556,6 +578,201 @@ Coding of the 'Interpretation' with a terminology is preferred, where possible."
 				>
 				["at0053"] = <
 					text = <"Retrusjon">
+					description = <"">
+				>
+			>
+		>
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Bewegungsumfang eines Gelenks">
+					description = <"Messung des Bewegungsausmaßes einer bestimmten einfachen oder komplexen Bewegung um ein identifiziertes Gelenk oder einen Abschnitt der Wirbelsäule.
+">
+				>
+				["at0002"] = <
+					text = <"*Movement(en)">
+					description = <"*Identification of the movement being tested.(en)">
+				>
+				["at0003"] = <
+					text = <"Abduktion">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Adduktion">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Streckung">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"*Flexion(en)">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Innenrotation">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Außenrotation">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Einwärtsdrehung">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Auswärtsdrehung">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Innenrotation">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Außenrotation">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Fußrückenbewegung">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Fußsohlenwärtsbewegung">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Ulnarabduktion">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Radialabduktion">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Pronation">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Supination">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Zurückführung">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Gegenüberstellung">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Radialabduktion">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Palmarabduktion">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Ausgangsstellung">
+					description = <"Beschreibung der Gelenkstellung zu Beginn der Untersuchung.">
+					comment = <"Zum Beispiel: „90 Grad Beugung in Hüfte und Knie in Rückenlage“ bei der Untersuchung der Innenrotation oder „15 Grad fixierte Beugefehlstellung“ bei der Untersuchung der Ellenbogenbeugung.">
+				>
+				["at0024"] = <
+					text = <"Untersuchungsmodus">
+					description = <"Ob die Untersuchung aktiv oder passiv durchgeführt wird.">
+				>
+				["at0025"] = <
+					text = <"Aktiv">
+					description = <"Die Bewegung wird vom Patienten selbst ausgeführt. Auch bekannt als aktiver Bewegungsumfang (AROM).">
+				>
+				["at0026"] = <
+					text = <"Passiv">
+					description = <"Die Bewegung wird vom Untersucher oder einem Gerät durchgeführt. Auch bekannt als passiver Bewegungsumfang (PROM).">
+				>
+				["at0027"] = <
+					text = <"Bewegungsumfang">
+					description = <"Der Bewegungsumfang für eine identifizierte Bewegung um ein Gelenk.">
+				>
+				["at0028"] = <
+					text = <"Zusätzliche Details">
+					description = <"Zusätzliche strukturierte Angaben zum Bewegungsumfang">
+				>
+				["at0029"] = <
+					text = <"Kommentar">
+					description = <"Zusätzliche narrative Angaben zu den Befunden des Bewegungsumfangs, die in anderen Feldern nicht erfasst wurden.">
+				>
+				["at0030"] = <
+					text = <"Rechte Seitneigung">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"Linke Seitneigung">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"Rechtsdrehung">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"Linksdrehung">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"Aktiv-unterstützt">
+					description = <"Die Bewegung wird teilweise vom Untersucher oder einem Gerät unterstützt. Auch bekannt als aktiv-unterstützter Bewegungsumfang (AAROM).">
+				>
+				["at0035"] = <
+					text = <"Klinische Interpretation">
+					description = <"Stichwort, Phrase oder kurze Beschreibung, die die klinische Aussagekraft und Relevanz des gemessenen Bewegungsumfangs wiedergibt.">
+					comment = <"Beispiel: „Im Normbereich“, „Erhöhter Bewegungsumfang“ oder „Verminderter Bewegungsumfang“. Wenn möglich, sollte die „Interpretation“ codiert und mit einer Terminologie verknüpft werden.">
+				>
+				["at0042"] = <
+					text = <"Zurückziehen">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"Vorschieben">
+					description = <"">
+				>
+				["at0044"] = <
+					text = <"Aufwärtsrotation">
+					description = <"">
+				>
+				["at0045"] = <
+					text = <"Abwärtsrotation">
+					description = <"">
+				>
+				["at0046"] = <
+					text = <"Anhebung">
+					description = <"">
+				>
+				["at0047"] = <
+					text = <"Senkung">
+					description = <"">
+				>
+				["at0048"] = <
+					text = <"Öffnung">
+					description = <"">
+				>
+				["at0049"] = <
+					text = <"Schließen">
+					description = <"">
+				>
+				["at0050"] = <
+					text = <"Rechte Kieferverschiebung">
+					description = <"">
+				>
+				["at0051"] = <
+					text = <"Linke Kieferverschiebung">
+					description = <"">
+				>
+				["at0052"] = <
+					text = <"Vorschub">
+					description = <"">
+				>
+				["at0053"] = <
+					text = <"Rückführung">
 					description = <"">
 				>
 			>
