@@ -1,0 +1,148 @@
+archetype (adl_version=1.4; uid=93c3b82f-8cea-4c8b-bd4b-27092c88133d)
+	openEHR-EHR-EVALUATION.genome.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"Hallvard Lærum">
+				["organisation"] = <"Oslo University Hospital HF">
+				["email"] = <"hallaeru@online.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2016-02-15">
+		["name"] = <"Hallvard Lærum">
+		["organisation"] = <"Oslo Universitetssykehus HF">
+		["email"] = <"hallar@ous-hf.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)","Hallvard Lærum, Oslo Universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Lars Retterstøl, MD PhD, Dpt. of medical genetics, Oslo University Hospital, Norway","John Tore Valand, Helse Bergen HF, Norway (Nasjonal IKT redaktør)">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"To keep a collection of the most accurate description of the individual's genetic variants. The collection is used for decision support, e.g. pharmacogenomics, diagnostic and prognostic reasoning and ">
+			keywords = <"genome","gene","genetic variants","pharmacogenomics","alleles">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to record a persistent partial or complete genome for the individual.">
+			misuse = <"Not to be used for individual genetic variants or specific genetic lab tests. Not to be used for chromosomal changes.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To keep a collection of the most accurate description of the individual's genetic variants. The collection is used for decision support, e.g. pharmacogenomics, diagnostic and prognostic reasoning.">
+			keywords = <"genome","gene","genetic variants","pharmacogenomics","alleles","exome">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"To record a persistent partial or complete genome for the individual.">
+			misuse = <"Not to be used for individual genetic variants or specific genetic lab tests. Not to be used for chromosomal changes.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Ginsbury G & Huntington FW: Essentials of genomic and personalized medicine. Academic press 2010 ISBN 978-0-12-374934-5">
+		["current_contact"] = <"Hallvard Lærum, Oslo Universitetssykehus HF, hallar@ous-hf.no">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"94F87453C57D601BEE253001A24974C5">
+		["build_uid"] = <"01cd721e-91f4-4877-bc01-ec341229d206">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Genome
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0003] occurrences matches {0..*} matches {    -- Most accurate variants
+						items cardinality matches {1..*; unordered} matches {
+							allow_archetype CLUSTER[at0009] occurrences matches {0..*} matches {    -- Genetic variant
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.genetic_variant\.v1/}
+								exclude
+									archetype_id/value matches {/.*/}
+							}
+							ELEMENT[at0004] occurrences matches {0..1} matches {    -- Source
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- GenomeComplete?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Genome">
+					description = <"Persistent overview of patient genome, partial or full">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Most accurate variants">
+					description = <"An updated  collection of the most accurate representation of each gene.The observations are selected based on how accurately the sequencing method describes the actual sequence.">
+				>
+				["at0004"] = <
+					text = <"Source">
+					description = <"Where the variant was analyzed, e.g. imported from commercial laboratory, performed at local laboratory, performed with home-based kit.">
+				>
+				["at0006"] = <
+					text = <"GenomeComplete?">
+					description = <"Whether or not the list of variants containts the full genome.">
+				>
+				["at0009"] = <
+					text = <"Genetic variant">
+					description = <"The genetic variant as described by the best genetic lab test for this gene">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Genome_v0.8">
+					description = <"*Persistent overview of patient genome, partial or full(nb)">
+				>
+				["at0001"] = <
+					text = <"*Tree(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0003"] = <
+					text = <"Most accurate variants">
+					description = <"An updated  collection of the most accurate representation of each gene.The observations are selected based on how accurately the sequencing method describes the actual sequence.">
+				>
+				["at0004"] = <
+					text = <"Source">
+					description = <"Where the variant was analyzed, e.g. imported from commercial laboratory, performed at local laboratory, performed with home-based kit.">
+				>
+				["at0006"] = <
+					text = <"GenomeComplete?">
+					description = <"Whether or not the list of variants containts the full genome of the individual.">
+				>
+				["at0009"] = <
+					text = <"Genetic variant">
+					description = <"The genetic variant as described by the best genetic lab test for this gene">
+				>
+			>
+		>
+	>
