@@ -1,0 +1,1194 @@
+archetype (adl_version=1.4; uid=34500560-b1e5-4388-9853-1849c9ab910b)
+	openEHR-EHR-EVALUATION.nav_sykmelding.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2019-09-22">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS AS">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Anca Heyd, DIPS AS, Norway","Astrid Askeland, DIPS AS, Norway","Kjetil Jørgensen, DIPS AS, Norway","Morten Pavicevic Hørthe, DIPS AS, Norway","Runar Kristiansen, DIPS AS, Norway">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Modellering av datainnholdet for Melding om arbeidsuførhet v 3.0 til NAV">
+			keywords = <"NAV","Sykemelding","Arbeidsfør","Sykefravær","Arbeidsevne">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes for å registrere Sykmelding til NAV. 
+Arketypen er utarbeidet på bakgrunn i NAV sine kravspesifikasjoner for Digital sykmelding. 
+
+
+">
+			misuse = <"Arketypen skal ikke brukes i noen andre skjema enn ved Sykmelding til NAV. ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"ICD-10;  https://finnkode.ehelse.no/#icd10/0/0/0/-1
+ICPC2;  https://finnkode.ehelse.no/#icpc/0/0/0/-1
+Volven; https://volven.no/
+NAV; https://www.nav.no/no/NAV+og+samfunn/Samarbeid/Leger+og+andre+behandlere/Relatert+innhold/digital-sykmelding-og-dialogmeldinger-tekniske-spesifikasjoner
+NAV Veileder; https://www.nav.no/no/NAV+og+samfunn/Samarbeid/Leger+og+andre+behandlere/Relatert+innhold/_attachment/502307?_download=true&_ts=15d16c73f98">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"06B312BFB1559674F09D1EBB170ED330">
+		["build_uid"] = <"37b9ed32-da1d-4820-a006-2c5a0a1ef0f1">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Sykmelding
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {2..*; unordered} matches {
+					ELEMENT[at0104] matches {    -- 0 Når startet det legemeldte fraværet?
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+					CLUSTER[at0115] occurrences matches {0..1} matches {    -- 2 Arbeidsgiver
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0116] occurrences matches {0..1} matches {    -- 2.1 Pasienten har:
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0121,    -- Én arbeidsgiver
+											at0122,    -- Flere arbeidsgivere
+											at0123]    -- Ingen arbeidsgiver
+										}
+									}
+								}
+							}
+							CLUSTER[at0117] occurrences matches {0..*} matches {    -- 2.2 Arbeidsgiver
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0118] occurrences matches {0..1} matches {    -- 2.2 Arbeidsgiver for denne sykmeldingen
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0119] occurrences matches {0..1} matches {    -- 2.3 Yrke/stilling for dette arbeidsforholdet
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0124] occurrences matches {0..1} matches {    -- 2.4 Stillingsprosent
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+					CLUSTER[at0002] occurrences matches {0..1} matches {    -- 3 Diagnose
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0011] occurrences matches {0..1} matches {    -- 3.1 Hoveddiagnose
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[ac0001]
+										}
+									}
+								}
+							}
+							ELEMENT[at0012] occurrences matches {0..*} matches {    -- 3.2 Bidiagnoser
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[ac0002]
+										}
+									}
+								}
+							}
+							CLUSTER[at0013] occurrences matches {0..1} matches {    -- 3.3 Annen lovfestet fraværsgrunn § 8-4, 3. ledd - oppgis hvis relevant
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0014] occurrences matches {0..1} matches {    -- 3.3.1 Foreligger det annen fraværsgrunn, velg én årsak
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0086,    -- a) når vedkommende er innlagt i en godkjent helseinstitusjon
+													at0087,    -- b) når vedkommende er under behandling og legen erklærer at behandlingen gjør det nødvendig at vedkommende ikke arbeider
+													at0088,    -- c) når vedkommende deltar på et arbeidsrettet tiltak
+													at0089,    -- d) når vedkommende på grunn av sykdom, skade eller lyte får tilskott til opplæringstiltak etter § 10-7 tredje ledd
+													at0090,    -- e) når vedkommende er til nødvendig kontrollundersøkelse som krever minst 24 timers fravær, reisetid medregnet
+													at0091,    -- f) når vedkommende myndighet har nedlagt forbud mot at han eller hun arbeider på grunn av smittefare
+													at0092,    -- g) når vedkommende er arbeidsufør som følge av svangerskapsavbrudd
+													at0093,    -- h) når vedkommende er arbeidsufør som følge av behandling for barnløshet
+													at0094,    -- i) når vedkommende er donor eller er under vurdering som donor
+													at0095]    -- j) når vedkommende er arbeidsufør som følge av behandling i forbindelse med sterilisering
+												}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {    -- 3.3.2 Beskriv
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+							ELEMENT[at0016] occurrences matches {0..1} matches {    -- 3.4 Er sykdommen svangerskapsrelatert
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {true}
+									}
+								}
+							}
+							ELEMENT[at0017] occurrences matches {0..1} matches {    -- 3.5 Kan sykmeldingen skyldes en yrkesskade/yrkessykdom?
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {true}
+									}
+								}
+							}
+							ELEMENT[at0018] occurrences matches {0..1} matches {    -- 3.6 Eventuell skadedato
+								value matches {
+									DV_DATE matches {*}
+								}
+							}
+							ELEMENT[at0019] occurrences matches {0..1} matches {    -- 3.7 Det er påtrengende nødvendig å skjerme pasienten for medisinske opplysninger, jf. pasient- og brukerrettighetsloven §§ 3-2 og 5-1
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {true}
+									}
+								}
+							}
+							ELEMENT[at0020] occurrences matches {0..1} matches {    -- 3.8 Kan diagnosen endres fra symptomdiagnose til sykdomsdiagnose?
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0003] occurrences matches {0..1} matches {    -- 4 Mulighet for arbeid
+						items cardinality matches {1..*; unordered} matches {
+							CLUSTER[at0021] occurrences matches {0..1} matches {    -- 4.1 Pasienten kan benytte avventende sykmelding
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0105] occurrences matches {0..1} matches {    -- 4.1 Pasienten kan benytte avventende sykmelding
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {    -- 4.1.1 f.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {    -- 4.1.2 t.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {    -- 4.1.3 Innspill til arbeidsgiver om tilrettelegging
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+							CLUSTER[at0025] occurrences matches {0..1} matches {    -- 4.2 Pasienten kan være delvis i arbeid (gradert sykmelding)
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0106] occurrences matches {0..1} matches {    -- 4.2 Pasienten kan være delvis i arbeid (gradert sykmelding)
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {    -- 4.2.1 f.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {    -- 4.2.2 t.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {    -- 4.2.3 Grad av sykmelding
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..100|}
+											}
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {    -- 4.2.4 Pasienten kan være delvis i arbeid ved bruk av reisetilskudd
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+								}
+							}
+							CLUSTER[at0030] occurrences matches {0..1} matches {    -- 4.3 Pasienten kan ikke være i arbeid (100 % sykmelding)
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0107] occurrences matches {0..1} matches {    -- 4.3 Pasienten kan ikke være i arbeid (100 % sykmelding)
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+									ELEMENT[at0031] occurrences matches {0..1} matches {    -- 4.3.1 f.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0032] occurrences matches {0..1} matches {    -- 4.3.2 t.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									CLUSTER[at0034] occurrences matches {0..1} matches {    -- 4.3.3 Medisinske årsaker hindrer arbeidsrelatert aktivitet
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0125] occurrences matches {0..1} matches {    -- 4.3.3 Medisinske årsaker hindrer arbeidsrelatert aktivitet
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {true}
+													}
+												}
+											}
+											ELEMENT[at0033] occurrences matches {0..*} matches {    -- 4.3.3.1 Årsak
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0096,    -- Helsetilstanden hindrer pasienten i å være i aktivitet
+															at0097,    -- Aktivitet vil forverre helsetilstanden
+															at0098,    -- Aktivitet vil hindre/forsinke bedring av helsetilstanden
+															at0099]    -- Annet
+														}
+													}
+												}
+											}
+											ELEMENT[at0036] occurrences matches {0..1} matches {    -- 4.3.3.2 Begrunnelse til NAVs vurdering av aktivitetskravet
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0037] occurrences matches {0..1} matches {    -- 4.3.3.2 Beskriv nærmere
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0038] occurrences matches {0..1} matches {    -- 4.3.4 Forhold på arbeidsplassen vanskeliggjør arbeidsrelatert aktivitet
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0126] occurrences matches {0..1} matches {    -- 4.3.4 Forhold på arbeidsplassen vanskeliggjør arbeidsrelatert aktivitet
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {true}
+													}
+												}
+											}
+											ELEMENT[at0039] occurrences matches {0..*} matches {    -- 4.3.4.1 Angi hva som er årsaken
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0100,    -- Manglende tilrettelegging på arbeidsplassen
+															at0101]    -- Annet
+														}
+													}
+												}
+											}
+											ELEMENT[at0040] occurrences matches {0..1} matches {    -- 4.3.4.2 Beskriv nærmere (Kan leses av arbeidsgiver)
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+							CLUSTER[at0041] occurrences matches {0..1} matches {    -- 4.4 Pasienten kan ikke være i arbeid på behandlingsdager
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0108] occurrences matches {0..1} matches {    -- 4.4 Pasienten kan ikke være i arbeid på behandlingsdager
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+									ELEMENT[at0042] occurrences matches {0..1} matches {    -- 4.4.1 f.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0043] occurrences matches {0..1} matches {    -- 4.4.2 t.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0044] occurrences matches {0..1} matches {    -- 4.4.3 Antall dager behandling per uke
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..7|}
+											}
+										}
+									}
+								}
+							}
+							CLUSTER[at0045] occurrences matches {0..1} matches {    -- 4.5 Pasienten kan være i fullt arbeid ved bruk av reisetilskudd
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0109] occurrences matches {0..1} matches {    -- 4.5 Pasienten kan være i fullt arbeid ved bruk av reisetilskudd
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+									ELEMENT[at0046] occurrences matches {0..1} matches {    -- 4.5.1 f.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0047] occurrences matches {0..1} matches {    -- 4.5.2 t.o.m.
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+					CLUSTER[at0004] occurrences matches {0..1} matches {    -- 5 Friskmelding/prognose
+						items cardinality matches {1..*; unordered} matches {
+							CLUSTER[at0048] occurrences matches {0..1} matches {    -- 5.1 Pasienten er 100% arbeidsfør etter denne perioden
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0111] occurrences matches {0..1} matches {    -- 5.1 Pasienten er 100% arbeidsfør etter denne perioden
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+									ELEMENT[at0049] occurrences matches {0..1} matches {    -- 5.1.1 Beskriv eventuelle hensyn som må tas på arbeidsplassen
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+							CLUSTER[at0050] occurrences matches {0..1} matches {    -- 5.2 Gjelder de MED arbeidsgiver
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0051] occurrences matches {0..1} matches {    -- 5.2.1 Jeg antar at pasienten på sikt kan komme tilbake til samme arbeidsgiver
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+									ELEMENT[at0052] occurrences matches {0..1} matches {    -- 5.2.1.1 Når tror du dette kan skje?
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0053] occurrences matches {0..1} matches {    -- 5.2.2 Jeg antar at pasienten på sikt kan komme i annet arbeid
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+									ELEMENT[at0054] occurrences matches {0..1} matches {    -- 5.2.3 Hvis usikker: Når antar du å
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+								}
+							}
+							CLUSTER[at0055] occurrences matches {0..1} matches {    -- 5.3 Gjelder de UTEN arbeidsgiver
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0056] occurrences matches {0..1} matches {    -- 5.3.1 Jeg antar at pasienten på sikt kan komme tilbake i arbeid
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {true}
+											}
+										}
+									}
+									ELEMENT[at0057] occurrences matches {0..1} matches {    -- 5.3.1.1 Når tror du at dette kan skje?
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+									ELEMENT[at0112] occurrences matches {0..1} matches {    -- 5.3.2 Når antar du å kunne gi tilbakemelding på dette?
+										value matches {
+											DV_DATE matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+					CLUSTER[at0005] occurrences matches {0..1} matches {    -- 6 Utdypende opplysninger
+						items cardinality matches {1..*; unordered} matches {
+							CLUSTER[at0058] occurrences matches {0..1} matches {    -- 6.3 Helseopplysninger ved vurdering av aktivitetskrav
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0059] occurrences matches {0..1} matches {    -- 6.3.1 Beskriv kort sykehistorie, symptomer og funn i dagens situasjon
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0110] occurrences matches {0..1} matches {    -- 6.3.2 Beskriv pågående og planlagt henvisning, utredning og/eller behandling
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+							CLUSTER[at0060] occurrences matches {0..1} matches {    -- 6.4 Helseopplysninger til NAVs vurdering av videre oppfølging
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0061] occurrences matches {0..1} matches {    -- 6.4.1 Beskriv kort sykehistorie, symptomer og funn i dagens situasjon
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0062] occurrences matches {0..1} matches {    -- 6.4.2 Beskriv pågående og planlagt henvisning, utredning og/eller behandling
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0063] occurrences matches {0..1} matches {    -- 6.4.3 Hva mener du skal til for at pasienten kan komme tilbake i eget eller annet arbeid?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+							CLUSTER[at0064] occurrences matches {0..1} matches {    -- 6.5 Helseopplysninger mot slutten av sykepengeperioden
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0065] occurrences matches {0..1} matches {    -- 6.5.1 Beskriv kort sykehistorie, symptomer og funn i dagens situasjon
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0067] occurrences matches {0..1} matches {    -- 6.5.2 Hvordan påvirker dette funksjons-/arbeidsevnen?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0066] occurrences matches {0..1} matches {    -- 6.5.3 Beskriv pågående og planlagt henvisning, utredning og/eller medisinsk behandling
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0068] occurrences matches {0..1} matches {    -- 6.5.4 Kan arbeidsevnen bedres gjennom medisinsk behandling og/eller arbeidsrelatert aktivitet?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+							CLUSTER[at0069] occurrences matches {0..1} matches {    -- 6.6 Helseopplysninger dersom pasienten skal søke om AAP
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0070] occurrences matches {0..1} matches {    -- 6.6.1 Hva antar du at pasienten kan utføre av eget arbeid/arbeidsoppgaver i dag eller i nær framtid?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0071] occurrences matches {0..1} matches {    -- 6.6.2 Hvis pasienten ikke kan gå tilbake til eget arbeid, hva antar du at pasienten kan utføre av annet arbeid/arbeidsoppgaver?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0072] occurrences matches {0..1} matches {    -- 6.6.3 Hvilken betydning har denne sykdommen for den nedsatte arbeidsevnen?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+					CLUSTER[at0006] occurrences matches {0..1} matches {    -- 7 Hva skal til for å bedre arbeidsevnen
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0073] occurrences matches {0..1} matches {    -- 7.1 Tilrettelegging (hensyn som bør tas på arbeidsplassen)
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0074] occurrences matches {0..1} matches {    -- 7.2 Tiltak i regi av NAV. Beskriv
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0113] occurrences matches {0..1} matches {    -- 7.3 Andre innspill til NAV
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0007] occurrences matches {0..1} matches {    -- 8 Melding til NAV
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0075] occurrences matches {0..1} matches {    -- 8.1 Ønskes bistand fra NAV nå?
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {true}
+									}
+								}
+							}
+							ELEMENT[at0076] occurrences matches {0..1} matches {    -- 8.2 Begrunn nærmere
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0008] occurrences matches {0..1} matches {    -- 9 Melding til arbeidsgiver
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0077] occurrences matches {0..1} matches {    -- 9.1 Andre innspill til arbeidsgiver
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0009] occurrences matches {0..1} matches {    -- 11 Tilbakedatering
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0078] occurrences matches {0..1} matches {    -- 11.1 Hvis denne sykmeldingen er tilbakedatert, oppgi dato for dokumenterbar kontakt med pasienten.
+								value matches {
+									DV_DATE matches {*}
+								}
+							}
+							ELEMENT[at0114] occurrences matches {0..1} matches {    -- 11.2 Pasienten har ikke kunnet ivaret egne interesser. Begrunn
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0010] occurrences matches {0..1} matches {    -- 12 Bekreftelse
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0079] matches {    -- 12.1 Pasienten er kjent eller har vist legitimasjon
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {true}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0127] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0130] occurrences matches {0..1} matches {    -- Kontaktinfo sykmelder
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0129] occurrences matches {0..1} matches {    -- Telefon
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"2.16.578.1.12.4.1.1.8131","2.16.578.1.12.4.1.1.8133","2.16.578.1.12.4.1.1.8132","ICD10","ICPC2">
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sykmelding">
+					description = <"Modellering av datainnholdet for Melding om arbeidsuførhet v 3.0 til NAV">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"3 Diagnose">
+					description = <"Diagnoser relatert til denne sykmeldingen.">
+				>
+				["at0003"] = <
+					text = <"4 Mulighet for arbeid">
+					description = <"Mulighet for arbeid relatert til denne sykmeldingen. ">
+				>
+				["at0004"] = <
+					text = <"5 Friskmelding/prognose">
+					description = <"Detaljer om friskmelding/prognose for pasienten. ">
+				>
+				["at0005"] = <
+					text = <"6 Utdypende opplysninger">
+					description = <"Utdypende detaljer om helseopplysninger.">
+				>
+				["at0006"] = <
+					text = <"7 Hva skal til for å bedre arbeidsevnen">
+					description = <"Detaljer om hva som skal til for å bedre arbeidsevnen til pasienten. ">
+				>
+				["at0007"] = <
+					text = <"8 Melding til NAV">
+					description = <"Melding til NAV.">
+				>
+				["at0008"] = <
+					text = <"9 Melding til arbeidsgiver">
+					description = <"Melding til arbeidsgiver.">
+				>
+				["at0009"] = <
+					text = <"11 Tilbakedatering">
+					description = <"Informasjon om tilbakedatering.">
+				>
+				["at0010"] = <
+					text = <"12 Bekreftelse">
+					description = <"Bekreftelse på at pasienten er kjent eller har vist legitimasjon. ">
+				>
+				["at0011"] = <
+					text = <"3.1 Hoveddiagnose">
+					description = <"Hoveddiagnose for denne sykmeldingen. Begrenset til ICPC-2 og ICD-10.">
+				>
+				["at0012"] = <
+					text = <"3.2 Bidiagnoser">
+					description = <"Bidiagnoser for pasienten. Begrenset til ICPC-2 og ICD-10.">
+				>
+				["at0013"] = <
+					text = <"3.3 Annen lovfestet fraværsgrunn § 8-4, 3. ledd - oppgis hvis relevant">
+					description = <"Angir lovfestet fraværsgrunn hvis relevant">
+				>
+				["at0014"] = <
+					text = <"3.3.1 Foreligger det annen fraværsgrunn, velg én årsak">
+					description = <"Angir annen lovfestet årsak for fraværet.">
+				>
+				["at0015"] = <
+					text = <"3.3.2 Beskriv">
+					description = <"Beskrivelse av annen lovfestet fraværsgrunn.">
+				>
+				["at0016"] = <
+					text = <"3.4 Er sykdommen svangerskapsrelatert">
+					description = <"Krysses av dersom sykmeldingen er svangerskapsrelatert.">
+				>
+				["at0017"] = <
+					text = <"3.5 Kan sykmeldingen skyldes en yrkesskade/yrkessykdom?">
+					description = <"Krysses av dersom sykmeldingen kan skyldes en yrkesskade eller yrkessykdom. ">
+				>
+				["at0018"] = <
+					text = <"3.6 Eventuell skadedato">
+					description = <"Angir dato for når den eventuelle yrkesskaden eller yrkessykdommen oppstod.">
+				>
+				["at0019"] = <
+					text = <"3.7 Det er påtrengende nødvendig å skjerme pasienten for medisinske opplysninger, jf. pasient- og brukerrettighetsloven §§ 3-2 og 5-1">
+					description = <"Angir om pasienten skal skjermes fra helseopplysninger.">
+				>
+				["at0020"] = <
+					text = <"3.8 Kan diagnosen endres fra symptomdiagnose til sykdomsdiagnose?">
+					description = <"Angir om diagnosen kan endres fra symptomdiagnose til sykdomsdiagnose.">
+				>
+				["at0021"] = <
+					text = <"4.1 Pasienten kan benytte avventende sykmelding">
+					description = <"Angir informasjon om avventende sykmelding.">
+				>
+				["at0022"] = <
+					text = <"4.1.1 f.o.m.">
+					description = <"Angir når den avventende sykmeldingen starter.">
+				>
+				["at0023"] = <
+					text = <"4.1.2 t.o.m.">
+					description = <"Angir når den avventende sykmeldingen slutter.">
+				>
+				["at0024"] = <
+					text = <"4.1.3 Innspill til arbeidsgiver om tilrettelegging">
+					description = <"Innspill om tilrettelegging til arbeidsgiver.">
+				>
+				["at0025"] = <
+					text = <"4.2 Pasienten kan være delvis i arbeid (gradert sykmelding)">
+					description = <"Angir om pasienten kan være delvis i arbeid. ">
+				>
+				["at0026"] = <
+					text = <"4.2.1 f.o.m.">
+					description = <"Angir når den graderte sykmeldingen starter.">
+				>
+				["at0027"] = <
+					text = <"4.2.2 t.o.m.">
+					description = <"Angir når den graderte sykmeldingen slutter.">
+				>
+				["at0028"] = <
+					text = <"4.2.3 Grad av sykmelding">
+					description = <"Angir i prosent hvor stor grad pasienten er sykmeldt.">
+				>
+				["at0029"] = <
+					text = <"4.2.4 Pasienten kan være delvis i arbeid ved bruk av reisetilskudd">
+					description = <"Angir om pasineten kan være delvis i arbeid ved bruk av reisetilskudd.">
+				>
+				["at0030"] = <
+					text = <"4.3 Pasienten kan ikke være i arbeid (100 % sykmelding)">
+					description = <"Angir om pasienten er 100% sykmeldt.">
+				>
+				["at0031"] = <
+					text = <"4.3.1 f.o.m.">
+					description = <"Angir når den sykmeldingen starter.">
+				>
+				["at0032"] = <
+					text = <"4.3.2 t.o.m.">
+					description = <"Angir når den sykmeldingen slutter.">
+				>
+				["at0033"] = <
+					text = <"4.3.3.1 Årsak">
+					description = <"Medisinske årsaker som hindrer arbeidsrelatert aktivitet">
+				>
+				["at0034"] = <
+					text = <"4.3.3 Medisinske årsaker hindrer arbeidsrelatert aktivitet">
+					description = <"Medisinske årsaker som hindrer arbeidsrelatert aktivitet.">
+				>
+				["at0036"] = <
+					text = <"4.3.3.2 Begrunnelse til NAVs vurdering av aktivitetskravet">
+					description = <"Begrunnelsen til NAV sin vurdering ved 7 uker">
+				>
+				["at0037"] = <
+					text = <"4.3.3.2 Beskriv nærmere">
+					description = <"Nærmere beskrivelse ved 17 til 39 uker. ">
+				>
+				["at0038"] = <
+					text = <"4.3.4 Forhold på arbeidsplassen vanskeliggjør arbeidsrelatert aktivitet">
+					description = <"Pasientens arbeidsplass vanskeliggjøring av arbrbeidsrelatert aktivitet. ">
+				>
+				["at0039"] = <
+					text = <"4.3.4.1 Angi hva som er årsaken">
+					description = <"Årsak til at aktivitet på arbeidsplassen vanskeliggjøres.">
+				>
+				["at0040"] = <
+					text = <"4.3.4.2 Beskriv nærmere (Kan leses av arbeidsgiver)">
+					description = <"Nærmere beskrivlese av årsaken til vanskeliggjøring av aktivtet ved arbeidsplassen. ">
+				>
+				["at0041"] = <
+					text = <"4.4 Pasienten kan ikke være i arbeid på behandlingsdager">
+					description = <"Angir om pasienten ikke kan være i arbeid på behandlingsdager.">
+				>
+				["at0042"] = <
+					text = <"4.4.1 f.o.m.">
+					description = <"Angir når behandlingen starter.">
+				>
+				["at0043"] = <
+					text = <"4.4.2 t.o.m.">
+					description = <"Angir når behandlingen slutter. ">
+				>
+				["at0044"] = <
+					text = <"4.4.3 Antall dager behandling per uke">
+					description = <"Angir antall dager behandling per uke.">
+				>
+				["at0045"] = <
+					text = <"4.5 Pasienten kan være i fullt arbeid ved bruk av reisetilskudd">
+					description = <"Ved reisetilskudd kan pasienten være i fullt arbeid. ">
+				>
+				["at0046"] = <
+					text = <"4.5.1 f.o.m.">
+					description = <"Angir når pasienten kan være i fullt arbeid ved bruk av reisetilskudd.">
+				>
+				["at0047"] = <
+					text = <"4.5.2 t.o.m.">
+					description = <"Angir når sykmeldingen er slutt.">
+				>
+				["at0048"] = <
+					text = <"5.1 Pasienten er 100% arbeidsfør etter denne perioden">
+					description = <"Detaljer om hvorvidt pasienten vil komme tilbake til 100% arbeidsfør.">
+					comment = <"Skal alltid vises og være tilgjengelig for utfylling. Utfylling er valgfritt.">
+				>
+				["at0049"] = <
+					text = <"5.1.1 Beskriv eventuelle hensyn som må tas på arbeidsplassen">
+					description = <"Beskrivelse av eventuelle hensyn  som må tas på arbeidplassen for at pasienten skal kunne være 100% arbeidsfør igjen. ">
+					comment = <"Skal kun vises dersom felt 5.1 er valgt. Utfylling er valgfritt.">
+				>
+				["at0050"] = <
+					text = <"5.2 Gjelder de MED arbeidsgiver">
+					description = <"Detaljer om friskmelding/prognose for pasienter med arbeidsgiver.  ">
+					comment = <"Overskriften 5.2 skal ikke vises. MERK: Ett (og bare ett) av feltene 5.2.1, 5.2.2 og 5.2.3 MÅ fylles ut dersom pasienten har én eller flere arbeidsgivere (felt 2.1) OG felt 5.1 IKKE er sann på de gitte tidspunktene definert i konfigurasjonsfilen.">
+				>
+				["at0051"] = <
+					text = <"5.2.1 Jeg antar at pasienten på sikt kan komme tilbake til samme arbeidsgiver">
+					description = <"Angir om man antar at pasienten på sikt kan komme tilbake i arbeid hos samme arbeidsgiver. ">
+					comment = <"Skal vises dersom felt 5.1 IKKE er utfylt på gitte tidspunkter. Skal kun vises dersom pasienten har én eller flere arbeidsgivere ( 2.1). Utfylling er valgfritt">
+				>
+				["at0052"] = <
+					text = <"5.2.1.1 Når tror du dette kan skje?">
+					description = <"Angir når pasienten på sikt kan komme tilbake i arbeid til samme arbeidsgiver. ">
+					comment = <"
+Skal kun vises dersom felt 5.2.1 er utfylt. Utfylling er obligatorisk.">
+				>
+				["at0053"] = <
+					text = <"5.2.2 Jeg antar at pasienten på sikt kan komme i annet arbeid">
+					description = <"Angir om sykmelder antar at pasienten på sikt kan komme tilbake i arbeid hos en annet arbeid. ">
+					comment = <"
+Skal vises dersom felt 5.1 IKKE er utfylt på gitte tidspunkter. Skal kun vises dersom pasienten har én eller flere arbeidsgivere (2.1). Utfylling er valgfritt">
+				>
+				["at0054"] = <
+					text = <"5.2.3 Hvis usikker: Når antar du å">
+					description = <"Angir når sykmelder kan gi tilbakemelding på hvorvidt pasienten kan komme tilbake i annet arbeid. ">
+					comment = <"Skal vises dersom felt 5.1 IKKE er utfylt på gitte tidspunkter. Skal kun vises dersom pasienten har én eller flere arbeidsgivere (2.1). Utfylling er valgfritt">
+				>
+				["at0055"] = <
+					text = <"5.3 Gjelder de UTEN arbeidsgiver">
+					description = <"Detaljer om friskmelding/prognose for pasienter uten arbeidsgiver.  ">
+					comment = <"Overskriften 5.3 skal ikke vises.
+MERK: Ett (og bare ett) av feltene 5.3.1 og 5.3.2 MÅ fylles ut dersom pasienten IKKE har arbeidsgiver OG felt 5.1 IKKE er sann på de gitte tidspunktene definert i konfigurasjonsfilen.">
+				>
+				["at0056"] = <
+					text = <"5.3.1 Jeg antar at pasienten på sikt kan komme tilbake i arbeid">
+					description = <"Angir om sykmelder antar at pasienten kan komme tilbake i arbeid.">
+					comment = <"
+Skal vises dersom felt 5.1 IKKE er utfylt på gitte tidspunkter. Skal kun vises dersom pasienten IKKE har arbeidsgiver (2.1). Utfylling er valgfritt">
+				>
+				["at0057"] = <
+					text = <"5.3.1.1 Når tror du at dette kan skje?">
+					description = <"Angir når sykmelder tror pasienten kan komme tilbake i arbeid. ">
+					comment = <"Skal kun vises dersom felt 5.3.1 er utfylt. Utfylling er obligatorisk. 5.3.2 Hvis usikker: Når antar du å kunne gi tilbakemelding på dette? Skal vises dersom felt 5.1 IKKE er utfylt på gitte tidspunkter. Skal kun vises dersom pasienten IKKE har arbeidsgiver. Utfylling er valgfritt">
+				>
+				["at0058"] = <
+					text = <"6.3 Helseopplysninger ved vurdering av aktivitetskrav">
+					description = <"Detaljerte opplysnigner ved vurderingen av aktivitestkrav.">
+				>
+				["at0059"] = <
+					text = <"6.3.1 Beskriv kort sykehistorie, symptomer og funn i dagens situasjon">
+					description = <"Beskrivelse av sykehistorie, symptomer og funn i dagens situasjon.">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet.
+ Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling obligatorisk.">
+				>
+				["at0060"] = <
+					text = <"6.4 Helseopplysninger til NAVs vurdering av videre oppfølging">
+					description = <"Opplysninger til NAV sin vurdering av videre oppfølging.">
+				>
+				["at0061"] = <
+					text = <"6.4.1 Beskriv kort sykehistorie, symptomer og funn i dagens situasjon">
+					description = <"Beskriv kort sykehistorie, symptomer og funn i dagens situasjon.">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling obligatorisk.">
+				>
+				["at0062"] = <
+					text = <"6.4.2 Beskriv pågående og planlagt henvisning, utredning og/eller behandling">
+					description = <"Beskriv pågående og planlagt henvisning, utredning og/eller behandling.">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling obligatorisk">
+				>
+				["at0063"] = <
+					text = <"6.4.3 Hva mener du skal til for at pasienten kan komme tilbake i eget eller annet arbeid?">
+					description = <"Informasjon om hva som skal til for at pasienten skal kunne komme tilbake i arbeid.">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling obligatorisk">
+				>
+				["at0064"] = <
+					text = <"6.5 Helseopplysninger mot slutten av sykepengeperioden">
+					description = <"Helseopplysninger mot slutten av sykepengeperioden.">
+				>
+				["at0065"] = <
+					text = <"6.5.1 Beskriv kort sykehistorie, symptomer og funn i dagens situasjon">
+					description = <"Beskrivelse av sykehistorie, symptomer og funn i dagens situasjon.">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling obligatorisk.">
+				>
+				["at0066"] = <
+					text = <"6.5.3 Beskriv pågående og planlagt henvisning, utredning og/eller medisinsk behandling">
+					description = <"Beskrivelse av pågående og planlagt henvisning, utredning og/eller medisinsk behandling.">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling obligatorisk">
+				>
+				["at0067"] = <
+					text = <"6.5.2 Hvordan påvirker dette funksjons-/arbeidsevnen?">
+					description = <"Beskrivelse av hvordan dette påvirker funksjons-/arbeidsevnen.">
+					comment = <"
+Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling obligatorisk">
+				>
+				["at0068"] = <
+					text = <"6.5.4 Kan arbeidsevnen bedres gjennom medisinsk behandling og/eller arbeidsrelatert aktivitet?">
+					description = <"Beskriv hvorvidt arbeidsevnen kan bedres gjennom medisinsk behandling og/eller arbeidsrelatert aktivitet. Angi hvordan og tidsperspektiv.">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling obligatorisk">
+				>
+				["at0069"] = <
+					text = <"6.6 Helseopplysninger dersom pasienten skal søke om AAP">
+					description = <"Detaljer om helseopplysninger for pasienter som skal søke om AAP.">
+				>
+				["at0070"] = <
+					text = <"6.6.1 Hva antar du at pasienten kan utføre av eget arbeid/arbeidsoppgaver i dag eller i nær framtid?">
+					description = <"Angir hva sykmelder antar at pasienten kan utføre av eget arbeid i dag eller i nær fremtid. ">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling frivillig">
+				>
+				["at0071"] = <
+					text = <"6.6.2 Hvis pasienten ikke kan gå tilbake til eget arbeid, hva antar du at pasienten kan utføre av annet arbeid/arbeidsoppgaver?">
+					description = <"Angir hva sykmelder antar at pasienten kan utføre av annet arbeid hvis han ikke kan gå tilbake til eget arbeid. ">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling frivillig">
+				>
+				["at0072"] = <
+					text = <"6.6.3 Hvilken betydning har denne sykdommen for den nedsatte arbeidsevnen?">
+					description = <"Angir hvilken betydning av sykdommen har for den nedsatte arbeidsevnen. ">
+					comment = <"Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling frivillig">
+				>
+				["at0073"] = <
+					text = <"7.1 Tilrettelegging (hensyn som bør tas på arbeidsplassen)">
+					description = <"Beskrivelse av tilrettelegging (hensyn som bør tas) på arbeidsplassen. Kan leses av arbeidsgiver. ">
+					comment = <"Skal alltid vises. Utfylling er valgfritt.">
+				>
+				["at0074"] = <
+					text = <"7.2 Tiltak i regi av NAV. Beskriv">
+					description = <"Beskrivelse av tiltak  i regi av NAV for å bedre arbeidsevnen. Hvis det er behov for bistand fra NAV nå, bruk felt 8.">
+					comment = <"Skal alltid vises. Utfylling er valgfritt. 7.3 Eventuelle andre innspill til NAV. Beskriv Skal alltid vises. Utfylling er valgfritt.">
+				>
+				["at0075"] = <
+					text = <"8.1 Ønskes bistand fra NAV nå?">
+					description = <"Angir om det er ønskelig med bistand fra NAV nå.">
+				>
+				["at0076"] = <
+					text = <"8.2 Begrunn nærmere">
+					description = <"Begrunnelse for øsnket bistand fra NAV nå. ">
+				>
+				["at0077"] = <
+					text = <"9.1 Andre innspill til arbeidsgiver">
+					description = <"Andre innspill til arbeidsgiver. ">
+				>
+				["at0078"] = <
+					text = <"11.1 Hvis denne sykmeldingen er tilbakedatert, oppgi dato for dokumenterbar kontakt med pasienten.">
+					description = <"Angir dato for dokumenterbar kontakt med pasienten dersom sykmelding er tilbakedatert. Kan leses av abeidsgiver.">
+				>
+				["at0079"] = <
+					text = <"12.1 Pasienten er kjent eller har vist legitimasjon">
+					description = <"Angir at pasienten er kjent eller har vist legitimasjon">
+				>
+				["at0086"] = <
+					text = <"a) når vedkommende er innlagt i en godkjent helseinstitusjon">
+					description = <"*">
+				>
+				["at0087"] = <
+					text = <"b) når vedkommende er under behandling og legen erklærer at behandlingen gjør det nødvendig at vedkommende ikke arbeider">
+					description = <"*">
+				>
+				["at0088"] = <
+					text = <"c) når vedkommende deltar på et arbeidsrettet tiltak">
+					description = <"*">
+				>
+				["at0089"] = <
+					text = <"d) når vedkommende på grunn av sykdom, skade eller lyte får tilskott til opplæringstiltak etter § 10-7 tredje ledd">
+					description = <"*">
+				>
+				["at0090"] = <
+					text = <"e) når vedkommende er til nødvendig kontrollundersøkelse som krever minst 24 timers fravær, reisetid medregnet">
+					description = <"*">
+				>
+				["at0091"] = <
+					text = <"f) når vedkommende myndighet har nedlagt forbud mot at han eller hun arbeider på grunn av smittefare">
+					description = <"*">
+				>
+				["at0092"] = <
+					text = <"g) når vedkommende er arbeidsufør som følge av svangerskapsavbrudd">
+					description = <"*">
+				>
+				["at0093"] = <
+					text = <"h) når vedkommende er arbeidsufør som følge av behandling for barnløshet">
+					description = <"*">
+				>
+				["at0094"] = <
+					text = <"i) når vedkommende er donor eller er under vurdering som donor">
+					description = <"*">
+				>
+				["at0095"] = <
+					text = <"j) når vedkommende er arbeidsufør som følge av behandling i forbindelse med sterilisering">
+					description = <"*">
+				>
+				["at0096"] = <
+					text = <"Helsetilstanden hindrer pasienten i å være i aktivitet">
+					description = <"*">
+				>
+				["at0097"] = <
+					text = <"Aktivitet vil forverre helsetilstanden">
+					description = <"*">
+				>
+				["at0098"] = <
+					text = <"Aktivitet vil hindre/forsinke bedring av helsetilstanden">
+					description = <"*">
+				>
+				["at0099"] = <
+					text = <"Annet">
+					description = <"*">
+				>
+				["at0100"] = <
+					text = <"Manglende tilrettelegging på arbeidsplassen">
+					description = <"*">
+				>
+				["at0101"] = <
+					text = <"Annet">
+					description = <"*">
+				>
+				["at0104"] = <
+					text = <"0 Når startet det legemeldte fraværet?">
+					description = <"Angi første legemeldte fraværsdag i dette sykefraværsløpet.">
+				>
+				["at0105"] = <
+					text = <"4.1 Pasienten kan benytte avventende sykmelding">
+					description = <"Angir om pasienten kan benytte avventende sykmelding.">
+				>
+				["at0106"] = <
+					text = <"4.2 Pasienten kan være delvis i arbeid (gradert sykmelding)">
+					description = <"Angir om pasienten kan være delvis i arbeid.">
+				>
+				["at0107"] = <
+					text = <"4.3 Pasienten kan ikke være i arbeid (100 % sykmelding)">
+					description = <"Angir om pasinten må være 100% sykmeldt.">
+				>
+				["at0108"] = <
+					text = <"4.4 Pasienten kan ikke være i arbeid på behandlingsdager">
+					description = <"Angir om pasienten ikke kan være i arbeid på behandlingsdager.">
+				>
+				["at0109"] = <
+					text = <"4.5 Pasienten kan være i fullt arbeid ved bruk av reisetilskudd">
+					description = <"Angir om pasienten kan være i fullt arbeid ved bruk av reisetilskudd.">
+				>
+				["at0110"] = <
+					text = <"6.3.2 Beskriv pågående og planlagt henvisning, utredning og/eller behandling">
+					description = <"Beskrivelse av pågående og planlagt henvisning, utredning og/eller behandling. Lar dette seg kombinere med delvis arbeid?">
+					comment = <"Lar dette seg kombinere med delvis arbeid? Feltet vises uavhengig av diagnose på gitte tidspunkter i sykefraværsløpet. Regler for dette er definert i konfigurasjonsfilen for dynamiske regler. Dersom feltet vises, er utfylling obligatorisk">
+				>
+				["at0111"] = <
+					text = <"5.1 Pasienten er 100% arbeidsfør etter denne perioden">
+					description = <"Angir om pasienten er 100% arbeidsfør etter denne perioden.">
+				>
+				["at0112"] = <
+					text = <"5.3.2 Når antar du å kunne gi tilbakemelding på dette?">
+					description = <"Angir når sykmelder kan gi tilbakemelding på hvorvidt pasienten kan komme i arbeid. ">
+				>
+				["at0113"] = <
+					text = <"7.3 Andre innspill til NAV">
+					description = <"Beskrivelse av evt. andre innspill til NAV.">
+				>
+				["at0114"] = <
+					text = <"11.2 Pasienten har ikke kunnet ivaret egne interesser. Begrunn">
+					description = <"Begrunnelse for hvorfor pasienten ikke har kunnet ivareta egne interesser. ">
+				>
+				["at0115"] = <
+					text = <"2 Arbeidsgiver">
+					description = <"Arbeidsgiver relatert til denne sykmeldingen.">
+				>
+				["at0116"] = <
+					text = <"2.1 Pasienten har:">
+					description = <"Angir hvorvidt pasienten har en arbeidsgiver, eller om pasienten har en eller flere.">
+				>
+				["at0117"] = <
+					text = <"2.2 Arbeidsgiver">
+					description = <"Arbeidsgiver relatert til denne sykmeldingen.">
+				>
+				["at0118"] = <
+					text = <"2.2 Arbeidsgiver for denne sykmeldingen">
+					description = <"Angivelse av pasientens arbeidsgiver som sykmeldingen skal sendes til.">
+				>
+				["at0119"] = <
+					text = <"2.3 Yrke/stilling for dette arbeidsforholdet">
+					description = <"Angivelse av pasientens yrke eller stilling.">
+				>
+				["at0121"] = <
+					text = <"Én arbeidsgiver">
+					description = <"*">
+				>
+				["at0122"] = <
+					text = <"Flere arbeidsgivere">
+					description = <"*">
+				>
+				["at0123"] = <
+					text = <"Ingen arbeidsgiver">
+					description = <"*">
+				>
+				["at0124"] = <
+					text = <"2.4 Stillingsprosent">
+					description = <"Pasienten stillingsprosent ved den aktuelle arbeidsgiver.">
+				>
+				["at0125"] = <
+					text = <"4.3.3 Medisinske årsaker hindrer arbeidsrelatert aktivitet">
+					description = <"Angir om det er medisinske årsaker som hindrer arbeidsrelatert aktivitet.">
+				>
+				["at0126"] = <
+					text = <"4.3.4 Forhold på arbeidsplassen vanskeliggjør arbeidsrelatert aktivitet">
+					description = <"Angir om pasientens arbeidsplass vanskeliggjøring av arbrbeidsrelatert aktivitet. ">
+				>
+				["at0127"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0129"] = <
+					text = <"Telefon">
+					description = <"Telefonnummer hvor sykmelder kan kontaktes.">
+				>
+				["at0130"] = <
+					text = <"Kontaktinfo sykmelder">
+					description = <"Sykmelders kontaktinformasjon.">
+					comment = <"Designet som et cluster med tanke på fremtidig utvidelse av hvordan sykmelder kan kontaktes. Normalt vil telefon kunne hentes fra det pasientadministrative systemet, men er lagt inn i arketypen for å gjøre det mulig å angi spesifikk kontaktinfo for denne sykmeldingen. ">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["nb"] = <
+			items = <
+				["ac0001"] = <
+					text = <"Kodeverk">
+					description = <"*">
+				>
+				["ac0002"] = <
+					text = <"Kodet">
+					description = <"*">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["2.16.578.1.12.4.1.1.8131"] = <
+			items = <
+				["at0086"] = <[2.16.578.1.12.4.1.1.8131::1]>
+				["at0087"] = <[2.16.578.1.12.4.1.1.8131::2]>
+				["at0088"] = <[2.16.578.1.12.4.1.1.8131::3]>
+				["at0089"] = <[2.16.578.1.12.4.1.1.8131::4]>
+				["at0090"] = <[2.16.578.1.12.4.1.1.8131::5]>
+				["at0091"] = <[2.16.578.1.12.4.1.1.8131::6]>
+				["at0092"] = <[2.16.578.1.12.4.1.1.8131::7]>
+				["at0093"] = <[2.16.578.1.12.4.1.1.8131::8]>
+				["at0094"] = <[2.16.578.1.12.4.1.1.8131::9]>
+				["at0095"] = <[2.16.578.1.12.4.1.1.8131::10]>
+			>
+		>
+		["2.16.578.1.12.4.1.1.8133"] = <
+			items = <
+				["at0096"] = <[2.16.578.1.12.4.1.1.8133::1]>
+				["at0097"] = <[2.16.578.1.12.4.1.1.8133::2]>
+				["at0098"] = <[2.16.578.1.12.4.1.1.8133::3]>
+				["at0099"] = <[2.16.578.1.12.4.1.1.8133::9]>
+			>
+		>
+		["2.16.578.1.12.4.1.1.8132"] = <
+			items = <
+				["at0100"] = <[2.16.578.1.12.4.1.1.8132::1]>
+				["at0101"] = <[2.16.578.1.12.4.1.1.8132::9]>
+			>
+		>
+	>
+	constraint_binding = <
+		["ICD10"] = <
+			items = <
+				["ac0001"] = <terminology:ICD10?subset=ICD10>
+				["ac0002"] = <terminology:ICD10?subset=ICD10>
+			>
+		>
+		["ICPC2"] = <
+			items = <
+				["ac0001"] = <terminology:ICPC2?subset=ICPC2>
+				["ac0002"] = <terminology:ICPC2?subset=ICPC2>
+			>
+		>
+	>
