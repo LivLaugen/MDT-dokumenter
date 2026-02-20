@@ -1,12 +1,22 @@
-archetype (adl_version=1.4; uid=8cf83f14-be46-4f78-a462-b56f162f699b)
+﻿archetype (adl_version=1.4; uid=14f30fd1-9cc6-40b9-a5cb-15e2e62e05d9)
 	openEHR-EHR-OBSERVATION.capillary_refill.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Capillary refill time (CRT)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			author = <
+				["name"] = <"Jonas Bucher">
+				["organisation"] = <"Cistec AG">
+				["email"] = <"jonas.bucher@cistec.com">
+			>
+			other_details = <
+				["other_contributors"] = <"Emmanuel Eschmann, Cistec AG">
+			>
+		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			author = <
@@ -24,43 +34,50 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2020-04-26">
 		["name"] = <"Ian McNicoll">
 		["organisation"] = <"freshEHR Clinical Informatics Ltd.">
 		["email"] = <"ian@freshehr.com">
+		["date"] = <"2020-04-26">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)","SB Bhattacharyya, Sudisa Consultancy Services, India","Mikkel Gaup Grønmo, Helse-Nord, FSE, Norway (openEHR Editor)","Anca Heyd, DIPS ASA, Norway","Evelyn Hovenga, EJSH Consulting, Australia","Liv Laugen, ​Oslo University Hospital, Norway, Norway (openEHR Editor)","Heather Leslie, Atomica Informatics, Australia","Robert Madeley, Cambio Healthcare systems, Sweden","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom","Svenne Naumann, Finnmarkssykehuset, Norway","Anoop Shah, University College London, United Kingdom","Trine Strand, Oslo Universitetssykehus (OUS), Norway","Roy Støle, OUS, Norway","Norwegian Review Summary, Nasjonal IKT HF, Norway","Nyree Taylor, Ocean Informatics, Australia","Jeremy Tong, NHS, United Kingdom","John Tore Valand, Helse Bergen, Norway (openEHR Editor)","Marit Alice Venheim, Helse Vest IKT, Norway (openEHR Editor)">
 	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Aufzeichnung der Befunde im Zusammenhang mit der Rekapillarisierungszeit.">
+			use = <"Zur Aufzeichnung der beobachteten Befunde im Zusammenhang mit der Rekapillarisierungszeit.">
+			keywords = <"Kapilläre Rückfüllzeit", ...>
+			misuse = <"">
+		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"*To record findings related to the capillary refill time. (en)">
-			keywords = <"*return (en)", ...>
 			use = <"*Use to record findings related to the capillary refill time. (en)">
+			keywords = <"*return (en)", ...>
+			misuse = <"">
 		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere funn knyttet til den kapillære fylningstiden (CRT).">
-			keywords = <"refyldningstid, CRT, Capillary refill time, kapillær refill", ...>
 			use = <"Bruk for å registrere funn knyttet til den kapillære fylningstiden (CRT).">
+			keywords = <"refyldningstid, CRT, Capillary refill time, kapillær refill", ...>
+			misuse = <"">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record findings related to the capillary refill time.">
-			keywords = <"return", ...>
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record findings related to the capillary refill time.">
+			keywords = <"return", ...>
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)", "Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)", "SB Bhattacharyya, Sudisa Consultancy Services, India", "Mikkel Gaup Grønmo, Helse-Nord, FSE, Norway (openEHR Editor)", "Anca Heyd, DIPS ASA, Norway", "Evelyn Hovenga, EJSH Consulting, Australia", "Liv Laugen, ​Oslo University Hospital, Norway, Norway (openEHR Editor)", "Heather Leslie, Atomica Informatics, Australia", "Robert Madeley, Cambio Healthcare systems, Sweden", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom", "Svenne Naumann, Finnmarkssykehuset, Norway", "Anoop Shah, University College London, United Kingdom", "Trine Strand, Oslo Universitetssykehus (OUS), Norway", "Roy Støle, OUS, Norway", "Norwegian Review Summary, Nasjonal IKT HF, Norway", "Nyree Taylor, Ocean Informatics, Australia", "Jeremy Tong, NHS, United Kingdom", "John Tore Valand, Helse Bergen, Norway (openEHR Editor)", "Marit Alice Venheim, Helse Vest IKT, Norway (openEHR Editor)">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
-		["references"] = <"Avgrenet fra: Capillary refill time (CRT), Published archetype [Internet]. openEHR Foundation, openEHR Clinical Knowledge Manager [cited: 2020-08-27]. Available from: https://ckm.openehr.org/ckm/archetypes/1013.1.4685
-
-King D, Morton R, Bevan C. How to use capillary refill time. Arch Dis Child Educ Pract Ed. 2014 Jun;99(3):111-6. doi: 10.1136/archdischild-2013-305198. Epub 2013 Nov 13. Review. PubMed PMID: 24227793.
+		["references"] = <"King D, Morton R, Bevan C. How to use capillary refill time. Arch Dis Child Educ Pract Ed. 2014 Jun;99(3):111-6. doi: 10.1136/archdischild-2013-305198. Epub 2013 Nov 13. Review. PubMed PMID: 24227793.
 
 E. Kviesis-Kipge, E. Curkste, J. Spigulis, L. Eihvalde, “Real-time analysis of skin capillary-refill processes using blue LED,” Proc. SPIE 7715, Biophotonics: Photonic Solutions for Better Health Care II, 771523 (18 May 2010); https://doi.org/10.1117/12.854263
 
@@ -68,10 +85,10 @@ Kawaguchi R, Nakada TA, Oshima T, Shinozaki M, Nakaguchi T, Haneishi H, Oda S. O
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"FBCF8F409BEA396057BFB5BEA656A646">
-		["build_uid"] = <"246c0278-8255-4cfa-8356-59d18d039a59">
+		["MD5-CAM-1.0.1"] = <"7B735BC6C51322555BD6E3E288135F25">
+		["build_uid"] = <"fe31f88e-f3cd-4b66-8652-144aa095362f">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomedct or info@snomed.org.">
-		["revision"] = <"1.0.0">
+		["revision"] = <"1.0.1">
 	>
 
 definition
@@ -163,8 +180,9 @@ definition
 		}
 	}
 
+
 ontology
-	terminologies_available = <"SNOMED-CT","LOINC">
+	terminologies_available = <"SNOMED-CT", "LOINC">
 	term_definitions = <
 		["en"] = <
 			items = <
@@ -412,8 +430,91 @@ ontology
 				>
 			>
 		>
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Rekapillarisierungszeit (RKZ)">
+					description = <"Messung der Zeit, in der sich ein Kapillarbett nach Einwirkung von äußerem Druck wieder mit Blut füllt.">
+					comment = <"Manchmal auch als \"kapilläre Rückfüllzeit\" bezeichnet.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Beliebiges Ereignis">
+					description = <"Ein Standardwert, ein spezifizierter Zeitpunkt oder ein Intervallereignis, welches explizit in einem Template oder während der Laufzeit definiert werden kann.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Klinische Interpretation">
+					description = <"Klinische Interpretation der Rekapillarisierungszeit.
+">
+					comment = <"Der Normalbereich kann altersabhängig variieren.">
+				>
+				["at0006"] = <
+					text = <"Normale Rekapillarisierungszeit">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Verlängerte Rekapillarisierungszeit">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Verkürzte Rekapillarisierungszeit">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Rückfüllzeit">
+					description = <"Die gemessene Zeit bis zur Farbänderung durch Rückfluss des Blutes nach Druckentlastung.">
+				>
+				["at0019"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0020"] = <
+					text = <"Erweiterung">
+					description = <"Zusätzliche Informationen zur Erfassung lokaler Inhalte oder zur Anpassung an andere Referenzmodelle oder Formalismen.">
+					comment = <"Zum Beispiel: Informationen bzgl. der lokalen Krankenhausabteilung oder zusätzliche Metadata zur Anpassung an entsprechende FHIR oder CIMI Gegenstücke.">
+				>
+				["at0021"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0023"] = <
+					text = <"Einflussfaktoren">
+					description = <"Probleme oder Faktoren, die die Messung der Rekapillarisierungszeit beeinflussen können und in anderen Feldern nicht erfasst sind.">
+					comment = <"Zum Beispiel: Schmerzen, Fieber, Umgebungstemperatur und Licht, Einnahme vasoaktiver Medikamente oder periphere Gefäßverstopfung.">
+				>
+				["at0024"] = <
+					text = <"Stelle der Messung">
+					description = <"Einfache Beschreibung der Körperstelle, an der die Rekapillarisierungszeit gemessen wurde.">
+					comment = <"Zum Beispiel: 'Nagelbett rechter Zeigefinger', 'Stirn' oder 'Sternum'">
+				>
+				["at0037"] = <
+					text = <"Gerät">
+					description = <"Details über das Gerät, das zur Messung der Rekapillarisierungszeit verwendet wurde.">
+				>
+				["at0039"] = <
+					text = <"Strukturierte Stelle der Messung">
+					description = <"Strukturierte Körperstelle, an der die Rekapillarisierungszeit gemessen wurde.">
+				>
+				["at0040"] = <
+					text = <"Kommentar">
+					description = <"Zusätzliche Beschreibung zur Rekapillarisierungszeit, die in anderen Feldern nicht erfasst wurde.">
+				>
+				["at0041"] = <
+					text = <"Methode">
+					description = <"Beschreibung der zur Messung der Rekapillarisierungszeit verwendeten Methode.">
+					comment = <"Angeben, um sicherzustellen, dass eine Reihe von Messungen auf dieselbe Weise durchgeführt werden.">
+				>
+			>
+		>
 	>
-	term_binding = <
+	term_bindings = <
 		["SNOMED-CT"] = <
 			items = <
 				["at0009"] = <[SNOMED-CT::15527001]>
