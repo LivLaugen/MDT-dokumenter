@@ -1,18 +1,17 @@
-archetype (adl_version=1.4; uid=41233a51-b661-487e-991c-d7c062ef2982)
+﻿archetype (adl_version=1.4; uid=19ffcc3e-b41c-4a99-9db4-41212d1daa25)
 	openEHR-EHR-OBSERVATION.clinical_frailty_scale.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Clinical Frailty Scale (CFS)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
 		["de"] = <
 			language = <[ISO_639-1::de]>
 			author = <
-				["name"] = <"Sarah Ballout">
-				["organisation"] = <"MHH-Hannover">
-				["email"] = <"ballout.sarah@mh-hannover.de">
+				["name"] = <"Sarah Ballout, Natalia Strauch">
+				["organisation"] = <"Medizinische Hochschule Hannover">
+				["email"] = <"ballout.sarah@mh-hannover.de, Strauch.Natalia@mh-hannover.de">
 			>
 		>
 		["nb"] = <
@@ -23,50 +22,73 @@ language
 				["email"] = <"marit.alice.venheim@helse-vest-ikt.no, silje.ljosland.bakke@helse-vest-ikt.no">
 			>
 		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Nelio Borrozzino">
+				["organisation"] = <"Prontmed">
+				["email"] = <"nelio.borrozzino@prontmed.com">
+			>
+			accreditation = <"MS Social Gerontology">
+		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2019-06-24">
 		["name"] = <"Dr Paul Miller">
 		["organisation"] = <"NES Digital Service, NHS Scotland">
 		["email"] = <"paul.miller@nes.scot.nhs.uk">
+		["date"] = <"2019-06-24">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Ian McNicoll, NDS, Scotland", ...>
 	details = <
 		["de"] = <
 			language = <[ISO_639-1::de]>
-			purpose = <"Zur Repräsentation der Beurteilung der klinischen Fragilty-Skala.">
-			keywords = <"Fragilität, Senioren, Alter, Aktivität, Lebensende, Rockwood, alt, altern", ...>
-			use = <"Zur Repräsentation der Beurteilung der klinischen Fragilty-Skala.
+			purpose = <"Zur Repräsentation der Beurteilung mit Klinischen Frailty-Skala.">
+			use = <"Zur Repräsentation der Beurteilung mit Klinischen Frailty-Skala.
 
 Während alle openEHR-Archetypen unter einer offenen Lizenz frei verfügbar sind, ist der spezifische Inhalt dieses Clinical Frailty Scale-Archetyps urheberrechtlich geschützt. Jede Verwendung dieses Archetyps innerhalb von Implementierungen muss in Übereinstimmung mit den von den Urheberrechtsinhabern festgelegten Bedingungen erfolgen.
 Erklärung zum Urheberrecht: ©2009. Version 1.2_DE. Alle Rechte vorbehalten. Geriatrische Medizinforschung, Dalhousie Universität, Halifax, Kanada. 
 Informationen zum Urheberrecht: https://www.dal.ca/sites/gmr/our-tools/clinical-frailty-scale.html.">
+			keywords = <"Fragilität, Senioren, Alter, Aktivität, Lebensende, Rockwood, alt, altern", ...>
+			misuse = <"">
 		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere vurdering av skrøpelighet i henhold til Clinical Frailty Scale (CFS).">
-			keywords = <"skrøpelighet, geriatrisk, gammel, høy alder, aktivitet, terminal, eldre, aldring, Rockwood", ...>
 			use = <"Brukes for å registrere vurdering av skrøpelighet i henhold til Clinical Frailty Scale (CFS).
 
 openEHR-arketyper er fritt tilgjengelige under en åpen lisens, men det spesifikke innholdet i denne Clinical Frailty Scale-arketypen er opphavsrettslig beskyttet. All bruk av denne arketypen i implementasjoner må gjøres i henhold til vilkår gitt av innehaverne av opphavsretten.
 Erklæring om opphavsrett: ©2009. Version 1.2_EN. All rights reserved. Geriatric Medicine Research, Dalhousie University, Halifax, Canada. 
 Informasjon om opphavsretten: https://www.dal.ca/sites/gmr/our-tools/clinical-frailty-scale.html.">
+			keywords = <"skrøpelighet, geriatrisk, gammel, høy alder, aktivitet, terminal, eldre, aldring, Rockwood", ...>
+			misuse = <"">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Para registrar a avaliação da escala de fragilidade clínica.">
+			use = <"Use para registrar a avaliação da escala de fragilidade clínica.
+
+Embora todos os arquétipos openEHR estejam todos disponíveis gratuitamente, o conteúdo específico deste arquétipo da Escala de Fragilidade Clínica é protegido por direitos autorais. Qualquer uso deste arquétipo em implementações deve estar em conformidade com os termos estabelecidos pelos proprietários dos seus direitos autorais.
+
+Copyright statement: ©2009. Version 1.2_EN. All rights reserved. Geriatric Medicine Research, Dalhousie University, Halifax, Canada. 
+Copyright information: https://www.dal.ca/sites/gmr/our-tools/clinical-frailty-scale.html.">
+			keywords = <"fragilidade, geriatria, velhice, fim da vida, rockwood, idoso, envelhecimento", ...>
+			misuse = <"">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the Clinical Frailty Scale assessment.">
-			keywords = <"frailty, geriatric, old age, activity, end of life, rockwood, elderly, aging", ...>
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record the Clinical Frailty Scale assessment.
 
 While openEHR archetypes are all freely available under an open license, the specific content of this Clinical Frailty Scale archetype is copyright protected. Any use of this archetype within implementations must be in compliance with the terms established by the copyright owners.
 Copyright statement: ©2009. Version 1.2_EN. All rights reserved. Geriatric Medicine Research, Dalhousie University, Halifax, Canada. 
 Copyright information: https://www.dal.ca/sites/gmr/our-tools/clinical-frailty-scale.html.">
+			keywords = <"frailty, geriatric, old age, activity, end of life, rockwood, elderly, aging", ...>
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Ian McNicoll, NDS, Scotland", ...>
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -77,11 +99,11 @@ Clinical Frailty Scale [Internet]. Dalhousie University. Dalhousie University; 2
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"BE19E8C2BA420AFD8E3CAAED2FF36A61">
-		["build_uid"] = <"d48233f4-d891-4efa-b907-8e00bb7a9d93">
+		["MD5-CAM-1.0.1"] = <"BFBB750FB1DA8E784FECF92023987243">
+		["build_uid"] = <"0d30467a-375d-4eca-b59b-ae467eeb271a">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomedct or info@snomed.org. 
 Please note: SNOMED-CT term-bindings currently applied to the individual score values belong to the UK SNOMED_CT namespace.">
-		["revision"] = <"1.0.0">
+		["revision"] = <"1.0.3">
 	>
 
 definition
@@ -93,7 +115,7 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Frailty scale
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Assessment
 										value matches {
 											1|[local::at0005],
 											2|[local::at0006],
@@ -125,6 +147,7 @@ definition
 		}
 	}
 
+
 ontology
 	terminologies_available = <"SNOMED-CT", ...>
 	term_definitions = <
@@ -148,8 +171,8 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0004"] = <
-					text = <"Frailty scale">
-					description = <"The assessed score.">
+					text = <"Assessment">
+					description = <"Assessed level of frailty.">
 				>
 				["at0005"] = <
 					text = <"Very Fit">
@@ -218,8 +241,8 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0004"] = <
-					text = <"Frailty Skala">
-					description = <"Das bewertete Ergebnis.">
+					text = <"Beurteilung">
+					description = <"Beurteilung der Gebrechlichkeitsstufe.">
 				>
 				["at0005"] = <
 					text = <"Sehr fit">
@@ -289,8 +312,8 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0004"] = <
-					text = <"Skrøpelighetsskala">
-					description = <"Vurdering av skrøpelighet.">
+					text = <"Vurdering">
+					description = <"Vurdering av skrøpelighetsnivå.">
 				>
 				["at0005"] = <
 					text = <"Veldig sprek">
@@ -339,8 +362,79 @@ ontology
 				>
 			>
 		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Escala de fragilidade clínica (EFC)">
+					description = <"Escala de avaliação usada para rastrear a fragilidade e para estratificar amplamente os graus de aptidão e fragilidade em idosos">
+					comment = <"Também conhecida como Rockwood Clinical Frailty Scale.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer momento no evento">
+					description = <"Evento de ponto no tempo padrão e não especificado, podendo ser definido explicitamente em um template especifico ou em tempo de execução.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Avaliação">
+					description = <"Nível de fragilidade avaliado.">
+				>
+				["at0005"] = <
+					text = <"Robusto">
+					description = <"Pessoas robustas, ativas, enérgicas e motivadas. Essas pessoas costumam se exercitar regularmente. Eles estão entre os mais aptos para a sua idade.">
+				>
+				["at0006"] = <
+					text = <"Bem/ Saudável">
+					description = <"Sem sintomas de doenças ativas, mas são menos aptas do que a categoria 1. Realiza atividades físicas ocasionais ou sazonais.">
+				>
+				["at0007"] = <
+					text = <"Controlado">
+					description = <"Comorbidades controladas e sintomas das doenças controlados, sem atividades físicas além da marcha habitual.">
+				>
+				["at0008"] = <
+					text = <"Vulnerável">
+					description = <"Embora não dependa de outras pessoas para o dia a dia, muitas vezes os sintomas limitam a realização de atividades. Uma queixa comum é ficar \"lento\" e / ou ficar cansado durante o dia.">
+				>
+				["at0009"] = <
+					text = <"Fragilidade leve">
+					description = <"Costumam apresentar lentidão mais evidente e precisam de ajuda em AIVDs como: finanças, transporte, trabalho doméstico pesado, medicamentos.
+Normalmente, a fragilidade leve prejudica progressivamente as compras e as caminhadas ao ar livre sozinhas, a preparação das refeições e as tarefas domésticas.">
+				>
+				["at0010"] = <
+					text = <"Fragilidade moderada">
+					description = <"As pessoas precisam de ajuda com todas as atividades externas e com as tarefas de casa. Dentro de casa, eles costumam ter problemas com escadas e precisam de ajuda para tomar banho e podem precisar de auxilio mínimo para se vestir.">
+				>
+				["at0011"] = <
+					text = <"Fragilidade severa">
+					description = <"Totalmente dependente de cuidados pessoais (AVDs), por qualquer causa (física ou cognitiva). Mesmo assim, eles parecem estáveis ​​e não correm alto risco de morrer nos próximos 6 meses.">
+				>
+				["at0012"] = <
+					text = <"Fragilidade muito severa">
+					description = <"Completamente dependente, chegando ao fim da vida. Normalmente, eles não conseguiam se recuperar nem mesmo de uma doença leve.">
+				>
+				["at0013"] = <
+					text = <"Fragilidade terminal">
+					description = <"Aproximando-se do fim da vida. Esta categoria se aplica a pessoas com expectativa de vida inferior a 6 meses, que não são evidentemente frágeis.">
+				>
+				["at0014"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0015"] = <
+					text = <"Extensão">
+					description = <"Informações adicionais necessárias para estender o modelo com conteúdo local ou para alinhar com outros modelos / formalismos de referência.">
+					comment = <"Por exemplo: requisitos de informações locais; ou metadados adicionais para utilizar com FHIR.">
+				>
+			>
+		>
 	>
-	term_binding = <
+	term_bindings = <
 		["SNOMED-CT"] = <
 			items = <
 				["at0004"] = <[SNOMED-CT::763264000]>
