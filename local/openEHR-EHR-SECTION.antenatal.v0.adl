@@ -1,0 +1,279 @@
+archetype (adl_version=1.4; uid=7784d6f0-df9b-426c-85b7-67773bab2824)
+	openEHR-EHR-SECTION.antenatal.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Ingrid Heitmann">
+				["organisation"] = <"NTNU and OUS">
+			>
+			accreditation = <"Registered Nurse and master student in health informatics">
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2012-01-03">
+		["name"] = <"Sam Heard">
+		["organisation"] = <"NT mEHR Project">
+		["email"] = <"sam.heard@oceaninformatics.com">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å strukturere journaldokumenter fra svangerskapskontroller. Dette for å sikre konsistent organisering av informasjonen samt for å fungere som en hjelp i videre fortolkning.">
+			keywords = <"svangerskap","kontroll","prenatal","før fødsel">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Anvendes ved svangerskapskontroller.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To structure antenatal visit records to promote consistency of organisation and aid interpretation.">
+			keywords = <"antenatal","visit","prenatal">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"In event summaries and consultation records when the person is pregnant.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"NT Pregnancy Health Record
+Queensland Government Pregnancy Health Record">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"D49541EA1CD5B72BF3AC3276D04774EB">
+		["build_uid"] = <"299dfdca-16cd-44b5-bc93-8040cd94ec16">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	SECTION[at0000] matches {    -- Antenatal
+		items cardinality matches {1..*; unordered} matches {
+			SECTION[at0001] occurrences matches {0..1} matches {    -- History
+				items cardinality matches {1..*; unordered} matches {
+					allow_archetype ENTRY[at0002] occurrences matches {0..*} matches {    -- Patient's story
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype OBSERVATION[at0019] occurrences matches {0..*} matches {    -- Gestation
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.gestation(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+				}
+			}
+			SECTION[at0003] occurrences matches {0..1} matches {    -- Findings
+				items cardinality matches {1..*; unordered} matches {
+					allow_archetype OBSERVATION[at0004] occurrences matches {0..1} matches {    -- BP
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.blood_pressure(-[a-zA-Z0-9_]+)*\.v1/}
+						exclude
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype OBSERVATION[at0006] occurrences matches {0..1} matches {    -- Fundal height and presentation
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.exam\.v1/}
+						exclude
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype OBSERVATION[at0007] occurrences matches {0..1} matches {    -- Fetal movement
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.fetal_movement(-[a-zA-Z0-9_]+)*\.v1/}
+						exclude
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype OBSERVATION[at0018] occurrences matches {0..*} matches {    -- Fetal heartrate
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.fetal_heart(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+					allow_archetype OBSERVATION[at0008] occurrences matches {0..1} matches {    -- Urinalysis
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.urinalysis(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+					allow_archetype OBSERVATION[at0015] occurrences matches {0..*} matches {    -- Laboratory results
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.lab_test(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+					allow_archetype OBSERVATION[at0016] occurrences matches {0..*} matches {    -- Body weight
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.body_weight(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+					allow_archetype OBSERVATION[at0017] occurrences matches {0..*} matches {    -- Bodily oedema
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.exam(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+				}
+			}
+			SECTION[at0011] occurrences matches {0..1} matches {    -- Notes
+				items cardinality matches {1..*; unordered} matches {
+					allow_archetype ENTRY[at0012] occurrences matches {0..*} matches {    -- Assessment
+						include
+							archetype_id/value matches {/openEHR-EHR-EVALUATION\.clinical_synopsis(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+				}
+			}
+			SECTION[at0009] occurrences matches {0..1} matches {    -- Next visit
+				items cardinality matches {1..*; unordered} matches {
+					allow_archetype INSTRUCTION[at0010] occurrences matches {0..*} matches {    -- Followup
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Antenatal">
+					description = <"A section of a record devoted to antenatal assessment.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"Any history that is relevant.">
+				>
+				["at0002"] = <
+					text = <"Patient's story">
+					description = <"Any complaints or concerns expressed by the patient.">
+				>
+				["at0003"] = <
+					text = <"Findings">
+					description = <"Findings at the consultation.">
+				>
+				["at0004"] = <
+					text = <"BP">
+					description = <"Blood pressure measurement(s).">
+				>
+				["at0006"] = <
+					text = <"Fundal height and presentation">
+					description = <"Findings of uterine height and the presentation of the fetus(es).">
+				>
+				["at0007"] = <
+					text = <"Fetal movement">
+					description = <"Observation of fetal movements.">
+				>
+				["at0008"] = <
+					text = <"Urinalysis">
+					description = <"Findings on urinalysis.">
+				>
+				["at0009"] = <
+					text = <"Next visit">
+					description = <"Information about the next visit(s).">
+				>
+				["at0010"] = <
+					text = <"Followup">
+					description = <"Instructions about the next followup.">
+				>
+				["at0011"] = <
+					text = <"Notes">
+					description = <"Other records relating to the visit.">
+				>
+				["at0012"] = <
+					text = <"Assessment">
+					description = <"Findings summarising the clinicians assessment of the situation.">
+				>
+				["at0015"] = <
+					text = <"Laboratory results">
+					description = <"Results for laboratory analysis.">
+				>
+				["at0016"] = <
+					text = <"Body weight">
+					description = <"Observations of body weight.">
+				>
+				["at0017"] = <
+					text = <"Bodily oedema">
+					description = <"Observation of the general bodily odema status.">
+				>
+				["at0018"] = <
+					text = <"Fetal heartrate">
+					description = <"Observations of the fetal heart rate.">
+				>
+				["at0019"] = <
+					text = <"Gestation">
+					description = <"Estimation of gestation of the pregnancy.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Svangerskapskontroll">
+					description = <"En del av pasientjournalen dedikert til svangerskapskontroll og - vurdering.">
+				>
+				["at0001"] = <
+					text = <"Historikk">
+					description = <"Relevant historikk.">
+				>
+				["at0002"] = <
+					text = <"Pasientens fortelling">
+					description = <"Klager eller bekymringer som pasienten har meddelt.">
+				>
+				["at0003"] = <
+					text = <"Funn">
+					description = <"Funn i konsultasjonen.">
+				>
+				["at0004"] = <
+					text = <"Blodtrykk">
+					description = <"Blodtrykksmålinger.">
+				>
+				["at0006"] = <
+					text = <"Symfyse-fundusmålinger og fosterleie">
+					description = <"Symfyse-fundusmålinger og leie av foster (-e).">
+				>
+				["at0007"] = <
+					text = <"Fosterbevegelser">
+					description = <"Observasjon av fosterbevegelser.">
+				>
+				["at0008"] = <
+					text = <"Urinanalyse">
+					description = <"Funn fra urinanalyse.">
+				>
+				["at0009"] = <
+					text = <"Neste kontroll">
+					description = <"Informasjon vedrørende neste kontroll (-er).">
+				>
+				["at0010"] = <
+					text = <"Svangerskapskontroll">
+					description = <"Informasjon vedrørende neste svangerskapskontroll (-er).">
+				>
+				["at0011"] = <
+					text = <"Notater">
+					description = <"Annen dokumentasjon relevant for konsultasjonen.">
+				>
+				["at0012"] = <
+					text = <"Vudering">
+					description = <"Oppsummerte funn - klinikers vurdering av helsetilstanden.">
+				>
+				["at0015"] = <
+					text = <"Blodprøvesvar">
+					description = <"Funn fra blodprøveanalyse.">
+				>
+				["at0016"] = <
+					text = <"Vekt">
+					description = <"Observasjon av kroppsvekt.">
+				>
+				["at0017"] = <
+					text = <"Kroppslig ødem">
+					description = <"Observasjon av generell kroppslig ødem.">
+				>
+				["at0018"] = <
+					text = <"Fosterhjertelyd">
+					description = <"Observasjon av fosterhjertelyd.">
+				>
+				["at0019"] = <
+					text = <"Svangerskapslenge">
+					description = <"Estimert svangerskapslengde.">
+				>
+			>
+		>
+	>
