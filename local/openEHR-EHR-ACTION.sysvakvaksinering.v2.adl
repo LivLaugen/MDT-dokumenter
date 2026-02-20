@@ -1,0 +1,77 @@
+archetype (adl_version=1.4; uid=e2b00250-04c1-46b0-8077-de460e026710)
+	openEHR-EHR-ACTION.sysvakvaksinering.v2
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"10.08.2012">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"C1EA579E80A2584B2A648919A68D8CD6">
+		["build_uid"] = <"43de6a63-2559-42a9-b619-152c2687bb09">
+		["revision"] = <"2.0.0-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- SysvakVaksinering
+		ism_transition matches {
+			ISM_TRANSITION[at0002] matches {    -- Utført og dokumentert
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0002]    -- Utført og dokumentert
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			allow_archetype ITEM_TREE matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.vaksine2(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"SysvakVaksinering">
+					description = <"For dokumentasjon av vaksine og som grunnlag for rapportering til SYSVAK.">
+				>
+				["at0002"] = <
+					text = <"Utført og dokumentert">
+					description = <"Vaksine er satt og dokumentet er lagret og godkjent">
+				>
+			>
+		>
+	>
