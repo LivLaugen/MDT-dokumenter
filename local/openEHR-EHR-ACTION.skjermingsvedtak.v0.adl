@@ -1,0 +1,119 @@
+archetype (adl_version=1.4; uid=92f3a2e8-65b5-41de-9fc2-a6b5a0e25d31)
+	openEHR-EHR-ACTION.skjermingsvedtak.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2014-06-18">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Benyttes til dokumentasjon av skjerming i henhold til psykisk helsevernloven.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Benyttes til dokumentasjon av skjerming i henhold til psykisk helsevernloven.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"E26078486B86B83793C2E2BA2722F5CD">
+		["build_uid"] = <"35772249-d5de-406b-90c6-680d49fe8433">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Skjermingsvedtak
+		ism_transition matches {
+			ISM_TRANSITION[at0004] matches {    -- Skjerming uten vedtak
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::245]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0004]    -- Skjerming uten vedtak
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0005] matches {    -- Skjerming med vedtak
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::245]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0005]    -- Skjerming med vedtak
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0006] matches {    -- Skjerming avsluttet
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0006]    -- Skjerming avsluttet
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			allow_archetype ITEM_TREE matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.om_skjermingsvedtak(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Skjermingsvedtak">
+					description = <"unknown">
+				>
+				["at0004"] = <
+					text = <"Skjerming uten vedtak">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Skjerming med vedtak">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Skjerming avsluttet">
+					description = <"">
+				>
+			>
+		>
+	>
