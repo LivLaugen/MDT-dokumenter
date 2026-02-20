@@ -1,0 +1,466 @@
+archetype (adl_version=1.4; uid=63993279-c952-472b-8180-9c2e0ed52b23)
+	openEHR-EHR-CLUSTER.exam_lesion_v0_8.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2015-06-25">
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Silje Ljosland Bakke, Bergen Hospital Trust, Norway","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom","John Tore Valand, Haukeland Universitetssjukehus, Norway","Heather Leslie, Ocean Informatics, Australia","Vebjørn Arntzen, Oslo University Hospital, Norway","Hallvard Lærum, Oslo University Hospital">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"*For recording a narrative description and clinical interpretation of the findings observed during the physical examination of an identified lesion.(en)">
+			copyright = <"© *© openEHR Foundation(en), Nasjonal IKT HF">
+			use = <"*Use to record a narrative description of the overall findings observed during the physical examination of an identified lesion. This initial draft archetype consists only of the core examination pattern data elements (as per CLUSTER.exam_pattern) and will likely be expanded further over time as specific clinical requirements are identified.
+
+This archetype has been specifically designed to be used in the 'Examination findings' SLOT within the CLUSTER.exam_skin archetype or the OBSERVATION.exam, but can also be used within any other OBSERVATION or CLUSTER archetypes, where clinically appropriate - for example, CLUSTER.exam_breast or CLUSTER.exam_penis.
+
+Use to provide a framework in which CLUSTER archetypes can be nested in the 'Examination findings' SLOT to record additional structured physical examination findings. 
+
+The CLUSTER.exclusion_exam archetype can be nested within the 'Examination not done' SLOT to optionally record explicit details about the examination not being performed.
+
+Use to incorporate the narrative descriptions of clinical findings within existing or legacy clinical systems into an archetyped format, using the 'Clinical Description' data element.(en)">
+			misuse = <"*Not to be used for recording data not related to the physical examination of an identified lesion.
+
+Not to be used for recording the clinical history - use specific OBSERVATION and CLUSTER archetypes. For example OBSERVATION.story and CLUSTER.symptom.
+
+Not to be used to record stand-alone clinical observations or measurements or test results - use specific OBSERVATION archetypes. For example OBSERVATION.blood_pressure or OBSERVATION.imaging_exam.
+
+Not to be used to record description of morphologic changes in organs as viewed peroperatively or by endoscopy(en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For recording a narrative description and clinical interpretation of the findings observed during the physical examination of an identified lesion.">
+			copyright = <"© *© openEHR Foundation(en), Nasjonal IKT HF">
+			use = <"Use to record a narrative description of the overall findings observed during the physical examination of an identified lesion. This initial draft archetype consists only of the core examination pattern data elements (as per CLUSTER.exam_pattern) and will likely be expanded further over time as specific clinical requirements are identified.
+
+This archetype has been specifically designed to be used in the 'Examination findings' SLOT within the CLUSTER.exam_skin archetype or the OBSERVATION.exam, but can also be used within any other OBSERVATION or CLUSTER archetypes, where clinically appropriate - for example, CLUSTER.exam_breast or CLUSTER.exam_penis.
+
+Use to provide a framework in which CLUSTER archetypes can be nested in the 'Examination findings' SLOT to record additional structured physical examination findings. 
+
+The CLUSTER.exclusion_exam archetype can be nested within the 'Examination not done' SLOT to optionally record explicit details about the examination not being performed.
+
+Use to incorporate the narrative descriptions of clinical findings within existing or legacy clinical systems into an archetyped format, using the 'Clinical Description' data element.">
+			misuse = <"Not to be used for recording data not related to the physical examination of an identified lesion.
+
+Not to be used for recording the clinical history - use specific OBSERVATION and CLUSTER archetypes. For example OBSERVATION.story and CLUSTER.symptom.
+
+Not to be used to record stand-alone clinical observations or measurements or test results - use specific OBSERVATION archetypes. For example OBSERVATION.blood_pressure or OBSERVATION.imaging_exam.
+
+Not to be used to record description of morphologic changes in organs as viewed peroperatively or by endoscopy">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Avgrenet fra: <Legg til en referanse til den originale ressursen her>">
+		["current_contact"] = <"Heather Leslie, Ocean Informatics<heather.leslie@oceaninformatics.com>">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"5C9999EF074AAB76A52EA206B2B795F7">
+		["build_uid"] = <"5947df39-f37b-40e0-822b-a883446beacb">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Examination of a lesion
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Lesion type
+				value matches {
+					DV_TEXT matches {*}
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0013,    -- Warts
+							at0014,    -- Blister/Vesicles
+							at0015,    -- Ulcers/Sores
+							at0016,    -- Molluscum contagiosa
+							at0018,    -- Spots
+							at0019,    -- Folliculitis
+							at0020,    -- Papules
+							at0021,    -- Macules
+							at0022,    -- Pustules
+							at0023,    -- Papillomatosis
+							at0024,    -- Fissures
+							at0025,    -- Erosions
+							at0026,    -- Erythema
+							at0027,    -- Tumor
+							at0028,    -- Exanthem
+							at0029,    -- Lice
+							at0030,    -- Scabies
+							at0031,    -- Naevi
+							at0032]    -- Petechiae
+						}
+					}
+				}
+			}
+			ELEMENT[at0033] occurrences matches {0..1} matches {    -- Presence
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0034,    -- Present
+							at0036,    -- Indeterminate
+							at0035]    -- Absent
+						}
+					}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Alias
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Clinical description
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Body site
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0011] occurrences matches {0..*} matches {    -- Structured body site
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-CLUSTER\.anatomical_location_relative(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-CLUSTER\.anatomical_location_clock(-[a-zA-Z0-9_]+)*\.v0/}
+			}
+			allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {    -- Examination findings
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.dimensions(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype CLUSTER[at0005] occurrences matches {0..*} matches {    -- Multimedia representation
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.multimedia(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			ELEMENT[at0006] occurrences matches {0..*} matches {    -- Clinical interpretation
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0007] occurrences matches {0..1} matches {    -- Comment
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {    -- Examination not done
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.exclusion_exam(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Examination of a lesion">
+					description = <"Findings observed during the physical examination of an identified lesion. ">
+					comment = <"The lesion may appear on skin or mucosa.">
+				>
+				["at0001"] = <
+					text = <"Body site">
+					description = <"Identification of the body site under examination.">
+					comment = <"The body site could be on an area of skin or a mucous membrane, for example the right knee, palate or duodenum. If the body site has previously been identified in another archetype in which this archetype is nested, this data element becomes redundant.">
+				>
+				["at0002"] = <
+					text = <"Lesion type">
+					description = <"Identification of the type of lesion found on physical examination.">
+					comment = <"For example, mole, papilloma or depigmented area. ">
+				>
+				["at0003"] = <
+					text = <"Clinical description">
+					description = <"Narrative description of the overall findings observed during the physical examination.">
+				>
+				["at0004"] = <
+					text = <"Examination findings">
+					description = <"Structured details about the physical examination findings.">
+				>
+				["at0005"] = <
+					text = <"Multimedia representation">
+					description = <"Digital image, video or diagram representing the physical examination findings.">
+				>
+				["at0006"] = <
+					text = <"Clinical interpretation">
+					description = <"Single word, phrase or brief description that represents the clinical meaning and significance of the physical examination findings.">
+				>
+				["at0007"] = <
+					text = <"Comment">
+					description = <"Additional narrative about the physical examination findings, not captured in other fields.">
+				>
+				["at0008"] = <
+					text = <"Examination not done">
+					description = <"Details to explicitly record that this examination was not performed.">
+					comment = <"'Lesion' should be coded with a terminology, where possible.">
+				>
+				["at0011"] = <
+					text = <"Structured body site">
+					description = <"A structured anatomical location of the lesion.">
+					comment = <"If the body site has previously been identified in another archetype in which this archetype is then nested, this SLOT becomes redundant.">
+				>
+				["at0012"] = <
+					text = <"Alias">
+					description = <"Identification, by using a alias name, of the lesion to distinguish one lesion from similar lesions at the same body site.">
+					comment = <"For example, 'Mole #1' as marked on a diagram of the body site.">
+				>
+				["at0013"] = <
+					text = <"Warts">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Blister/Vesicles">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Ulcers/Sores">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Molluscum contagiosa">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Spots">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Folliculitis">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Papules">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Macules">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Pustules">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Papillomatosis">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Fissures">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Erosions">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Erythema">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Tumor">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Exanthem">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Lice">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Scabies">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Naevi">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Petechiae">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Presence">
+					description = <"True if the lesion type is not present.">
+				>
+				["at0034"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Indeterminate">
+					description = <"*">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Undersøkelse av en lesjon">
+					description = <"Beskrivelse av en lokalisert endring i normalutseende av hud eller slimhinne. ">
+					comment = <"*The lesion may appear on skin or mucosa.(en)">
+				>
+				["at0001"] = <
+					text = <"*Body site(en)">
+					description = <"*Identification of the body site under examination.(en)">
+					comment = <"*The body site could be on an area of skin or a mucous membrane, for example the right knee, palate or duodenum. If the body site has previously been identified in another archetype in which this archetype is nested, this data element becomes redundant.(en)">
+				>
+				["at0002"] = <
+					text = <"*Lesion type(en)">
+					description = <"*Identification of the type of lesion found on physical examination.(en)">
+					comment = <"*For example, mole, papilloma or depigmented area. (en)">
+				>
+				["at0003"] = <
+					text = <"*Clinical description(en)">
+					description = <"*Narrative description of the overall findings observed during the physical examination.(en)">
+				>
+				["at0004"] = <
+					text = <"*Examination findings(en)">
+					description = <"*Structured details about the physical examination findings.(en)">
+				>
+				["at0005"] = <
+					text = <"*Multimedia representation(en)">
+					description = <"*Digital image, video or diagram representing the physical examination findings.(en)">
+				>
+				["at0006"] = <
+					text = <"*Clinical interpretation(en)">
+					description = <"*Single word, phrase or brief description that represents the clinical meaning and significance of the physical examination findings.(en)">
+				>
+				["at0007"] = <
+					text = <"*Comment(en)">
+					description = <"*Additional narrative about the physical examination findings, not captured in other fields.(en)">
+				>
+				["at0008"] = <
+					text = <"*Examination not done(en)">
+					description = <"*Details to explicitly record that this examination was not performed.(en)">
+					comment = <"*'Lesion' should be coded with a terminology, where possible.(en)">
+				>
+				["at0011"] = <
+					text = <"*Structured body site(en)">
+					description = <"*A structured anatomical location of the lesion.(en)">
+					comment = <"*If the body site has previously been identified in another archetype in which this archetype is then nested, this SLOT becomes redundant.(en)">
+				>
+				["at0012"] = <
+					text = <"*Alias(en)">
+					description = <"*Identification, by using a alias name, of the lesion to distinguish one lesion from similar lesions at the same body site.(en)">
+					comment = <"*For example, 'Mole #1' as marked on a diagram of the body site.(en)">
+				>
+				["at0013"] = <
+					text = <"*Warts(en)">
+					description = <"**(en)">
+				>
+				["at0014"] = <
+					text = <"*Blister/Vesicles(en)">
+					description = <"**(en)">
+				>
+				["at0015"] = <
+					text = <"*Ulcers/Sores(en)">
+					description = <"**(en)">
+				>
+				["at0016"] = <
+					text = <"*Molluscum contagiosa(en)">
+					description = <"**(en)">
+				>
+				["at0018"] = <
+					text = <"*Spots(en)">
+					description = <"**(en)">
+				>
+				["at0019"] = <
+					text = <"*Folliculitis(en)">
+					description = <"**(en)">
+				>
+				["at0020"] = <
+					text = <"*Papules(en)">
+					description = <"**(en)">
+				>
+				["at0021"] = <
+					text = <"*Macules(en)">
+					description = <"**(en)">
+				>
+				["at0022"] = <
+					text = <"*Pustules(en)">
+					description = <"**(en)">
+				>
+				["at0023"] = <
+					text = <"*Papillomatosis(en)">
+					description = <"**(en)">
+				>
+				["at0024"] = <
+					text = <"*Fissures(en)">
+					description = <"**(en)">
+				>
+				["at0025"] = <
+					text = <"*Erosions(en)">
+					description = <"**(en)">
+				>
+				["at0026"] = <
+					text = <"*Erythema(en)">
+					description = <"**(en)">
+				>
+				["at0027"] = <
+					text = <"*Tumor(en)">
+					description = <"**(en)">
+				>
+				["at0028"] = <
+					text = <"*Exanthem(en)">
+					description = <"**(en)">
+				>
+				["at0029"] = <
+					text = <"*Lice(en)">
+					description = <"**(en)">
+				>
+				["at0030"] = <
+					text = <"*Scabies(en)">
+					description = <"**(en)">
+				>
+				["at0031"] = <
+					text = <"*Naevi(en)">
+					description = <"**(en)">
+				>
+				["at0032"] = <
+					text = <"*Petechiae(en)">
+					description = <"**(en)">
+				>
+				["at0033"] = <
+					text = <"*Presence(en)">
+					description = <"*True if the lesion type is not present.(en)">
+				>
+				["at0034"] = <
+					text = <"*Present(en)">
+					description = <"**(en)">
+				>
+				["at0035"] = <
+					text = <"*Absent(en)">
+					description = <"**(en)">
+				>
+				["at0036"] = <
+					text = <"*Indeterminate(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+	>
