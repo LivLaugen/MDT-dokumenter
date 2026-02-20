@@ -1,0 +1,84 @@
+archetype (adl_version=1.4; uid=267e667b-5b99-4de9-b446-64692d44bfd2)
+	openEHR-EHR-COMPOSITION.trajectory_summary.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"Bjørn Næss">
+				["organisation"] = <"DIPS AS">
+				["email"] = <"bna@dips.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2016-03-14">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Summerer opp informasjon innenfor et forløp. Forløpet kan være et pasientforløp, en henvisningsperiode eller andre avgrensede områder av pasientens journal.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Benyttes som et fast sammendrag av relevant informasjon om det aktuelle pasientforløpet.">
+			misuse = <"Benyttes ikke som sammendrag for behandlingsplan eller andre spesfikke kliniske prosesser. ">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Summarizes information within a process. The course can be a patient trajectory, a referral period or other process related areas of the patient's electronical health record.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Used to record a persistent summary of a given patient trajectoy. ">
+			misuse = <"Not used as a summary for care plan or other specific clinical processes.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"6714B13FA1B7DE49164106FFEB9E64A9">
+		["build_uid"] = <"c58f652b-06e0-49b9-80df-c5340c621725">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	COMPOSITION[at0000] matches {    -- Forløpssammendrag
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {
+					[openehr::431]
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Forløpssammendrag">
+					description = <"Summerer opp informasjon innenfor et forløp. Forløpet kan være et pasientforløp, en henvisningsperiode eller andre avgrensede områder av pasientens journa.">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Trajectory summary">
+					description = <"Summarizes information within a process. The course can be a patient trajectory, a referral period or other process related areas of the patient's electronical health record.">
+				>
+			>
+		>
+	>
