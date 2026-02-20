@@ -1,0 +1,88 @@
+archetype (adl_version=1.4; uid=989d85b2-78ab-4a8b-b84b-5d6de117cffb)
+	openEHR-EHR-ADMIN_ENTRY.pasientstatus_ous_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-04-01">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA / OUS HF">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Benyttes til pasienten sin status i et pasientforløp. ">
+			copyright = <"© OUS HF / DIPS ASA">
+			use = <"Benyttes til pasienten sin status i et pasientforløp. ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"9CCA2903A594195673F436731D155495">
+		["build_uid"] = <"b346b2e3-5aa0-47da-aded-2970f9e3ef71">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {    -- Pasientstatus ous dips
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..*} matches {    -- Status
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Benyttet statuskodeverk
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Kommentar
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pasientstatus ous dips">
+					description = <"Benyttes til pasienten sin status i et pasientforløp. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Status">
+					description = <"Tiltenkt strukturert status.">
+				>
+				["at0003"] = <
+					text = <"Kommentar">
+					description = <"Fritekstlig kommentar der hvor det er behov for dette.">
+				>
+				["at0004"] = <
+					text = <"Benyttet statuskodeverk">
+					description = <"Strukturert beskrivelse av hvilket kodeverk som er benyttet i statusfeltet.">
+				>
+			>
+		>
+	>
