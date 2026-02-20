@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=1be504c3-6d5c-4ac5-b7c4-86f9862ed873)
+﻿archetype (adl_version=1.4; uid=c1665474-ff4a-4ff2-ab22-f2c8661c3589)
 	openEHR-EHR-EVALUATION.contraindication.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Contraindication
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -16,21 +15,17 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"14-11-2012">
 		["name"] = <"Heather Leslie">
 		["organisation"] = <"Ocean Informatics">
 		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"14-11-2012">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Fatima Almeida, Critical SW, Portugal","Tomas Alme, DIPS, Norway","Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Koray Atalag, University of Auckland, New Zealand","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","Lars Bitsch-Larsen, Haukeland University hospital, Norway","Randi Brendberg, Helse Nord RHF, Norway","Hanne Marte Bårholm, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Hildegard Franke, freshEHR Clinical Informatics Ltd., United Kingdom","Heather Grain, Llewelyn Grain Informatics, Australia","Mikkel Johan Gaup Grønmo, Helse Nord IKT, Norway (Nasjonal IKT redaktør)","Sam Heard, Ocean Informatics, Australia","Evelyn Hovenga, EJSH Consulting, Australia","Karl Trygve Kalleberg, Oslo Universitetssykehus, Norway","Lars Karlsen, DIPS ASA, Norway","Kanika Kuwelker, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","Hildegard McNicoll, freshEHR Clinical Informatics Ltd., United Kingdom","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Per Meinich, Helse Sør-Øst RHF, Norway","Christine Mikalsen, Regional forvaltning EPJ, Norway","Lars Morgan Karlsen, DIPS ASA, Norway","Bjørn Næss, DIPS ASA, Norway","Andrej Orel, Marand d.o.o., Slovenia","Stein Arne Rimehaug, Sunnaas sykehus, Norway","Terje Sagmyr, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","John Tore Valand, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)">
 	details = <
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere en kontraindikasjon for en klinisk intervensjon (for eksempel - men ikke begrenset til, en behandling, en prøve eller prosedyre) som ikke må utføres på pasienten på grunn av sannsynlighet eller mulighet for at individet kan påføres skade.">
-			keywords = <"forebygge","unngå","uønsket hendelse","forsiktighet","advarsel">
 			use = <"Brukes for å registrere en kontraindikasjon for en klinisk intervensjon i journalen på grunn av sannsynlighet eller mulighet for at individet kan påføres skade om intervensjonen utføres.
 
 Denne arketypen kan også brukes å opprette en kontraindikasjon for en klinisk intervensjon i journalen til en pasient også i tilfeller hvor den uønskede kliniske effekten kan påføre andre skade og ikke direkte pasienten selv. For eksempel: Administrasjon av levende vaksiner bør registreres som en kontraindikasjon hos et individ som har familiemedlemmer som er immunosupprimert eller som er i en aktiv immunosupprimerende behandling fordi dette familiemedlemmet kan ha en stor risiko for å få en infeksjonssykdom.
@@ -44,6 +39,7 @@ Kontraindikasjonen kan angis på en rekke måter, for eksempel:
 - Ugunstig effekt av liknende behandling, legemiddel eller prosedyre hos familiemedlemmer.
 
 I tilfeller som omhandler legemidler eller vaksiner vil denne arketypen supplere arketypen EVALUATION.adverse_reaction_risk (Risiko for overfølsomhetsreaksjon) ved å angi andre årsaker til at et legemiddel eller en vaksine ikke bør administreres, utover overfølsomhetsreaksjoner. I lys av dette bør klinisk beslutningsstøtte for ordinering inneholde en referanse til denne arketypen samt arketypen EVALUATION.adverse_reaction_risk som en del av en trygg ordineringsprosess.">
+			keywords = <"forebygge", "unngå", "uønsket hendelse", "forsiktighet", "advarsel">
 			misuse = <"Brukes ikke for å registrere forekomst av en overfølsomhetsreaksjon knyttet til en substans eller agens. EVALUATION.adverse_reaction_risk (Risiko for overfølsomhetsreaksjon) er en veldig spesifikk type kontraindikasjon, og på grunn av dens allestedsnærværende bruk i journalsystemer er modellert som en egen arketype. 
 
 Brukes ikke for å registrere en tilstand hos et individ som er klinisk signifikant og unikt for dette individet og som er vurdert som viktig informasjon for å gjøre valg om behandling. Bruk arketypen EVALUATION.precaution (Forholdsregel) for dette.
@@ -53,8 +49,6 @@ Brukes ikke til å registrere individets personlige preferanser. Bruk spesifikke
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record a contraindication for a clinical intervention (including, but not limited to, a treatment, test or procedure) that should not be carried out due to the likelihood, or possibility, of harm being caused to an individual.">
-			keywords = <"contraindication","prevent","avoid","adverse event","caution","alert","warning">
-			copyright = <"© openEHR Foundation">
 			use = <"To record a contraindication for a clinical intervention in the health record of an individual due to the likelihood, or possibility, of causing harm to the individual if the identified intervention is carried out. 
 
 This archetype may also be used to record a contraindication for a clinical intervention in the health record of the individual, even though the resulting clinical effect may cause harm to others and not directly on the individual. For example: administration of live vaccines should be contraindicated in an individual who has a family member in an immunosuppressed state or actively taking immunosuppressive therapy, as that family member may be at significant risk of contracting the infectious disease. 
@@ -68,23 +62,27 @@ This contraindication may be identified in a number of ways including, but not l
 - adverse experience by a family member to a similar treatment, medication or procedure.
 
 In the case of medications or vaccines, this archetype complements the EVALUATION.adverse_reaction_risk archetype by identifying other reasons why a medication or vaccine should not be administered, other than an adverse reaction. In view of this, clinical decision support for prescribing should include reference to this archetype plus the EVALUATION.adverse_reaction_risk as part of a safe prescribing process.">
+			keywords = <"contraindication", "prevent", "avoid", "adverse event", "caution", "alert", "warning">
 			misuse = <"Not to be used to record the occurrence of an adverse reaction to a substance or agent. Adverse reaction risk is a very specific type of contradiction and because of its ubiquity has been modelled separately as EVALUATION.adverse_reaction_risk for this purpose.
 
 Not to be used to record a condition or state of the individual that is clinically significant and unique or idiosyncratic for this individual, and is considered vital information when making treatment decisions. Use EVALUATION.precaution for this purpose.
 
 Not to be used to record personal preferences of the individual. Use specific archetypes for this purpose.">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Fatima Almeida, Critical SW, Portugal", "Tomas Alme, DIPS, Norway", "Vebjørn Arntzen, Oslo University Hospital, Norway", "Koray Atalag, University of Auckland, New Zealand", "Silje Ljosland Bakke, Nasjonal IKT HF, Norway (openEHR Editor)", "Lars Bitsch-Larsen, Haukeland University hospital, Norway", "Hildegard Franke, freshEHR Clinical Informatics Ltd., United Kingdom", "Heather Grain, Llewelyn Grain Informatics, Australia", "Sam Heard, Ocean Informatics, Australia", "Evelyn Hovenga, EJSH Consulting, Australia", "Lars Karlsen, DIPS ASA, Norway", "Lars Morgan Karlsen, DIPS ASA, Norway", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "Hildegard McNicoll, freshEHR Clinical Informatics Ltd., United Kingdom", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Bjoern Naess, DIPS ASA, Norway", "Bjørn Næss, DIPS ASA, Norway", "Andrej Orel, Marand d.o.o., Slovenia", "John Tore Valand, Helse Bergen, Norway">
 	other_details = <
-		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
 		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"15B1E4DC198C395C7F38F2B4C95F565F">
-		["build_uid"] = <"cc205a9a-9b32-44c3-8b89-c6eb077a8ae4">
-		["revision"] = <"1.0.1">
+		["MD5-CAM-1.0.1"] = <"5DA20010F4C4E40F5C5B5342334000E4">
+		["build_uid"] = <"036eb903-b22d-4443-9fc5-e30e46c27883">
+		["revision"] = <"1.1.2">
 	>
 
 definition
@@ -178,6 +176,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
