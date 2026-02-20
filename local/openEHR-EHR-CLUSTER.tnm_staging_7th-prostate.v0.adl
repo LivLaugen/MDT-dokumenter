@@ -1,0 +1,584 @@
+archetype (adl_version=1.4; uid=dce30c6d-c562-4c7b-971d-a54c29c782db)
+	openEHR-EHR-CLUSTER.tnm_staging_7th-prostate.v0
+specialize
+	openEHR-EHR-CLUSTER.tnm_staging_7th.v1
+
+concept
+	[at0000.1]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Kristin Eik">
+				["organisation"] = <"Kreftregisteret">
+				["email"] = <"Kristin.Eik@kreftregisteret.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"27/07/2009">
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics Scotland">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Heather Leslie Ocean Informatics Australia","Sam Heard Ocean Informatics Australia","Koray Atalag, University of Auckland, New Zealand">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Beskrive klassifikasjon og gradering av prostatakreft ved å benytte TNM klassifikasjon 7. utgave.">
+			keywords = <"Tumor","TNM","Malignitet","Kreft","Klassifisering","Klassifikasjon","Grad","Gradering","Stadium","Lymfeknute","Metastase","Prostata">
+			misuse = <"Bør normalt ikke benyttes til TNM klassifikasjon uten spesialtilpasning eller templat-begrensninger.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the classification and grading of prostate cancer using the TNM classification 7th Edition.">
+			keywords = <"tumour","TNM","malignancy","cancer","staging","classification","grade","grading","stage","lymph node","metastasis","prostate">
+			copyright = <"© copyright (c) 2010 openEHR foundation, Nasjonal IKT HF">
+			misuse = <"Should not normally be used for TNM classification without specialisation or template-constraints">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Sobin LH. TNM Classification of Malignant Tumours 7th Edition.  John Wiley and Sons; 2009.">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"C2D4A59E54CECF2E3C6DF85557C1147D">
+		["build_uid"] = <"016f345b-5b16-4abd-9153-da0797a8c151">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000.1] matches {    -- Tumour - Prostate Cancer TNM staging 7th Edition
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Primary tumour (T)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.46,    -- TX
+							at0.47,    -- T0
+							at0.48,    -- T1
+							at0.49,    -- T1a
+							at0.50,    -- T1b
+							at0.51,    -- T1c
+							at0.59,    -- T2
+							at0.60,    -- T2a
+							at0.61,    -- T2b
+							at0.62,    -- T2c
+							at0.63,    -- T3
+							at0.64,    -- T3a
+							at0.65,    -- T3b
+							at0.66]    -- T4
+						}
+					}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Regional lymph nodes (N)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.52,    -- NX
+							at0.53,    -- N0
+							at0.54]    -- N1
+						}
+					}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Distant metastasis (M)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.55,    -- M0
+							at0.56,    -- M1a
+							at0.57,    -- M1b
+							at0.58,    -- M1c
+							at0.67]    -- MX
+						}
+					}
+				}
+			}
+			ELEMENT[at0025] occurrences matches {0..1} matches {    -- Residual tumour (R)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.72,    -- RX
+							at0.73,    -- R0
+							at0.74,    -- R1
+							at0.75]    -- R2
+						}
+					}
+				}
+			}
+			ELEMENT[at0046] occurrences matches {0..1} matches {    -- Histopathological grading (G)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0047,    -- GX
+							at0048,    -- G1
+							at0049,    -- G2
+							at0050,    -- G3
+							at0051]    -- G4
+						}
+					}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Overall staging
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0052] occurrences matches {0..1} matches {    -- Descriptors
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0053] occurrences matches {0..*} matches {    -- Descriptor
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0014] occurrences matches {0..1} matches {    -- Stage grouping
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.68,    -- Stage I
+							at0.69,    -- Stage II
+							at0.70,    -- Stage III
+							at0.71]    -- Stage IV
+						}
+					}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Comment
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.46"] = <
+					text = <"TX">
+					description = <"Primary tumour cannot be assessed.">
+				>
+				["at0.47"] = <
+					text = <"T0">
+					description = <"No evidence of primary tumour">
+				>
+				["at0.48"] = <
+					text = <"T1">
+					description = <"T1 - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.49"] = <
+					text = <"T1a">
+					description = <"T1a - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.50"] = <
+					text = <"T1b">
+					description = <"T1b - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.51"] = <
+					text = <"T1c">
+					description = <"T1c - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.52"] = <
+					text = <"NX">
+					description = <"Regional lymph nodes not sampled.">
+				>
+				["at0.53"] = <
+					text = <"N0">
+					description = <"No positive regional nodes.">
+				>
+				["at0.54"] = <
+					text = <"N1">
+					description = <"Metastasis in regional node(s).">
+				>
+				["at0.55"] = <
+					text = <"M0">
+					description = <"No distant metastasis.">
+				>
+				["at0.56"] = <
+					text = <"M1a">
+					description = <"M1a - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.57"] = <
+					text = <"M1b">
+					description = <"M1b - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.58"] = <
+					text = <"M1c">
+					description = <"M1c - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.59"] = <
+					text = <"T2">
+					description = <"T2 - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.60"] = <
+					text = <"T2a">
+					description = <"T2a - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.61"] = <
+					text = <"T2b">
+					description = <"T2b - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.62"] = <
+					text = <"T2c">
+					description = <"T2c - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.63"] = <
+					text = <"T3">
+					description = <"T3 - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.64"] = <
+					text = <"T3a">
+					description = <"T3a - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.65"] = <
+					text = <"T3b">
+					description = <"T3b - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.66"] = <
+					text = <"T4">
+					description = <"T4 - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.67"] = <
+					text = <"MX">
+					description = <"Distant metastasis not assessed.">
+				>
+				["at0.68"] = <
+					text = <"Stage I">
+					description = <"Stage I - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.69"] = <
+					text = <"Stage II">
+					description = <"Stage II - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.70"] = <
+					text = <"Stage III">
+					description = <"Stage III - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.71"] = <
+					text = <"Stage IV">
+					description = <"Stage IV - as defined by AJCC/UICC TNM system (7th edition) Prostate cancer.">
+				>
+				["at0.72"] = <
+					text = <"RX">
+					description = <"RX - Residual tumour not assessed.">
+				>
+				["at0.73"] = <
+					text = <"R0">
+					description = <"Residual tumour absent.">
+				>
+				["at0.74"] = <
+					text = <"R1">
+					description = <"Microscopic residual tumour present.">
+				>
+				["at0.75"] = <
+					text = <"R2">
+					description = <"Macroscopic residual tumour present.">
+				>
+				["at0000"] = <
+					text = <"Tumour - TNM Cancer staging 7th Edition">
+					description = <"A framework for the classification and grading of malignancies using the TNM classification system 7th Edition.">
+				>
+				["at0000.1"] = <
+					text = <"Tumour - Prostate Cancer TNM staging 7th Edition">
+					description = <"For the classification and grading of prostate cancer using the TNM classification 7th Edition.">
+				>
+				["at0003"] = <
+					text = <"Primary tumour (T)">
+					description = <"Assessment of the primary tumour.">
+				>
+				["at0004"] = <
+					text = <"Regional lymph nodes (N)">
+					description = <"Assessment of the regional lymph nodes.">
+				>
+				["at0005"] = <
+					text = <"Distant metastasis (M)">
+					description = <"Assessment of distant metastasis.">
+				>
+				["at0010"] = <
+					text = <"Overall staging">
+					description = <"The overall staging derived from each T, N and M component e.g T1aM0NX. May include additional TNM descriptors.">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"A text comment on the staging.">
+				>
+				["at0014"] = <
+					text = <"Stage grouping">
+					description = <"The TNM Stage grouping.">
+				>
+				["at0025"] = <
+					text = <"Residual tumour (R)">
+					description = <"Assessment of post-treatment residual tumour.">
+				>
+				["at0046"] = <
+					text = <"Histopathological grading (G)">
+					description = <"TNM histopathological grading classification. ">
+				>
+				["at0047"] = <
+					text = <"GX">
+					description = <"Grade of differentiation cannot be assessed.">
+				>
+				["at0048"] = <
+					text = <"G1">
+					description = <"Well differentiated.">
+				>
+				["at0049"] = <
+					text = <"G2">
+					description = <"Moderately differentiated.">
+				>
+				["at0050"] = <
+					text = <"G3">
+					description = <"Poorly differentiated.">
+				>
+				["at0051"] = <
+					text = <"G4">
+					description = <"Undifferentiated.">
+				>
+				["at0052"] = <
+					text = <"Descriptors">
+					description = <"Additional tumour specific TNM descriptors.">
+				>
+				["at0053"] = <
+					text = <"Descriptor">
+					description = <"Additional tumour specific TNM descriptor.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0.46"] = <
+					text = <"TX">
+					description = <"Primærtumor kan ikke vurderes">
+				>
+				["at0.47"] = <
+					text = <"T0">
+					description = <"Primærtumor ikke påvist">
+				>
+				["at0.48"] = <
+					text = <"T1">
+					description = <"Klinisk ingen tumor som er palpabel eller synlig på bilde">
+				>
+				["at0.49"] = <
+					text = <"T1a">
+					description = <"Tumor tilfeldig histologisk funnet i 5% eller mindre av fjernet vev">
+				>
+				["at0.50"] = <
+					text = <"T1b">
+					description = <"Tumor tilfeldig histologisk funnet i mer enn 5% av fjernet vev">
+				>
+				["at0.51"] = <
+					text = <"T1c">
+					description = <"Tumor identifisert ved nålebiopsi (f.eks. på grunn av forhøyet PSA)">
+				>
+				["at0.52"] = <
+					text = <"NX">
+					description = <"NX - Regionale lymfeknuter kan ikke vurderes
+pNX - Regionale lymfeknuter ikke funnet">
+				>
+				["at0.53"] = <
+					text = <"N0">
+					description = <"N0 - Ingen metastase til regionale lymfeknuter
+pN0 - Ingen positive lymfeknuter">
+				>
+				["at0.54"] = <
+					text = <"N1">
+					description = <"N1 - Metastase til regional(e) lymfeknute(r)
+pN1 - Metastase til regional(e) knute(r)">
+				>
+				["at0.55"] = <
+					text = <"M0">
+					description = <"Ingen fjernmetastase">
+				>
+				["at0.56"] = <
+					text = <"M1a">
+					description = <"Ikke-regional(e) lymfeknute(r)">
+				>
+				["at0.57"] = <
+					text = <"M1b">
+					description = <"Skjelett">
+				>
+				["at0.58"] = <
+					text = <"M1c">
+					description = <"Andre steder med eller uten sykdom i skjelettet">
+				>
+				["at0.59"] = <
+					text = <"T2">
+					description = <"T2 - Tumor begrenset innen prostata. (Tumor funnet i en eller begge lapper ved nålebiopsi, men ikke palpabel eller synlig på bilde, klassifiseres som T1c)
+pT2 - Begrenset til organ">
+				>
+				["at0.60"] = <
+					text = <"T2a">
+					description = <"T2a - Tumor involverer halvdelen av en lapp eller mindre
+pT2a - Unilateral, halvdelen av en side eller mindre">
+				>
+				["at0.61"] = <
+					text = <"T2b">
+					description = <"T2b - Tumor involverer mer enn halvdelen av en lapp men ikke begge lapper
+pT2b - Unilateral, involverer mer enn halvdelen av siden, men ikke begge sider">
+				>
+				["at0.62"] = <
+					text = <"T2c">
+					description = <"T2c - Tumor involverer begge lapper
+pT2c - Bilateral sykdom">
+				>
+				["at0.63"] = <
+					text = <"T3">
+					description = <"T3 - Tumor strekker seg gjennom prostata-kapselen (Infiltrasjon til prostatisk apex eller inn i (men ikke utover) den prostatiske kapsel klassifiseres som T2, ikke som T3)
+pT3 - Ekstraprostatisk ekstensjon">
+				>
+				["at0.64"] = <
+					text = <"T3a">
+					description = <"T3a - Ekstrakapsulær ekstensjon (unilateral eller bilateral)
+pT3a - Ekstraprostatisk ekstensjon eller mikroskopisk infiltrasjon av blærehals (Tumorinfiltrasjon i reseksjonsrand bør beskrives som R1 (mikroskopisk resttumor)">
+				>
+				["at0.65"] = <
+					text = <"T3b">
+					description = <"T3b - Tumor invaderer sædblæren(e)
+pT3b - Infiltrasjon av sædblære">
+				>
+				["at0.66"] = <
+					text = <"T4">
+					description = <"T4 - Tumor er fast og invaderer nærliggende strukturer, andre enn sædblærene, som ekstern sfinkter, rektum, blære, levator muskel, og/eller bekkenvegg
+pT4 - Infiltrasjon av rektum, levator muskel og/eller bekkenvegg">
+				>
+				["at0.67"] = <
+					text = <"MX">
+					description = <"Fjernmetastase kan ikke vurderes.">
+				>
+				["at0.68"] = <
+					text = <"Stadium I">
+					description = <"T1a–c N0 M0
+T2a N0 M0
+T1–2a N0 M0">
+				>
+				["at0.69"] = <
+					text = <"Stadium II">
+					description = <"Stadium IIA 
+T1a–c N0 M0
+T1a–c N0 M0
+T2a N0 M0
+T2b N0 M0
+T2b N0 M0
+
+Stadium IIB 
+T2c N0 M0
+T1–2 N0 M0
+T1–2 N0 M0
+">
+				>
+				["at0.70"] = <
+					text = <"Stadium III">
+					description = <"T3a–b N0 M0">
+				>
+				["at0.71"] = <
+					text = <"Stadium IV">
+					description = <"T4 N0 M0
+Enhver T N1 M0
+Enhver T Enhver N M1">
+				>
+				["at0.72"] = <
+					text = <"RX">
+					description = <"Resttumor kan ikke vurderes">
+				>
+				["at0.73"] = <
+					text = <"R0">
+					description = <"Ingen resttumor">
+				>
+				["at0.74"] = <
+					text = <"R1">
+					description = <"Mikroskopisk resttumor">
+				>
+				["at0.75"] = <
+					text = <"R2">
+					description = <"Makroskopisk resttumor">
+				>
+				["at0000"] = <
+					text = <"*Tumour - TNM Cancer staging 7th Edition(en)">
+					description = <"*A framework for the classification and grading of malignancies using the TNM classification system 7th Edition.(en)">
+				>
+				["at0000.1"] = <
+					text = <"Tumor - TNM-klassifisering 7.utgave av prostatakreft">
+					description = <"Klassifikasjon og gradering av prostatakreft ved å benytte TNM klassifikasjon 7.utgave.">
+				>
+				["at0003"] = <
+					text = <"Primærtumor (T)">
+					description = <"Vurdering av primærtumor">
+				>
+				["at0004"] = <
+					text = <"Regionale lymfeknuter (N)">
+					description = <"Vurdering av regionale lymfeknuter">
+				>
+				["at0005"] = <
+					text = <"Fjernmetastaser (M)">
+					description = <"Vurdering av fjernmetastase">
+				>
+				["at0010"] = <
+					text = <"Total klassifisering">
+					description = <"Den totale klassifisering som er avledet fra hver T, N og M komponent f.eks T1aNXM0. Kan inkludere ekstra TNM-deskriptorer.">
+				>
+				["at0012"] = <
+					text = <"Kommentar">
+					description = <"Kommentar til klassifiseringen">
+				>
+				["at0014"] = <
+					text = <"Gruppering av stadium">
+					description = <"TNM gruppering av stadium">
+				>
+				["at0025"] = <
+					text = <"Resttumor (R)">
+					description = <"Vurdering av resttumor etter behandling">
+				>
+				["at0046"] = <
+					text = <"Histopatologisk differensieringsgrad (G)">
+					description = <"TNM klassifikasjon av histopatologisk differensieringsgrad">
+				>
+				["at0047"] = <
+					text = <"GX">
+					description = <"Differensieringsgrad kan ikke vurderes.">
+				>
+				["at0048"] = <
+					text = <"G1">
+					description = <"Høyt differensiert">
+				>
+				["at0049"] = <
+					text = <"G2">
+					description = <"Moderat/middels differensiert">
+				>
+				["at0050"] = <
+					text = <"G3">
+					description = <"Lite/lavt differensiert">
+				>
+				["at0051"] = <
+					text = <"G4">
+					description = <"Udifferensiert">
+				>
+				["at0052"] = <
+					text = <"Deskriptorer">
+					description = <"Ekstra tumorspesifikke TNM-deskriptorer">
+				>
+				["at0053"] = <
+					text = <"Deskriptor">
+					description = <"Ekstra tumorspesifikk TNM-deskriptor">
+				>
+			>
+		>
+	>
