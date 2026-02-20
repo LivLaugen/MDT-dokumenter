@@ -1,0 +1,552 @@
+archetype (adl_version=1.4; uid=6052dcd6-0690-436e-a2cc-5a0a6f7de50b)
+	openEHR-EHR-OBSERVATION.sexual_activity.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2015-11-13">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus","Heather Leslie, Ocean Informatics, Australia">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Foreløpig arketype for Olafiaklinikken, Oslo universitetssykehus. Knyttet til et individs seksuelle aktivitet sett i relasjon til SOI.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Hensikten med arketypen er å kunne registrere data knyttet til et individs seksuelle aktivitet i en gitt periode. Dette kan brukes i en anamnese for individer som oppsøker helsetjenesten enten med en mistanke om en seksuelt overførbar infeksjon (SOI), eller brukes i en rådgivning. Informasjonselementene gir god anledning til å gjøre en evaluering av et individs risikoprofil knyttet til SOI.">
+			misuse = <"Her må det utarbeides noe tekst, når vi får erfaring med arketypen.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Preliminary archetype for use in Olafia Clinic, Oslo University Hospital. Deals with sexual actiivt for an individual in a given time.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"To be used to register data related to sexual activity for an individ in a given time. Information registred can be used in a history/story taking in a health clinic for individuals that suspects a Sexual Transmitted Infection (STI) or as a background for advisory consultation.
+
+Information elements are well suitable for a risk assessment for STI related to the individuals behavoiour.
+">
+			misuse = <"Text will be provided later.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"11DE56F15B832B456288A8E8CE6955F9">
+		["build_uid"] = <"bd755c7c-2b5d-43f7-bfac-b71185d398ab">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Sexual activity
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0009] occurrences matches {0..1} matches {    -- Sexually active
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0022,    -- Yes
+													at0023,    -- No
+													at0024]    -- Unsure
+												}
+											}
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {    -- If unsure, specify
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..*} matches {    -- Types of sex
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0027,    -- Vaginal
+													at0028,    -- Oral
+													at0026]    -- Anal
+												}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {    -- Number of partners
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..*} matches {    -- Genders of sex partners
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0046] occurrences matches {0..1} matches {    -- Description to partner gender
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {    -- Number of transmale partners
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {    -- Number of transfemale partners
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {    -- Number of male partners
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {    -- Number of female partners
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {    -- Number of transgender partners
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+									ELEMENT[at0036] occurrences matches {0..1} matches {    -- Had sex with sexworker
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0037,    -- Yes
+													at0038,    -- No
+													at0039]    -- Not sure
+												}
+											}
+										}
+									}
+									ELEMENT[at0044] occurrences matches {0..*} matches {    -- Risk factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0041] occurrences matches {0..1} matches {    -- Have you received money for sex?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0042,    -- Yes
+													at0043]    -- No
+												}
+											}
+										}
+									}
+									allow_archetype CLUSTER[at0021] occurrences matches {0..*} matches {    -- Sexual partners
+										include
+											archetype_id/value matches {/.*/}
+									}
+									ELEMENT[at0040] occurrences matches {0..*} matches {    -- Sex partner(s) have been from
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0045] occurrences matches {0..*} matches {    -- Sex partner(s) have been from (nationality)
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+					POINT_EVENT[at0004] occurrences matches {0..1} matches {    -- Last unprotected sex
+						data matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]
+						}
+					}
+					INTERVAL_EVENT[at0005] occurrences matches {0..1} matches {    -- 1 month
+						width matches {
+							DV_DURATION matches {
+								value matches {P1M}
+							}
+						}
+						data matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]
+						}
+					}
+					INTERVAL_EVENT[at0006] occurrences matches {0..1} matches {    -- 3 months
+						width matches {
+							DV_DURATION matches {
+								value matches {P3M}
+							}
+						}
+						data matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]
+						}
+					}
+					INTERVAL_EVENT[at0007] occurrences matches {0..1} matches {    -- 6 months
+						width matches {
+							DV_DURATION matches {
+								value matches {P6M}
+							}
+						}
+						data matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]
+						}
+					}
+					INTERVAL_EVENT[at0008] occurrences matches {0..1} matches {    -- 12 months
+						width matches {
+							DV_DURATION matches {
+								value matches {P12M}
+							}
+						}
+						data matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Seksuell aktivitet">
+					description = <"Arketype for opplysninger om et individs seksuelle aktivitet i en gitt periode.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Uspesifisert hendelse">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Siste ubeskyttede sex">
+					description = <"Dato når individet hadde sex uten smittebarriere.">
+				>
+				["at0005"] = <
+					text = <"1 måned">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"3 måned">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"6 måned">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"12 måned">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Seksuelt aktiv">
+					description = <"Seksuelt aktiv per registreringstidspunkt.">
+				>
+				["at0011"] = <
+					text = <"Antall partnere">
+					description = <"Antall partnere i gitt periode.">
+				>
+				["at0012"] = <
+					text = <"Sexpartneres kjønn">
+					description = <"Kjønn til partner.">
+				>
+				["at0017"] = <
+					text = <"Antall transmannlige partnere">
+					description = <"Antall transmannlige partnere.">
+				>
+				["at0018"] = <
+					text = <"Antall transkvinnelige partnere">
+					description = <"Antall transkvinnelige partnere.">
+				>
+				["at0019"] = <
+					text = <"Antall mannlige partnere">
+					description = <"Antall mannlige partnere.">
+				>
+				["at0020"] = <
+					text = <"Antall kvinnelige partnere">
+					description = <"Antall kvinnelige partnere.">
+				>
+				["at0021"] = <
+					text = <"Seksualpartnere">
+					description = <"SLOT for detaljerte opoplysninger om seksualpartnere.">
+				>
+				["at0022"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Usikker">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Typer sex">
+					description = <"Type samleie.">
+				>
+				["at0026"] = <
+					text = <"Anal (endetarm)">
+					description = <"Analt samleie">
+				>
+				["at0027"] = <
+					text = <"Vaginal (skjede)">
+					description = <"Vaginalt samleie">
+				>
+				["at0028"] = <
+					text = <"Oral (munn)">
+					description = <"Oralsex">
+				>
+				["at0029"] = <
+					text = <"Hvis usikker, spesifiser">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0035"] = <
+					text = <"Antall transpartnere">
+					description = <"Antall transpartnere.">
+				>
+				["at0036"] = <
+					text = <"Sex med sexarbeider">
+					description = <"Om individet har kjøpt sex.">
+				>
+				["at0037"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"Usikker">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"Sexpartnere har vært fra">
+					description = <"Grov geografisk plassering av hvor individets seksualpartnere har vært fra.">
+					comment = <"For eksempel: Skandinavia, Vest-Europa, Afrika, etc.">
+				>
+				["at0041"] = <
+					text = <"Har du motatt betaling for sex?">
+					description = <"Om individet har mottatt betaling for sex.">
+				>
+				["at0042"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0044"] = <
+					text = <"Risikofaktorer">
+					description = <"Risikofaktorer knyttet til adferd og risiko for SOI.">
+				>
+				["at0045"] = <
+					text = <"Sexpartnere har vært fra (nasjonalitet)">
+					description = <"Nøyaktig geografisk plassering av hvor individets seksualpartnere har vært fra.">
+					comment = <"Koding med offisell landskode anbefales.">
+				>
+				["at0046"] = <
+					text = <"Beskrivelse til sexpartners kjønn">
+					description = <"Fritekstlig beskrivelse av partners kjønn, dersom nødvendig.">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sexual activity">
+					description = <"Archetype for information regarding the sexual activity for an individual in a given time period.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Last unprotected sex">
+					description = <"Date of sexual intercourse with no use of barrier.">
+				>
+				["at0005"] = <
+					text = <"1 month">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"3 months">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"6 months">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"12 months">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Sexually active">
+					description = <"Currently sexual active?">
+				>
+				["at0011"] = <
+					text = <"Number of partners">
+					description = <"Number of partners.">
+				>
+				["at0012"] = <
+					text = <"Genders of sex partners">
+					description = <"Gender of sex partners.">
+				>
+				["at0017"] = <
+					text = <"Number of transmale partners">
+					description = <"Number of transmale partners.">
+				>
+				["at0018"] = <
+					text = <"Number of transfemale partners">
+					description = <"Number of transfemale sex partners.">
+				>
+				["at0019"] = <
+					text = <"Number of male partners">
+					description = <"Number of male sex partners.">
+				>
+				["at0020"] = <
+					text = <"Number of female partners">
+					description = <"Number of female sex partners.">
+				>
+				["at0021"] = <
+					text = <"Sexual partners">
+					description = <"SLOT for detailed information on sexual partners.">
+				>
+				["at0022"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Unsure">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Types of sex">
+					description = <"Type of sexual intercourse.">
+				>
+				["at0026"] = <
+					text = <"Anal">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Vaginal">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Oral">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"If unsure, specify">
+					description = <"Decription will be made later.">
+				>
+				["at0035"] = <
+					text = <"Number of transgender partners">
+					description = <"Number of transgender partners.">
+				>
+				["at0036"] = <
+					text = <"Had sex with sexworker">
+					description = <"Individ has paid for sex.">
+				>
+				["at0037"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"Not sure">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"Sex partner(s) have been from">
+					description = <"Imprecise geographical area of sexual partners origin.">
+					comment = <"E.g. Scandinavia, South-America, Vestern Europe, etc.">
+				>
+				["at0041"] = <
+					text = <"Have you received money for sex?">
+					description = <"Individ has recieved payment for sex.">
+				>
+				["at0042"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0044"] = <
+					text = <"Risk factors">
+					description = <"Risk factors.">
+					comment = <"E.g. risk factors related to drug use, erectile products, behaviour, etc.">
+				>
+				["at0045"] = <
+					text = <"Sex partner(s) have been from (nationality)">
+					description = <"Name of country of sexual partners origin.">
+					comment = <"Official code of country is recommended.">
+				>
+				["at0046"] = <
+					text = <"Description to partner gender">
+					description = <"Narrative description to sex partners gender, if needed.">
+				>
+			>
+		>
+	>
