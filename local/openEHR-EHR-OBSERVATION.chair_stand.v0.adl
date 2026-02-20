@@ -1,0 +1,253 @@
+archetype (adl_version=1.4; uid=c13442d0-8041-40a5-83be-03e735b9b59d)
+	openEHR-EHR-OBSERVATION.chair_stand.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2022-08-10">
+		["name"] = <"Kanika Kuwelker">
+		["organisation"] = <"Helse Vest IKT">
+		["email"] = <"kanika.kuwelker@helse-vest-ikt.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to redcord measures during chair stand/sit-to-stand tests.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"5125A29460FF00C36A15C7C3F0DB9468">
+		["build_uid"] = <"30b1dded-569f-4db0-9ef5-96a18dfee933">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Chair stand
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Time
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"s">
+														magnitude = <|>=0.0|>
+														precision = <|2|>
+													>
+													["2"] = <
+														units = <"min">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {    -- Repititions
+										value matches {
+											DV_QUANTITY matches {*}
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {    -- Clinical description
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {    -- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0022] matches {    -- Item tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0023] occurrences matches {0..1} matches {    -- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {    -- Assistive device
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0018,    -- Ankle-foot orthosis
+													at0019,    -- Cane
+													at0020,    -- Crutch
+													at0021]    -- Walker/rollator
+												}
+											}
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0006] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- Height chair
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::122]>
+								list = <
+									["1"] = <
+										units = <"cm">
+									>
+									["2"] = <
+										units = <"m">
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Support
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0009,    -- Yes
+									at0010]    -- No
+								}
+							}
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Specific protocol
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0024] occurrences matches {0..1} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Chair stand">
+					description = <"Chair stand">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Time">
+					description = <"The time used to execute the task.
+">
+					comment = <"The time can either be predefined or manually recorded after the task.
+For exampel: 30-Second Chair Stand test where the time is set to 30 seconds.">
+				>
+				["at0005"] = <
+					text = <"Repititions">
+					description = <"The number of repititions executed during the task.">
+				>
+				["at0006"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0007"] = <
+					text = <"Height chair">
+					description = <"The height of the chair used during the task.">
+				>
+				["at0008"] = <
+					text = <"Support">
+					description = <"Support from armrests.">
+				>
+				["at0009"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Specific protocol">
+					description = <"The context or method for the recording.">
+					comment = <"For example: Used standardised protocols when recording the repeated chair stand test to calculate the Short physical performance battery.">
+				>
+				["at0017"] = <
+					text = <"Assistive device">
+					description = <"The type of assistive device(s) used during the task.">
+					comment = <"Occurence is set to 0..2 to support cases where bilateral assisitve device is utilized.">
+				>
+				["at0018"] = <
+					text = <"Ankle-foot orthosis">
+					description = <"Ankle-Foot Orthosis (AFO).">
+				>
+				["at0019"] = <
+					text = <"Cane">
+					description = <"Walking stick or cane.">
+				>
+				["at0020"] = <
+					text = <"Crutch">
+					description = <"Underarm crutch.">
+				>
+				["at0021"] = <
+					text = <"Walker/rollator">
+					description = <"Walker or rollator device.">
+				>
+				["at0022"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0023"] = <
+					text = <"Confounding factors">
+					description = <"Narrative description of any issues or factors that may impact on the measurement.">
+					comment = <"For example: \"The patient had a cold\" or \"The patient tripped but did not fall\".">
+				>
+				["at0024"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local context or to align with other reference models/formalisms.">
+					comment = <"For example: Local hospital departmental infomation or additional metadata to align with FHIR.">
+				>
+				["at0025"] = <
+					text = <"Comment">
+					description = <"Additional narrative about the task not covered in other fields.">
+				>
+				["at0026"] = <
+					text = <"Clinical description">
+					description = <"A clinical description of the execution of the task.">
+				>
+			>
+		>
+	>
