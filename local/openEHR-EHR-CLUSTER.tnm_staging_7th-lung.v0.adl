@@ -1,0 +1,627 @@
+archetype (adl_version=1.4; uid=370188ae-ab09-4d5f-aa63-7e2ca50675fb)
+	openEHR-EHR-CLUSTER.tnm_staging_7th-lung.v0
+specialize
+	openEHR-EHR-CLUSTER.tnm_staging_7th.v1
+
+concept
+	[at0000.1]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Kristin Eik">
+				["organisation"] = <"Kreftregisteret">
+				["email"] = <"Kristin.Eik@kreftregisteret.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"27/07/2009">
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics Scotland">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Heather Leslie Ocean Informatics Australia","Sam Heard Ocean Informatics Australia","Koray Atalag, University of Auckland, New Zealand">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Beskrive klassifikasjon og gradering av lungekreft ved å benytte TNM klassifikasjon 7. utgave.">
+			keywords = <"Tumor","TNM","Malignitet","Kreft","Klassifisering","Klassifikasjon","Grad","Gradering","Stadium","Lymfeknute","Metastase","Lunge","Bronkial">
+			use = <"Skal kun benytte TNM 7.utgave for klassifisering av lungekreft.">
+			misuse = <"Skal ikke benyttes for pleural mesoteliom, sarkom eller andre sjeldne lungetumorer. Skal ikke benytte andre utgaver av TNM klassifikasjonen.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the TNM staging classification for lung cancer (Seventh Edition).">
+			keywords = <"tumour","TNM","malignancy","cancer","staging","classification","grade","grading","stage","lymph node","metastasis","lung","bronchial">
+			copyright = <"© copyright (c) 2010 openEHR foundation, Nasjonal IKT HF">
+			use = <"Use only for the Seventh edition of TNM lung cancer classification.">
+			misuse = <"Not to be used for pleural mesothelioma, sarcoma or other rare lung tumours.
+Not to be used for other editions of TNM classification.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Sobin LH. TNM Classification of Malignant Tumours 7th Edition.  John Wiley and Sons; 2009.">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"DFB32A8D8B90901FB77D70FD55877D97">
+		["build_uid"] = <"fb9f65e2-411e-4b34-991f-ca8fbec0a4fb">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000.1] matches {    -- Tumour - Lung cancer TNM staging 7th Edition
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Primary tumour (T)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.52,    -- TX
+							at0.53,    -- T0
+							at0.54,    -- Tis
+							at0.55,    -- T1
+							at0.56,    -- T1a
+							at0.57,    -- T1b
+							at0.58,    -- T2
+							at0.59,    -- T2a
+							at0.60,    -- T2b
+							at0.61,    -- T3
+							at0.62]    -- T4
+						}
+					}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Regional lymph nodes (N)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.63,    -- NX
+							at0.64,    -- N0
+							at0.65,    -- N1
+							at0.66,    -- N2
+							at0.67]    -- N3
+						}
+					}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Distant metastasis (M)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.68,    -- MX
+							at0.69,    -- M0
+							at0.70,    -- M1
+							at0.71,    -- M1a
+							at0.72]    -- M1b
+						}
+					}
+				}
+			}
+			ELEMENT[at0025] occurrences matches {0..1} matches {    -- Residual tumour (R)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.73,    -- RX
+							at0.74,    -- R0
+							at0.75,    -- R(is)
+							at0.76,    -- R1
+							at0.77]    -- R2
+						}
+					}
+				}
+			}
+			ELEMENT[at0046] occurrences matches {0..1} matches {    -- Histopathological grading (G)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0047,    -- GX
+							at0048,    -- G1
+							at0049,    -- G2
+							at0050,    -- G3
+							at0051]    -- G4
+						}
+					}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Overall staging
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0052] occurrences matches {0..1} matches {    -- Descriptors
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0053] occurrences matches {0..*} matches {    -- Descriptor
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0014] occurrences matches {0..1} matches {    -- Stage grouping
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.78,    -- Stage 0
+							at0.79,    -- Stage IA
+							at0.80,    -- Stage IB
+							at0.81,    -- Stage IIA
+							at0.82,    -- Stage IIB
+							at0.83,    -- Stage IIIA
+							at0.84,    -- Stage IIIB
+							at0.85]    -- Stage IV
+						}
+					}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Comment
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.52"] = <
+					text = <"TX">
+					description = <"TX - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.53"] = <
+					text = <"T0">
+					description = <"T0 - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.54"] = <
+					text = <"Tis">
+					description = <"Tis - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.55"] = <
+					text = <"T1">
+					description = <"T1 - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.56"] = <
+					text = <"T1a">
+					description = <"T1a - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.57"] = <
+					text = <"T1b">
+					description = <"T1b - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.58"] = <
+					text = <"T2">
+					description = <"T2 - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.59"] = <
+					text = <"T2a">
+					description = <"T2a - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.60"] = <
+					text = <"T2b">
+					description = <"T2b - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.61"] = <
+					text = <"T3">
+					description = <"T3- as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.62"] = <
+					text = <"T4">
+					description = <"T4 - as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.63"] = <
+					text = <"NX">
+					description = <"Regional nodes cannot be assessed.">
+				>
+				["at0.64"] = <
+					text = <"N0">
+					description = <"No metastasis to regional lymph nodes.">
+				>
+				["at0.65"] = <
+					text = <"N1">
+					description = <"Metastasis in ipsilateral peribronchial and/or ipsilateral hilar lymph nodes and intrapulmonary nodes, including involvement by direct extension.">
+				>
+				["at0.66"] = <
+					text = <"N2">
+					description = <"Metastasis in ipsilateral mediastinal and/or subcarinal lymph node(s).">
+				>
+				["at0.67"] = <
+					text = <"N3">
+					description = <"Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene, or supraclavicular lymph node(s).">
+				>
+				["at0.68"] = <
+					text = <"MX">
+					description = <"Distant metastasis cannot be assessed.">
+				>
+				["at0.69"] = <
+					text = <"M0">
+					description = <"No distant metastasis.">
+				>
+				["at0.70"] = <
+					text = <"M1">
+					description = <"Distant metastasis present.">
+				>
+				["at0.71"] = <
+					text = <"M1a">
+					description = <"Separate tumour with pleural nodules or malignant pleural (or pericardial)nodule(s) in a contralateral lobe; tumour with pleural nodules or malignant pleural (or pericardial).">
+				>
+				["at0.72"] = <
+					text = <"M1b">
+					description = <"Distant metastasis.">
+				>
+				["at0.73"] = <
+					text = <"RX">
+					description = <"Presence of residual tumour cannot be assessed.">
+				>
+				["at0.74"] = <
+					text = <"R0">
+					description = <"No residual tumour.">
+				>
+				["at0.75"] = <
+					text = <"R(is)">
+					description = <"Carcimoma in situ.">
+				>
+				["at0.76"] = <
+					text = <"R1">
+					description = <"Microscopic residual tumour. Invasive mucosal carcinoma or peribronchial infiltration.">
+				>
+				["at0.77"] = <
+					text = <"R2">
+					description = <"Macroscopic residual tumour.">
+				>
+				["at0.78"] = <
+					text = <"Stage 0">
+					description = <"Stage 0 -  as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.79"] = <
+					text = <"Stage IA">
+					description = <"Stage IA -  as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.80"] = <
+					text = <"Stage IB">
+					description = <"Stage 1B -  as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.81"] = <
+					text = <"Stage IIA">
+					description = <"Stage IA -  as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.82"] = <
+					text = <"Stage IIB">
+					description = <"Stage IIB -  as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.83"] = <
+					text = <"Stage IIIA">
+					description = <"Stage IIIA -  as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.84"] = <
+					text = <"Stage IIIB">
+					description = <"Stage IIIB -  as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0.85"] = <
+					text = <"Stage IV">
+					description = <"Stage IV -  as defined by AJCC/UICC TNM system (7th edition) Lung cancer.">
+				>
+				["at0000"] = <
+					text = <"Tumour - TNM Cancer staging 7th Edition">
+					description = <"A framework for the classification and grading of malignancies using the TNM classification system 7th Edition.">
+				>
+				["at0000.1"] = <
+					text = <"Tumour - Lung cancer TNM staging 7th Edition">
+					description = <"TNM Staging classification for lung cancer (Seventh edition).">
+				>
+				["at0003"] = <
+					text = <"Primary tumour (T)">
+					description = <"Assessment of the primary tumour.">
+				>
+				["at0004"] = <
+					text = <"Regional lymph nodes (N)">
+					description = <"Assessment of the regional lymph nodes.">
+				>
+				["at0005"] = <
+					text = <"Distant metastasis (M)">
+					description = <"Assessment of distant metastasis.">
+				>
+				["at0010"] = <
+					text = <"Overall staging">
+					description = <"The overall staging derived from each T, N and M component e.g T1aM0NX. May include additional TNM descriptors.">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"A text comment on the staging.">
+				>
+				["at0014"] = <
+					text = <"Stage grouping">
+					description = <"The TNM Stage grouping.">
+				>
+				["at0025"] = <
+					text = <"Residual tumour (R)">
+					description = <"Assessment of post-treatment residual tumour.">
+				>
+				["at0046"] = <
+					text = <"Histopathological grading (G)">
+					description = <"TNM histopathological grading classification. ">
+				>
+				["at0047"] = <
+					text = <"GX">
+					description = <"Grade of differentiation cannot be assessed.">
+				>
+				["at0048"] = <
+					text = <"G1">
+					description = <"Well differentiated.">
+				>
+				["at0049"] = <
+					text = <"G2">
+					description = <"Moderately differentiated.">
+				>
+				["at0050"] = <
+					text = <"G3">
+					description = <"Poorly differentiated.">
+				>
+				["at0051"] = <
+					text = <"G4">
+					description = <"Undifferentiated.">
+				>
+				["at0052"] = <
+					text = <"Descriptors">
+					description = <"Additional tumour specific TNM descriptors.">
+				>
+				["at0053"] = <
+					text = <"Descriptor">
+					description = <"Additional tumour specific TNM descriptor.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0.52"] = <
+					text = <"TX">
+					description = <"Primærtumor kan ikke vurderes.">
+				>
+				["at0.53"] = <
+					text = <"T0">
+					description = <"Primærtumor ikke påvist.">
+				>
+				["at0.54"] = <
+					text = <"Tis">
+					description = <"Carcinoma in situ">
+				>
+				["at0.55"] = <
+					text = <"T1">
+					description = <"Tumordiameter <=3 cm, omgitt av lungevev eller viscerale pleura, uten bronkoskopisk bekreftelse for infiltrasjon mer proksimalt enn lobær bronkus (f.eks ikke til hovedbronkus).">
+				>
+				["at0.56"] = <
+					text = <"T1a">
+					description = <"Tumordiameter <= 2 cm.">
+				>
+				["at0.57"] = <
+					text = <"T1b">
+					description = <"Tumordiameter > 2 cm men <=3.">
+				>
+				["at0.58"] = <
+					text = <"T2">
+					description = <"Tumor > 3 cm men <= 7 cm eller tumor med noen av følgende karaktertrekk (T2 tumor med disse karaktertrekk er klassifisert T2a hvis <= 5 cm) 
+Involverer hovedbronkus, >= 2 cm distalt for carina.
+Infiltrerer viscerale pleura (PL1 eller PL2).
+Assosiert med atelektase eller obstruktiv pneumonitt med utbredelse til hilusregionen, men som ikke involverer hele lungen.
+
+">
+				>
+				["at0.59"] = <
+					text = <"T2a">
+					description = <"Tumordiameter > 3 cm men <= 5 cm.">
+				>
+				["at0.60"] = <
+					text = <"T2b">
+					description = <"Tumordiameter > 5 cm men <= 7 cm.">
+				>
+				["at0.61"] = <
+					text = <"T3">
+					description = <"Tumor > 7 cm eller som direkte invaderer parietale pleura (PL3), brystvegg (inkludert superior sulcus tumor), diafragma, nervus frenicus, mediastinale pleura, parietale pericardium; eller tumor i hovedbronkus (< 2 cm distalt for carina, men uten involvering av carina; eller assosiert atelektase eller obstruktiv pneumonitt av hele lungen eller isolerte tumorknuter i samme lapp.">
+				>
+				["at0.62"] = <
+					text = <"T4">
+					description = <"Tumor, uavhengig av størrelse, som invaderer mediastinum, hjerte, store kar, trakea, nervus recurrens, øsofagus, columna, carina, isolerte tumorknuter i annen lungelapp, samme side.">
+				>
+				["at0.63"] = <
+					text = <"NX">
+					description = <"Regional lymfeknuter kan ikke vurderes.">
+				>
+				["at0.64"] = <
+					text = <"N0">
+					description = <"Ingen metastase til regionale lymfeknuter.">
+				>
+				["at0.65"] = <
+					text = <"N1">
+					description = <"Metastase, inkludert direkte innvekst, til ipsilaterale peribronkiale lymfeknuter og/eller til ipsilaterale hilær lymfeknuter og intrapulmonale lymfeknuter.">
+				>
+				["at0.66"] = <
+					text = <"N2">
+					description = <"Metastase til ipsilaterale mediastinale og/eller subkarinale lymfeknuter.">
+				>
+				["at0.67"] = <
+					text = <"N3">
+					description = <"Metastase til kontralaterale mediastinale, kontralaterale hilære, ipsilaterale eller kontralaterale scalene, eller supraklavikulære lymfeknute(r)">
+				>
+				["at0.68"] = <
+					text = <"MX">
+					description = <"Fjernmetastase kan ikke vurderes.">
+				>
+				["at0.69"] = <
+					text = <"M0">
+					description = <"Ingen fjernmetastase.">
+				>
+				["at0.70"] = <
+					text = <"M1">
+					description = <"Fjernmetastase.">
+				>
+				["at0.71"] = <
+					text = <"M1a">
+					description = <"Isolerte tumorknuter i kontralateral lungelapp; pleurametastaser eller malign pleuravæske (eller perikardvæske).">
+				>
+				["at0.72"] = <
+					text = <"M1b">
+					description = <"Fjernmetastase.">
+				>
+				["at0.73"] = <
+					text = <"RX">
+					description = <"Resttumor kan ikke vurderes.
+">
+				>
+				["at0.74"] = <
+					text = <"R0">
+					description = <"Ingen resttumor.">
+				>
+				["at0.75"] = <
+					text = <"R is)">
+					description = <"Carcinoma in situ
+">
+				>
+				["at0.76"] = <
+					text = <"R1">
+					description = <"Mikroskopisk resttumor. Invasiv mucosal carcinoma eller peribronkial infiltrasjon.
+">
+				>
+				["at0.77"] = <
+					text = <"R2">
+					description = <"Makroskopisk resttumor.
+">
+				>
+				["at0.78"] = <
+					text = <"Stadium 0">
+					description = <"Tis- N0- M0">
+				>
+				["at0.79"] = <
+					text = <"Stadium 1A">
+					description = <"T1a- N0- M0
+T1b- N0- M0">
+				>
+				["at0.80"] = <
+					text = <"Stadium IB">
+					description = <"T2a- N0- M0">
+				>
+				["at0.81"] = <
+					text = <"Stadium IIA">
+					description = <"T2b- N0- M0
+T1a- N1- M0
+T1b- N1- M0
+T2a- N1- M0">
+				>
+				["at0.82"] = <
+					text = <"Stadium IIB">
+					description = <"T2b- N1- M0
+T3- N0- M0">
+				>
+				["at0.83"] = <
+					text = <"Stadium IIIA">
+					description = <"T1a- N2- M0
+T1b- N2- M0
+T2a- N2- M0
+T2b- N2- M0
+T3- N1- M0
+T3- N2- M0
+T4- N0- M0
+T4- N1- M0">
+				>
+				["at0.84"] = <
+					text = <"Stadium IIIB">
+					description = <"T1a- N3- M0
+T1b- N3- M0
+T2a- N3- M0
+T2b- N3- M0
+T3- N3- M0
+T4- N2- M0
+T4- N3- M0">
+				>
+				["at0.85"] = <
+					text = <"Stadium IV">
+					description = <"Enhver T- Enhver N- Enhver M1a
+Enhver T- Enhver N- Enhver M1b
+">
+				>
+				["at0000"] = <
+					text = <"*Tumour - TNM Cancer staging 7th Edition(en)">
+					description = <"*A framework for the classification and grading of malignancies using the TNM classification system 7th Edition.(en)">
+				>
+				["at0000.1"] = <
+					text = <"Tumor - TNM-klassifisering 7. utgave av lungekreft">
+					description = <"Klassifikasjon og gradering av lungekreftt ved å benytte TNM klassifikasjon 7.utgave.">
+				>
+				["at0003"] = <
+					text = <"Primærtumor (T)">
+					description = <"Vurdering av primærtumor">
+				>
+				["at0004"] = <
+					text = <"Regionale lymfeknuter (N)">
+					description = <"Vurdering av regionale lymfkenuter.">
+				>
+				["at0005"] = <
+					text = <"Fjernmetastase">
+					description = <"Vurdering av fjernmetastase.">
+				>
+				["at0010"] = <
+					text = <"Total klassifisering">
+					description = <"Den totale klassifisering som er avledet fra hver T, N og M komponent f.eks T1aNXM0. Kan inkludere ekstra TNM-deskriptorer.">
+				>
+				["at0012"] = <
+					text = <"Kommentar">
+					description = <"Kommentar til klassifikasjonen.">
+				>
+				["at0014"] = <
+					text = <"Gruppering av stadium">
+					description = <"TNM gruppering av stadium.">
+				>
+				["at0025"] = <
+					text = <"Resttumor (R)">
+					description = <"Vurdering av resttumor etter behandling.">
+				>
+				["at0046"] = <
+					text = <"Histopatologisk differensieringsgrad (G)">
+					description = <"TNM klassifikasjon av histopatologisk differensieringsgrad.">
+				>
+				["at0047"] = <
+					text = <"GX">
+					description = <"Differensieringsgrad kan ikke vurderes.
+">
+				>
+				["at0048"] = <
+					text = <"G1">
+					description = <"Høyt differensiert.">
+				>
+				["at0049"] = <
+					text = <"G2">
+					description = <"Moderat/middels differensiert.">
+				>
+				["at0050"] = <
+					text = <"G3">
+					description = <"Lite/lavt differensiert.">
+				>
+				["at0051"] = <
+					text = <"G4">
+					description = <"Udifferensiert">
+				>
+				["at0052"] = <
+					text = <"Deskriptorer">
+					description = <"Ekstra tumorspesifikke TNM-deskriptorer.">
+				>
+				["at0053"] = <
+					text = <"Deskriptor">
+					description = <"Ekstra tumorspesifikke TNM-deskriptor.">
+				>
+			>
+		>
+	>
