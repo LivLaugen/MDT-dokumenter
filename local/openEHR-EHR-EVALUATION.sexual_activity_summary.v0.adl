@@ -1,0 +1,123 @@
+archetype (adl_version=1.4; uid=eca4ab00-2ea2-47e5-94d0-58b34bb0e620)
+	openEHR-EHR-EVALUATION.sexual_activity_summary.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"031A973EC4798CE2CF25155242569935">
+		["build_uid"] = <"a1941c0b-84e0-4e8a-9e45-855ebe8a2999">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Sexual activity summary
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Hvilke kjønn har du noensinne hatt sex med?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003,    -- Bare menn
+									at0004,    -- Bare kvinner
+									at0005]    -- Både menn og kvinner
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Status
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0007,    -- Aldri hatt sex
+									at0008,    -- Seksuelt aktiv
+									at0009]    -- Ikke seksuelt aktiv
+								}
+							}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {    -- Hvor gammel var du første gang du hadde sex?
+						value matches {
+							DV_DURATION matches {
+								value matches {PYM}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sexual activity summary">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Hvilke kjønn har du noensinne hatt sex med?">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Bare menn">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Bare kvinner">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Både menn og kvinner">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Status">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Aldri hatt sex">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Seksuelt aktiv">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Ikke seksuelt aktiv">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Hvor gammel var du første gang du hadde sex?">
+					description = <"*">
+				>
+			>
+		>
+	>
