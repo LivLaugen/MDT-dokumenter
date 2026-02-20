@@ -1,0 +1,1528 @@
+archetype (adl_version=1.4; uid=21107857-1f11-45ad-9623-4fe03e49538c)
+	openEHR-EHR-OBSERVATION.exhaustion.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"Jon Tysdahl">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2017-01-30">
+		["name"] = <"Jon Tysdahl">
+		["organisation"] = <"Furst Med-Lab AS">
+		["email"] = <"jon@furst.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Document patients level of exhaustion based on the Canadian criteria.">
+			keywords = <"canadian critera","ME","exhaustion","CFS">
+			copyright = <"© Furst">
+			use = <"Used to describe situation for patients with prolonged exhaustion without a specific clinical cause, also called diffusitas">
+			misuse = <"All other uses.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Document patients level of exhaustion based on the Canadian criteria.">
+			keywords = <"CFS","exhaustion","ME","Canadian Criteria">
+			copyright = <"© Furst">
+			use = <"Used to describe situation for patients with prolonged exhaustion without a specific clinical cause, also called diffusitas">
+			misuse = <"All other uses.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"EAC06C66ABE1CABBA566C0E2A5965C43">
+		["build_uid"] = <"7002679a-5b14-4fb5-a9e6-1776651a9138">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Exhaustion
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0005] occurrences matches {0..1} matches {    -- 1. General exhaustion
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {    -- Degree
+												value matches {
+													DV_PROPORTION matches {
+														numerator matches {|1.0..10.0|}
+														is_integral matches {false}
+														type matches {0}
+													}
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {    -- Description
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0007] occurrences matches {0..1} matches {    -- 2. Strained exhaustion
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0008] occurrences matches {0..1} matches {    -- Degree
+												value matches {
+													DV_PROPORTION matches {
+														numerator matches {|1.0..10.0|}
+														type matches {0}
+													}
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {    -- Duration
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0037] occurrences matches {0..1} matches {    -- Delay
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..*} matches {    -- Precipitating factors
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0038,    -- School/university
+															at0039,    -- Work
+															at0040,    -- social gatherings
+															at0041,    -- Restaurants, coffee shops etc
+															at0042,    -- Physical activities
+															at0043]    -- Phsycological strain
+														}
+													}
+												}
+											}
+											ELEMENT[at0109] occurrences matches {0..*} matches {    -- *New element(nb)
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {    -- Description
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0014] occurrences matches {0..1} matches {    -- 3. Deprived sleep
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0015] occurrences matches {0..1} matches {    -- Usual bedtime
+												value matches {
+													DV_TIME matches {
+														value matches {HH:MM:??}
+													}
+												}
+											}
+											ELEMENT[at0016] occurrences matches {0..1} matches {    -- Usual wake up time
+												value matches {
+													DV_TIME matches {
+														value matches {HH:MM:??}
+													}
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {    -- Variation in sleep length
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0098,    -- *Little(nb)
+															at0099,    -- *Some(nb)
+															at0100]    -- *Considerable(nb)
+														}
+													}
+												}
+											}
+											ELEMENT[at0018] occurrences matches {0..1} matches {    -- Tension
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0019] occurrences matches {0..1} matches {    -- Use of relaxation techniques
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0020] occurrences matches {0..1} matches {    -- Typical time to gain sleep
+												value matches {
+													DV_TIME matches {
+														value matches {HH:MM:??}
+													}
+												}
+											}
+											ELEMENT[at0021] occurrences matches {0..1} matches {    -- Number of wake ups during one nights sleep
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
+											ELEMENT[at0022] occurrences matches {0..1} matches {    -- Snoring
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0105,    -- *None(nb)
+															at0106,    -- *Some(nb)
+															at0107,    -- *Regularly(nb)
+															at0108]    -- *Always(nb)
+														}
+													}
+												}
+											}
+											ELEMENT[at0023] occurrences matches {0..1} matches {    -- Not being able to breathe
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0024] occurrences matches {0..1} matches {    -- Feeling rested after sleep
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0101,    -- *Always(nb)
+															at0102,    -- *usually(nb)
+															at0103,    -- *seldom(nb)
+															at0104]    -- *never(nb)
+														}
+													}
+												}
+											}
+											ELEMENT[at0025] occurrences matches {0..1} matches {    -- Description
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0026] occurrences matches {0..1} matches {    -- 4. Pain
+										items cardinality matches {1..*; unordered} matches {
+											CLUSTER[at0110] occurrences matches {0..1} matches {    -- *New cluster(nb)
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0027] occurrences matches {0..1} matches {    -- Muscle pains
+														value matches {
+															DV_PROPORTION matches {
+																numerator matches {|1.0..10.0|}
+																is_integral matches {false}
+																type matches {0}
+															}
+														}
+													}
+													ELEMENT[at0028] occurrences matches {0..1} matches {    -- Location of muscle pains
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0113] occurrences matches {0..1} matches {    -- *New element(nb)
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0114,    -- *Stable(nb)
+																	at0115]    -- *Migrating(nb)
+																}
+															}
+														}
+													}
+												}
+											}
+											CLUSTER[at0111] occurrences matches {0..1} matches {    -- *New cluster(nb)
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0112] occurrences matches {0..1} matches {    -- *New element(nb)
+														value matches {
+															DV_PROPORTION matches {
+																numerator matches {|1.0..10.0|}
+																is_integral matches {false}
+																type matches {0}
+															}
+														}
+													}
+													ELEMENT[at0030] occurrences matches {0..1} matches {    -- Location of joint pains
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0116] occurrences matches {0..1} matches {    -- *New element(nb)
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0117,    -- *Stable(nb)
+																	at0118]    -- *Migrating(nb)
+																}
+															}
+														}
+													}
+												}
+											}
+											CLUSTER[at0032] occurrences matches {0..1} matches {    -- Headache before exhaustion symptoms started
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0119] occurrences matches {0..1} matches {    -- *New element(nb)
+														value matches {
+															DV_PROPORTION matches {
+																numerator matches {|1.0..10.0|}
+																is_integral matches {false}
+																type matches {0}
+															}
+														}
+													}
+													ELEMENT[at0033] occurrences matches {0..1} matches {    -- Regularity
+														value matches {
+															DV_COUNT matches {
+																magnitude matches {|0..30|}
+															}
+														}
+													}
+													ELEMENT[at0035] occurrences matches {0..1} matches {    -- Location
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0120,    -- *Forehead(nb)
+																	at0121,    -- *Side of forehead(nb)
+																	at0122,    -- *Top of head(nb)
+																	at0123,    -- *Back of head(nb)
+																	at0124,    -- *sinuses(nb)
+																	at0125]    -- *Ear region(nb)
+																}
+															}
+														}
+													}
+													ELEMENT[at0126] occurrences matches {0..1} matches {    -- *New element(nb)
+														value matches {
+															C_DV_QUANTITY <
+																property = <[openehr::128]>
+																list = <
+																	["1"] = <
+																		units = <"h">
+																		precision = <|0|>
+																	>
+																>
+															>
+														}
+													}
+												}
+											}
+											CLUSTER[at0036] occurrences matches {0..1} matches {    -- Headache after exhaustion symptoms started
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0133] occurrences matches {0..1} matches {    -- *New element(nb)
+														value matches {
+															DV_PROPORTION matches {
+																numerator matches {|1.0..10.0|}
+																is_integral matches {false}
+																type matches {0}
+															}
+														}
+													}
+													ELEMENT[at0045] occurrences matches {0..1} matches {    -- Regularity
+														value matches {
+															DV_COUNT matches {
+																magnitude matches {|0..30|}
+															}
+														}
+													}
+													ELEMENT[at0047] occurrences matches {0..1} matches {    -- Location
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0127,    -- *Forehead(nb)
+																	at0128,    -- *Side of forehead(nb)
+																	at0129,    -- *Top of head(nb)
+																	at0130,    -- *Back of head(nb)
+																	at0131,    -- *sinuses(nb)
+																	at0132]    -- *Ear region(nb)
+																}
+															}
+														}
+													}
+													ELEMENT[at0046] occurrences matches {0..1} matches {    -- Duration
+														value matches {
+															C_DV_QUANTITY <
+																property = <[openehr::128]>
+																list = <
+																	["1"] = <
+																		units = <"h">
+																	>
+																>
+															>
+														}
+													}
+												}
+											}
+											CLUSTER[at0048] occurrences matches {0..1} matches {    -- Migrene
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0049] occurrences matches {0..1} matches {    -- Aura
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0050] occurrences matches {0..1} matches {    -- Laterality
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0052,    -- Both sides
+																	at0053,    -- Left side
+																	at0054,    -- Right side
+																	at0055]    -- Unspecified
+																}
+															}
+														}
+													}
+													ELEMENT[at0051] occurrences matches {0..1} matches {    -- Characteristics
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0056,    -- Nausea
+																	at0057,    -- Vomiting
+																	at0058,    -- Oversensitivity to light
+																	at0059,    -- Tears
+																	at0060]    -- Red eyes
+																}
+															}
+														}
+													}
+													ELEMENT[at0061] occurrences matches {0..1} matches {    -- Description
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0062] occurrences matches {0..1} matches {    -- 5. Neurologial and cognitive symptoms
+										items cardinality matches {1..*; unordered} matches {
+											CLUSTER[at0063] occurrences matches {0..1} matches {    -- Problems with concentrating
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0065] occurrences matches {0..1} matches {    -- Regularity
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0064] occurrences matches {0..1} matches {    -- Degree
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0066] occurrences matches {0..1} matches {    -- Description
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0068] occurrences matches {0..1} matches {*}    -- Problems with short term memory
+											CLUSTER[at0069] occurrences matches {0..1} matches {*}    -- Problems understanding
+											CLUSTER[at0070] occurrences matches {0..1} matches {*}    -- Confusion/disorientation
+											CLUSTER[at0071] occurrences matches {0..1} matches {*}    -- Problems with focusing eye-sight
+											CLUSTER[at0072] occurrences matches {0..1} matches {*}    -- Clumsyness
+											CLUSTER[at0073] occurrences matches {0..1} matches {*}    -- Reduced muscle strenght
+											CLUSTER[at0074] occurrences matches {0..1} matches {*}    -- Oversensitivity to light
+											CLUSTER[at0075] occurrences matches {0..1} matches {*}    -- Oversensitivity to sounds
+											CLUSTER[at0076] occurrences matches {0..1} matches {*}    -- Oversensitivity to touch
+										}
+									}
+									CLUSTER[at0077] occurrences matches {0..1} matches {    -- 6A. Autonome manifestations
+										items cardinality matches {1..*; unordered} matches {
+											CLUSTER[at0090] occurrences matches {0..1} matches {*}    -- Dizzyness when standing up quickly
+											CLUSTER[at0092] occurrences matches {0..1} matches {*}    -- Dizziness
+											CLUSTER[at0093] occurrences matches {0..1} matches {*}    -- Pale
+											CLUSTER[at0094] occurrences matches {0..1} matches {*}    -- Nausea
+											CLUSTER[at0095] occurrences matches {0..1} matches {*}    -- Frequent urinating and/or other bladder problems
+											CLUSTER[at0096] occurrences matches {0..1} matches {*}    -- Irregular heartbeats
+											CLUSTER[at0097] occurrences matches {0..1} matches {*}    -- Heavy breath
+										}
+									}
+									CLUSTER[at0078] occurrences matches {0..1} matches {    -- 6B. Nevroendochrine manifestations
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0091] occurrences matches {0..1} matches {    -- Dummy
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0079] occurrences matches {0..1} matches {*}    -- 6C. Immune  manifestations
+									CLUSTER[at0080] occurrences matches {0..1} matches {    -- 7. Duration
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0081] occurrences matches {0..1} matches {    -- Start of exhaustion
+												value matches {
+													DV_DATE matches {
+														value matches {yyyy-mm-??}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0082] occurrences matches {0..1} matches {    -- Classification
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0083] occurrences matches {0..1} matches {    -- Degree
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0084,    -- Mild
+															at0085,    -- Moderate
+															at0087,    -- Strong
+															at0088]    -- Very strong
+														}
+													}
+												}
+											}
+											ELEMENT[at0089] occurrences matches {0..1} matches {    -- Comment
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Exhaustion">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Degree">
+					description = <"Degree of general exhaustion experienced by patient">
+				>
+				["at0005"] = <
+					text = <"1. General exhaustion">
+					description = <"The typical and general exhaustion experienced by patient.">
+				>
+				["at0006"] = <
+					text = <"Description">
+					description = <"Characteristics of the general exhaution experienced by patient.">
+				>
+				["at0007"] = <
+					text = <"2. Strained exhaustion">
+					description = <"The strained exhaustion experienced by patient.">
+				>
+				["at0008"] = <
+					text = <"Degree">
+					description = <"Degree of strained exhaustion experienced by patient">
+				>
+				["at0011"] = <
+					text = <"Duration">
+					description = <"Typical duration of an instance of  strained exhaustion">
+				>
+				["at0012"] = <
+					text = <"Precipitating factors">
+					description = <"Precipitating factors for strained exhaustion ">
+				>
+				["at0013"] = <
+					text = <"Description">
+					description = <"Characteristics of the strained exhaution experienced by patient.">
+				>
+				["at0014"] = <
+					text = <"3. Deprived sleep">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Usual bedtime">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Usual wake up time">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Variation in sleep length">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Tension">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Use of relaxation techniques">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Typical time to gain sleep">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Number of wake ups during one nights sleep">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Snoring">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Not being able to breathe">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Feeling rested after sleep">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Description">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"4. Pain">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Muscle pains">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Location of muscle pains">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Location of joint pains">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Headache before exhaustion symptoms started">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Regularity">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Location">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Headache after exhaustion symptoms started">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Delay">
+					description = <"Typical delay from precipitating factor before the strained exhaustion starts">
+				>
+				["at0038"] = <
+					text = <"School/university">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Work">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"social gatherings">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Restaurants, coffee shops etc">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Physical activities">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Phsycological strain">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Regularity">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Duration">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Location">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Migrene">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Aura">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Laterality">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Characteristics">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Both sides">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Left side">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Right side">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Unspecified">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Nausea">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"Vomiting">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Oversensitivity to light">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Tears">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Red eyes">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Description">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"5. Neurologial and cognitive symptoms">
+					description = <"*">
+				>
+				["at0063"] = <
+					text = <"Problems with concentrating">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"Degree">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Regularity">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"Description">
+					description = <"*">
+				>
+				["at0068"] = <
+					text = <"Problems with short term memory">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"Problems understanding">
+					description = <"*">
+				>
+				["at0070"] = <
+					text = <"Confusion/disorientation">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Problems with focusing eye-sight">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"Clumsyness">
+					description = <"*">
+				>
+				["at0073"] = <
+					text = <"Reduced muscle strenght">
+					description = <"*">
+				>
+				["at0074"] = <
+					text = <"Oversensitivity to light">
+					description = <"*">
+				>
+				["at0075"] = <
+					text = <"Oversensitivity to sounds">
+					description = <"*">
+				>
+				["at0076"] = <
+					text = <"Oversensitivity to touch">
+					description = <"*">
+				>
+				["at0077"] = <
+					text = <"6A. Autonome manifestations">
+					description = <"*">
+				>
+				["at0078"] = <
+					text = <"6B. Nevroendochrine manifestations">
+					description = <"*">
+				>
+				["at0079"] = <
+					text = <"6C. Immune  manifestations">
+					description = <"*">
+				>
+				["at0080"] = <
+					text = <"7. Duration">
+					description = <"*">
+				>
+				["at0081"] = <
+					text = <"Start of exhaustion">
+					description = <"*">
+				>
+				["at0082"] = <
+					text = <"Classification">
+					description = <"*">
+				>
+				["at0083"] = <
+					text = <"Degree">
+					description = <"*">
+				>
+				["at0084"] = <
+					text = <"Mild">
+					description = <"Patient is mobile, self caring, taking care of personal hygiene, capable of some light work">
+				>
+				["at0085"] = <
+					text = <"Moderate">
+					description = <"Patient has reduced mobility, limitation in all kinds of everyday activities. Typically having to choose between breakfast and a shower.">
+				>
+				["at0087"] = <
+					text = <"Strong">
+					description = <"Patient in bed most of the time, cognitive problems, often using wheel chair, but able to brush teeths, go to toilet">
+				>
+				["at0088"] = <
+					text = <"Very strong">
+					description = <"Patient in bed at all times, unable to to personal hygiene, oversensitivity">
+				>
+				["at0089"] = <
+					text = <"Comment">
+					description = <"*">
+				>
+				["at0090"] = <
+					text = <"Dizzyness when standing up quickly">
+					description = <"*">
+				>
+				["at0091"] = <
+					text = <"Dummy">
+					description = <"*">
+				>
+				["at0092"] = <
+					text = <"Dizziness">
+					description = <"*">
+				>
+				["at0093"] = <
+					text = <"Pale">
+					description = <"*">
+				>
+				["at0094"] = <
+					text = <"Nausea">
+					description = <"*">
+				>
+				["at0095"] = <
+					text = <"Frequent urinating and/or other bladder problems">
+					description = <"*">
+				>
+				["at0096"] = <
+					text = <"Irregular heartbeats">
+					description = <"*">
+				>
+				["at0097"] = <
+					text = <"Heavy breath">
+					description = <"*">
+				>
+				["at0098"] = <
+					text = <"*Little(nb)">
+					description = <"*Mainly same amount of sleep every night(nb)">
+				>
+				["at0099"] = <
+					text = <"*Some(nb)">
+					description = <"*Sleep length varies, but not every night, or with big variation(nb)">
+				>
+				["at0100"] = <
+					text = <"*Considerable(nb)">
+					description = <"*Sleep length varies a lot and same amount of sleep for several nights is rare(nb)">
+				>
+				["at0101"] = <
+					text = <"*Always(nb)">
+					description = <"**(nb)">
+				>
+				["at0102"] = <
+					text = <"*usually(nb)">
+					description = <"**(nb)">
+				>
+				["at0103"] = <
+					text = <"*seldom(nb)">
+					description = <"**(nb)">
+				>
+				["at0104"] = <
+					text = <"*never(nb)">
+					description = <"**(nb)">
+				>
+				["at0105"] = <
+					text = <"*None(nb)">
+					description = <"**(nb)">
+				>
+				["at0106"] = <
+					text = <"*Some(nb)">
+					description = <"**(nb)">
+				>
+				["at0107"] = <
+					text = <"*Regularly(nb)">
+					description = <"**(nb)">
+				>
+				["at0108"] = <
+					text = <"*Always(nb)">
+					description = <"**(nb)">
+				>
+				["at0109"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0110"] = <
+					text = <"*New cluster(nb)">
+					description = <"**(nb)">
+				>
+				["at0111"] = <
+					text = <"*New cluster(nb)">
+					description = <"**(nb)">
+				>
+				["at0112"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0113"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0114"] = <
+					text = <"*Stable(nb)">
+					description = <"*Pains are in specific and stable locations(nb)">
+				>
+				["at0115"] = <
+					text = <"*Migrating(nb)">
+					description = <"*Pains migrate around to different locations(nb)">
+				>
+				["at0116"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0117"] = <
+					text = <"*Stable(nb)">
+					description = <"**(nb)">
+				>
+				["at0118"] = <
+					text = <"*Migrating(nb)">
+					description = <"**(nb)">
+				>
+				["at0119"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0120"] = <
+					text = <"*Forehead(nb)">
+					description = <"**(nb)">
+				>
+				["at0121"] = <
+					text = <"*Side of forehead(nb)">
+					description = <"**(nb)">
+				>
+				["at0122"] = <
+					text = <"*Top of head(nb)">
+					description = <"**(nb)">
+				>
+				["at0123"] = <
+					text = <"*Back of head(nb)">
+					description = <"**(nb)">
+				>
+				["at0124"] = <
+					text = <"*sinuses(nb)">
+					description = <"**(nb)">
+				>
+				["at0125"] = <
+					text = <"*Ear region(nb)">
+					description = <"**(nb)">
+				>
+				["at0126"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0127"] = <
+					text = <"*Forehead(nb)">
+					description = <"**(nb)">
+				>
+				["at0128"] = <
+					text = <"*Side of forehead(nb)">
+					description = <"**(nb)">
+				>
+				["at0129"] = <
+					text = <"*Top of head(nb)">
+					description = <"**(nb)">
+				>
+				["at0130"] = <
+					text = <"*Back of head(nb)">
+					description = <"**(nb)">
+				>
+				["at0131"] = <
+					text = <"*sinuses(nb)">
+					description = <"**(nb)">
+				>
+				["at0132"] = <
+					text = <"*Ear region(nb)">
+					description = <"**(nb)">
+				>
+				["at0133"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Exhaustion">
+					description = <"">
+				>
+				["at0001"] = <
+					text = <"*Event Series(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0002"] = <
+					text = <"*Any event(nb)">
+					description = <"**(nb)">
+				>
+				["at0003"] = <
+					text = <"*Tree(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0004"] = <
+					text = <"Degree">
+					description = <"Degree of general exhaustion experienced by patient">
+				>
+				["at0005"] = <
+					text = <"1. General exhaustion">
+					description = <"The typical and general exhaustion experienced by patient.">
+				>
+				["at0006"] = <
+					text = <"Description">
+					description = <"Characteristics of the general exhaution experienced by patient.">
+				>
+				["at0007"] = <
+					text = <"2. Strained exhaustion">
+					description = <"The strained exhaustion experienced by patient.">
+				>
+				["at0008"] = <
+					text = <"Degree">
+					description = <"Degree of strained exhaustion experienced by patient">
+				>
+				["at0011"] = <
+					text = <"Duration">
+					description = <"*Typical duration of an instance of  strained exhaustion(nb)">
+				>
+				["at0012"] = <
+					text = <"Common precipitating factors">
+					description = <"Common precipitating factors for strained exhaustion ">
+				>
+				["at0013"] = <
+					text = <"Description">
+					description = <"Characteristics of the strained exhaution experienced by patient.">
+				>
+				["at0014"] = <
+					text = <"3. Deprived sleep">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Usual bedtime">
+					description = <"Normal time to go to bed">
+				>
+				["at0016"] = <
+					text = <"Usual wake up time">
+					description = <"Usual time to wake up">
+				>
+				["at0017"] = <
+					text = <"Variation in sleep length">
+					description = <"Typical variance in sleep length between different nights">
+				>
+				["at0018"] = <
+					text = <"Tension">
+					description = <"Tensions preventing good sleep">
+				>
+				["at0019"] = <
+					text = <"Relaxation techniques">
+					description = <"Use of relaxation techniques">
+				>
+				["at0020"] = <
+					text = <"Time before going to sleep">
+					description = <"Typical waiting time before going to sleep">
+				>
+				["at0021"] = <
+					text = <"Number of wake ups">
+					description = <"Typical number of wake ups during one nights sleep">
+				>
+				["at0022"] = <
+					text = <"Snoring">
+					description = <"Snoring pattern">
+				>
+				["at0023"] = <
+					text = <"Breathing problems">
+					description = <"Not being able to breathe">
+				>
+				["at0024"] = <
+					text = <"Feeling rested after sleep">
+					description = <"Feeling rested after sleep">
+				>
+				["at0025"] = <
+					text = <"Description">
+					description = <"Description of other sleep related issues">
+				>
+				["at0026"] = <
+					text = <"4. Pain">
+					description = <"Descrption of pains">
+				>
+				["at0027"] = <
+					text = <"Degree of pain">
+					description = <"Degree">
+				>
+				["at0028"] = <
+					text = <"Typical location of muscle pains">
+					description = <"Location of muscle pains">
+				>
+				["at0030"] = <
+					text = <"Typical location of joint pains">
+					description = <"Location of joint pains">
+				>
+				["at0032"] = <
+					text = <"Headache before exhaustion symptoms started">
+					description = <"Headache patterm before exhaustion symptoms started">
+				>
+				["at0033"] = <
+					text = <"Regularity">
+					description = <"Number of days with symptoms in a typical month">
+				>
+				["at0035"] = <
+					text = <"Location">
+					description = <"Location of headache">
+				>
+				["at0036"] = <
+					text = <"Headache after exhaustion symptoms started">
+					description = <"Headache after exhaustion symptoms started">
+				>
+				["at0037"] = <
+					text = <"Delay">
+					description = <"*Typical delay from precipitating factor before the strained exhaustion starts(nb)">
+				>
+				["at0038"] = <
+					text = <"School/university">
+					description = <"Educational setting">
+				>
+				["at0039"] = <
+					text = <"Work">
+					description = <"Occupational setting ">
+				>
+				["at0040"] = <
+					text = <"Social gatherings">
+					description = <"Informal settings with many people, known and/or unknown">
+				>
+				["at0041"] = <
+					text = <"Restaurants, coffee shops etc">
+					description = <"Public settings with a meal">
+				>
+				["at0042"] = <
+					text = <"Physical activities">
+					description = <"Conducting sports, exercise, outdoors etc.">
+				>
+				["at0043"] = <
+					text = <"Phsycological strain">
+					description = <"Conflicts, pressure, uncontrolled situations">
+				>
+				["at0045"] = <
+					text = <"Regularity">
+					description = <"Number of days with symptoms in a typical month">
+				>
+				["at0046"] = <
+					text = <"Typical duration of attack">
+					description = <"Typical duration of attack of headache, measured in hours">
+				>
+				["at0047"] = <
+					text = <"Location">
+					description = <"Location of headache">
+				>
+				["at0048"] = <
+					text = <"Migrene">
+					description = <"Pattern of migrene">
+				>
+				["at0049"] = <
+					text = <"*Aura(nb)">
+					description = <"**(nb)">
+				>
+				["at0050"] = <
+					text = <"*Laterality(nb)">
+					description = <"**(nb)">
+				>
+				["at0051"] = <
+					text = <"*Characteristics(nb)">
+					description = <"**(nb)">
+				>
+				["at0052"] = <
+					text = <"*Both sides(nb)">
+					description = <"**(nb)">
+				>
+				["at0053"] = <
+					text = <"*Left side(nb)">
+					description = <"**(nb)">
+				>
+				["at0054"] = <
+					text = <"*Right side(nb)">
+					description = <"**(nb)">
+				>
+				["at0055"] = <
+					text = <"*Unspecified(nb)">
+					description = <"**(nb)">
+				>
+				["at0056"] = <
+					text = <"*Nausea(nb)">
+					description = <"**(nb)">
+				>
+				["at0057"] = <
+					text = <"*Vomiting(nb)">
+					description = <"**(nb)">
+				>
+				["at0058"] = <
+					text = <"*Oversensitivity to light(nb)">
+					description = <"**(nb)">
+				>
+				["at0059"] = <
+					text = <"*Tears(nb)">
+					description = <"**(nb)">
+				>
+				["at0060"] = <
+					text = <"*Red eyes(nb)">
+					description = <"**(nb)">
+				>
+				["at0061"] = <
+					text = <"*Description(nb)">
+					description = <"**(nb)">
+				>
+				["at0062"] = <
+					text = <"5. Neurologial and cognitive symptoms">
+					description = <"">
+				>
+				["at0063"] = <
+					text = <"*Problems with concentrating(nb)">
+					description = <"**(nb)">
+				>
+				["at0064"] = <
+					text = <"*Degree(nb)">
+					description = <"**(nb)">
+				>
+				["at0065"] = <
+					text = <"*Regularity(nb)">
+					description = <"**(nb)">
+				>
+				["at0066"] = <
+					text = <"*Description(nb)">
+					description = <"**(nb)">
+				>
+				["at0068"] = <
+					text = <"*Problems with short term memory(nb)">
+					description = <"**(nb)">
+				>
+				["at0069"] = <
+					text = <"*Problems understanding(nb)">
+					description = <"**(nb)">
+				>
+				["at0070"] = <
+					text = <"*Confusion/disorientation(nb)">
+					description = <"**(nb)">
+				>
+				["at0071"] = <
+					text = <"*Problems with focusing eye-sight(nb)">
+					description = <"**(nb)">
+				>
+				["at0072"] = <
+					text = <"*Clumsyness(nb)">
+					description = <"**(nb)">
+				>
+				["at0073"] = <
+					text = <"*Reduced muscle strenght(nb)">
+					description = <"**(nb)">
+				>
+				["at0074"] = <
+					text = <"*Oversensitivity to light(nb)">
+					description = <"**(nb)">
+				>
+				["at0075"] = <
+					text = <"*Oversensitivity to sounds(nb)">
+					description = <"**(nb)">
+				>
+				["at0076"] = <
+					text = <"*Oversensitivity to touch(nb)">
+					description = <"**(nb)">
+				>
+				["at0077"] = <
+					text = <"6A. Autonomous manifestations">
+					description = <"**(nb)">
+				>
+				["at0078"] = <
+					text = <"6B. Nevroendochrine manifestations">
+					description = <"**(nb)">
+				>
+				["at0079"] = <
+					text = <"6C. Immune  manifestations">
+					description = <"**(nb)">
+				>
+				["at0080"] = <
+					text = <"7. Duration">
+					description = <"**(nb)">
+				>
+				["at0081"] = <
+					text = <"*Start of exhaustion(nb)">
+					description = <"**(nb)">
+				>
+				["at0082"] = <
+					text = <"Classification">
+					description = <"**(nb)">
+				>
+				["at0083"] = <
+					text = <"Degree">
+					description = <"Overall degree of exhaustion according to clinician">
+				>
+				["at0084"] = <
+					text = <"Mild">
+					description = <"Patient is mobile, self caring, taking care of personal hygiene, capable of some light work">
+				>
+				["at0085"] = <
+					text = <"Moderate">
+					description = <"Patient has reduced mobility, limitation in all kinds of everyday activities. Typically having to choose between breakfast and a shower.">
+				>
+				["at0087"] = <
+					text = <"Strong">
+					description = <"Patient in bed most of the time, cognitive problems, often using wheel chair, but able to brush teeths, go to toilet">
+				>
+				["at0088"] = <
+					text = <"Very strong">
+					description = <"Patient in bed at all times, unable to to personal hygiene, oversensitivity">
+				>
+				["at0089"] = <
+					text = <"Comment">
+					description = <"Comment from physician regarding overall exhaustion level">
+				>
+				["at0090"] = <
+					text = <"*Dizzyness when standing up quickly(nb)">
+					description = <"**(nb)">
+				>
+				["at0091"] = <
+					text = <"*Dummy(nb)">
+					description = <"**(nb)">
+				>
+				["at0092"] = <
+					text = <"*Dizziness(nb)">
+					description = <"**(nb)">
+				>
+				["at0093"] = <
+					text = <"*Pale(nb)">
+					description = <"**(nb)">
+				>
+				["at0094"] = <
+					text = <"*Nausea(nb)">
+					description = <"**(nb)">
+				>
+				["at0095"] = <
+					text = <"*Frequent urinating and/or other bladder problems(nb)">
+					description = <"**(nb)">
+				>
+				["at0096"] = <
+					text = <"*Irregular heartbeats(nb)">
+					description = <"**(nb)">
+				>
+				["at0097"] = <
+					text = <"*Heavy breath (nb)">
+					description = <"**(nb)">
+				>
+				["at0098"] = <
+					text = <"Little">
+					description = <"Mainly same amount of sleep every night">
+				>
+				["at0099"] = <
+					text = <"Some">
+					description = <"Sleep length varies, but not every night, or with big variation">
+				>
+				["at0100"] = <
+					text = <"Considerable">
+					description = <"Sleep length varies a lot and same amount of sleep for several nights is rare">
+				>
+				["at0101"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0102"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0103"] = <
+					text = <"Seldom">
+					description = <"*">
+				>
+				["at0104"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0105"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0106"] = <
+					text = <"Some">
+					description = <"*">
+				>
+				["at0107"] = <
+					text = <"Regularly">
+					description = <"*">
+				>
+				["at0108"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0109"] = <
+					text = <"Other precipitating factor">
+					description = <"Other precipitating factor">
+				>
+				["at0110"] = <
+					text = <"Muscle pains">
+					description = <"*">
+				>
+				["at0111"] = <
+					text = <"Joint pains">
+					description = <"*">
+				>
+				["at0112"] = <
+					text = <"Degree">
+					description = <"Degree of joint pains">
+				>
+				["at0113"] = <
+					text = <"Migration pattern">
+					description = <"*">
+				>
+				["at0114"] = <
+					text = <"Stable">
+					description = <"Pains are in specific and stable locations">
+				>
+				["at0115"] = <
+					text = <"Migrating">
+					description = <"Pains migrate around to different locations">
+				>
+				["at0116"] = <
+					text = <"Migration pattern">
+					description = <"*">
+				>
+				["at0117"] = <
+					text = <"Stable">
+					description = <"Pains are in specific and stable locations">
+				>
+				["at0118"] = <
+					text = <"Migrating">
+					description = <"Pains migrate around to different locations">
+				>
+				["at0119"] = <
+					text = <"Degree">
+					description = <"Degree of headache">
+				>
+				["at0120"] = <
+					text = <"Forehead">
+					description = <"*">
+				>
+				["at0121"] = <
+					text = <"Side of forehead">
+					description = <"*">
+				>
+				["at0122"] = <
+					text = <"Top of head">
+					description = <"*">
+				>
+				["at0123"] = <
+					text = <"Back of head">
+					description = <"*">
+				>
+				["at0124"] = <
+					text = <"sinuses">
+					description = <"*">
+				>
+				["at0125"] = <
+					text = <"Ear region">
+					description = <"*">
+				>
+				["at0126"] = <
+					text = <"Typical duration of attack">
+					description = <"Typical duration of attack of headache, measured in hours">
+				>
+				["at0127"] = <
+					text = <"Forehead">
+					description = <"*">
+				>
+				["at0128"] = <
+					text = <"Side of forehead">
+					description = <"*">
+				>
+				["at0129"] = <
+					text = <"Top of head">
+					description = <"*">
+				>
+				["at0130"] = <
+					text = <"Back of head">
+					description = <"*">
+				>
+				["at0131"] = <
+					text = <"sinuses">
+					description = <"*">
+				>
+				["at0132"] = <
+					text = <"Ear region">
+					description = <"*">
+				>
+				["at0133"] = <
+					text = <"Degree">
+					description = <"Degree of headache">
+				>
+			>
+		>
+	>
