@@ -1,0 +1,74 @@
+archetype (adl_version=1.4; uid=d94a2b3a-727b-4931-8d4d-5c169df7d755)
+	openEHR-EHR-ACTION.endre_varighet_tvang.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"07B30DBF66EC6006FD49176C302ABE91">
+		["build_uid"] = <"0a870992-45d6-4e3b-8d1c-90029fb17781">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Endre varighet tvang
+		ism_transition matches {
+			ISM_TRANSITION[at0001] matches {    -- Varighet registrert
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0001]    -- Varighet registrert
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			allow_archetype ITEM_TREE matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.varighet_tvang(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Endre varighet tvang">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Varighet registrert">
+					description = <"">
+				>
+			>
+		>
+	>
