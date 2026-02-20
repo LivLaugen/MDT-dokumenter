@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=735d2760-d58a-4eea-92c6-ef25c667b216)
+﻿archetype (adl_version=1.4; uid=3e55b067-a9a8-42ea-9f20-3e7c32b71213)
 	openEHR-EHR-OBSERVATION.news_uk_rcp.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- National Early Warning Score (NEWS)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -49,61 +48,58 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2013-06-02">
 		["name"] = <"Ian McNicoll">
 		["organisation"] = <"freshEHR Clinical Informatics Ltd.">
 		["email"] = <"ian@freshehr.com">
+		["date"] = <"2013-06-02">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Koray Atalag, University of Auckland, New Zealand","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","Marcus Baw, openGPSoC / BawMedical Ltd, United Kingdom","Kristian Berg, Vestvågøy kommune - Fagutviklingsavdelingen, Norway","Mauricio Botero, Universidad de Caldas, Colombia","Hanne Marte Bårholm, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Bjørn Christensen, Helse Bergen HF, Norway","Rui Coutinho, Centro Hospitalar do Porto, Portugal","Hildegard Franke, freshEHR Clinical Informatics Ltd., United Kingdom","Heather Grain, Llewelyn Grain Informatics, Australia","Cecilie Graver, Oslo universitetssykehus HF, Norway","Mikkel Johan Gaup Grønmo, Helse Nord IKT, Norway (Nasjonal IKT redaktør)","Kristian Heldal, Telemark Hospital Trust, Norway","Evelyn Hovenga, EJSH Consulting, Australia","Karl Trygve Kalleberg, Oslo Universitetssykehus, Norway","Lars Karlsen, DIPS ASA, Norway","Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway","Kanika Kuwelker, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)","Heather Leslie, Ocean Informatics, Australia (openEHR Editor)","Siv Marie Lien, DIPS ASA, Norway","Hallvard Lærum, Oslo Universitetssykehus HF, Norway","Vincent McCauley, Medical Software Industry Association, Australia","James McClay, University of Nebraska Medical Center, United States","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Bjoern Naess, DIPS ASA, Norway","Andrej Orel, Marand d.o.o., Slovenia","Martin Paulson, Sykehuset i Vestfold, Norway","Rune Pedersen, Universitetssykehuset i Nord Norge, Norway","Vladimir Pizzo, Hospital Sírio Libanês, Brazil","Navin Ramachandran, NHS, United Kingdom","Norwegian Review Summary, National ICT Norway, Norway","Terje Sagmyr, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Anoop Shah, University College London, United Kingdom","Line Silsand, Universitetssykehuset i Nord-Norge, Norway","Lisbeth Sommervoll, Akershus Universitetssykehus, Norway","Iztok Stotl, UKCLJ, Slovenia","Rowan Thomas, St. Vincent's Hospital Melbourne, Australia","John Tore Valand, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)">
 	details = <
-		["fi"] = <
-			language = <[ISO_639-1::fi]>
-			purpose = <"Fysiologisten lukemien ja havaintojen luokitteluun perustuva yksinkertainen menetelmä, jolla tuetaan objektiivista arviointia kliinisen heikkenemisen asteesta yli 16-vuotiailla huonovointisilla potilailla.">
-			keywords = <"varoitus, AVPU, RR, HR, BP, lämpötila, SBP, triage, NEWS, Sats, MEWS, EWS, happi, saturaatio", ...>
-			use = <"Käytetään tallentamaan pisteytys, jolla voidaan arvioida kliininen heikkenemisen aste yli 16-vuotiaille huonovointisille potilaille.">
-			misuse = <"Ei saa käyttää fysiologisten mittausten tai kliinisten havaintojen kirjaamiseen. Käytä tätä tarkoitusta varten OBSERVATION-arkkityyppejä - OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen tai OBSERVATION.indirect_oximetry.
-
-Ei saa käyttää alle 16-vuotiaille tai raskaana oleville lapsille / teini-ikäisille.">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att bedöma och registrera försämring av den kliniska statusen, inklusive vitala funktioner, för en sjuk patient som är 16 år eller äldre. Detta görs genom att registrera en poängsumma som är baserad på kategorisering av fysiologiska mätvärden. Poängsumman kan användas som en förenklad metod för att göra en objektiv bedömning av patienten.">
-			keywords = <"varning","AVPU","AF","HF","BT","temperatur","SBT","triage","NEWS","syrgas","saturation","syremättnad","sjukdom","grad","poäng">
 			use = <"Används för att registrera en poängsumma baserat på kategorisering av fysiologiska mätvärden. Poängsumman används för att på ett objektivt sätt bedöma och följa försämringen av vitala funktioner hos sjuka patienter som är 16 år eller äldre.">
+			keywords = <"varning", "AVPU", "AF", "HF", "BT", "temperatur", "SBT", "triage", "NEWS", "syrgas", "saturation", "syremättnad", "sjukdom", "grad", "poäng">
 			misuse = <"Ska inte användas för att registrera enskilda fysiska mätningar eller kliniska observationer. Använd istället specifika arketyper (OBSERVATION) för att registrera
 enskilda mätvärden såsom: OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen eller OBSERVATION.indirect_oximetry.
 
 Ska inte användas för barn och ungdomar under 16 år eller under graviditet.">
 		>
-		["es-ar"] = <
-			language = <[ISO_639-1::es-ar]>
-			purpose = <"Para el registro de una escala compuesta basada en la categorización de mediciones y observaciones fisiológicas como método simple para fundamentar la evaluación objetiva del grado de deterioro clínico de un paciente enfermo mayor de 16 años.">
-			keywords = <"alerta","AVPU","frecuencia respiratoria","frecuencia cardíaca","tensión arterial","temperatura","tensión arterial sistólica","triage","NEWS","saturación de oxígeno","MEWS","EWS","oxígeno","saturación","enfermedad","grado","puntaje">
-			use = <"Utilizar para el registro de una escala compuesta para fundamentar la evaluación objetica del grado de deterioro clínico de un paciente enfermo mayor de 16 años.">
-			misuse = <"No utilizar para el registro de cada medición fisiológica u observación clínica. Utilizar para ello los arquetipos OBSERVATION específicos - OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen u OBSERVATION.indirect_oximetry.
-No debe utilizarse para niños y adolescentes menores de 16 años ni durante el embarazo.">
+		["fi"] = <
+			language = <[ISO_639-1::fi]>
+			purpose = <"Fysiologisten lukemien ja havaintojen luokitteluun perustuva yksinkertainen menetelmä, jolla tuetaan objektiivista arviointia kliinisen heikkenemisen asteesta yli 16-vuotiailla huonovointisilla potilailla.">
+			use = <"Käytetään tallentamaan pisteytys, jolla voidaan arvioida kliininen heikkenemisen aste yli 16-vuotiaille huonovointisille potilaille.">
+			keywords = <"varoitus, AVPU, RR, HR, BP, lämpötila, SBP, triage, NEWS, Sats, MEWS, EWS, happi, saturaatio", ...>
+			misuse = <"Ei saa käyttää fysiologisten mittausten tai kliinisten havaintojen kirjaamiseen. Käytä tätä tarkoitusta varten OBSERVATION-arkkityyppejä - OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen tai OBSERVATION.indirect_oximetry.
+
+Ei saa käyttää alle 16-vuotiaille tai raskaana oleville lapsille / teini-ikäisille.">
 		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere en sammensatt skåring, basert på kategoriserte fysiologiske målinger og observasjoner for å støtte vurderingen av klinisk forverring hos pasient over 16 år.">
-			keywords = <"varsling","triage","NEWS","sats","MEWS","TILT","forverring">
-			copyright = <"© Clinical Models UK, Nasjonal IKT HF, openEHR Foundation">
 			use = <"Brukes for å registrere en sammensatt skåring for å støtte vurderingen av klinisk forverring hos pasient over 16 år.">
+			keywords = <"varsling", "triage", "NEWS", "sats", "MEWS", "TILT", "forverring">
 			misuse = <"Anvendes ikke for registrering av hver enkelt fysiologisk parameter eller klinisk observasjon. Bruk spesifikke OBSERVATION-arketyper for dette formål - OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen og OBSERVATION.indirect_oximetry.
 
 Benyttes ikke for barn under 16 år, bruk en egen arketype for dette formålet.
 
 Benyttes vanligvis ikke for gravide.">
+			copyright = <"© Clinical Models UK, Nasjonal IKT HF, openEHR Foundation">
+		>
+		["es-ar"] = <
+			language = <[ISO_639-1::es-ar]>
+			purpose = <"Para el registro de una escala compuesta basada en la categorización de mediciones y observaciones fisiológicas como método simple para fundamentar la evaluación objetiva del grado de deterioro clínico de un paciente enfermo mayor de 16 años.">
+			use = <"Utilizar para el registro de una escala compuesta para fundamentar la evaluación objetica del grado de deterioro clínico de un paciente enfermo mayor de 16 años.">
+			keywords = <"alerta", "AVPU", "frecuencia respiratoria", "frecuencia cardíaca", "tensión arterial", "temperatura", "tensión arterial sistólica", "triage", "NEWS", "saturación de oxígeno", "MEWS", "EWS", "oxígeno", "saturación", "enfermedad", "grado", "puntaje">
+			misuse = <"No utilizar para el registro de cada medición fisiológica u observación clínica. Utilizar para ello los arquetipos OBSERVATION específicos - OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen u OBSERVATION.indirect_oximetry.
+No debe utilizarse para niños y adolescentes menores de 16 años ni durante el embarazo.">
 		>
 		["pt-br"] = <
 			language = <[ISO_639-1::pt-br]>
 			purpose = <"Gravar uma pontuação composta com base na categorização de leituras e observações fisiológicas, como um método simples para apoiar a avaliação objetiva do grau de deterioração clínica em um paciente com mal-estar acima dos 16 anos.">
-			keywords = <"Atenção","FR","FC","Temp","PA","triagem","NEWS","oxigênio","saturação","doença","grau","score","PAS","pressão arterial sistólica">
 			use = <"Use para registrar uma pontuação composta para apoiar a avaliação do grau de deterioração clínica em um paciente com mal-estar, com idade superior a 16 anos.">
+			keywords = <"Atenção", "FR", "FC", "Temp", "PA", "triagem", "NEWS", "oxigênio", "saturação", "doença", "grau", "score", "PAS", "pressão arterial sistólica">
 			misuse = <"Não deve ser usado para registrar cada medida fisiológica ou observação clínica. Use os arquétipos OBSERVATION específicos para este propósito ´OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen ou OBSERVATION.indirect_oximetry.
 
 Não deve ser utilizado para crianças/adolescentes com idade inferior a 16 anos ou durante a gravidez.">
@@ -111,14 +107,16 @@ Não deve ser utilizado para crianças/adolescentes com idade inferior a 16 anos
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record a composite score based on categorising physiological readings and observations, as a simple method to support objective assessment of the degree of clinical deterioration in an unwell patient over the age of 16 years.">
-			keywords = <"warning","AVPU","RR","HR","BP","Temp","SBP","triage","NEWS","Sats","MEWS","EWS","oxygen","saturation","illness","degree","score">
-			copyright = <"© Clinical Models UK, Nasjonal IKT HF, openEHR Foundation">
 			use = <"Use to record a composite score to support assessment of the degree of clinical deterioration in an unwell patient, over the age of 16 years.">
+			keywords = <"warning", "AVPU", "RR", "HR", "BP", "Temp", "SBP", "triage", "NEWS", "Sats", "MEWS", "EWS", "oxygen", "saturation", "illness", "degree", "score">
 			misuse = <"Not to be used to record each physical measurement or clinical observation. Use specific OBSERVATION archetypes for this purpose - OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen or OBSERVATION.indirect_oximetry.
 
 Not to be used for children/teens under the age of 16 years or in pregnancy.">
+			copyright = <"© Clinical Models UK, Nasjonal IKT HF, openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)", "Koray Atalag, University of Auckland, New Zealand", "Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)", "Marcus Baw, openGPSoC / BawMedical Ltd, United Kingdom", "Kristian Berg, Universitetssykehuset Nord Norge, Norway", "Mauricio Botero, Universidad de Caldas, Colombia", "Bjørn Christensen, HUS, Norway", "Rui Coutinho, Centro Hospitalar do Porto, Portugal", "Hildegard Franke, freshEHR Clinical Informatics Ltd., United Kingdom", "Heather Grain, Llewelyn Grain Informatics, Australia", "Cecilie Graver, Oslo universitetssykehus HF, Norway", "Kristian Heldal, Telemark Hospital Trust, Norway", "Evelyn Hovenga, EJSH Consulting, Australia", "Karl Trygve Kalleberg, Oslo Universitetssykehus, Norway", "Lars Karlsen, DIPS ASA, Norway", "Lars Morgan Karlsen, DIPS ASA, Norway", "Heather Leslie, Ocean Informatics, Australia (openEHR Editor)", "Siv Marie Lien, DIPS ASA, Norway", "Hallvard Lærum, Oslo Universitetssykehus HF, Norway", "Vincent McCauley, Medical Software Industry Association, Australia", "James McClay, University of Nebraska Medical Center, United States", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Bjoern Naess, DIPS ASA, Norway", "Andrej Orel, Marand d.o.o., Slovenia", "Martin Paulson, Sykehuset i Vestfold, Norway", "Rune Pedersen, Universitetssykehuset i Nord Norge, Norway", "Vladimir Pizzo, Hospital Sírio Libanês, Brazil", "Navin Ramachandran, NHS, United Kingdom", "Norwegian Review Summary, National ICT Norway, Norway", "Anoop Shah, University College London, United Kingdom", "Line Silsand, Universitetssykehuset i Nord-Norge, Norway", "Lisbeth Sommervoll, Akershus Universitetssykehus, Norway", "Iztok Stotl, UKCLJ, Slovenia", "Rowan Thomas, St. Vincent's Hospital Melbourne, Australia", "John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"Nasjonal IKT">
@@ -133,93 +131,93 @@ Modified Early Warning Score (NT RMP), draft archetype, NEHTA Clinical Knowledge
 		["original_namespace"] = <"no.nasjonalikt">
 		["original_publisher"] = <"Nasjonal IKT">
 		["custodian_namespace"] = <"no.nasjonalikt">
-		["MD5-CAM-1.0.1"] = <"C30BD4B58C9B1B59DB82765542E4662D">
-		["build_uid"] = <"f0a86310-39a5-4ca2-8f30-88182bc00f8e">
-		["revision"] = <"1.2.0">
+		["MD5-CAM-1.0.1"] = <"5B18DB0AF362723C40700F5F152507C5">
+		["build_uid"] = <"c28674a9-a10f-4f16-b3f9-78dffb3771eb">
+		["revision"] = <"1.2.2">
 	>
 
 definition
-	OBSERVATION[at0000] matches {    -- National Early Warning Score (NEWS)
+	OBSERVATION[at0000] matches {	-- NEWS (UK RCP)
 		data matches {
-			HISTORY[at0001] matches {    -- Event Series
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					POINT_EVENT[at0002] occurrences matches {0..*} matches {    -- Point in time
+					POINT_EVENT[at0002] occurrences matches {0..*} matches {	-- Point in time
 						data matches {
-							ITEM_TREE[at0003] matches {    -- Tree
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0006] occurrences matches {0..1} matches {    -- Respiration rate
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Respiration rate
 										value matches {
-											0|[local::at0018],
-											1|[local::at0019],
-											2|[local::at0020],
-											3|[local::at0021]
+											0|[local::at0018], 	-- 12-20
+											1|[local::at0019], 	-- 9-11
+											2|[local::at0020], 	-- 21-24
+											3|[local::at0021]  	-- <=8 or >=25
 										}
 									}
-									ELEMENT[at0029] occurrences matches {0..1} matches {    -- Oxygen saturation
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Oxygen saturation
 										value matches {
-											0|[local::at0030],
-											1|[local::at0031],
-											2|[local::at0032],
-											3|[local::at0033]
+											0|[local::at0030], 	-- >= 96
+											1|[local::at0031], 	-- 94-95
+											2|[local::at0032], 	-- 92-93
+											3|[local::at0033]  	-- <=91
 										}
 									}
-									ELEMENT[at0034] occurrences matches {0..1} matches {    -- Supplemental oxygen
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Supplemental oxygen
 										value matches {
-											0|[local::at0036],
-											2|[local::at0037]
+											0|[local::at0036], 	-- No
+											2|[local::at0037]  	-- Yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {    -- Body temperature
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Body temperature
 										value matches {
-											0|[local::at0022],
-											1|[local::at0023],
-											2|[local::at0038],
-											3|[local::at0039]
+											0|[local::at0022], 	-- 36.1-38.0
+											1|[local::at0023], 	-- 35.1-36.0 or 38.1-39.0
+											2|[local::at0038], 	-- >=39.1
+											3|[local::at0039]  	-- <=35.0
 										}
 									}
-									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Systolic blood pressure
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Systolic blood pressure
 										value matches {
-											0|[local::at0014],
-											1|[local::at0015],
-											2|[local::at0016],
-											3|[local::at0017]
+											0|[local::at0014], 	-- 111-219
+											1|[local::at0015], 	-- 101-110
+											2|[local::at0016], 	-- 91-100
+											3|[local::at0017]  	-- <=90 or >= 220
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {    -- Heart rate
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Heart rate
 										value matches {
-											0|[local::at0013],
-											1|[local::at0012],
-											2|[local::at0011],
-											3|[local::at0010]
+											0|[local::at0013], 	-- 51-90
+											1|[local::at0012], 	-- 41-50 or 91-110
+											2|[local::at0011], 	-- 111-130
+											3|[local::at0010]  	-- <=40 or >=131
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {    -- Level of consciousness
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Level of consciousness
 										value matches {
-											0|[local::at0024],
-											3|[local::at0025]
+											0|[local::at0024], 	-- A
+											3|[local::at0025]  	-- V, P or U
 										}
 									}
-									ELEMENT[at0028] occurrences matches {0..1} matches {    -- Total score
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..20|}
 											}
 										}
 									}
-									ELEMENT[at0047] occurrences matches {0..1} matches {    -- Clinical risk category
+									ELEMENT[at0047] occurrences matches {0..1} matches {	-- Clinical risk category
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0048,    -- Low
-													at0049,    -- Low-medium
-													at0050,    -- Medium
-													at0051]    -- High
+													at0048, 	-- Low
+													at0049, 	-- Low-medium
+													at0050, 	-- Medium
+													at0051]	-- High
 												}
 											}
 										}
 									}
-									ELEMENT[at0044] occurrences matches {0..1} matches {    -- Comment
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -228,9 +226,9 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0041] matches {    -- Tree
+							ITEM_TREE[at0041] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0043] occurrences matches {0..1} matches {    -- Confounding factors
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Confounding factors
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -243,9 +241,9 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0045] matches {    -- Tree
+			ITEM_TREE[at0045] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0046] occurrences matches {0..*} matches {    -- Extension
+					allow_archetype CLUSTER[at0046] occurrences matches {0..*} matches {	-- Extension
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -253,6 +251,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
