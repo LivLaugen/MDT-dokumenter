@@ -1,0 +1,113 @@
+archetype (adl_version=1.4; uid=b1fb1ad4-18a6-43df-b6a2-8d8f56626800)
+	openEHR-EHR-EVALUATION.anastomose_endostomi.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Inneholder opplysninger om det er gjort anastomose/avlastende stomi etter reseksjon under primærkirurgi">
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"D758F82C6EE8161DA3A0749A9C9CF538">
+		["build_uid"] = <"0245a253-7cd4-41d0-aaf8-06ad457842e9">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Anastomose/endostomi
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Anastomose
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003,    -- Ja
+									at0004,    -- Nei
+									at0005]    -- Ukjent
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Avlastende stomi
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0007,    -- Ja
+									at0008,    -- Nei
+									at0009]    -- Ukjent
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Anastomose/endostomi">
+					description = <"Inneholder opplysninger om det er gjort anastomose/avlastende stomi etter reseksjon under primærkirurgi">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Anastomose">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Ukjent">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Avlastende stomi">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Ukjent">
+					description = <"*">
+				>
+			>
+		>
+	>
