@@ -1,0 +1,61 @@
+archetype (adl_version=1.4; uid=755edc70-3044-4ca0-85e3-c8e39c548c05)
+	openEHR-EHR-INSTRUCTION.vedtak_om_beslag.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"F0BF234C884FCA28E75AB6246AC3504B">
+		["build_uid"] = <"8bbadf02-4fb5-426f-9f27-4407b2ebd5af">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	INSTRUCTION[at0000] matches {    -- Vedtak om beslag
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0001] occurrences matches {0..1} matches {    -- Current Activity
+				description matches {
+					ITEM_TREE[at0002] matches {*}    -- Tree
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vedtak om beslag">
+					description = <"">
+				>
+				["at0001"] = <
+					text = <"Current Activity">
+					description = <"Current Activity">
+				>
+				["at0002"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+			>
+		>
+	>
