@@ -1,0 +1,98 @@
+archetype (adl_version=1.4; uid=e41290c8-ebb6-4986-980b-1e71267fd998)
+	openEHR-EHR-OBSERVATION.cotton_complication_classification.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2016-12-16">
+		["name"] = <"Tomas Nordheim Alme">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"tna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To classify complications during or after an ERCP-procedure (Endoscopic retrograde choleangiopancreaticiography).">
+			keywords = <"ERCP","Endoscopic","Cotton","Complications">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to classify complications during or after an ERCP-procedure (Endoscopic retrograde choleangiopancreaticiography).
+The scale was proposed by Peter Cotton in 1997 ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Cotton PB, Lehman G, Vennes J, et al. Endoscopic sphincterotomy complications and their management: an attempt at consensus. Gastrointest Endosc1997;37:383–93
+
+Norsk oversettelse:
+https://www.kreftregisteret.no/globalassets/arkiv/gastronet-apent/ercp-skjema_33_251114_eh111214.doc
+
+">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"D1B05ED77CECBE44BC9498BA678791A8">
+		["build_uid"] = <"800e021f-0ef7-49b7-93aa-de8c8de2dd33">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Cotton classification of complications
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Cotton classification
+										value matches {
+											1|[local::at0005]
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Cotton classification of complications">
+					description = <"Cottons score for classification of complications during and after ERCP">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Cotton classification">
+					description = <"Classification of complications during or after an ERCP-procedure ">
+				>
+				["at0005"] = <
+					text = <"Grade 1(mild)">
+					description = <"Bleeding: Clinical (not just endoscopic) evidence of bleeding, hemoglobin drop <3 g, and no need for transfusion. Perforation: Possible, or only very slight leak of fluid or contrast, treatable by fluids and suction for three days or less. Pancreatitis: Amylase at least three times normal at more than 24 hours after the procedure, requiring admission or prolongation of planned admission to two to three days. Choleangitis: Clinical (not just endoscopic) evidence of bleeding, hemoglobin drop <3 g, and no need for transfusion">
+				>
+			>
+		>
+	>
