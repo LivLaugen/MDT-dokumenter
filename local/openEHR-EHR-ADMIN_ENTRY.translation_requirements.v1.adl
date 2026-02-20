@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=7764a106-2a1f-486b-b4bc-9e43e8729830)
+﻿archetype (adl_version=1.4; uid=17b595bb-f18b-477d-8f5b-344b4d17a1f8)
 	openEHR-EHR-ADMIN_ENTRY.translation_requirements.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Translation requirement
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -16,27 +15,23 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2018-11-06">
 		["name"] = <"John Tore Valand">
 		["organisation"] = <"Helse Bergen HF">
 		["email"] = <"john.tore.valand@helse-bergen.no">
+		["date"] = <"2018-11-06">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Heidi Aursand, Oslo universitetssykehus, Norway","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","Birgitte Bjerkely, Senter for sjeldne diagnoser, OUS, Norway","Anita Bjørnnes, Helse Bergen, Norway","Hanne Marte Bårholm, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Bjørn Christensen, Helse Bergen HF, Norway","Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway","Valborg Ellingsen, Haraldsplass Diakonale sykehus, Norway","Heather Grain, Llewelyn Grain Informatics, Australia","Mikkel Johan Gaup Grønmo, Helse Nord IKT, Norway (Nasjonal IKT redaktør)","Erling Are Hole, Helse Bergen, Norway","Tom Jarl Jakobsen, Helse Bergen, Norway","Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway","Nils Kolstrup, Skansen Legekontor og Nasjonalt Senter for samhandling og telemedisin, Norway","Kanika Kuwelker, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","Siv Marie Lien, DIPS ASA, Norway","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom","Andrej Orel, Marand d.o.o., Slovenia","Norwegian Review Summary, Nasjonal IKT HF, Norway","Terje Sagmyr, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Gro-Hilde Severinsen, Norwegian center for ehealthresearch, Norway","Line Silsand, Universitetssykehuset i Nord-Norge, Norway","Nyree Taylor, Ocean Informatics, Australia","Susanne Trønnes, Bergen kommune, Norway","John Tore Valand, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)">
 	details = <
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere behov for tolking for å kunne levere helsetjenester eller helserelaterte tjenester.">
-			keywords = <"oversetting","oversettelse">
-			copyright = <"© openEHR Foundation">
 			use = <"Brukes for å registrere behov for tolking for å kunne levere helsetjenester eller helserelaterte tjenester.
 
 Denne arketypen er tenkt brukt for å støtte logikken i et klinisk informasjonssystem. Det kan være uhensiktsmessig å utveksle informasjon i denne arketypen til et annet klinisk system.
 
 Hvis det er flere enn ett administrativt språk (i systemet eller ved lokasjonen der systemet brukes), må det gjøres en separat vurdering om tolkebehov for hvert språk. En ny instans av denne arketypen må da lages for hvert administrative språk.">
+			keywords = <"oversetting", "oversettelse">
 			misuse = <"Brukes ikke for å registrere individets praktiske evne til å kommunisere, inkludert funksjonsnedsettelser og behov for kommunikasjonshjelpemidler, bruk arketypen EVALUATION.communication_capability (Evne til kommunikasjon) for dette formålet.
 
 Brukes ikke for å registrere detaljer om et språk, bruk arketypen CLUSTER.language (Språk) for dette formålet.
@@ -44,11 +39,11 @@ Brukes ikke for å registrere detaljer om et språk, bruk arketypen CLUSTER.lang
 Brukes ikke for å registrere detaljer om en forespørsel om tolketjenester. Nøst arketypen CLUSTER.interpreter_requirements (Tolkebehov) i en egnet INSTRUCTION-arketype, for eksempel INSTRUCTION.service_request (Helsetjenesteforespørsel).
 
 Brukes ikke for å registrere detaljer om tolking som er gjennomført. Bruk arketypen ACTION.interpretation for dette formålet.">
+			copyright = <"© openEHR Foundation">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the need for language translation in order to provide delivery of health care or related services.">
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record the need for language translation in order to provide delivery of health care or related services.
 
 This archetype is intended to support logistics within the local clinical information system. It may not be appropriate to exchange this content with another clinical system in another location. If there is more than one administrative language a separate assessment should be made of the need for translation of each language. A new instance of this archetype should be created for each administration language.">
@@ -59,18 +54,20 @@ Not to be used to record details about a language - use CLUSTER.language for thi
 Not to be used to record details about a request for interpreter services - use CLUSTER.Interpreter_requirements nested within a suitable INSTRUCTION archetype, for example INSTRUCTION.service_request.
 
 Not to be used to record details about an interpretation that was performed - use the proposed ACTION.interpretation.">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Erling Are Hole, Helse Bergen, Norway", "Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)", "Heidi Aursand, Oslo universitetssykehus, Norway", "Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)", "Birgitte Bjerkely, Senter for sjeldne diagnoser, OUS, Norway", "Anita Bjørnnes, Helse Bergen, Norway", "Bjørn Christensen, Helse Bergen HF, Norway", "Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway", "Valborg Ellingsen, Haraldsplass Diakonale sykehus, Norway", "Heather Grain, Llewelyn Grain Informatics, Australia", "Mikkel Johan Gaup Grønmo, Forvaltningssenter EPJ, Helse-Nord, Norway (openEHR Editor)", "Tom Jarl Jakobsen, Helse Bergen, Norway", "Nils Kolstrup, Skansen Legekontor og Nasjonalt Senter for samhandling og telemedisin, Norway", "Liv Laugen, ​Oslo University Hospital, Norway, Norway (openEHR Editor)", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "Siv Marie Lien, DIPS ASA, Norway", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom", "Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway", "Andrej Orel, Marand d.o.o., Slovenia", "Gro-Hilde Severinsen, Norwegian center for ehealthresearch, Norway", "Line Silsand, Universitetssykehuset i Nord-Norge, Norway", "Norwegian Review Summary, Nasjonal IKT HF, Norway", "Nyree Taylor, Ocean Informatics, Australia", "Susanne Trønnes, Norway", "John Tore Valand, Helse Bergen, Norway (openEHR Editor)", "Marit Alice Venheim, Helse Vest IKT, Norway (openEHR Editor)">
 	other_details = <
-		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
-		["references"] = <"Avgrenet fra: Translation requirement, Published archetype [Internet]. openEHR Foundation, openEHR Clinical Knowledge Manager [cited: 2023-07-11]. Available from: https://ckm.openehr.org/ckm/archetypes/1013.1.3539">
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"3A3CAE927D02237B5EEE7DC762CDBE7A">
-		["build_uid"] = <"9b4793e5-0ec0-472a-b7b5-5461e62ecc6c">
-		["revision"] = <"1.1.0">
+		["MD5-CAM-1.0.1"] = <"82E2B88773B988D9567B89FC37210DC5">
+		["build_uid"] = <"dbc92f53-e0a8-401d-a8fb-de4acd9b5b51">
+		["revision"] = <"1.1.2">
 	>
 
 definition
@@ -104,6 +101,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
