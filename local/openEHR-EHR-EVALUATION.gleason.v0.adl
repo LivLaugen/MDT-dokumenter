@@ -1,0 +1,174 @@
+archetype (adl_version=1.4; uid=6ed475cb-9ece-4a01-8585-ad1456025728)
+	openEHR-EHR-EVALUATION.gleason.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"0A2D1A68B62D4737D21F8D872D234787">
+		["build_uid"] = <"facf0f11-c3ce-4177-b6bf-58abeaafc08c">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Gleason
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- VevsproveIkkeTatt
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Geason1
+						value matches {
+							DV_COUNT matches {
+								magnitude matches {|1..5|}
+							}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Gleason2
+						value matches {
+							DV_COUNT matches {
+								magnitude matches {|1..5|}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Gleason2IkkeSatt
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- GleasonScore
+						value matches {
+							DV_COUNT matches {
+								magnitude matches {|2..10|}
+							}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- GleasonKanIkkeVurderes
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {    -- MorfologiskBasisGleason
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0010,    -- Biopsi
+									at0011,    -- TUR-P
+									at0012,    -- Cytologi
+									at0013,    -- Metastase
+									at0014]    -- Annet
+								}
+							}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {    -- MorfolgisikBasisGleasonSpesifiser
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0016] occurrences matches {0..1} matches {    -- DatoGleasonScore
+						value matches {
+							DV_DATE matches {
+								value matches {yyyy-mm-dd}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gleason">
+					description = <"Primær Gleason grad (1-5) + sekundær Gleason grad (1-5) = Gleason score (2-10)">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"VevsproveIkkeTatt">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Geason1">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Gleason2">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Gleason2IkkeSatt">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"GleasonScore">
+					description = <"Summen av Gleason1 + Gleason2.">
+				>
+				["at0008"] = <
+					text = <"GleasonKanIkkeVurderes">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"MorfologiskBasisGleason">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Biopsi">
+					description = <"Biopsi">
+				>
+				["at0011"] = <
+					text = <"TUR-P">
+					description = <"TUR-P">
+				>
+				["at0012"] = <
+					text = <"Cytologi">
+					description = <"Cytologi">
+				>
+				["at0013"] = <
+					text = <"Metastase">
+					description = <"Metastase">
+				>
+				["at0014"] = <
+					text = <"Annet">
+					description = <"Annet">
+				>
+				["at0015"] = <
+					text = <"MorfolgisikBasisGleasonSpesifiser">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"DatoGleasonScore">
+					description = <"*">
+				>
+			>
+		>
+	>
