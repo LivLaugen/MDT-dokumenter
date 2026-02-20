@@ -1,0 +1,62 @@
+archetype (adl_version=1.4; uid=676534fa-6c14-4fb2-ba5e-a194a92b1832)
+	openEHR-EHR-INSTRUCTION.vedtak_tvangsmiddel.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"07C1A15BF4DFDA4AF3C4F13CEE1BE85F">
+		["build_uid"] = <"3f59e994-697a-4e0b-9a75-8c5ddb8ac3c5">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	INSTRUCTION[at0000] matches {    -- Vedtak tvangsmiddel
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0039] occurrences matches {0..1} matches {    -- Om vedtaket
+				action_archetype_id matches {/openEHR-EHR-ACTION\.tvangsmiddelvedtak\.v1/}
+				description matches {
+					ITEM_TREE[at0040] matches {*}    -- Tree
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vedtak tvangsmiddel">
+					description = <"Benyttes til å opprette vedtak om tvangsmidler i psykiatrien.">
+				>
+				["at0039"] = <
+					text = <"Om vedtaket">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+			>
+		>
+	>
