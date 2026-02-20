@@ -1,0 +1,115 @@
+archetype (adl_version=1.4; uid=9f9607ac-ae50-4d16-a2b8-dca970b30a2f)
+	openEHR-EHR-EVALUATION.status_olafia.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2015-11-12">
+		["name"] = <"DIPS ASA">
+		["organisation"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Statusmarkering som brukes i pasientoversikt i DIPS Arena for Olafiaklinikken, OUS.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Statusmarkering som brukes i pasientoversikt i DIPS Arena for Olafiaklinikken, OUS.">
+			misuse = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"*(nb)">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"*(nb)">
+			misuse = <"*(nb)">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"1B79032E8DAD2BEA3C8DEC54B44AA111">
+		["build_uid"] = <"17478403-a0b2-468f-b34f-12af40cf0772">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Status olafia
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Status
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Beskjed
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Status olafia(nb)">
+					description = <"*unknown(nb)">
+				>
+				["at0001"] = <
+					text = <"*Tree(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0002"] = <
+					text = <"English status">
+					description = <"**(nb)">
+				>
+				["at0003"] = <
+					text = <"Message">
+					description = <"**(nb)">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Status olafia">
+					description = <"Forløpsmarkering under poliklinisk besøk av pasient som brukes i pasientoversikt i DIPS Arena for Olafiaklinikken, OUS.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Status">
+					description = <"Individets status i forløp under poliklinisk konsultasjon.">
+					comment = <"For eksempel: Hos lege, Venter på sykepleier">
+				>
+				["at0003"] = <
+					text = <"Beskjed">
+					description = <"Fritekstlig beskjed-felt til bruk i pasientoversikt.">
+				>
+			>
+		>
+	>
