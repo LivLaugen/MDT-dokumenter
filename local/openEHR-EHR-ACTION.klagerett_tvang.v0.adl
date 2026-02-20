@@ -1,0 +1,104 @@
+archetype (adl_version=1.4; uid=4a84baef-e543-45c0-bf97-00798f74f6e9)
+	openEHR-EHR-ACTION.klagerett_tvang.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Benyttes i samband med dokumentasjon av tvunget psykisk helsevern for å dokumentere at informasjon knyttet til klagerett er gitt">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Til bruk ved registrering av vedtak i TPH">
+			misuse = <"Alle andre">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"33273464F1871ECB905A58E3D3AC7183">
+		["build_uid"] = <"3e88b319-67f8-4527-8579-01da75708a7f">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Klagerett
+		ism_transition matches {
+			ISM_TRANSITION[at0011] matches {    -- Klageforløp dokumentert
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0011]    -- Klageforløp dokumentert
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Klagerett
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0009,    -- Nærmeste pårørende informeres om vedtaket og sin klageadgang
+									at0010]    -- Nærmeste pårørende informeres ikke, da denne ikke har kjent adresse og ettersporing vil kreve urimelig mye tid eller arbeid
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Klagerett">
+					description = <"">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Klagerett">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Nærmeste pårørende informeres om vedtaket og sin klageadgang">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Nærmeste pårørende informeres ikke, da denne ikke har kjent adresse og ettersporing vil kreve urimelig mye tid eller arbeid">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Klageforløp dokumentert">
+					description = <"">
+				>
+			>
+		>
+	>
