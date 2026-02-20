@@ -1,0 +1,117 @@
+archetype (adl_version=1.4; uid=c51c30a8-932d-4854-b23a-94bb080a9cfe)
+	openEHR-EHR-CLUSTER.blood_borne_infection_risk.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-11-17">
+		["name"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Midlertidig arketype for Olafiaklinikken, OUS.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Skal bare brukes midlertidig ved Olafiaklinikken, OUS inntil det foreligger en godkjent, publisert arketype for tilsvarende konsept.">
+			misuse = <"Skal ikke brukes annet sted enn ved Olafiaklinikken, OUS.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"4A68C969B9E89B4AD1C5F8FEA63232BF">
+		["build_uid"] = <"82d00f48-f9de-4d26-bd43-1478a1b8670a">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Blood borne infection risk
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Har du tatt rusmiddel eller kroppsbyggermidler med sprøyte?
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0002,    -- Ja
+							at0003,    -- Nei
+							at0004]    -- Usikker
+						}
+					}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Stukket deg på brukt sprøyte?
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..1} matches {    -- Pasienten selv eller partner bodd i risikoområde for hepatitt eller HIV i mer enn 6 måneder?
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0007,    -- Ja
+							at0008,    -- Nei
+							at0009]    -- Usikker
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Blood borne infection risk">
+					description = <"Midlertidig arketype for Olafiaklinikken for å registrere fare for blodoverførte infeksjoner. ">
+				>
+				["at0001"] = <
+					text = <"Har du tatt rusmiddel eller kroppsbyggermidler med sprøyte?">
+					description = <"Om individet har brukt sprøyter til rusmiddel eller kroppsbyggerpreparat.">
+				>
+				["at0002"] = <
+					text = <"Ja">
+					description = <"Individet svarer positivt på spørsmålet.">
+				>
+				["at0003"] = <
+					text = <"Nei">
+					description = <"Individet svarer negativt på spørsmålet.">
+				>
+				["at0004"] = <
+					text = <"Usikker">
+					description = <"Individet er usikker på hva han/hun skal svare på spørsmålet.">
+				>
+				["at0005"] = <
+					text = <"Stukket deg på brukt sprøyte?">
+					description = <"Om individet noen gang har stukket seg på brukt sprøyte.">
+				>
+				["at0006"] = <
+					text = <"Pasienten selv eller partner bodd i risikoområde for hepatitt eller HIV i mer enn 6 måneder?">
+					description = <"Om individet selv eller partner har bodd i risikoområde for hepatitt eller HIV => 6 måneder.">
+				>
+				["at0007"] = <
+					text = <"Ja">
+					description = <"Individet svarer positivt på spørsmålet.">
+				>
+				["at0008"] = <
+					text = <"Nei">
+					description = <"Individet svarer negativt på spørsmålet.">
+				>
+				["at0009"] = <
+					text = <"Usikker">
+					description = <"Individet er usikker på hva han/hun skal svare på spørsmålet.">
+				>
+			>
+		>
+	>
