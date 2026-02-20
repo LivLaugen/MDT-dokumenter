@@ -1,0 +1,108 @@
+archetype (adl_version=1.4; uid=cbb33451-ebba-49cc-9d0b-bb3f56df3b02)
+	openEHR-EHR-EVALUATION.transport_behov_ous_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Evaluering etter rett til \"Dekning av faktiske utgifter til drosje og bil mv.\" iht forskrift.
+
+Pasienten har rett til å få dekket nødvendige dokumenterte utgifter til drosje eller dokumenterte utgifter til bilferge, bomvei, parkering og piggdekkavgift ved bruk av bil hvis
+
+a)	reisen gjelder øyeblikkelig hjelp,
+b)	personell som nevnt i tredje ledd attesterer at pasientens helsetilstand gjør det nødvendig å bruke drosje eller bil, eller
+c)	pasientreisekontor eller en annen som har fått myndighet til det, attesterer at manglende rutegående transport gjør det nødvendig å bruke drosje eller bil.
+
+Hvis helseforetaket har opplyst om at helseforetaket skal bestille drosje i et tidligere enkeltvedtak om retten til å få dekket reiseutgifter, men pasienten likevel selv legger ut for drosje, har pasienten bare rett til å få dekket utgifter etter første ledd når reisen gjelder øyeblikkelig hjelp.
+
+Pasientens behandler, oversykepleier, avdelingssykepleier og faglig ansvarlig på røntgenavdelingen eller laboratorium i sykehus kan attestere et behov for drosje eller bil etter første ledd bokstav b. Ansatte i helse- og omsorgstjenesten kan attestere et slikt behov ved reise til en institusjon som yter tverrfaglig spesialisert behandling for rusmiddelmisbruk.
+Bruk av ambulansebåt til pasientreiser skal være rekvirert av lege og dekkes bare når billigere forsvarlig transport ikke kan skaffes. Dette gjelder ikke når pasientens situasjon krever øyeblikkelig hjelp.">
+			copyright = <"© OUS HF / DIPS AS">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"2213BF10C6518502C632A1FC4D3EE711">
+		["build_uid"] = <"2c95a278-60dd-4eac-a94c-52ed8ea3672a">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Transport behov
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Begrunnelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..*} matches {    -- Trenger transport
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Begrenset varighet
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Gyldig til
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Transport behov">
+					description = <"Evaluering av transportbehov til og fra sykehus eller andre syeder helsetjenester leveres. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Begrunnelse">
+					description = <"Pasienten har rett til å få dekket nødvendige dokumenterte utgifter til drosje eller dokumenterte utgifter til bilferge, bomvei, parkering og piggdekkavgift ved bruk av bil hvis
+
+a)	reisen gjelder øyeblikkelig hjelp,
+b)	personell som nevnt i tredje ledd attesterer at pasientens helsetilstand gjør det nødvendig å bruke drosje eller bil, eller
+c)	pasientreisekontor eller en annen som har fått myndighet til det, attesterer at manglende rutegående transport gjør det nødvendig å bruke drosje eller bil.">
+				>
+				["at0003"] = <
+					text = <"Gyldig til">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Begrenset varighet">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Trenger transport">
+					description = <"Til beskrivelse av transport.">
+				>
+			>
+		>
+	>
