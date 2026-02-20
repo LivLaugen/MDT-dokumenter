@@ -1,0 +1,214 @@
+archetype (adl_version=1.4; uid=75c0cd42-9e4a-489f-81da-a1aa944b39f7)
+	openEHR-EHR-ACTION.registrer_innleggelsesformalia.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"85838987A094D52310DE505678ED54CA">
+		["build_uid"] = <"36200fdb-118e-4a0a-a493-b98f23d4a48c">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Registrer innleggelsesformalia
+		ism_transition matches {
+			ISM_TRANSITION[at0002] matches {    -- Aktuelle innleggelsesformalia
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::245]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0002]    -- Aktuelle innleggelsesformalia
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0003] matches {    -- Overskredet gyldighetsperiode formalia
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::245]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0003]    -- Overskredet gyldighetsperiode formalia
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0007] matches {    -- Tvang opphørt, pasienten fortsatt ved institusjonen
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::245]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0007]    -- Tvang opphørt, pasienten fortsatt ved institusjonen
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0006] matches {    -- Feilregistrering
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::531]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0006]    -- Feilregistrering
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0004] matches {    -- Avsluttet, pasienten utskrevet
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0004]    -- Avsluttet, pasienten utskrevet
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0005] matches {    -- Erstattet av nye formalia etter forlengelse
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0005]    -- Erstattet av nye formalia etter forlengelse
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0008] matches {    -- Pasienten overført
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0008]    -- Pasienten overført
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0009] matches {    -- Erstattet av nye formalia i henhold til nytt vedtak
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0009]    -- Erstattet av nye formalia i henhold til nytt vedtak
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			allow_archetype ITEM_TREE matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.innleggelsesformaila(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Registrer innleggelsesformalia">
+					description = <"unknown">
+				>
+				["at0002"] = <
+					text = <"Aktuelle innleggelsesformalia">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Overskredet gyldighetsperiode formalia">
+					description = <"Gyldighetsperiode for formalia overskredet uten at nye formalia er etablert">
+				>
+				["at0004"] = <
+					text = <"Avsluttet, pasienten utskrevet">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Erstattet av nye formalia etter forlengelse">
+					description = <"Erstattet av nye formalia etter forlengelse av gyldighetsperioden">
+				>
+				["at0006"] = <
+					text = <"Feilregistrering">
+					description = <"Feilregistrering, erstattet av nye, korrekte formalia">
+				>
+				["at0007"] = <
+					text = <"Tvang opphørt, pasienten fortsatt ved institusjonen">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Pasienten overført">
+					description = <"Pasienten overført til annen institusjon innenfor det psykiske helsevern">
+				>
+				["at0009"] = <
+					text = <"Erstattet av nye formalia i henhold til nytt vedtak">
+					description = <"">
+				>
+			>
+		>
+	>
