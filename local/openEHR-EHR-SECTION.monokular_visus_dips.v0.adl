@@ -1,0 +1,45 @@
+archetype (adl_version=1.4; uid=a31b60fc-cb44-4433-9245-7110194a4902)
+	openEHR-EHR-SECTION.monokular_visus_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© OUS HF /  DIPS ASA">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"5D77DEF6C22F9893DD952B2FC31282C7">
+		["build_uid"] = <"559fb988-0a7f-4b42-883f-da8a310c0d98">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	SECTION[at0000] matches {*}    -- Monokulær visus
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Monokulær visus">
+					description = <"Overskrift for binokulær visus">
+				>
+			>
+		>
+	>
