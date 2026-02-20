@@ -1,0 +1,94 @@
+archetype (adl_version=1.4; uid=6c0d4bce-26f3-4edb-b354-2ab4d55ddd44)
+	openEHR-EHR-ACTION.vedta_kontroll_av_post.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"BC8AE67EB93814460703760547E76BEE">
+		["build_uid"] = <"aa57a0bf-1c52-4a2b-aa20-01da8a82603f">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Vedta kontroll av post
+		ism_transition matches {
+			ISM_TRANSITION[at0004] matches {    -- Pågående
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::245]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0004]    -- Pågående
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0003] matches {    -- Avsluttet
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0003]    -- Avsluttet
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			allow_archetype ITEM_TREE matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-ITEM_TREE\.om_vedtak_om_kontroll_av_post(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vedta kontroll av post">
+					description = <"unknown">
+				>
+				["at0003"] = <
+					text = <"Avsluttet">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Pågående">
+					description = <"">
+				>
+			>
+		>
+	>
