@@ -1,0 +1,91 @@
+archetype (adl_version=1.4; uid=88220f5d-24be-4de4-bd28-209252e44466)
+	openEHR-EHR-CLUSTER.modified_rectal_cancer_regression_grade.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2018-06-29">
+		["name"] = <"Sabine Leh">
+		["organisation"] = <"Haukeland university hospital">
+		["email"] = <"sabine.leh@helse-bergen.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"To record tumour regression in rectal cancers after neoadjuvant therapy.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"To record detailed findings about regression of rectal cancer after neoadjuvant therapy by using the grading system after Bateman 2009. Use as a component archetype in the context of a suite of archetypes that make up a histopathology report.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Bateman AC, Jaynes E, Bateman AR. Rectal cancer staging post neoadjuvant therapy--how should the changes be assessed? Histopathology. 2009 May;54(6):713-21.">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"2DF9E20276D769C231CF7CE9821597D6">
+		["build_uid"] = <"8f5c9420-457f-44a2-bb33-d79e85d83d34">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Modified rectal cancer regression grade
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Rectal cancer regression
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0002,    -- m-RCRG 1 - complete or near complete response
+							at0004,    -- m-RCRG 2 - partial response
+							at0005]    -- m-RCRG 3 - poor or no response
+						}
+					}
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..1} matches {    -- Comment
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Modified rectal cancer regression grade">
+					description = <"Rectal cancer regression grading after Bateman 2009.">
+				>
+				["at0001"] = <
+					text = <"Rectal cancer regression">
+					description = <"*A modified rectal cancer regression grading system after Bateman 2009.">
+				>
+				["at0002"] = <
+					text = <"m-RCRG 1 - complete or near complete response">
+					description = <"The macroscopic features may be varied. Microscopy reveals no tumour epithelium or scattered foci of malignant epithelium comprising < 5% of the overall area of abnormality. Mucin pools may be present but do not contain malignant epithelium.">
+				>
+				["at0004"] = <
+					text = <"m-RCRG 2 - partial response">
+					description = <"The macroscopic features may be varied. Microscopy reveals a combination of viable tumour epithelium">
+				>
+				["at0005"] = <
+					text = <"m-RCRG 3 - poor or no response">
+					description = <"The macroscopic and microscopic features may not be significantly different to cases in which neoadjuvant">
+				>
+				["at0006"] = <
+					text = <"Comment">
+					description = <"*Comment relatet to the grading system after Bateman 2009">
+				>
+			>
+		>
+	>
