@@ -1,0 +1,472 @@
+archetype (adl_version=1.4; uid=91e805e7-ac71-4c61-ab02-87c337a5b17e)
+	openEHR-EHR-CLUSTER.urination.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"17BCB52C956C3281725673AABE9DFBB1">
+		["build_uid"] = <"d49d4635-e90a-4815-929c-0a5c22c171b1">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Vannlating
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Uten anmerkning?
+				value matches {
+					DV_BOOLEAN matches {
+						value matches {true}
+					}
+				}
+			}
+			ELEMENT[at0027] occurrences matches {0..1} matches {    -- Beskrivelse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0034] occurrences matches {0..1} matches {    -- Frekvens og volum
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0035] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0036] occurrences matches {0..1} matches {    -- Antall vannlatinger per døgn
+						value matches {
+							DV_QUANTITY matches {*}
+						}
+					}
+					ELEMENT[at0037] occurrences matches {0..1} matches {    -- Typisk volum ved vannlating
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Vannlating om natten?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Vannlating om natten, antall ganger
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0052] occurrences matches {0..1} matches {    -- Selve vannlatingen
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0028] occurrences matches {0..1} matches {    -- Unormal igangsettelse?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					CLUSTER[at0029] occurrences matches {0..1} matches {    -- Igangsettelse detaljer
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0025] occurrences matches {0..1} matches {    -- Hesitasjon?
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0033] occurrences matches {0..1} matches {    -- Bruk av manuell blærestimulering?
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0030] occurrences matches {0..1} matches {    -- Bruk av elektrostimulering?
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0031] occurrences matches {0..1} matches {    -- Hjelpemidler detaljer
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0032] occurrences matches {0..*} matches {    -- Medisinsk-teknisk utstyr
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.device_details(-[a-zA-Z0-9_]+)*\.v0|openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
+							}
+						}
+					}
+					ELEMENT[at0021] occurrences matches {0..1} matches {    -- Svekket strøm ved vannlating?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					CLUSTER[at0022] occurrences matches {0..1} matches {    -- Strøm ved vannlating detaljer
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0023] occurrences matches {0..1} matches {    -- Beskrivelse
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0054] occurrences matches {0..1} matches {    -- Sitter ved vannlating? (menn)
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0024] occurrences matches {0..1} matches {    -- Bue på strålen?
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0053] occurrences matches {0..1} matches {    -- Varighet av vannlating
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0026] occurrences matches {0..1} matches {    -- Følelse av resturin?
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Svie ved vannlating?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Svie ved vannlating detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0040] occurrences matches {0..1} matches {    -- Utseende og lukt
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0041] occurrences matches {0..1} matches {    -- Unormal farge?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0042] occurrences matches {0..1} matches {    -- Farge detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0043] occurrences matches {0..1} matches {    -- Uklarhet/blakket?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0044] occurrences matches {0..1} matches {    -- Uklarhet detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0050] occurrences matches {0..1} matches {    -- Synlig blod?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0051] occurrences matches {0..1} matches {    -- Synlig blod detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0045] occurrences matches {0..1} matches {    -- Skumming?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0046] occurrences matches {0..1} matches {    -- Skumming detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0048] occurrences matches {0..1} matches {    -- Unormal lukt?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0049] occurrences matches {0..1} matches {    -- Unormal lukt detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..1} matches {    -- Inkontinens?
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			CLUSTER[at0011] occurrences matches {0..1} matches {    -- Inkontinens detaljer
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Urge?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Frekvens av ufrivillig vannlating
+						value matches {
+							0|[local::at0009],
+							1|[local::at0010],
+							2|[local::at0012],
+							3|[local::at0013]
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {    -- Mengde urin ved ufrivillig vannlating
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0017] occurrences matches {0..1} matches {    -- Bruk av bleier eller truseinnlegg
+						value matches {
+							0|[local::at0018],
+							1|[local::at0019],
+							2|[local::at0020]
+						}
+					}
+					ELEMENT[at0038] occurrences matches {0..1} matches {    -- Type bleie eller truseinnlegg
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vannlating">
+					description = <"For å registrere individets detaljerte informasjon om vannlating, som regel brukt som del av beskrivelsen av naturlige funksjoner.">
+				>
+				["at0001"] = <
+					text = <"Uten anmerkning?">
+					description = <"Om vannlatning er uten anmerkning, dvs. formodet normal.">
+				>
+				["at0002"] = <
+					text = <"Vannlating om natten, antall ganger">
+					description = <"Antall ganger individet vanligvis må stå opp om natten for å late vannet. (Nocturi)">
+				>
+				["at0003"] = <
+					text = <"Vannlating om natten?">
+					description = <"Om individet regelmessig må stå opp om natten for å late vannet. (Nocturi)">
+				>
+				["at0004"] = <
+					text = <"Svie ved vannlating?">
+					description = <"Om individet har svie ved vannlating (dysuri)">
+				>
+				["at0005"] = <
+					text = <"Svie ved vannlating detaljer">
+					description = <"Nærmere beskrivelse av svie ved vannlating (dysuri).">
+				>
+				["at0006"] = <
+					text = <"Inkontinens?">
+					description = <"Om individet har problemer med å holde seg ved trang til å late vannet, eller ikke rekker frem til toilettet i tide.">
+				>
+				["at0007"] = <
+					text = <"Beskrivelse">
+					description = <"Nærmere beskrivelse av inkontinensen; type og frekvens.">
+				>
+				["at0008"] = <
+					text = <"Frekvens av ufrivillig vannlating">
+					description = <"Hyppighet av inkontinensepsider OBS! Denne er tentativ, bør erstattes av publiserte scoringer,">
+				>
+				["at0009"] = <
+					text = <"0 - Er helt kontinent">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"1 - Har ufrivillig vannlating av og til">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Inkontinens detaljer">
+					description = <"Detaljer om individets inkontinens for urin.">
+				>
+				["at0012"] = <
+					text = <"2 - Har ufrivillig vannlatning hyppig">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"3 - Er helt inkontinent">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Urge?">
+					description = <"Om individet har inkontinens preget av plutselig overveldende trang til vannlating">
+				>
+				["at0015"] = <
+					text = <"Mengde urin ved ufrivillig vannlating">
+					description = <"Nærmere beskrivelse av mengde urin ved ufrivllig vannlating. Brukes for å skille mellom enkelte dråper, deler av eller hele blærevolumet.">
+				>
+				["at0017"] = <
+					text = <"Bruk av bleier eller truseinnlegg">
+					description = <"Individets bruk av hygieniske hjelpemidler som truseinnlegg og bleier.">
+				>
+				["at0018"] = <
+					text = <"Bruker ikke bleier eller truseinnlegg">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Bruker truseinnlegg">
+					description = <"Bruker truseinnlegg eller andre hygieniske hjelpemidler med begrenset absorpsjonsevne">
+				>
+				["at0020"] = <
+					text = <"Bruker bleier">
+					description = <"Bruker hygieniske hjelpemidler som kan absorbere hele blærevolum.">
+				>
+				["at0021"] = <
+					text = <"Svekket strøm ved vannlating?">
+					description = <"Om det er tegn på forhindret eller svak strøm ved vannlating.">
+				>
+				["at0022"] = <
+					text = <"Strøm ved vannlating detaljer">
+					description = <"Detaljer om tegn på svekket strøm av urin ved vannlating">
+				>
+				["at0023"] = <
+					text = <"Beskrivelse">
+					description = <"Nærmere beskrivelse av tegn på mekanisk hinder for vannlating, evt. sviktende evne til å presse urin ut av blæren.">
+				>
+				["at0024"] = <
+					text = <"Bue på strålen?">
+					description = <"Om det er bue på urinstrålen når individet later vannet.">
+				>
+				["at0025"] = <
+					text = <"Hesitasjon?">
+					description = <"Om individet må vente unormalt lenge før vannlatingen starter.">
+				>
+				["at0026"] = <
+					text = <"Følelse av resturin?">
+					description = <"Om individet føler at blæren ikke tømmes fullstendig ved vannlating.">
+				>
+				["at0027"] = <
+					text = <"Beskrivelse">
+					description = <"Overordnet beskrivelse av vannlating evt. med detaljer som ikke passer med øvrig struktur.">
+				>
+				["at0028"] = <
+					text = <"Unormal igangsettelse?">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Igangsettelse detaljer">
+					description = <"Detaljer om hvordan individet får satt i gang vannlating">
+				>
+				["at0030"] = <
+					text = <"Bruk av elektrostimulering?">
+					description = <"Om individet bruker hjelpemidler med elektrostimulering for å sette igang vannlating.">
+				>
+				["at0031"] = <
+					text = <"Hjelpemidler detaljer">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Medisinsk-teknisk utstyr">
+					description = <"Detaljer om medisinsk-teknisk utstyr for å stimulere igangsetting av vannlating.">
+				>
+				["at0033"] = <
+					text = <"Bruk av manuell blærestimulering?">
+					description = <"Om individet bruker manuelle teknikker for å sette i gang vannlating, f.eks. klapping over blæren.">
+				>
+				["at0034"] = <
+					text = <"Frekvens og volum">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Antall vannlatinger per døgn">
+					description = <"Typisk antall vannlatinger per døgn.">
+				>
+				["at0037"] = <
+					text = <"Typisk volum ved vannlating">
+					description = <"Typisk volum ved vannlating.">
+				>
+				["at0038"] = <
+					text = <"Type bleie eller truseinnlegg">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Utseende og lukt">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Unormal farge?">
+					description = <"Om urinen har unormal farge, for eksempel mørk som bokkøl, helt lys">
+				>
+				["at0042"] = <
+					text = <"Farge detaljer">
+					description = <"Nærmere beskrivelse av urinens farge">
+				>
+				["at0043"] = <
+					text = <"Uklarhet/blakket?">
+					description = <"Om urinen er uklar eller blakket">
+				>
+				["at0044"] = <
+					text = <"Uklarhet detaljer">
+					description = <"Nærmere beskrivelse hvis urinen er uklar eller blakket">
+				>
+				["at0045"] = <
+					text = <"Skumming?">
+					description = <"Om urinen danner unormalt mye skum ved vannlating.">
+				>
+				["at0046"] = <
+					text = <"Skumming detaljer">
+					description = <"Detaljer om skumming av urinen">
+				>
+				["at0048"] = <
+					text = <"Unormal lukt?">
+					description = <"Om lukten av urinen er anderledes enn normalt for individet.">
+				>
+				["at0049"] = <
+					text = <"Unormal lukt detaljer">
+					description = <"Nærmere beskrivelse av unormal lukt av urinen.">
+				>
+				["at0050"] = <
+					text = <"Synlig blod?">
+					description = <"Om individet har observert blod i urinen">
+				>
+				["at0051"] = <
+					text = <"Synlig blod detaljer">
+					description = <"Detaljert beskrivelse om blod i urinen">
+				>
+				["at0052"] = <
+					text = <"Selve vannlatingen">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Varighet av vannlating">
+					description = <"Fritekst beskrivelse av hvor lenge individet vanligvis bruker på å late vannet. ">
+				>
+				["at0054"] = <
+					text = <"Sitter ved vannlating? (menn)">
+					description = <"Om individet sitter og later vannet.">
+				>
+			>
+		>
+	>
