@@ -1,0 +1,57 @@
+archetype (adl_version=1.4; uid=cb92d1b8-85e2-4532-bd22-4d77757353c7)
+	openEHR-EHR-COMPOSITION.lar_skjema.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2013-04-15">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"LAR skjema for årlig kontroll av LAR pasienter">
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"577BB4D7674437A169503B511B6F2E2D">
+		["build_uid"] = <"d05f160e-c3a0-404f-9cd5-ed1863e874b9">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	COMPOSITION[at0000] matches {    -- LAR Skjema
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {
+					[openehr::433]
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"LAR Skjema">
+					description = <"LAR skjema for årlig kontroll av LAR pasienter">
+				>
+			>
+		>
+	>
