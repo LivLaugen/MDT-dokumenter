@@ -1,0 +1,65 @@
+archetype (adl_version=1.4; uid=52a5cbed-f79e-4aa7-9e66-54f0f93ec2e0)
+	openEHR-EHR-CLUSTER.mdt_tilleggsinformasjon_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2023-02-13">
+		["name"] = <"Borisa Barisa">
+		["organisation"] = <"DIPS AS">
+		["email"] = <"boba@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Cluster arketypen som brukes for registrering av tilleggsinformasjon knyttet til et MDT møte.">
+			use = <"Skal brukes til registrering av relevante tilleggsinformasjon knyttet til et MDT møte.">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"EC3DB377B071A63A44CB5076A9A76E9A">
+		["build_uid"] = <"c7d4cccb-a601-4db2-89d0-1059fa5b6330">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- MDT_tilleggsinformasjon_dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Pasienten skal møte fysisk i MDT møte
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Hvem informerer pasienten om konkulsjon av møte
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"MDT_tilleggsinformasjon_dips">
+					description = <"Tilleggsinformasjon for MDT møte.">
+				>
+				["at0001"] = <
+					text = <"Pasienten skal møte fysisk i MDT møte">
+					description = <"Angir om pasienten skal møte fysisk i MDT møte.">
+				>
+				["at0002"] = <
+					text = <"Hvem informerer pasienten om konkulsjon av møte">
+					description = <"Angir hvem som skal informere pasienten om konklusjon av MDT møte.">
+				>
+			>
+		>
+	>
