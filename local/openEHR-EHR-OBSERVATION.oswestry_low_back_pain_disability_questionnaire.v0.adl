@@ -1,0 +1,1050 @@
+archetype (adl_version=1.4; uid=d694bd55-2ece-4e52-bae3-fa8ae6663088)
+	openEHR-EHR-OBSERVATION.oswestry_low_back_pain_disability_questionnaire.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Bjørn Næss">
+				["organisation"] = <"DIPS AS">
+				["email"] = <"bna@dips.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2019-07-18">
+		["name"] = <"Alan Fish">
+		["organisation"] = <"Apperta Foundation CIC.">
+		["email"] = <"alan.fish@apperta.org">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For innhenting og rapportering av detaljer fra Oswestry Low Back Pain Disability Questionnaire.">
+			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
+			use = <"Brukes til å registrere detaljer om Oswestry Low Back Pain Disability Questionnaire.
+
+Dette spørreskjemaet er et pasientrapportert resultatmål (PROM) for ryggradskirurgi.
+
+Mens openEHR-arketyper alle er fritt tilgjengelig under en åpen lisens, kan det spesifikke innholdet i denne arketypen være opphavsrettsbeskyttet. Enhver bruk av denne arketypen i implementeringer må være i samsvar med vilkårene fastsatt av opphavsrettseierne der det eksisterer opphavsrett.
+Scoringsinstruksjoner
+
+For hver seksjon er den totale mulige poengsummen 5: hvis den første setningen er merket, er seksjonspoengsummen 0; hvis den siste utsagnet er merket, det = 5. Hvis alle 10 seksjonene er fullført, beregnes poengsummen som følger:
+
+Eksempel: 16 (totalt poengsum) 50 (total mulig poengsum) x 100 = 32 %
+
+Hvis en seksjon er savnet eller ikke aktuelt, beregnes poengsummen:
+ 16 (totalt poengsum)
+ 45 (total mulig poengsum) x 100 = 35,5 %
+
+Minimum påvisbar endring (90 % konfidens): 10 % poeng (endring på mindre enn dette kan skyldes
+feil i målingen)
+
+Tolking av skåringer
+
+0 % til 20 %: minimal funksjonshemming: Pasienten kan takle de fleste levende aktiviteter. Vanligvis er det ingen behandling angitt bortsett fra råd om løfting av sittende og trening.
+
+21%-40%: moderat funksjonshemming: Pasienten opplever mer smerte og vanskeligheter med å sitte, løfte og stå. Reiser og sosialt liv er vanskeligere, og de kan være funksjonshemmet fra jobb. Personlig omsorg, seksuell aktivitet og søvn er det ikke alvorlig påvirket og pasienten kan vanligvis behandles med konservative midler.
+
+41%-60%: alvorlig funksjonshemming: Smerte er fortsatt hovedproblemet i denne gruppen, men dagliglivets aktiviteter påvirkes. Disse pasientene krever en detaljert utredning.
+
+61%-80%: forkrøplet: Ryggsmerter påvirker alle aspekter av pasientens liv. Positiv intervensjon er nødvendig.
+
+81 %-100 %: Disse pasientene er enten sengeliggende eller overdriver symptomene sine.">
+			misuse = <"Må ikke brukes med mindre vilkårene for opphavsrett er overholdt (hvis en opphavsrett eksisterer).">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For the capture and reporting of details of the Oswestry Low Back Pain Disability Questionnaire.">
+			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
+			use = <"Used to record details of the Oswestry Low Back Pain Disability Questionnaire.
+
+This questionnaire is a patient-reported outcome measure (PROM) for spine surgery.
+
+While openEHR archetypes are all freely available under an open license, the specific content of this archetype may be copyright protected. Any use of this archetype within implementations must be in compliance with the terms established by the copyright owners where a copyright exists. ">
+			misuse = <"Not to be used unless the terms of copyright have been observed (if a copyright exists).">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"https://www.worksafe.qld.gov.au/__data/assets/pdf_file/0014/23036/oswestry-low-back-disability-questionnaire1.pdf 
+
+Scoring instructions 
+
+For each section the total possible score is 5: if the first statement is marked the section score = 0; if the last
+statement is marked, it = 5. If all 10 sections are completed the score is calculated as follows:
+
+Example: 16 (total scored)
+ 50 (total possible score) x 100 = 32%
+
+If one section is missed or not applicable the score is calculated:
+ 16 (total scored)
+ 45 (total possible score) x 100 = 35.5%
+
+Minimum detectable change (90% confidence): 10% points (change of less than this may be attributable to
+error in the measurement)
+
+
+Interpretation of scores 
+
+0% to 20%: minimal disability: The patient can cope with most living activities. Usually no treatment is
+indicated apart from advice on lifting sitting and exercise.
+
+21%-40%: moderate disability: The patient experiences more pain and difficulty with sitting, lifting and standing. Travel and social life are more difficult and they may be disabled from work. Personal care, sexual activity and sleeping are not
+grossly affected and the patient can usually be managed by conservative means.
+
+41%-60%: severe disability: Pain remains the main problem in this group but activities of daily living are affected. These patients require a detailed investigation.
+
+61%-80%: crippled: Back pain impinges on all aspects of the patient's life. Positive intervention is required.
+
+81%-100%: These patients are either bed-bound or exaggerating their symptoms.">
+		["current_contact"] = <"Alan Fish, Apperta Foundation CIC.<alan.fish@apperta.org>">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"AF0AC14D33D4430EDD10AD31867EA414">
+		["build_uid"] = <"399bd2f8-25b7-492b-81b8-0e61265bef40">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Oswestry Low Back Pain Disability Questionnaire (ODI)
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					POINT_EVENT[at0002] occurrences matches {0..1} matches {    -- Point in time
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Pain Intensity
+										value matches {
+											0|[local::at0009],
+											1|[local::at0050],
+											2|[local::at0051],
+											3|[local::at0052],
+											4|[local::at0098],
+											5|[local::at0099]
+										}
+									}
+									ELEMENT[at0053] occurrences matches {0..1} matches {    -- Personal care
+										value matches {
+											0|[local::at0054],
+											1|[local::at0055],
+											2|[local::at0056],
+											3|[local::at0057],
+											4|[local::at0100],
+											5|[local::at0101]
+										}
+									}
+									ELEMENT[at0058] occurrences matches {0..1} matches {    -- Lifting
+										value matches {
+											0|[local::at0059],
+											1|[local::at0060],
+											2|[local::at0061],
+											3|[local::at0062],
+											4|[local::at0102],
+											5|[local::at0103]
+										}
+									}
+									ELEMENT[at0063] occurrences matches {0..1} matches {    -- Walking
+										value matches {
+											0|[local::at0064],
+											1|[local::at0065],
+											2|[local::at0066],
+											3|[local::at0067],
+											4|[local::at0104],
+											5|[local::at0105]
+										}
+									}
+									ELEMENT[at0068] occurrences matches {0..1} matches {    -- Sitting
+										value matches {
+											0|[local::at0069],
+											1|[local::at0070],
+											2|[local::at0071],
+											3|[local::at0072],
+											4|[local::at0106],
+											5|[local::at0107]
+										}
+									}
+									ELEMENT[at0078] occurrences matches {0..1} matches {    -- Standing
+										value matches {
+											0|[local::at0079],
+											1|[local::at0080],
+											2|[local::at0081],
+											3|[local::at0082],
+											4|[local::at0108],
+											5|[local::at0109]
+										}
+									}
+									ELEMENT[at0073] occurrences matches {0..1} matches {    -- Sleeping
+										value matches {
+											0|[local::at0074],
+											1|[local::at0075],
+											2|[local::at0076],
+											3|[local::at0077],
+											4|[local::at0110],
+											5|[local::at0111]
+										}
+									}
+									ELEMENT[at0083] occurrences matches {0..1} matches {    -- Sex life
+										value matches {
+											0|[local::at0084],
+											1|[local::at0085],
+											2|[local::at0086],
+											3|[local::at0087],
+											4|[local::at0112],
+											5|[local::at0113]
+										}
+									}
+									ELEMENT[at0088] occurrences matches {0..1} matches {    -- Social life
+										value matches {
+											0|[local::at0089],
+											1|[local::at0090],
+											2|[local::at0091],
+											3|[local::at0092],
+											4|[local::at0114],
+											5|[local::at0115]
+										}
+									}
+									ELEMENT[at0093] occurrences matches {0..1} matches {    -- Travelling
+										value matches {
+											0|[local::at0094],
+											1|[local::at0095],
+											2|[local::at0096],
+											3|[local::at0097],
+											4|[local::at0116],
+											5|[local::at0117]
+										}
+									}
+									ELEMENT[at0044] occurrences matches {0..1} matches {    -- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..100|}
+											}
+										}
+									}
+									ELEMENT[at0045] occurrences matches {0..1} matches {    -- Total score as percentage
+										value matches {
+											DV_PROPORTION matches {
+												numerator matches {|0.0..100.0|}
+												type matches {2}
+											}
+										}
+									}
+									ELEMENT[at0118] occurrences matches {0..1} matches {    -- *New element(en)
+										value matches {
+											0|[local::at0119],
+											1|[local::at0120],
+											2|[local::at0121],
+											3|[local::at0122],
+											4|[local::at0123]
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0046] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0047] occurrences matches {0..*} matches {    -- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0048] matches {    -- ItemTree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0049] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Oswestry Low Back Pain Disability Questionnaire (ODI)">
+					description = <"Oswestry Low Back Pain Disability Questionnaire.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Point in time">
+					description = <"A specific date and/or time which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Pain Intensity">
+					description = <"Patient-reported lower back pain intensity.">
+					comment = <"Questionnaire wording: 
+Section 1 - Pain intensity">
+				>
+				["at0009"] = <
+					text = <"I have no pain at the moment">
+					description = <"The patient has no pain at the moment.">
+				>
+				["at0044"] = <
+					text = <"Total score">
+					description = <"Total score from questions 1 to 10.">
+				>
+				["at0045"] = <
+					text = <"Total score as percentage">
+					description = <"Total score from questions 1 to 10 as a percentage.">
+					comment = <"0% to 20%: minimal disability: The patient can cope with most living activities. Usually no treatment is
+indicated apart from advice on lifting sitting and exercise.
+21%-40%: moderate disability: The patient experiences more pain and difficulty with sitting, lifting and
+standing. Travel and social life are more difficult and they may be
+disabled from work. Personal care, sexual activity and sleeping are not
+grossly affected and the patient can usually be managed by
+conservative means.
+41%-60%: severe disability: Pain remains the main problem in this group but activities of daily
+living are affected. These patients require a detailed investigation.
+61%-80%: crippled: Back pain impinges on all aspects of the patient's life. Positive
+intervention is required.
+81%-100%: These patients are either bed-bound or exaggerating their symptoms.">
+				>
+				["at0046"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0047"] = <
+					text = <"Confounding factors">
+					description = <"Record any issues or factors that may impact on the score or interpretation.">
+				>
+				["at0048"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0049"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local context or to align with other reference models/formalisms.">
+					comment = <"e.g. Local hospital departmental information or additional metadata to align with HL7 or CDISC equivalents.">
+				>
+				["at0050"] = <
+					text = <"The pain is very mild at the moment">
+					description = <"The patient has very mild pain at the moment.">
+				>
+				["at0051"] = <
+					text = <"The pain is moderate at the moment">
+					description = <"The patient has moderate pain at the moment.">
+				>
+				["at0052"] = <
+					text = <"The pain is fairly severe at the moment">
+					description = <"The patient has fairly severe pain at the moment.">
+				>
+				["at0053"] = <
+					text = <"Personal care">
+					description = <"Patient-reported ability of personal care (washing, dressing etc) due to lower back pain.">
+					comment = <"Questionnaire wording: 
+Section 2 – Personal care (washing, dressing etc)">
+				>
+				["at0054"] = <
+					text = <"I can look after myself normally without causing extra pain">
+					description = <"The patient can look after their self without causing extra pain.">
+				>
+				["at0055"] = <
+					text = <"I can look after myself normally but it causes extra pain">
+					description = <"The patient can look after their self normally but it causes extra pain.">
+				>
+				["at0056"] = <
+					text = <"It is painful to look after myself and I am slow and careful">
+					description = <"The patient finds it painful to look after their self and are slow and careful doing so.">
+				>
+				["at0057"] = <
+					text = <"I need some help but manage most of my personal care">
+					description = <"The patient needs some help but manages most of their personal care.">
+				>
+				["at0058"] = <
+					text = <"Lifting">
+					description = <"Patient-reported ability to lift heavy weights due to lower back pain.">
+					comment = <"Questionnaire wording: 
+Section 3 – Lifting">
+				>
+				["at0059"] = <
+					text = <"I can lift heavy weights without extra pain">
+					description = <"The patient can lift heavy weights without extra pain.">
+				>
+				["at0060"] = <
+					text = <"I can lift heavy weights but it gives extra pain">
+					description = <"The patient can lift heavy weights but it gives extra pain.">
+				>
+				["at0061"] = <
+					text = <"Pain prevents me from lifting heavy weights off the floor, but I can manage if they are conveniently placed eg. on a table">
+					description = <"Pain prevents the patient from lifting heavy weights off the floor, but they can manage if they are conveniently placed eg. on a table.">
+				>
+				["at0062"] = <
+					text = <"Pain prevents me from lifting heavy weights, but I can manage light to medium weights if they are conveniently positioned">
+					description = <"Pain prevents the patient from lifting heavy weights, but they can manage light to medium weights if they are conveniently positioned.">
+				>
+				["at0063"] = <
+					text = <"Walking">
+					description = <"Patient-reported ability to walk due to lower back pain.">
+					comment = <"Questionnaire wording: 
+Section 4 – Walking*">
+				>
+				["at0064"] = <
+					text = <"Pain does not prevent me walking any distance">
+					description = <"Pain does not prevent the patient walking any distance.">
+				>
+				["at0065"] = <
+					text = <"Pain prevents me from walking more than 1 mile">
+					description = <"Pain prevents the patient from walking more than 1 mile.">
+				>
+				["at0066"] = <
+					text = <"Pain prevents me from walking more than 1/2 mile">
+					description = <"Pain prevents the patient from walking more than 1/2 mile.">
+				>
+				["at0067"] = <
+					text = <"Pain prevents me from walking more than 100 yards">
+					description = <"Pain prevents the patient from walking more than 100 yards.">
+				>
+				["at0068"] = <
+					text = <"Sitting">
+					description = <"Patient-reported ability to sit due to lower back pain.">
+					comment = <"Questionnaire wording: 
+Section 5 – Sitting">
+				>
+				["at0069"] = <
+					text = <"I can sit in any chair as long as I like">
+					description = <"The patient can sit in any chair as long as they like.">
+				>
+				["at0070"] = <
+					text = <"I can only sit in my favourite chair as long as I like">
+					description = <"The patient can only sit in their favourite chair as long as they like.">
+				>
+				["at0071"] = <
+					text = <"Pain prevents me sitting more than one hour">
+					description = <"Pain prevents the patient from sitting more than one hour.">
+				>
+				["at0072"] = <
+					text = <"Pain prevents me from sitting more than 30 minutes">
+					description = <"Pain prevents the patient from sitting more than 30 minutes.">
+				>
+				["at0073"] = <
+					text = <"Sleeping">
+					description = <"Patient-reported ability to sleep due to lower back pain.">
+					comment = <"Questionnaire wording: 
+Section 7 – Sleeping">
+				>
+				["at0074"] = <
+					text = <"My sleep is never disturbed by pain">
+					description = <"The patient's sleep is never disturbed by pain.">
+				>
+				["at0075"] = <
+					text = <"My sleep is occasionally disturbed by pain">
+					description = <"The patient's is occasionally disturbed by pain.">
+				>
+				["at0076"] = <
+					text = <"Because of pain I have less than 6 hours sleep">
+					description = <"Because of pain the patient has less than 6 hours sleep.">
+				>
+				["at0077"] = <
+					text = <"Because of pain I have less than 4 hours sleep">
+					description = <"Because of pain the patient has less than 4 hours sleep.">
+				>
+				["at0078"] = <
+					text = <"Standing">
+					description = <"Patient-reported ability to stand due to lower back pain.">
+					comment = <"Questionnaire wording: 
+Section 6 – Standing
+">
+				>
+				["at0079"] = <
+					text = <"I can stand as long as I want without extra pain">
+					description = <"The patient can stand as long as they want without extra pain.">
+				>
+				["at0080"] = <
+					text = <"I can stand as long as I want but it gives me extra pain">
+					description = <"The patient can stand as long as they want but it gives me extra pain.">
+				>
+				["at0081"] = <
+					text = <"Pain prevents me from standing for more than 1 hour">
+					description = <"Pain prevents the patient from standing for more than 1 hour.">
+				>
+				["at0082"] = <
+					text = <"Pain prevents me from standing for more than 30 minutes">
+					description = <"Pain prevents the patient from standing for more than 30 minutes.">
+				>
+				["at0083"] = <
+					text = <"Sex life">
+					description = <"Patient-reported impact on sex life due to back pain.">
+					comment = <"Questionnaire wording: 
+Section 8 – Sex life (if applicable)">
+				>
+				["at0084"] = <
+					text = <"My sex life is normal and causes no extra pain">
+					description = <"The patient's sex life is normal and causes no extra pain.">
+				>
+				["at0085"] = <
+					text = <"My sex life is normal but causes some extra pain">
+					description = <"The patient's sex life is normal but causes some extra pain.">
+				>
+				["at0086"] = <
+					text = <"My sex life is nearly normal but is very painful">
+					description = <"The patient's sex life is nearly normal but is very painful.">
+				>
+				["at0087"] = <
+					text = <"My sex life is severely restricted by pain">
+					description = <"The patient's sex life is severely restricted by pain.">
+				>
+				["at0088"] = <
+					text = <"Social life">
+					description = <"Patient-reported impact on social life due to lower back pain.">
+					comment = <"Questionnaire wording: 
+Section 9 – Social life">
+				>
+				["at0089"] = <
+					text = <"My social life is normal and gives me no extra pain">
+					description = <"The patient's social life is normal and gives me no extra pain.">
+				>
+				["at0090"] = <
+					text = <"My social life is normal but increases the degree of pain">
+					description = <"The patient's social life is normal but increases the degree of pain.">
+				>
+				["at0091"] = <
+					text = <"Pain has no significant effect on my social life apart from limiting my more energetic interests eg. sport">
+					description = <"Pain has no significant effect on the patient's social life apart from limiting their more energetic interests eg. sport.">
+				>
+				["at0092"] = <
+					text = <"Pain has restricted my social life and I do not go out as often">
+					description = <"Pain has restricted the patient's social life and they do not go out as often.">
+				>
+				["at0093"] = <
+					text = <"Travelling">
+					description = <"Patient-reported ability to travel due to lower back pain.">
+					comment = <"Questionnaire wording: 
+Section 10 – Travelling">
+				>
+				["at0094"] = <
+					text = <"I can travel anywhere without pain">
+					description = <"The patient can travel anywhere without pain.">
+				>
+				["at0095"] = <
+					text = <"I can travel anywhere but it gives me extra pain">
+					description = <"The patient can travel anywhere but it gives me extra pain.">
+				>
+				["at0096"] = <
+					text = <"Pain is bad but I manage journeys over two hours">
+					description = <"Pain is bad but the patient can manage journeys over two hours.">
+				>
+				["at0097"] = <
+					text = <"Pain restricts me to journeys of less than one hour">
+					description = <"Pain restricts the patient to journeys of less than one hour.">
+				>
+				["at0098"] = <
+					text = <"The pain is very severe at the moment">
+					description = <"The patient has very severe pain at the moment.">
+				>
+				["at0099"] = <
+					text = <"The pain is the worst imaginable at the moment">
+					description = <"The patient has the worst imaginable pain at the moment.">
+				>
+				["at0100"] = <
+					text = <"I need help every day in most aspects of self care">
+					description = <"The patient needs help every day in most aspects of self care.">
+				>
+				["at0101"] = <
+					text = <"I do not get dressed, I wash with difficulty and stay in bed">
+					description = <"The patient does not get dressed, they wash with difficulty and stay in bed.">
+				>
+				["at0102"] = <
+					text = <"I can only lift very light weights">
+					description = <"The patient can only lift very light weights.">
+				>
+				["at0103"] = <
+					text = <"I cannot lift or carry anything">
+					description = <"The patient cannot lift or carry anything.">
+				>
+				["at0104"] = <
+					text = <"I can only walk using a stick or crutches">
+					description = <"Patient can only walk using a stick or crutches.">
+				>
+				["at0105"] = <
+					text = <"I am in bed most of the time">
+					description = <"Patient is in bed most of the time.">
+				>
+				["at0106"] = <
+					text = <"Pain prevents me from sitting more than 10 minutes">
+					description = <"Pain prevents the patient from sitting more than 10 minutes.">
+				>
+				["at0107"] = <
+					text = <"Pain prevents me from sitting at all">
+					description = <"Pain prevents the patient from sitting at all.">
+				>
+				["at0108"] = <
+					text = <"Pain prevents me from standing for more than 10 minutes">
+					description = <"Pain prevents the patient from standing for more than 10 minutes.">
+				>
+				["at0109"] = <
+					text = <"Pain prevents me from standing at all">
+					description = <"Pain prevents the patient from standing at all.">
+				>
+				["at0110"] = <
+					text = <"Because of pain I have less than 2 hours sleep">
+					description = <"Because of pain the patient has less than 2 hours sleep.">
+				>
+				["at0111"] = <
+					text = <"Pain prevents me from sleeping at all">
+					description = <"Pain prevents the patient from sleeping at all.">
+				>
+				["at0112"] = <
+					text = <"My sex life is nearly absent because of pain">
+					description = <"The patient's sex life is nearly absent because of pain.">
+				>
+				["at0113"] = <
+					text = <"Pain prevents any sex life at all">
+					description = <"Pain prevents any sex life at all for the patient.">
+				>
+				["at0114"] = <
+					text = <"Pain has restricted my social life to my home">
+					description = <"Pain has restricted the patient's social life to their home.">
+				>
+				["at0115"] = <
+					text = <"I have no social life because of pain">
+					description = <"The patient has no social life because of pain.">
+				>
+				["at0116"] = <
+					text = <"Pain restricts me to short necessary journeys under 30 minutes">
+					description = <"Pain restricts the patient to short necessary journeys under 30 minutes.">
+				>
+				["at0117"] = <
+					text = <"Pain prevents me from travelling except to receive treatment">
+					description = <"Pain prevents the patient from travelling except to receive treatment.">
+				>
+				["at0118"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0119"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0120"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0121"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0122"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0123"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Funksjonsskår (Oswestry)">
+					description = <"Oswestry Low Back Pain Disability Questionnaire (ODI)">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Point in time">
+					description = <"*A specific date and/or time which may be explicitly defined in a template or at run-time. (en)">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"1. Smerte">
+					description = <"*Patient-reported lower back pain intensity. (en)">
+					comment = <"*Questionnaire wording: 
+Section 1 - Pain intensity (en)">
+				>
+				["at0009"] = <
+					text = <"Jeg har ingen smerter for øyeblikket">
+					description = <"*The patient has no pain at the moment. (en)">
+				>
+				["at0044"] = <
+					text = <"Total skåring">
+					description = <"*Total score from questions 1 to 10. (en)">
+				>
+				["at0045"] = <
+					text = <"Total skåring som prosent">
+					description = <"*Total score from questions 1 to 10 as a percentage. (en)">
+					comment = <"*0% to 20%: minimal disability: The patient can cope with most living activities. Usually no treatment is
+indicated apart from advice on lifting sitting and exercise.
+21%-40%: moderate disability: The patient experiences more pain and difficulty with sitting, lifting and
+standing. Travel and social life are more difficult and they may be
+disabled from work. Personal care, sexual activity and sleeping are not
+grossly affected and the patient can usually be managed by
+conservative means.
+41%-60%: severe disability: Pain remains the main problem in this group but activities of daily
+living are affected. These patients require a detailed investigation.
+61%-80%: crippled: Back pain impinges on all aspects of the patient's life. Positive
+intervention is required.
+81%-100%: These patients are either bed-bound or exaggerating their symptoms. (en)">
+				>
+				["at0046"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0047"] = <
+					text = <"Påvirkende faktorer">
+					description = <"Registrer eventuelle problemer eller faktorer som kan påvirke poengsummen eller tolkningen.">
+				>
+				["at0048"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0049"] = <
+					text = <"Utvidelse">
+					description = <"*Additional information required to capture local context or to align with other reference models/formalisms. (en)">
+					comment = <"*e.g. Local hospital departmental information or additional metadata to align with HL7 or CDISC equivalents. (en)">
+				>
+				["at0050"] = <
+					text = <"Smertene er veldig svake for øyblikket">
+					description = <"*The patient has very mild pain at the moment. (en)">
+				>
+				["at0051"] = <
+					text = <"Smertene er moderate for øyeblikket">
+					description = <"*The patient has moderate pain at the moment. (en)">
+				>
+				["at0052"] = <
+					text = <"Smertene er temmelig sterke for øyeblikket">
+					description = <"*The patient has fairly severe pain at the moment. (en)">
+				>
+				["at0053"] = <
+					text = <"2. Personlig stell">
+					description = <"*Patient-reported ability of personal care (washing, dressing etc) due to lower back pain. (en)">
+					comment = <"*Questionnaire wording: 
+Section 2 – Personal care (washing, dressing etc) (en)">
+				>
+				["at0054"] = <
+					text = <"Jeg kan stelle meg selv på vanlig måte uten at det forårsaker ekstra smerter">
+					description = <"*The patient can look after their self without causing extra pain. (en)">
+				>
+				["at0055"] = <
+					text = <"Jeg kan stelle meg selv på vanlig måte, men det er veldig smertefullt">
+					description = <"*The patient can look after their self normally but it causes extra pain. (en)">
+				>
+				["at0056"] = <
+					text = <"Det er smertefullt å stelle seg selv, og jeg gjør det langsomt og forsiktig">
+					description = <"*The patient finds it painful to look after their self and are slow and careful doing so. (en)">
+				>
+				["at0057"] = <
+					text = <"Jeg trenger noe hjelp, men klarer det meste av mitt personlige stell">
+					description = <"*The patient needs some help but manages most of their personal care. (en)">
+				>
+				["at0058"] = <
+					text = <"3. Å løfte">
+					description = <"*Patient-reported ability to lift heavy weights due to lower back pain. (en)">
+					comment = <"*Questionnaire wording: 
+Section 3 – Lifting (en)">
+				>
+				["at0059"] = <
+					text = <"Jeg kan løfte tunge ting uten å få mer smerter">
+					description = <"*The patient can lift heavy weights without extra pain. (en)">
+				>
+				["at0060"] = <
+					text = <"Jeg kan løfte tunge ting, men får smerter">
+					description = <"*The patient can lift heavy weights but it gives extra pain. (en)">
+				>
+				["at0061"] = <
+					text = <"Smerter hindrer meg i å løfte tunge ting opp fra gulvet, men jeg greier det hvis det som skal løftes er gunstig plassert, for eksempel på et bord">
+					description = <"*Pain prevents the patient from lifting heavy weights off the floor, but they can manage if they are conveniently placed eg. on a table. (en)">
+				>
+				["at0062"] = <
+					text = <"Smerter hindrer meg i å løfte tunge ting, men jeg klarer lette og middels tunge ting, hvis det er gunstig plassert">
+					description = <"*Pain prevents the patient from lifting heavy weights, but they can manage light to medium weights if they are conveniently positioned. (en)">
+				>
+				["at0063"] = <
+					text = <"4. Å gå">
+					description = <"*Patient-reported ability to walk due to lower back pain. (en)">
+					comment = <"*Questionnaire wording: 
+Section 4 – Walking* (en)">
+				>
+				["at0064"] = <
+					text = <"Smerter hindrer meg ikke i å gå i det hele tatt">
+					description = <"*Pain does not prevent the patient walking any distance. (en)">
+				>
+				["at0065"] = <
+					text = <"Smerter hindrer meg i å gå mer enn 1 1/2 km">
+					description = <"*Pain prevents the patient from walking more than 1 mile. (en)">
+				>
+				["at0066"] = <
+					text = <"Smerter hindrer meg i å gå mer enn 3/4 km">
+					description = <"*Pain prevents the patient from walking more than 1/2 mile. (en)">
+				>
+				["at0067"] = <
+					text = <"Smerter hindrer meg i å gå mer enn 100 m">
+					description = <"*Pain prevents the patient from walking more than 100 yards. (en)">
+				>
+				["at0068"] = <
+					text = <"5. Å sitte">
+					description = <"*Patient-reported ability to sit due to lower back pain. (en)">
+					comment = <"*Questionnaire wording: 
+Section 5 – Sitting (en)">
+				>
+				["at0069"] = <
+					text = <"Jeg kan sitte så lenge jeg vil i en hvilken som helst stol">
+					description = <"*The patient can sit in any chair as long as they like. (en)">
+				>
+				["at0070"] = <
+					text = <"Jeg kan sitte så lenge jeg vil i min favorittstol">
+					description = <"*The patient can only sit in their favourite chair as long as they like. (en)">
+				>
+				["at0071"] = <
+					text = <"Smerter hindrer meg i å sitte mer enn en time">
+					description = <"*Pain prevents the patient from sitting more than one hour. (en)">
+				>
+				["at0072"] = <
+					text = <"Smerte hindrer meg i å  sitte mer enn en halv time">
+					description = <"*Pain prevents the patient from sitting more than 30 minutes. (en)">
+				>
+				["at0073"] = <
+					text = <"7. Å sove">
+					description = <"*Patient-reported ability to sleep due to lower back pain. (en)">
+					comment = <"*Questionnaire wording: 
+Section 7 – Sleeping (en)">
+				>
+				["at0074"] = <
+					text = <"Søvnen min forstyrres aldri av smerter">
+					description = <"*The patient's sleep is never disturbed by pain. (en)">
+				>
+				["at0075"] = <
+					text = <"Søvnen min forstyrres av og til av smerter">
+					description = <"*The patient's is occasionally disturbed by pain. (en)">
+				>
+				["at0076"] = <
+					text = <"På grunn av smerter får jeg mindre enn seks timers søvn">
+					description = <"*Because of pain the patient has less than 6 hours sleep. (en)">
+				>
+				["at0077"] = <
+					text = <"På grunn av smerter får jeg mindre enn fire timers søvn">
+					description = <"*Because of pain the patient has less than 4 hours sleep. (en)">
+				>
+				["at0078"] = <
+					text = <"6. Å stå">
+					description = <"*Patient-reported ability to stand due to lower back pain. (en)">
+					comment = <"*Questionnaire wording: 
+Section 6 – Standing
+ (en)">
+				>
+				["at0079"] = <
+					text = <"Jeg kan stå så lenge jeg vil uten å få mer smerter">
+					description = <"*The patient can stand as long as they want without extra pain. (en)">
+				>
+				["at0080"] = <
+					text = <"Jeg kan stå så lenge jeg vil, men får smerter">
+					description = <"*The patient can stand as long as they want but it gives me extra pain. (en)">
+				>
+				["at0081"] = <
+					text = <"Smerter hindrer meg i å stå mer enn en time">
+					description = <"*Pain prevents the patient from standing for more than 1 hour. (en)">
+				>
+				["at0082"] = <
+					text = <"Smerter hindrer meg i å stå mer enn en halv time">
+					description = <"*Pain prevents the patient from standing for more than 30 minutes. (en)">
+				>
+				["at0083"] = <
+					text = <"8. Seksualliv">
+					description = <"*Patient-reported impact on sex life due to back pain. (en)">
+					comment = <"*Questionnaire wording: 
+Section 8 – Sex life (if applicable) (en)">
+				>
+				["at0084"] = <
+					text = <"Seksuallivet mitt er normalt og forårsaker ikke mer smerter">
+					description = <"*The patient's sex life is normal and causes no extra pain. (en)">
+				>
+				["at0085"] = <
+					text = <"Seksuallivet mitt er normalt, men forårsaker noe mer smerter">
+					description = <"*The patient's sex life is normal but causes some extra pain. (en)">
+				>
+				["at0086"] = <
+					text = <"Seksuallivet mitt er (nesten) normalt, men svært smertefult">
+					description = <"*The patient's sex life is nearly normal but is very painful. (en)">
+				>
+				["at0087"] = <
+					text = <"Seksuallivet mitt er svært begrenset på grunn av smerter">
+					description = <"*The patient's sex life is severely restricted by pain. (en)">
+				>
+				["at0088"] = <
+					text = <"9. Sosialt liv (omgang med venner og kjente)">
+					description = <"*Patient-reported impact on social life due to lower back pain. (en)">
+					comment = <"*Questionnaire wording: 
+Section 9 – Social life (en)">
+				>
+				["at0089"] = <
+					text = <"Det sosiale livet mitt er normalt og forårsaker ikke mer smerter">
+					description = <"*The patient's social life is normal and gives me no extra pain. (en)">
+				>
+				["at0090"] = <
+					text = <"Det sosiale livet mitt er normalt, men øker graden av smerter">
+					description = <"*The patient's social life is normal but increases the degree of pain. (en)">
+				>
+				["at0091"] = <
+					text = <"Smerter har ingen betydelig innvirkning på mitt sosiale liv, bortsett fra at det begrenser mine fysisk aktive sider, som sport osv.">
+					description = <"*Pain has no significant effect on the patient's social life apart from limiting their more energetic interests eg. sport. (en)">
+				>
+				["at0092"] = <
+					text = <"Smerter har begrenset mitt sosiale liv, og jeg går ikke ut så ofte">
+					description = <"*Pain has restricted the patient's social life and they do not go out as often. (en)">
+				>
+				["at0093"] = <
+					text = <"10. Å reise">
+					description = <"*Patient-reported ability to travel due to lower back pain. (en)">
+					comment = <"*Questionnaire wording: 
+Section 10 – Travelling (en)">
+				>
+				["at0094"] = <
+					text = <"Jeg kan reise hvor som helst uten smerter">
+					description = <"*The patient can travel anywhere without pain. (en)">
+				>
+				["at0095"] = <
+					text = <"Jeg kan reise hvor som helst, men det gir mer smerter">
+					description = <"*The patient can travel anywhere but it gives me extra pain. (en)">
+				>
+				["at0096"] = <
+					text = <"Smertene er ille, men jeg klarer reiser på to timer">
+					description = <"*Pain is bad but the patient can manage journeys over two hours. (en)">
+				>
+				["at0097"] = <
+					text = <"Smerter begrenser meg til korte reiser på under en time">
+					description = <"*Pain restricts the patient to journeys of less than one hour. (en)">
+				>
+				["at0098"] = <
+					text = <"Smertene er veldig sterke for øyeblikket">
+					description = <"*The patient has very severe pain at the moment. (en)">
+				>
+				["at0099"] = <
+					text = <"Smertene er det verst tenkelige for øyeblikket">
+					description = <"*The patient has the worst imaginable pain at the moment. (en)">
+				>
+				["at0100"] = <
+					text = <"Jeg trenger hjelp hver dag i de fleste aspekter av egenomsorg">
+					description = <"*The patient needs help every day in most aspects of self care. (en)">
+				>
+				["at0101"] = <
+					text = <"Jeg kler meg ikke, jeg vasker meg med vanskeligheter og blir i sengen">
+					description = <"*The patient does not get dressed, they wash with difficulty and stay in bed. (en)">
+				>
+				["at0102"] = <
+					text = <"Jeg kan bare løfte veldig lette vekter">
+					description = <"*The patient can only lift very light weights. (en)">
+				>
+				["at0103"] = <
+					text = <"Jeg kan ikke løfte eller bære noe">
+					description = <"*The patient cannot lift or carry anything. (en)">
+				>
+				["at0104"] = <
+					text = <"Jeg kan bare gå med en stokk eller krykker">
+					description = <"*Patient can only walk using a stick or crutches. (en)">
+				>
+				["at0105"] = <
+					text = <"Jeg er i sengen mesteparten av tiden">
+					description = <"*Patient is in bed most of the time. (en)">
+				>
+				["at0106"] = <
+					text = <"Smerte hindrer meg i å sitte mer enn ti minutter">
+					description = <"*Pain prevents the patient from sitting more than 10 minutes. (en)">
+				>
+				["at0107"] = <
+					text = <"Smerter hindrer meg i å sitte i det hele tatt">
+					description = <"*Pain prevents the patient from sitting at all. (en)">
+				>
+				["at0108"] = <
+					text = <"Smerte hindrer meg i å stå i mer enn ti minutter">
+					description = <"*Pain prevents the patient from standing for more than 10 minutes. (en)">
+				>
+				["at0109"] = <
+					text = <"Smerter hindrer meg i å stå i det hele tatt">
+					description = <"*Pain prevents the patient from standing at all. (en)">
+				>
+				["at0110"] = <
+					text = <"På grunn av smerter får jeg mindre enn to timers søvn">
+					description = <"*Because of pain the patient has less than 2 hours sleep. (en)">
+				>
+				["at0111"] = <
+					text = <"Smerter hindrer all søvn">
+					description = <"*Pain prevents the patient from sleeping at all. (en)">
+				>
+				["at0112"] = <
+					text = <"Seksuallivet mitt er nesten borte på grunn av smerter">
+					description = <"*The patient's sex life is nearly absent because of pain. (en)">
+				>
+				["at0113"] = <
+					text = <"Smerter forhindrer alt seksualliv">
+					description = <"*Pain prevents any sex life at all for the patient. (en)">
+				>
+				["at0114"] = <
+					text = <"Smerter har begrenst mitt sosiale liv til hjemmet">
+					description = <"*Pain has restricted the patient's social life to their home. (en)">
+				>
+				["at0115"] = <
+					text = <"På grunn av smerter har jeg ikke noe sosialt liv">
+					description = <"*The patient has no social life because of pain. (en)">
+				>
+				["at0116"] = <
+					text = <"Smerter begrenser meg til korte, nødvendige reiser på under 30 minutter">
+					description = <"*Pain restricts the patient to short necessary journeys under 30 minutes. (en)">
+				>
+				["at0117"] = <
+					text = <"Smerter forhindrer meg fra å reise, unntatt for å få behandling">
+					description = <"*Pain prevents the patient from travelling except to receive treatment. (en)">
+				>
+				["at0118"] = <
+					text = <"Tolkning">
+					description = <"*">
+				>
+				["at0119"] = <
+					text = <"Minimal funksjonshemming">
+					description = <"Pasienten kan takle de fleste levende aktiviteter. Vanligvis er ingen behandling indisert bortsett fra råd om sitteløft og trening.">
+				>
+				["at0120"] = <
+					text = <"Moderat funksjonshemming">
+					description = <"Pasienten opplever mer smerte og problemer med å sitte, løfte og stå. Reise og sosialt liv er vanskeligere, og det kan de være
+funksjonshemmet fra jobb. Personlig pleie, seksuell aktivitet og søvn påvirkes ikke grovt og pasienten kan vanligvis håndteres av
+">
+				>
+				["at0121"] = <
+					text = <"Alvorlig funksjonshemming">
+					description = <"Smerte er fortsatt hovedproblemet i denne gruppen, men dagliglivets aktiviteter påvirkes. Disse pasientene krever en detaljert utredning">
+				>
+				["at0122"] = <
+					text = <"Forkrøpet">
+					description = <"Ryggsmerter påvirker alle aspekter av pasientens liv. Positiv intervensjon er nødvendig.">
+				>
+				["at0123"] = <
+					text = <"Sengeliggede">
+					description = <"Disse pasientene er enten sengeliggende eller overdriver symptomene sine">
+				>
+			>
+		>
+	>
