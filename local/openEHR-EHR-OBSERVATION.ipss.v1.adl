@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=518ea2d9-21eb-448d-bf24-2f937aad1f07)
+﻿archetype (adl_version=1.4; uid=9d136b1b-c8af-44f0-b5ac-b561e937ccd6)
 	openEHR-EHR-OBSERVATION.ipss.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- International prostate symptom score (IPSS)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,33 +16,32 @@ language
 			accreditation = <"Nasjonal IKT HF">
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2015-05-31">
 		["name"] = <"Navin Ramachandran">
 		["organisation"] = <"UCLH">
 		["email"] = <"navinramachandran@nhs.net">
+		["date"] = <"2015-05-31">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","SB Bhattacharyya, Sudisa Consultancy Services, India","henriette gamlem, haraldsplass diakonale sykehus, Norway","Heather Grain, Llewelyn Grain Informatics, Australia","Mikkel Johan Gaup Grønmo, Forvaltningssenter EPJ, Helse Nord RHF, Norway (Nasjonal IKT redaktør)","Alfred Honore, Haukeland, Norway","Evelyn Hovenga, EJSH Consulting, Australia","Nils Kolstrup, Skansen Legekontor og Nasjonalt Senter for samhandling og telemedisin, Norway","Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Navin Ramachandran, NHS, United Kingdom","John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)","Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)">
 	details = <
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere verdier for prostatasymptomkomponentene og dets summerte verdi for I-PSS og symptomenes innvirkning på livskvaliteten.">
-			keywords = <"I-PSS","prostata","ipss","bph","prostatahyperplasi","vannlatningsbesvær","benign","prostataobstruksjon">
 			use = <"Brukes for å registrere verdier for prostatasymptomkomponentene og dets summerte verdi for I-PSS og symptomenes innvirkning på livskvaliteten.">
+			keywords = <"I-PSS", "prostata", "ipss", "bph", "prostatahyperplasi", "vannlatningsbesvær", "benign", "prostataobstruksjon">
 			misuse = <"Brukes ikke for å registrere prostatarelatert symptomer - bruk CLUSTER.symptom_sign til dette formålet.">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter and their total sum for the IPSS.">
-			keywords = <"I-PSS","IPSS","prostate","BPH">
-			copyright = <"© Clinical Models UK, openEHR Foundation">
 			use = <"Use to record the results for each component parameter and their total sum for the IPSS.">
+			keywords = <"I-PSS", "IPSS", "prostate", "BPH">
 			misuse = <"Do not use to record prostate-related symptoms - use the CLUSTER.symptom_sign for this purpose.">
+			copyright = <"© Clinical Models UK, openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)", "Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)", "SB Bhattacharyya, Sudisa Consultancy Services, India", "Heather Grain, Llewelyn Grain Informatics, Australia", "Mikkel Johan Gaup Grønmo, Forvaltningssenter EPJ, Helse-Nord, Norway (openEHR Editor)", "Evelyn Hovenga, EJSH Consulting, Australia", "Liv Laugen, ​Oslo University Hospital, Norway, Norway (openEHR Editor)", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Navin Ramachandran, NHS, United Kingdom", "John Tore Valand, Helse Bergen, Norway (openEHR Editor)", "Marit Alice Venheim, Helse Vest IKT, Norway (openEHR Editor)">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -56,10 +54,10 @@ Porta Medica [Internet] Vannlatningsproblemer - spørreskjema; 2004 Jan 12 [cite
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"D33249FCD70D5FA14C885CED00945349">
-		["build_uid"] = <"c5da6206-8cf0-43a2-abb3-8e717f95e1e7">
+		["MD5-CAM-1.0.1"] = <"96D44993F7047B68B9DB273DF73D0786">
+		["build_uid"] = <"96244651-39c4-4f18-a164-b55e2670f365">
 		["ip_acknowledgements"] = <"Public domain">
-		["revision"] = <"1.0.0">
+		["revision"] = <"1.0.1">
 	>
 
 definition
@@ -177,6 +175,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
