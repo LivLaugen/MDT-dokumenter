@@ -1,0 +1,174 @@
+archetype (adl_version=1.4; uid=a98337f4-fc83-4f72-a0ed-3afd9c58bdef)
+	openEHR-EHR-EVALUATION.genetic_assessment.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Hallvard Lærum">
+				["organisation"] = <"Oslo University Hospital HF">
+				["email"] = <"hallaeru@online.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2016-04-06">
+		["name"] = <"Hallvard Lærum">
+		["organisation"] = <"Oslo Universitetssykehus HF">
+		["email"] = <"hallaeru@online.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)","Hallvard Lærum, Oslo Universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Lars Retterstøl, MD PhD, Dpt. of medical genetics, Oslo University Hospital HF, Norway">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Å dokumentere en klinisk vurdering av et utvalg genetiske varianter ut fra en gitt problemstilling.">
+			keywords = <"genetisk veiledning","genetikk","genetisk vurdering","mutasjon">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes på et utvalg genetiske varianter som hentes inn ad hoc av brukeren. Tolkningen er en sammenstilling av flere genetiske funn.">
+			misuse = <"Skal ikke brukes til å dokumentere genetiske varianter, eller kromosomale avvik.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To document a clinical assessment of a selection of genetic variants relevant for a given problem or question.">
+			keywords = <"genetic","counselling","assessment","mutation","genetic risk">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Used in conjunction with a selection of genetic variants selected ad hoc by the user.">
+			misuse = <"Not to be used for documenting genetic variants or chromosomal aberrations.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Ginsbury G & Huntington FW: Essentials of genomic and personalized medicine. Academic press 2010 ISBN 978-0-12-374934-5">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"5AC44E043F05876A58AFB08D69E1F4D4">
+		["build_uid"] = <"5bbaa0ed-6fed-45ec-bb8f-231cb550c811">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Genetic assessment
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0003] occurrences matches {0..*} matches {    -- Clinical problem
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..*} matches {    -- Assessment type
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0002] occurrences matches {1..*} matches {    -- Genetic variants
+						include
+							archetype_id/value matches {/openEHR-EHR-CLUSTER\.genetic_variant(-[a-zA-Z0-9_]+)*\.v0/}
+						exclude
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0004] occurrences matches {0..*} matches {    -- Assessment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..*} matches {    -- Conclusion
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Recommendation
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Genetic assessment">
+					description = <"A genetic assessment of a certain clinical problem, performed on a selection of genetic variants.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Genetic variants">
+					description = <"The genetic variants considered in this assessment.">
+				>
+				["at0003"] = <
+					text = <"Clinical problem">
+					description = <"The clinical problem, suspicion or physiological mechanism being assessed.">
+				>
+				["at0004"] = <
+					text = <"Assessment">
+					description = <"Description of the various genetic variants' relevance and interpretation for the clinical problem.">
+				>
+				["at0006"] = <
+					text = <"Conclusion">
+					description = <"The conclusion of the assessment, e.g. whether or not the clinical problem has a probable genetic cause.">
+				>
+				["at0008"] = <
+					text = <"Recommendation">
+					description = <"Actions or precautions that should be taken, based on this assessment.">
+				>
+				["at0009"] = <
+					text = <"Assessment type">
+					description = <"General type of assessment, e.g. genetic counselling, risk of disease, prognosis of established disease, pharmacogenomic advice.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Genetic assessment(en)">
+					description = <"*A genetic assessment of a certain clinical problem, performed on a selection of genetic variants.(en)">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"*Genetic variants(en)">
+					description = <"*The genetic variants considered in this assessment.(en)">
+				>
+				["at0003"] = <
+					text = <"*Clinical problem(en)">
+					description = <"*The clinical problem, suspicion or physiological mechanism being assessed.(en)">
+				>
+				["at0004"] = <
+					text = <"*Assessment(en)">
+					description = <"*Description of the various genetic variants' relevance and interpretation for the clinical problem.(en)">
+				>
+				["at0006"] = <
+					text = <"*Conclusion(en)">
+					description = <"*The conclusion of the assessment, e.g. whether or not the clinical problem has a probable genetic cause.(en)">
+				>
+				["at0008"] = <
+					text = <"*Recommendation(en)">
+					description = <"*Actions or precautions that should be taken, based on this assessment.(en)">
+				>
+				["at0009"] = <
+					text = <"*Assessment type(en)">
+					description = <"*General type of assessment, e.g. genetic counselling, risk of disease, prognosis of established disease, pharmacogenomic advice.(en)">
+				>
+			>
+		>
+	>
