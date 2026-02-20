@@ -1,0 +1,276 @@
+archetype (adl_version=1.4; uid=c0591370-5b7a-4479-b45e-f350ee021ced)
+	openEHR-EHR-EVALUATION.anamnese_olafia.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2015-11-12">
+		["name"] = <"DIPS ASA">
+		["organisation"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Foreløpig arketype for Olafiaklinikken, omhandler anamestiske opplysninger, demografiske og andre elementer som bør inn i andre arketyper.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Foreløpig arketype for Olafiaklinikken, omhandler anamestiske opplysninger, demografiske og andre elementer som bør inn i andre arketyper.">
+			misuse = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"*(nb)">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"*(nb)">
+			misuse = <"*(nb)">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"8F5798AA8838D638AF2D418A2D3F3439">
+		["build_uid"] = <"10560348-b684-45b7-a746-56983c50fc55">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Anamnese olafia
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Kjønn
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Språk
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..*} matches {    -- Plager
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Beskrivelse til plager
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Seksuell preferanse
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0006,    -- MSK
+									at0008,    -- KSM
+									at0009,    -- KSK
+									at0007,    -- MSM
+									at0011,    -- MSMK
+									at0010]    -- KSKM
+								}
+							}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..*} matches {    -- Nasjonalitet
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Mors fødeland
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {    -- Fars fødeland
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0016] occurrences matches {0..*} matches {    -- Prevensjonsmiddel
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0017] occurrences matches {0..1} matches {    -- Utfyllende opplysninger
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Anamnese olafia">
+					description = <"Foreløpig arketype for Olafiaklinikken, omhandler anamestiske opplysninger, demografiske og andre elementer som bør inn i andre arketyper.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Kjønn">
+					description = <"Individets opplevde kjønn.">
+				>
+				["at0003"] = <
+					text = <"Plager">
+					description = <"Individets opplevde plager.">
+				>
+				["at0004"] = <
+					text = <"Språk">
+					description = <"Individets foretrukne språk.">
+				>
+				["at0005"] = <
+					text = <"Seksuell preferanse">
+					description = <"Individets seksuelle praksis.">
+				>
+				["at0006"] = <
+					text = <"MSK">
+					description = <"Mann som har sex med kvinner.">
+				>
+				["at0007"] = <
+					text = <"MSM">
+					description = <"Mann som har sex med menn.">
+				>
+				["at0008"] = <
+					text = <"KSM">
+					description = <"Kvinne som har sex med menn.">
+				>
+				["at0009"] = <
+					text = <"KSK">
+					description = <"Kvinne som har sex med kvinner.">
+				>
+				["at0010"] = <
+					text = <"KSKM">
+					description = <"Kvinne som har sex med kvinner og menn.">
+				>
+				["at0011"] = <
+					text = <"MSMK">
+					description = <"Mann som har sex med menn og kvinner.">
+				>
+				["at0012"] = <
+					text = <"Beskrivelse til plager">
+					description = <"Fritektslig beskrivelse av individets plager.">
+				>
+				["at0013"] = <
+					text = <"Nasjonalitet">
+					description = <"Individets nasjonalitet.">
+				>
+				["at0014"] = <
+					text = <"Mors fødeland">
+					description = <"Navn på fødeland til individets mor.">
+				>
+				["at0015"] = <
+					text = <"Fars fødeland">
+					description = <"Navn på fødeland til individets far.">
+				>
+				["at0016"] = <
+					text = <"Prevensjonsmiddel">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0017"] = <
+					text = <"Utfyllende opplysninger">
+					description = <"Fritekstlig felt for opplysninger som ikke registreres annet sted.">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Anamnese olafia(nb)">
+					description = <"*unknown(nb)">
+				>
+				["at0001"] = <
+					text = <"*Tree(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0002"] = <
+					text = <"Sex">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Ailments">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Language">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"*Seksuell preferanse(nb)">
+					description = <"**(nb)">
+				>
+				["at0006"] = <
+					text = <"*MSK(nb)">
+					description = <"**(nb)">
+				>
+				["at0007"] = <
+					text = <"*MSM(nb)">
+					description = <"**(nb)">
+				>
+				["at0008"] = <
+					text = <"*KSM(nb)">
+					description = <"**(nb)">
+				>
+				["at0009"] = <
+					text = <"*KSK(nb)">
+					description = <"**(nb)">
+				>
+				["at0010"] = <
+					text = <"*KSKM(nb)">
+					description = <"**(nb)">
+				>
+				["at0011"] = <
+					text = <"*MSMK(nb)">
+					description = <"**(nb)">
+				>
+				["at0012"] = <
+					text = <"*Beskrivelse til plager(nb)">
+					description = <"**(nb)">
+				>
+				["at0013"] = <
+					text = <"*Nasjonalitet(nb)">
+					description = <"**(nb)">
+				>
+				["at0014"] = <
+					text = <"*Mors fødeland(nb)">
+					description = <"**(nb)">
+				>
+				["at0015"] = <
+					text = <"*Fars fødeland(nb)">
+					description = <"**(nb)">
+				>
+				["at0016"] = <
+					text = <"Contraceptives">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"*Utfyllende opplysninger(nb)">
+					description = <"**(nb)">
+				>
+			>
+		>
+	>
