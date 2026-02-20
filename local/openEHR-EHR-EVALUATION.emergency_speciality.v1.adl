@@ -1,0 +1,63 @@
+archetype (adl_version=1.4; uid=d179d52e-ff60-34bc-82c7-2d5c4043780c)
+	openEHR-EHR-EVALUATION.emergency_speciality.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2014-02-26">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Angir hvilken spesialitet pasienten behandles ved i Akuttmottaket">
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"4bb472e2fa98ee731807c7c3a11252f6">
+		["build_uid"] = <"4c264d01-d352-3680-89e1-6eedf40679a9">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Spesialitet
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Spesialitet
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Spesialitet">
+					description = <"Angir hvilken spesialitet pasienten behandles ved i Akuttmottaket">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Spesialitet">
+					description = <"*">
+				>
+			>
+		>
+	>
