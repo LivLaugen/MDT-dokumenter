@@ -1,0 +1,152 @@
+archetype (adl_version=1.4; uid=8cf34de7-3ad3-4f91-beaa-996779ccec82)
+	openEHR-EHR-ADMIN_ENTRY.trajectory_manager.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2015-12-09">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"*The healthcare provider responsible for the given trajectory (en)">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"*(en)">
+			misuse = <"*(en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The healthcare provider responsible for the given trajectory ">
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"14FD999293ECDF53F42E1923C1398C09">
+		["build_uid"] = <"ece35ae0-f97a-40fc-a810-ebf65f6104ec">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {    -- Trajectory manager
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- From
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- To
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Healthcare professional
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Healthcare organization
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Trajectory manager">
+					description = <"The healthcare provider responsible for the given trajectory ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Healthcare professional">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Healthcare organization">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Comment">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"From">
+					description = <"The datetime ">
+				>
+				["at0006"] = <
+					text = <"To">
+					description = <"*">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Forløpsansvarlig">
+					description = <"Helsetjenesteyteren som er ansvarlig for pasientforløpet">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Ansvarlig">
+					description = <"Rekvirenten som er ansvarlig for den prosessen ">
+				>
+				["at0003"] = <
+					text = <"Organisasjon">
+					description = <"Organisasjonen som er ansvarlig for  prosessen">
+				>
+				["at0004"] = <
+					text = <"Kommentar">
+					description = <"Valgfri kommentar ">
+				>
+				["at0005"] = <
+					text = <"Fra">
+					description = <"Tidspunktet hvor den angitte ansvarlige tok ansvar for prosessen">
+				>
+				["at0006"] = <
+					text = <"Til">
+					description = <"Tidspunktet hvor det er planlagt at den ansvarlige avslutter ansvar for prosessen.">
+				>
+			>
+		>
+	>
