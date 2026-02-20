@@ -1,0 +1,98 @@
+archetype (adl_version=1.4; uid=75df07ea-f8e6-44be-b23c-9b3dd1270d4d)
+	openEHR-EHR-CLUSTER.samtale_soi.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-11-10">
+		["name"] = <"DIPS ASA">
+		["organisation"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			misuse = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"335BA69AC698C38E7D0370800A3E2E9C">
+		["build_uid"] = <"dcde34b6-c4b2-4288-8181-2d2204cdb134">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Samtale soi
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..*} matches {    -- Informasjon gitt til pasienten
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Tilbud om blodprøve
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Råd om hepatitt vaksiner
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Råd om HPV vaksine
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Beskrivelse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Samtale soi">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0001"] = <
+					text = <"Informasjon gitt til pasienten">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0002"] = <
+					text = <"Tilbud om blodprøve">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0003"] = <
+					text = <"Råd om hepatitt vaksiner">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0004"] = <
+					text = <"Råd om HPV vaksine">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0005"] = <
+					text = <"Beskrivelse">
+					description = <"Beskrivelse burde vært her.">
+				>
+			>
+		>
+	>
