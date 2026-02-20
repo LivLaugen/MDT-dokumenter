@@ -1,0 +1,163 @@
+archetype (adl_version=1.4; uid=81322667-02d7-4f84-b83e-170f5249d3cc)
+	openEHR-EHR-EVALUATION.rusmisbruk_smerteregisteret.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2018-11-16">
+		["name"] = <"Silje Ljosland Bakke">
+		["organisation"] = <"Nasjonal IKT HF">
+		["email"] = <"silje.ljosland.bakke@nasjonalikt.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For aggregert informasjon spesifikt for Smerteregisteret, om hvorvidt individet misbruker rusmidler, og hvorvidt individet er under LAR-behandling.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes for aggregert informasjon spesifikt for Smerteregisteret, om hvorvidt individet misbruker rusmidler, og hvorvidt individet er under LAR-behandling.">
+			misuse = <"Brukes ikke for noe annet formål enn registrering av aggregert informasjon for rapportering til Smerteregisteret.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"13E4E3376574D77294919AD1FD6EB03B">
+		["build_uid"] = <"9a0385b5-9f02-4c2d-8725-dfb5aca0150e">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Rusmisbruk smerteregisteret
+		data matches {
+			ITEM_TREE[at0001] matches {    -- ItemTree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- 4c. Er det uhensiktsmessig bruk av forskrevne opioider og/eller benzodiazepiner og/eller ko-analgetika?
+						value matches {
+							0|[local::at0021],
+							1|[local::at0022],
+							2|[local::at0023]
+						}
+					}
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- 5. Tidligere rusmisbruk
+						value matches {
+							0|[local::at0024],
+							1|[local::at0025],
+							2|[local::at0026]
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- 6. Pågående rusmisbruk
+						value matches {
+							0|[local::at0027],
+							1|[local::at0028],
+							2|[local::at0029]
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- 7. LAR
+						value matches {
+							0|[local::at0030],
+							1|[local::at0031],
+							2|[local::at0032]
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Rusmisbruk smerteregisteret">
+					description = <"Aggregert informasjon spesifikt for Smerteregisteret, om hvorvidt individet misbruker rusmidler, og hvorvidt individet er under LAR-behandling.">
+				>
+				["at0001"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"5. Tidligere rusmisbruk">
+					description = <"Registrering om hvorvidt individet har misbrukt rusmidler tidligere.">
+					comment = <"Nei: Benyttes dersom en ikke finner noe informasjon i journal og heller ikke har mistanke om tidligere rusmiddelmisbruk.
+Ja: Benyttes dersom en finner informasjon i journal og eller pasient forteller om tidligere rusmiddelmisbruk (dvs misbruk av opioider, benzodiazepiner, Lyrica og/eller alkohol).
+Usikker: Hvis en har mistanke, etter opplysninger fra postpersonale, pårørende eller fra egne observasjoner.">
+				>
+				["at0006"] = <
+					text = <"6. Pågående rusmisbruk">
+					description = <"Registrering om hvorvidt individet misbruker rusmidler på registreringstidspunktet.">
+					comment = <"Nei: benyttes dersom en ikke finner noe informasjon i journal og heller ikke har mistanke om rusmiddelmisbruk.
+Ja: Benyttes dersom en finner informasjon i journal og/eller pasient bekrefter pågående rusmiddelmisbruk (dvs misbruk av opioider, benzodiazepiner, Lyrica og/eller alkohol).
+Usikker: hvis en har mistanke, etter opplysninger fra postpersonale, pårørende eller fra egne observasjoner.">
+				>
+				["at0007"] = <
+					text = <"7. LAR">
+					description = <"Registrering om hvorvidt individet er under LAR-behandling på registreringstidspunktet.">
+					comment = <"Nei: Benyttes dersom en ikke finner noe informasjon i journal, eller ved 1. tilsyn (fylles ut automatisk dersom spm 5 og 6 besvart med \"Nei\".
+Ja: Pasient befinner seg i et godkjent behandlingsopplegg enten i regi av fastlege eller spesialisthelsetjenesten.
+Usikker: Benyttes dersom pasienten står på substitusjonsbehandling, men det er uklart hvor pasienten får den fra.">
+				>
+				["at0008"] = <
+					text = <"4c. Er det uhensiktsmessig bruk av forskrevne opioider og/eller benzodiazepiner og/eller ko-analgetika?">
+					description = <"Definisjon av uhensiktsmessig bruk: Pasienten bruker analgetika på en måte som er i strid med gjeldende terapianbefalinger og/eller pasienten bruker de annerledes enn utskrivende lege har tenkt, eks resepter blir brukt opp før tiden, bruker injeksjoner når det ikke er indikasjon.">
+				>
+				["at0021"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Usikker">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Usikker">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Usikker">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Usikker">
+					description = <"*">
+				>
+			>
+		>
+	>
