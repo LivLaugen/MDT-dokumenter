@@ -1,0 +1,154 @@
+archetype (adl_version=1.4; uid=899249ac-bcfd-4002-a829-3caaf464e290)
+	openEHR-EHR-EVALUATION.henvisning_til_fysioterapi.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-11-12">
+		["name"] = <"DIPS ASA">
+		["organisation"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			misuse = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"ECE5F6129F9EB154A8266EC7A4D212F8">
+		["build_uid"] = <"af3f7855-ff14-4efd-bd15-83200e4684c1">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Henvisning til fysioterapi
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0002] occurrences matches {0..1} matches {    -- 2 Diagnose og funn
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0003] occurrences matches {0..1} matches {    -- Hvis operasjon, oppgi dato for denne
+								value matches {
+									DV_DATE matches {*}
+								}
+							}
+							ELEMENT[at0004] occurrences matches {0..1} matches {    -- Viktige funn (lokalisasjon, røntgenfunn, laboratorieundersøkelser, andre undersøkelser)
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0005] occurrences matches {0..1} matches {    -- 3 Henvisning til
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0010] occurrences matches {0..1} matches {    -- Pasienten må behandles i hjemmet
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0011,    -- Ja
+											at0012]    -- Nei
+										}
+									}
+								}
+							}
+							ELEMENT[at0006] occurrences matches {0..1} matches {    -- Fysioterapi
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0007] occurrences matches {0..1} matches {    -- Fysioterapi ved godkjente behanlingssteder i utlandet
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0008] occurrences matches {0..1} matches {    -- Terapiridning
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0009] occurrences matches {0..1} matches {    -- Pasienten må behandles i hjemmet
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Henvisning til fysioterapi">
+					description = <"Foreløpig arketype for Skadelegevakten, OUS som er tenkt brukt for henvisning til fysioterapi. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"2 Diagnose og funn">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0003"] = <
+					text = <"Hvis operasjon, oppgi dato for denne">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0004"] = <
+					text = <"Viktige funn (lokalisasjon, røntgenfunn, laboratorieundersøkelser, andre undersøkelser)">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0005"] = <
+					text = <"3 Henvisning til">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0006"] = <
+					text = <"Fysioterapi">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0007"] = <
+					text = <"Fysioterapi ved godkjente behanlingssteder i utlandet">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0008"] = <
+					text = <"Terapiridning">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0009"] = <
+					text = <"Pasienten må behandles i hjemmet">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0010"] = <
+					text = <"Pasienten må behandles i hjemmet">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0011"] = <
+					text = <"Ja">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0012"] = <
+					text = <"Nei">
+					description = <"Beskrivelse burde vært her.">
+				>
+			>
+		>
+	>
