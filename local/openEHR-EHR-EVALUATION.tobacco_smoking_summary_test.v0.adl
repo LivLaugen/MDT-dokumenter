@@ -1,0 +1,270 @@
+archetype (adl_version=1.4; uid=8bfd0aa7-0caf-4129-bc67-0383d12bcf43)
+	openEHR-EHR-EVALUATION.tobacco_smoking_summary_test.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"*(nb)">
+			keywords = <"test", ...>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"D9EA62EB23E702E59C7482D2487157B8">
+		["build_uid"] = <"5cda8baf-793a-4af1-a47d-027134416436">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Sammendrag av tobakksrøyking
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Røykestatus
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Dato for røykedebut
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Dato for røykeslutt
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					CLUSTER[at0006] occurrences matches {0..1} matches {    -- Per form
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0013] occurrences matches {0..1} matches {    -- Form
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0014] occurrences matches {0..1} matches {    -- Beskrivelse
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0015] occurrences matches {0..1} matches {    -- Typisk forbruk
+								value matches {
+									DV_QUANTITY matches {*}
+								}
+							}
+							ELEMENT[at0016] occurrences matches {0..1} matches {    -- Typisk bruksmønster
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0017] occurrences matches {0..1} matches {    -- Utløsende faktorer
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0018] occurrences matches {0..1} matches {    -- Brukskontekst
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0019] occurrences matches {0..1} matches {    -- Dato for røykedebut
+								value matches {
+									DV_DATE_TIME matches {*}
+								}
+							}
+							ELEMENT[at0020] occurrences matches {0..1} matches {    -- Dato for røykeslutt
+								value matches {
+									DV_DATE_TIME matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0021] occurrences matches {0..*} matches {    -- Spesifikke detaljer
+								include
+									archetype_id/value matches {/.*/}
+							}
+							ELEMENT[at0022] occurrences matches {0..1} matches {    -- Antall forsøk på å slutte
+								value matches {
+									DV_COUNT matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0023] occurrences matches {0..*} matches {    -- Detaljer om forsøk på å slutte
+								include
+									archetype_id/value matches {/.*/}
+							}
+							allow_archetype CLUSTER[at0024] occurrences matches {0..*} matches {    -- Motivasjon for å slutte
+								include
+									archetype_id/value matches {/.*/}
+							}
+							ELEMENT[at0025] occurrences matches {0..1} matches {    -- Kommentar
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- Kommentar
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0008] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Dato sist oppdatert
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {    -- Definisjon av periode sluttet
+						value matches {
+							DV_DURATION matches {*}
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {    -- Definisjon av pakkestørrelse
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0012] occurrences matches {0..*} matches {    -- Tilleggsinformasjon
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sammendrag av tobakksrøyking">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Røykestatus">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Dato for røykedebut">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Dato for røykeslutt">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Per form">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Kommentar">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0009"] = <
+					text = <"Dato sist oppdatert">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Definisjon av periode sluttet">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Definisjon av pakkestørrelse">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Tilleggsinformasjon">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Form">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Typisk forbruk">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Typisk bruksmønster">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Utløsende faktorer">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Brukskontekst">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Dato for røykedebut">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Dato for røykeslutt">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Spesifikke detaljer">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Antall forsøk på å slutte">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Detaljer om forsøk på å slutte">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Motivasjon for å slutte">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Kommentar">
+					description = <"*">
+				>
+			>
+		>
+	>
