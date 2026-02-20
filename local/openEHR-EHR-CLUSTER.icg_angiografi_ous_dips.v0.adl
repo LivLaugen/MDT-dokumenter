@@ -1,0 +1,106 @@
+archetype (adl_version=1.4; uid=8df8d569-1d01-4182-aac3-1cfd68bbc595)
+	openEHR-EHR-CLUSTER.icg_angiografi_ous_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-03-26">
+		["name"] = <"Thomas Pedersen Baerland">
+		["organisation"] = <"Oslo University Hospital / DIPS ASA">
+		["email"] = <"tba@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Arne Løberg Sæter", ...>
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Kvalitativ beskrivelse av indiocyaninangiografi av fundus.">
+			copyright = <"© OUS HF/DIPS ASA">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"81F8339061F2F638C558E7FA62C3C382">
+		["build_uid"] = <"947749c9-1263-4c6e-8336-7c683edee158">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Icg angiografi ous dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Beskrivelse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Hyperfluorescense
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Hypofluoresence
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Fylningsdefekt
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Konklusjon/diagnose
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {    -- Detaljer
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Icg angiografi ous dips">
+					description = <"Kvalitativ beskrivelse av funn på icg angiografi.">
+				>
+				["at0001"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Hyperfluorescense">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Hypofluoresence">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Fylningsdefekt">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Konklusjon/diagnose">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+			>
+		>
+	>
