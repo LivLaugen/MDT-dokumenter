@@ -1,0 +1,64 @@
+archetype (adl_version=1.4; uid=a500c270-d57d-4208-b60a-fe26be941a5e)
+	openEHR-EHR-CLUSTER.tidligere_ercp.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-01-16">
+		["name"] = <"Tomas Nordheim Alme">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"tna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Formålet er å raskt beskrive tidligere ERCP-prosedyre i forbindelse med en ny prosedyre.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Arketypen er utviklet til bruk for ERCP-registeret i Gastronet. Benyttes i ACTION.procedure">
+			misuse = <"All annen">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["current_contact"] = <"Tomas Nordheim Alme, DIPS ASA, tna@dips.no">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"85B99D01BDB72AA8F9C6DC27A89E311D">
+		["build_uid"] = <"c1f9a6e9-97bf-4512-93d4-5e7037e2d74d">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Tidligere ercp
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Tidligere ERCP
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tidligere ercp">
+					description = <"Informasjon om evt tidligere ERCP-prosedyre">
+				>
+				["at0001"] = <
+					text = <"Tidligere ERCP">
+					description = <"*">
+				>
+			>
+		>
+	>
