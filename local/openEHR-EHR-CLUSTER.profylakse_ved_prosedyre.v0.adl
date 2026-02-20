@@ -1,0 +1,65 @@
+archetype (adl_version=1.4; uid=ae1d9df0-23b7-4016-88a1-b88cc542ec7c)
+	openEHR-EHR-CLUSTER.profylakse_ved_prosedyre.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-01-16">
+		["name"] = <"Tomas Nordheim Alme">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"tna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Benyttes for å spesifisere profylakse som gis i forbindelse med en prosedyre, før, under eller etter gjennomføringen. ">
+			keywords = <"Profylakse","Prosedyre","Antibiotika">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Arketypen er utviklet for kvalitetsregisteret Gastronet. Den kan hente informasjonen sin fra andre arketyper, feks medikasjon der det ligger til rette for dette. Benyttes sammen med ACTION.procedure">
+			misuse = <"All annen">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["current_contact"] = <"Tomas Nordheim Alme, DIPS ASA, tna@dips.no">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"0E5132201B62313A4A23AF954549EA15">
+		["build_uid"] = <"89b823d2-1336-4d78-a700-dac76af5f68e">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Profylakse ved prosedyre
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Profylakse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Profylakse ved prosedyre">
+					description = <"Brukes til å angi profylaktisk behandling gitt før, under eller etter en prosedyre.">
+				>
+				["at0001"] = <
+					text = <"Profylakse">
+					description = <"*">
+				>
+			>
+		>
+	>
