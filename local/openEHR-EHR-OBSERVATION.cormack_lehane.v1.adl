@@ -1,12 +1,18 @@
-archetype (adl_version=1.4; uid=0c04f9af-f570-45ab-a629-e724a3e9bc5f)
+﻿archetype (adl_version=1.4; uid=b0fd63dc-83cd-4cf8-b2a0-a953c8b70630)
 	openEHR-EHR-OBSERVATION.cormack_lehane.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Cormack-Lehane classification
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
+		["fi"] = <
+			language = <[ISO_639-1::fi]>
+			author = <
+				["name"] = <"Vesa Peltola">
+				["organisation"] = <"Tieto Finland">
+			>
+		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			author = <
@@ -15,41 +21,50 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2016-01-06">
 		["name"] = <"John Tore Valand">
 		["organisation"] = <"Helse Bergen HF">
 		["email"] = <"john.tore.valand@helse-bergen.no">
+		["date"] = <"2016-01-06">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Anne Pauline Anderssen, Helse Nord RHF, Norway","Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)","Marcus Baw, openGPSoC / BawMedical Ltd, United Kingdom","Kristian Berg, Vestvågøy kommune - Fagutviklingsavdelingen, Norway","Bjørn Christensen, Helse Bergen HF, Norway","Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway","Mikkel Gaup Grønmo, FSE, Helse Nord, Norway (Nasjonal IKT redaktør)","Karl Trygve Kalleberg, Oslo Universitetssykehus, Norway","Lars Morgan Karlsen, DIPS ASA, Norway","Heather Leslie, Ocean Informatics, Australia (openEHR Editor)","Hallvard Lærum, Direktoratet for e-helse, Norway","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Bjørn Næss, DIPS ASA, Norway","Vladimir Pizzo, Hospital Sírio Libanês, Brazil","Tanja Riise, Nasjonal IKT HF, Norway","Rowan Thomas, St. Vincent's Hospital Melbourne, Australia","Jon Tysdahl, Furst medlab AS, Norway","John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)","Nils Widnes, Helse-Bergen, Norway","Thomas Wilson, Finnmarkssykehuset HF Klinikk Hammerfest, Norway">
 	details = <
+		["fi"] = <
+			language = <[ISO_639-1::fi]>
+			purpose = <"Käytetään kuvaamaan suorien laryngoskopioiden aikana näkyviä rakenteita ja epäsuorasti osoittamaan kurkunpään intuboinnin todennäköistä vaikeutta.">
+			use = <"Käytä kuvaamaan rakenteita, jotka ovat näkyvissä suoran laryngoskopian aikana ja epäsuorasti osoittamaan kurkunpään intuboinnin todennäköistä vaikeutta.
+
+Pään sijainti ja muu asiaankuuluva tieto kuljetetaan muissa asiaankuuluvissa ENTRY-arkkityypeissä.">
+			keywords = <"intubaatio, laryngoskopia, luokittelu, hengitystiet, glottis, epiglottis, vaikeat hengitystiet", ...>
+			misuse = <"Ei saa käyttää Modified Cormack-Lehane-luokittelun tallentamiseen (Yentis & Lee, 1998). Käytä tätä varten spesifistä arkkityyppiä.">
+		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å beskrive synlige strukturer under direkte laryngoskopi, og indirekte for å indikere en sannsynlig vanskelig intubasjon.">
-			keywords = <"intubasjon","laryngoskopi","larynx","luftvei","innsyn","epiglottis","glottis","vanskelig intubasjon">
 			use = <"Brukes for å beskrive synlige strukturer under direkte laryngoskopi, og indirekte for å indikere en sannsynlig vanskelig intubasjon.
 
 Hodets posisjon og annen relevant informasjon registreres i andre relevante ENTRY-arketyper.">
+			keywords = <"intubasjon", "laryngoskopi", "larynx", "luftvei", "innsyn", "epiglottis", "glottis", "vanskelig intubasjon">
 			misuse = <"Brukes ikke til å registrere Modifisert Cormack/Lehane-klassifikasjon (Yentis & Lee, 1998). Bruk en spesifikk arketype til dette.">
+			copyright = <"© Nasjonal IKT HF, openEHR Foundation">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To describe the structures visible during direct laryngoscopy and indirectly to indicate the likely difficulty of laryngeal intubation.">
-			keywords = <"intubation","laryngoscopy","grading","airway","glottis","epiglottis","difficult airway">
-			copyright = <"© Nasjonal IKT HF">
 			use = <"Use to describe the structures visible during direct laryngoscopy and indirectly to indicate the likely difficulty of laryngeal intubation.
 
 The position of the head and other relevant information will be carried in other relevant ENTRY archetypes.">
+			keywords = <"intubation", "laryngoscopy", "grading", "airway", "glottis", "epiglottis", "difficult airway">
 			misuse = <"Not to be used for recording Modified Cormack-Lehane grading (Yentis & Lee, 1998). Use a specific archetype for this purpose.">
+			copyright = <"© Nasjonal IKT HF, openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Anne Pauline Anderssen, Helse Nord RHF, Norway", "Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)", "Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)", "Marcus Baw, openGPSoC / BawMedical Ltd, United Kingdom", "Kristian Berg, Vestvågøy kommune - Fagutviklingsavdelingen, Norway", "Bjørn Christensen, Helse Bergen HF, Norway", "Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway", "Mikkel Gaup Grønmo, FSE, Helse Nord, Norway (Nasjonal IKT redaktør)", "Karl Trygve Kalleberg, Oslo Universitetssykehus, Norway", "Lars Morgan Karlsen, DIPS ASA, Norway", "Heather Leslie, Ocean Informatics, Australia (openEHR Editor)", "Hallvard Lærum, Direktoratet for e-helse, Norway", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Bjørn Næss, DIPS ASA, Norway", "Vladimir Pizzo, Hospital Sírio Libanês, Brazil", "Tanja Riise, Nasjonal IKT HF, Norway", "Rowan Thomas, St. Vincent's Hospital Melbourne, Australia", "Jon Tysdahl, Furst medlab AS, Norway", "John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)", "Nils Widnes, Helse-Bergen, Norway", "Thomas Wilson, Finnmarkssykehuset HF Klinikk Hammerfest, Norway">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
-		["custodian_organisation"] = <"Nasjonal IKT">
-		["references"] = <"Avgrenet fra: Cormack/Lehane-klassifikasjon, Publisert arketype [Internet]. Nasjonal IKT, Nasjonal IKT Clinical Knowledge Manager [sitert: 2017-12-08]. Hentet fra: http://arketyper.no/ckm/#showArchetype_1078.36.1258
+		["custodian_organisation"] = <"openEHR Foundation">
+		["references"] = <"Derived from: Cormack-Lehane classification, Published archetype [Internet]. openEHR Foundation, openEHR Clinical Knowledge Manager [cited: 2017-12-11]. Available from: http://openehr.org/ckm/#showArchetype_1013.1.2411
 
 Cormack RS, Lehane J. Difficult tracheal intubation in obstetrics. Anaesthesia 1984; 39: 1105–11.
 
@@ -58,12 +73,12 @@ Bjerkelund CE, Christensen P, Dragsund S, Aadahl P. [How to secure free airway?]
 Yentis SM, Lee DJH. Evaluation of an improved scoring system for the grading of direct laryngoscopy. Anaesthesia 1998; 53(11): 1041-4.
 
 OpenAirway. Department of Anaesthesia, University of Cape Town. [internet] Accessed 2016-03-31. http://openairway.org/tag/cormack-lehane/">
-		["original_namespace"] = <"no.nasjonalikt">
-		["original_publisher"] = <"Nasjonal IKT">
-		["custodian_namespace"] = <"no.nasjonalikt">
-		["MD5-CAM-1.0.1"] = <"28748E93A4D22969DD9B5FAEDCEDB957">
-		["build_uid"] = <"639292fd-bc08-4352-8b12-0546492f9040">
-		["revision"] = <"1.0.0">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"6E128842427D617B9B54CCDD56090C01">
+		["build_uid"] = <"c9e38bd8-91a3-4bf8-8772-1372171bfb2a">
+		["revision"] = <"1.0.2">
 	>
 
 definition
@@ -111,6 +126,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
@@ -217,6 +233,59 @@ ontology
 					text = <"Tilleggsinformasjon">
 					description = <"Ytterligere informasjon som trengs for å kunne registrere lokalt definert innhold eller for å tilpasse til andre referansemodeller/formalismer.">
 					comment = <"For eksempel lokale informasjonsbehov eller ytterligere metadata for å kunne tilpasse til tilsvarende konsepter i FHIR eller CIMI.">
+				>
+			>
+		>
+		["fi"] = <
+			items = <
+				["at0000"] = <
+					text = <"Cormack-Lehane-luokitus">
+					description = <"Cormack-Lehane järjestelmällä luokitellaan suoralla laryngoskopialla tehdyt havainnot niissä nähtyjen rakenteiden mukaisesti.">
+				>
+				["at0001"] = <
+					text = <"Luokitus">
+					description = <"Kurkunpään anatomian näkyvyyden luokitus.">
+				>
+				["at0002"] = <
+					text = <"Luokka 1: Äänirako näkyy kokonaan.">
+					description = <"Äänirako näkyy kokonaan.">
+				>
+				["at0003"] = <
+					text = <"Luokka 2: Äänirako tai kannurustot näkyvät osittain.">
+					description = <"Äänirako tai kannurustot näkyvät osittain.">
+				>
+				["at0004"] = <
+					text = <"Luokka 3: Vain kurkunkansi näkyy">
+					description = <"Vain kurkunkansi näkyy.">
+				>
+				["at0005"] = <
+					text = <"Luokka 4: Äänirako ja kurkunkansi eivät näy">
+					description = <"Äänirako ja kurkunkansi eivät näy.">
+				>
+				["at0006"] = <
+					text = <"Kommentti">
+					description = <"Kertomusmuodossa oleva kommentti Cormack-Lehane-luokittelusta.">
+				>
+				["at0007"] = <
+					text = <"Tapahtumasarja">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Tapahtuma minä tahansa ajankohtana">
+					description = <"Määrittämättömänä ajanhetkenä ilmenevä tapahtuma, joka voi olla määritetty tarkasti jossakin mallissa tai suorituksen aikana.">
+				>
+				["at0009"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0010"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"Laajennus">
+					description = <"Lisätiedot, joita tarvitaan paikallisen asiayhteyden kirjaamiseksi tai yhtenäistämiseksi muiden viitemallien tai formalismien kanssa.">
+					comment = <"Esimerkki: Paikallisen sairaalan osastotiedot tai muu metadata, joilla saadaan aikaan vastaavuus vastaavien FHIR- tai CIMI-tietojen kanssa.">
 				>
 			>
 		>
