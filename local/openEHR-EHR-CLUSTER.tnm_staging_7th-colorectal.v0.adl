@@ -1,0 +1,603 @@
+archetype (adl_version=1.4; uid=5b36721b-3fc1-4937-9273-0765bfd7362a)
+	openEHR-EHR-CLUSTER.tnm_staging_7th-colorectal.v0
+specialize
+	openEHR-EHR-CLUSTER.tnm_staging_7th.v1
+
+concept
+	[at0000.1]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Kristin Eik">
+				["organisation"] = <"Kreftregisteret">
+				["email"] = <"Kristin.Eik@kreftregisteret.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"27/07/2009">
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics Scotland">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Heather Leslie Ocean Informatics Australia","Sam Heard Ocean Informatics Australia","Koray Atalag, University of Auckland, New Zealand">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere klassifikasjon og gradering av tykk- og endetarmskreft ved å benytte TNM-klassifikasjon 7. utgave.">
+			keywords = <"tumor","TNM","malignitet","kreft","klassifisering","klassifikasjon","grad","gradering","stadium","lymfeknute","metastase","spredning","tykktarm","endetarm","colorektal","colon","kolon","rektum","rectum","colorectal","kolorectal","kolorektal">
+			misuse = <"Brukes kun for TNM 7.utgave for klassifisering av tykk- og endetarmskreft.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the classification and grading of colorectal cancer using the TNM classification 7th Edition.">
+			keywords = <"tumour","TNM","malignancy","cancer","staging","classification","grade","grading","stage","lymph node","metastasis","colorectal">
+			copyright = <"© copyright (c) 2010 openEHR foundation, Nasjonal IKT HF">
+			misuse = <"Use only for TNM 7th Edition colorecal cancer staging.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Sobin LH. TNM Classification of Malignant Tumours 7th Edition.  John Wiley and Sons; 2009.">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"232C262E0873A287C77BEE15299AF7BC">
+		["build_uid"] = <"2396997e-87ac-438f-8c46-8a732a282e51">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000.1] matches {    -- TNM staging Colorectal Cancer 7th Edition
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Primary tumour (T)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.52,    -- TX
+							at0.53,    -- T0
+							at0.54,    -- Tis
+							at0.55,    -- T1
+							at0.56,    -- T2
+							at0.57,    -- T3
+							at0.58,    -- T4a
+							at0.59]    -- T4b
+						}
+					}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Regional lymph nodes (N)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.60,    -- NX
+							at0.61,    -- N0
+							at0.62,    -- N1
+							at0.63,    -- N1a
+							at0.64,    -- N1b
+							at0.65,    -- N1c
+							at0.66,    -- N2
+							at0.67,    -- N2a
+							at0.68]    -- N2b
+						}
+					}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Distant metastasis (M)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.69,    -- MX
+							at0.70,    -- M0
+							at0.71,    -- M1
+							at0.72,    -- M1a
+							at0.73]    -- M1b
+						}
+					}
+				}
+			}
+			ELEMENT[at0025] occurrences matches {0..1} matches {    -- Residual tumour (R)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.74,    -- R0
+							at0.75,    -- R1
+							at0.76]    -- R2
+						}
+					}
+				}
+			}
+			ELEMENT[at0046] occurrences matches {0..1} matches {    -- Histopathological grading (G)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0047,    -- GX
+							at0048,    -- G1
+							at0049,    -- G2
+							at0050,    -- G3
+							at0051]    -- G4
+						}
+					}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Overall staging
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0052] occurrences matches {0..1} matches {    -- Descriptors
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0053] occurrences matches {0..*} matches {    -- Descriptor
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0014] occurrences matches {0..1} matches {    -- Stage grouping
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.77,    -- Stage 0
+							at0.78,    -- Stage I
+							at0.79,    -- Stage IIA
+							at0.80,    -- Stage IIB
+							at0.81,    -- Stage IIC
+							at0.82,    -- Stage IIIA
+							at0.83,    -- Stage IIIB
+							at0.84,    -- Stage IIIC
+							at0.85,    -- Stage IVA
+							at0.86]    -- Stage IVB
+						}
+					}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Comment
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.52"] = <
+					text = <"TX">
+					description = <"Primary tumour cannot be assessed.">
+				>
+				["at0.53"] = <
+					text = <"T0">
+					description = <"No evidence of primary tumour.">
+				>
+				["at0.54"] = <
+					text = <"Tis">
+					description = <"Carcinoma in situ: intraepithelial or invasion of lamina propria.">
+				>
+				["at0.55"] = <
+					text = <"T1">
+					description = <"Tumour invades submucosa.">
+				>
+				["at0.56"] = <
+					text = <"T2">
+					description = <"Tumour invades muscularis propria.">
+				>
+				["at0.57"] = <
+					text = <"T3">
+					description = <"Tumour invades through the muscularis propria into pericolorectal tissues.">
+				>
+				["at0.58"] = <
+					text = <"T4a">
+					description = <"Tumour penetrates to the surface of the visceral peritoneum.">
+				>
+				["at0.59"] = <
+					text = <"T4b">
+					description = <"Tumour directly invades or is adherent to other organs or structures.">
+				>
+				["at0.60"] = <
+					text = <"NX">
+					description = <"Regional lymph nodes cannot be assessed.">
+				>
+				["at0.61"] = <
+					text = <"N0">
+					description = <"No regional lymph node metastasis.">
+				>
+				["at0.62"] = <
+					text = <"N1">
+					description = <"Metastasis in 1-3 regional lymph nodes.">
+				>
+				["at0.63"] = <
+					text = <"N1a">
+					description = <"Metastasis in one regional lymph node.">
+				>
+				["at0.64"] = <
+					text = <"N1b">
+					description = <"Metastasis in 2-3 regional lymph nodes.">
+				>
+				["at0.65"] = <
+					text = <"N1c">
+					description = <"Tumour deposit(s) in the subserosa, mesentery, or nonperitonealised pericolic or perirectal tissues without regional nodal metastasis.">
+				>
+				["at0.66"] = <
+					text = <"N2">
+					description = <"Metastasis in 4 or more regional lymph nodes">
+				>
+				["at0.67"] = <
+					text = <"N2a">
+					description = <"Metastasis in 4-6 regional lymph nodes.">
+				>
+				["at0.68"] = <
+					text = <"N2b">
+					description = <"Metastasis in 7 or more regional lymph nodes.">
+				>
+				["at0.69"] = <
+					text = <"MX">
+					description = <"Distant metastasis cannot be assessed.">
+				>
+				["at0.70"] = <
+					text = <"M0">
+					description = <"No distant metastasis.">
+				>
+				["at0.71"] = <
+					text = <"M1">
+					description = <"Distant metastasis.">
+				>
+				["at0.72"] = <
+					text = <"M1a">
+					description = <"Metastasis confined to one organ or site (e.g., liver, lung, ovary, nonregional node).">
+				>
+				["at0.73"] = <
+					text = <"M1b">
+					description = <"Metastases in more than one organ/site or the peritoneum.">
+				>
+				["at0.74"] = <
+					text = <"R0">
+					description = <"No residual tumor.">
+				>
+				["at0.75"] = <
+					text = <"R1">
+					description = <"Microscopic residual tumor.">
+				>
+				["at0.76"] = <
+					text = <"R2">
+					description = <"Macroscopic residual tumor.">
+				>
+				["at0.77"] = <
+					text = <"Stage 0">
+					description = <"Tis, N0, M0.">
+				>
+				["at0.78"] = <
+					text = <"Stage I">
+					description = <"T1 or T2, N0, M0.">
+				>
+				["at0.79"] = <
+					text = <"Stage IIA">
+					description = <"T3, N0, M0.">
+				>
+				["at0.80"] = <
+					text = <"Stage IIB">
+					description = <"T4a, N0, M0.">
+				>
+				["at0.81"] = <
+					text = <"Stage IIC">
+					description = <"T4b, N0, M0.">
+				>
+				["at0.82"] = <
+					text = <"Stage IIIA">
+					description = <"T1 or T2, N1, M0, or T1, N2a, M0.">
+				>
+				["at0.83"] = <
+					text = <"Stage IIIB">
+					description = <"T3 or T4a, N1, M0, or T2 or T3, N2a, M0, or T1 or T2 N2b, M0.">
+				>
+				["at0.84"] = <
+					text = <"Stage IIIC">
+					description = <"T4a, N2a, M0, or T3 or T4a, N2b, M0, or T4b, N1 or N2, M0.">
+				>
+				["at0.85"] = <
+					text = <"Stage IVA">
+					description = <"Any T, Any N, M1a.">
+				>
+				["at0.86"] = <
+					text = <"Stage IVB">
+					description = <"Any T, Any N, M1b.">
+				>
+				["at0000"] = <
+					text = <"**Tumour - TNM Cancer staging 7th Edition(en)(en)">
+					description = <"**A framework for the classification and grading of malignancies using the TNM classification system 7th Edition.(en)(en)">
+				>
+				["at0000.1"] = <
+					text = <"TNM staging Colorectal Cancer 7th Edition">
+					description = <"For the classification and grading of colorectal cancer using the TNM classification 7th Edition.">
+				>
+				["at0003"] = <
+					text = <"Primary tumour (T)">
+					description = <"Assessment of the primary tumour.">
+				>
+				["at0004"] = <
+					text = <"Regional lymph nodes (N)">
+					description = <"Assessment of the regional lymph nodes.">
+				>
+				["at0005"] = <
+					text = <"Distant metastasis (M)">
+					description = <"Assessment of distant metastasis.">
+				>
+				["at0010"] = <
+					text = <"Overall staging">
+					description = <"The overall staging derived from each T, N and M component e.g T1aM0NX. May include additional TNM descriptors.">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"A text comment on the staging.">
+				>
+				["at0014"] = <
+					text = <"Stage grouping">
+					description = <"The TNM Stage grouping.">
+				>
+				["at0025"] = <
+					text = <"Residual tumour (R)">
+					description = <"Assessment of post-treatment residual tumour.">
+				>
+				["at0046"] = <
+					text = <"Histopathological grading (G)">
+					description = <"TNM histopathological grading classification.">
+				>
+				["at0047"] = <
+					text = <"GX">
+					description = <"Grade of differentiation cannot be assessed.">
+				>
+				["at0048"] = <
+					text = <"G1">
+					description = <"Well differentiated.">
+				>
+				["at0049"] = <
+					text = <"G2">
+					description = <"Moderately differentiated.">
+				>
+				["at0050"] = <
+					text = <"G3">
+					description = <"Poorly differentiated.">
+				>
+				["at0051"] = <
+					text = <"G4">
+					description = <"Undifferentiated.">
+				>
+				["at0052"] = <
+					text = <"Descriptors">
+					description = <"Additional tumour specific TNM descriptors.">
+				>
+				["at0053"] = <
+					text = <"Descriptor">
+					description = <"Additional tumour specific TNM descriptor.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0.52"] = <
+					text = <"TX">
+					description = <"Primærtumor kan ikke vurderes.">
+				>
+				["at0.53"] = <
+					text = <"T0">
+					description = <"Primærtumor ikke påvist.">
+				>
+				["at0.54"] = <
+					text = <"Tis">
+					description = <"Carcinoma in situ: Intraepitelial eller infiltrerer lamina propria.">
+				>
+				["at0.55"] = <
+					text = <"T1">
+					description = <"Tumor infiltrerer submucosa.">
+				>
+				["at0.56"] = <
+					text = <"T2">
+					description = <"Tumor infiltrerer muscularis propria.">
+				>
+				["at0.57"] = <
+					text = <"T3">
+					description = <"Tumor infiltrerer gjennom muscularis propria og inn i perikolisk vev.">
+				>
+				["at0.58"] = <
+					text = <"T4a">
+					description = <"Tumor perforerer til overflaten av viscerale peritoneum.">
+				>
+				["at0.59"] = <
+					text = <"T4b">
+					description = <"Tumor infiltrerer direkte eller nærliggende til andre organer eller strukturer.">
+				>
+				["at0.60"] = <
+					text = <"NX">
+					description = <"Regionale lymfeknuter kan ikke vurderes.">
+				>
+				["at0.61"] = <
+					text = <"N0">
+					description = <"Regionale lymfeknutemetastaser ikke påvist.">
+				>
+				["at0.62"] = <
+					text = <"N1">
+					description = <"Metastase i 1-3 regionale lymfeknuter.">
+				>
+				["at0.63"] = <
+					text = <"N1a">
+					description = <"Metastase i en regional lymfeknute.">
+				>
+				["at0.64"] = <
+					text = <"N1b">
+					description = <"Metastase i 2-3 regionale lymfeknuter.">
+				>
+				["at0.65"] = <
+					text = <"N1c">
+					description = <"Tumor deposits (isolerte tumorknuter) i subserosa, mesenteriet, eller ikke-peritonealisert perikolisk eller perirektalt vev uten regionale lymfeknutemetastaser.">
+				>
+				["at0.66"] = <
+					text = <"N2">
+					description = <"Metastase i 4 eller flere regionale lymfeknuter.">
+				>
+				["at0.67"] = <
+					text = <"N2a">
+					description = <"Metastase i 4-6 regionale lymfeknuter.">
+				>
+				["at0.68"] = <
+					text = <"N2b">
+					description = <"Metastase i 7 eller flere regionale lymfeknuter.">
+				>
+				["at0.69"] = <
+					text = <"MX">
+					description = <"Fjernmetastase kan ikke vurderes.">
+				>
+				["at0.70"] = <
+					text = <"M0">
+					description = <"Fjernmetastase ikke påvist.">
+				>
+				["at0.71"] = <
+					text = <"M1">
+					description = <"Fjernmetastase.">
+				>
+				["at0.72"] = <
+					text = <"M1a">
+					description = <"Metastase i et organ eller sted (f.eks. lever, lunge, ovarie, ikke-regional lymfeknute).">
+				>
+				["at0.73"] = <
+					text = <"M1b">
+					description = <"Metastaser til mer enn et organ/sted eller peritoneum.">
+				>
+				["at0.74"] = <
+					text = <"R0">
+					description = <"Ingen resttumor.">
+				>
+				["at0.75"] = <
+					text = <"R1">
+					description = <"Mikroskopisk resttumor.">
+				>
+				["at0.76"] = <
+					text = <"R2">
+					description = <"Makroskopisk resttumor.">
+				>
+				["at0.77"] = <
+					text = <"Stadium 0">
+					description = <"Tis, N0, M0.">
+				>
+				["at0.78"] = <
+					text = <"Stadium I">
+					description = <"T1 eller T2, N0, M0.">
+				>
+				["at0.79"] = <
+					text = <"Stadium IIA">
+					description = <"T3, N0, M0.">
+				>
+				["at0.80"] = <
+					text = <"Stadium IIB">
+					description = <"T4a, N0, M0.">
+				>
+				["at0.81"] = <
+					text = <"Stadium IIC">
+					description = <"T4b, N0, M0.">
+				>
+				["at0.82"] = <
+					text = <"Stadium IIIA">
+					description = <"T1 eller T2, N1, M0, eller T1, N2a, M0.">
+				>
+				["at0.83"] = <
+					text = <"Stadium IIIB">
+					description = <"T3 eller T4a, N1, M0, eller T2 eller T3, N2a, M0, eller T1 eller T2 N2b, M0.">
+				>
+				["at0.84"] = <
+					text = <"Stadium IIIC">
+					description = <"T4a, N2a, M0, eller T3 eller T4a, N2b, M0, eller T4b, N1 eller N2, M0.">
+				>
+				["at0.85"] = <
+					text = <"Stadium IVA">
+					description = <"Enhver T, enhver N, M1a.">
+				>
+				["at0.86"] = <
+					text = <"Stadium IVB">
+					description = <"Enhver T, enhver N, M1b.">
+				>
+				["at0000"] = <
+					text = <"*Tumour - TNM Cancer staging 7th Edition(en)">
+					description = <"*A framework for the classification and grading of malignancies using the TNM classification system 7th Edition.(en)">
+				>
+				["at0000.1"] = <
+					text = <"TNM-klassifisering av tykk- og endetarmskreft 7. utgave">
+					description = <"Klassifikasjon og gradering av tykk- og endetarmskreft ved å benytte TNM-klassifikasjon 7.utgave.">
+				>
+				["at0003"] = <
+					text = <"Primærtumor (T)">
+					description = <"Vurdering av primærtumor.">
+				>
+				["at0004"] = <
+					text = <"Regionale lymfeknuter (N)">
+					description = <"Vurdering av regionale lymfeknuter.">
+				>
+				["at0005"] = <
+					text = <"Fjernmetastase (M)">
+					description = <"Vurdering av fjernmetastase.">
+				>
+				["at0010"] = <
+					text = <"Total klassifisering">
+					description = <"Den totale klassifisering som er avledet fra hver T, N og M komponent f.eks T1aNXM0. Kan inkludere ekstra TNM-deskriptorer.">
+				>
+				["at0012"] = <
+					text = <"Kommentar">
+					description = <"Kommentar til klassifiseringen.">
+				>
+				["at0014"] = <
+					text = <"Gruppering av stadium">
+					description = <"TNM gruppering av stadium.">
+				>
+				["at0025"] = <
+					text = <"Resttumor">
+					description = <"Vurdering av resttumor etter behandling.">
+				>
+				["at0046"] = <
+					text = <"Histopatologisk differensieringsgrad (G)">
+					description = <"TNM klassifikasjon av histopatologisk differensieringsgrad.">
+				>
+				["at0047"] = <
+					text = <"GX">
+					description = <"Differensieringsgrad kan ikke vurderes.">
+				>
+				["at0048"] = <
+					text = <"GI">
+					description = <"Høyt differensiert.">
+				>
+				["at0049"] = <
+					text = <"G2">
+					description = <"Middels/moderat differensiert.">
+				>
+				["at0050"] = <
+					text = <"G3">
+					description = <"Lite/lavt differensiert">
+				>
+				["at0051"] = <
+					text = <"G4">
+					description = <"Udifferensiert.">
+				>
+				["at0052"] = <
+					text = <"Deskriptorer">
+					description = <"Ekstra tumorspesifikke TNM-deskriptorer.">
+				>
+				["at0053"] = <
+					text = <"Deskriptor">
+					description = <"Ekstra tumorspesifikk TNM-deskriptor.">
+				>
+			>
+		>
+	>
