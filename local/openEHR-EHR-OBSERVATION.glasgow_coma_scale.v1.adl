@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=9b384e82-6010-4d44-9bb1-9000ac3362d9)
+﻿archetype (adl_version=1.4; uid=2b50f15c-f3c9-473b-8e9c-f57c00507561)
 	openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Glasgow Coma Scale (GCS)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -47,21 +46,17 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2007-03-13">
 		["name"] = <"Heather Leslie">
 		["organisation"] = <"Atomica Informatics">
 		["email"] = <"heather.leslie@atomicainformatics.com">
+		["date"] = <"2007-03-13">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Tomas Alme, DIPS, Norway","Nadim Anani, Karolinska Institutet, Sweden","Vebjoern Arntzen, Oslo university hospital, Norway","Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Koray Atalag, University of Auckland, New Zealand","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","Kristian Berg, Vestvågøy kommune - Fagutviklingsavdelingen, Norway","Lars Bitsch-Larsen, Haukeland University hospital, Norway","Ole Andreas Bjordal, Webmed, Norway","Martin Boeker, Medical Center - University of Freiburg, Germany","Marja Buur, Medisch Centrum Alkmaar/ Code24, Netherlands","Hanne Marte Bårholm, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Margaret Campbell, Queensland Health, Australia","Rong Chen, Cambio Healthcare Systems, Sweden","Bjørn Christensen, Helse Bergen HF, Norway","Stephen Chu, Queensland Health, Australia","Tamsin Cockayne, Australia","Marc Cotran, identity vision systems, Canada","Tom Dahlberg, Helgelandssykehuset HF, Fag, forskning og utdanning, Norway","Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway","Angela de Zwart, Orion Health, New Zealand","Einar Fosse, National Centre for Integrated Care and Telemedicine, Norway","Sebastian Garde, Ocean Informatics, Germany","Christian Ghan, The Chris O'Brien Lifehouse at RPA, Australia","Soon Ghee Yap, Singapore General Hospital, Singapore","William Goossen, Results 4 Care, Netherlands","Heather Grain, Llewelyn Grain Informatics, Australia","Mikkel Johan Gaup Grønmo, Helse Nord IKT, Norway (Nasjonal IKT redaktør)","Birger Haarbrandt, Hannover Medical School, Germany","Sam Heard, Ocean Informatics, Australia","Stig Erik Hegrestad, Helse Førde, Norway","Erling Are Hole, Helse Bergen, Norway","Hilde Hollås, Norway","Oliver Hosking, Remote Health NT, Australia","Evelyn Hovenga, EJSH Consulting, Australia","Eugene Igras, IRIS Systems, Inc., Canada","Sundaresan Jagannathan, Scottish NHS, United Kingdom","Karl Trygve Kalleberg, Oslo Universitetssykehus, Norway","Konstantinos Kalliamvakos, Cambio Healthcare Systems, Sweden","Lars Karlsen, DIPS ASA, Norway","Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway","Shinji Kobayashi, Kyoto University, Japan","Sergey Kovalenko, Chelyabinsk Regional Children Hospital, Russia","Kanika Kuwelker, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)","Heather Leslie, Atomica Informatics, Australia (Editor)","Siv Marie Lien, DIPS ASA, Norway","Hallvard Lærum, Direktoratet for e-helse, Norway","Luis Marco Ruiz, Norwegian Center for Integrated Care and Telemedicine, Norway","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (Editor)","Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands","Bjørn Næss, DIPS ASA, Norway","Andrej Orel, Marand d.o.o., Slovenia","Michael Reynolds, Great Lakes Pediatric Associates, PLLC, United States","Hossein Riazi, Iran","Arturo Romero, SESCAM, Spain","Jussara Rotzsch, UNB, Brazil","Terje Sagmyr, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Anoop Shah, University College London, United Kingdom","Tony Shannon, NHS, United Kingdom","Line Silsand, Universitetssykehuset i Nord-Norge, Norway","Gary Sinclair, NT DoH, Australia","Annette Hole Sjøborg, DIPS ASA, Norway","Tim Sturgill, United States","Roy Støle, OUS, Norway","Terje Sundstrøm, Helse Bergen HF, Norway","John Tore Valand, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Stian Torleif Varpe, Helse Vest IKT, Norway","Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Thomas Wilson, Finnmarkssykehuset HF Klinikk Hammerfest, Norway">
 	details = <
 		["de"] = <
 			language = <[ISO_639-1::de]>
 			purpose = <"Zur Repräsentation klinischer Reaktionen des Pflegebedürftigen auf definierte Impulse als eine objektive Bewertung des Bewusstseinsniveaus.">
-			keywords = <"Reaktion","Motorik","verbal","Auge","Anreiz","Glasgow","Koma","Skala","neurologisch","Reaktionsfähigkeit","EMV","bewusst","GCS","Trauma","Zentralnervensystem","Bewusstsein">
 			use = <"Zur Repräsentation der klinischen Reaktionen eines erwachsenen Pflegebedürftigen auf Reize. Die Methode wird häufig verwendet, um den bewussten Ausgangszustand und die neurologische Funktion zu beurteilen und/oder um Patienten zu erkennen, die möglicherweise eine sofortige medizinische Intervention erfordern.
 
 Die Glasgower Komaskala hat drei Unterskalen E (Auge), V (verbal) und M (motorisch). In der klinischen Praxis werden alle drei Subskalen einzeln und ggf. mit der Gesamtbewertung\" angegeben.
@@ -77,12 +72,12 @@ Der minimal mögliche Wert der Gesamtbewertung beträgt 3 (entspricht E1 V1 M1) 
 In der Praxis wird die Glasgow-Koma-Skala als eine Komponente der klinischen Überwachung unter Verwendung von sequentiellen und wiederholten Punkt-im-Zeit-Messungen erfasst. Für jede Messung sollten Datum und Uhrzeit sowie alle Faktoren, die die Interpretation von Veränderungen beeinflussen können, protokolliert werden. Änderungen des \"Gesamtergebnisses\" oder der E-, V- oder M-Werte können ebenso viel klinische Bedeutung haben wie der ursprünglich gespeicherte Wert.
 
 ">
+			keywords = <"Reaktion", "Motorik", "verbal", "Auge", "Anreiz", "Glasgow", "Koma", "Skala", "neurologisch", "Reaktionsfähigkeit", "EMV", "bewusst", "GCS", "Trauma", "Zentralnervensystem", "Bewusstsein">
 			misuse = <"Nicht zur Repräsentation von Säuglingen und Kleinkindern verwenden. Es wird ein Archetyp für die pädiatrische Glasgow-Koma-Skala benötigt, um zu gewährleisten, dass die Entscheidung für die Augen, die Motorik und die verbale Reaktion dem Alter und den Fähigkeiten des Kindes angemessen ist.">
 		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att mäta patientens kliniska reaktion till definierad stimuli som en objektiv bedömning av medvetandegrad.">
-			keywords = <"reaktion","motorisk","verbal","ögon","stimulans","glasgow","koma","skala","neurologisk","reaktionsförmåga","EMV","vid medvetande","GCS","trauma","centrala nervsystemet","medvetandegrad">
 			use = <"Används för att registrera vuxna patienters kliniska reaktioner på stimuli. Det används vanligtvis för att fastställa medvetandegrad och neurologisk funktionsbedömning och/eller för att upptäcka patienter som kan kräva omedelbara medicinska insatser.
 
 GCS-skalan (Glasgow coma scale) har tre komponenter E (ögon), V (verbal) och M (motorisk). I klinisk praxis rapporteras alla tre komponenterna individuellt plus \"Totalpoäng\", om det är tillämpligt.
@@ -97,12 +92,25 @@ Minsta möjliga \"Totalpoäng\" -värde är 3 (motsvarar E1 V1 M1) och högsta m
 
 I praktisk användning registreras GCS-skalan som en del av den klinisk övervakning. Den använder sig av sekvensmätningar och upprepade tidpunkts mätningar. Datum och tid bör registreras för varje mätning, liksom eventuella faktorer som kan påverka tolkningen av förändringar. Förändringar i \"Totalpoäng\" eller E, V eller M-värden kan ha lika mycket klinisk signifikans som det värde som ursprungligen registrerades.
 ">
+			keywords = <"reaktion", "motorisk", "verbal", "ögon", "stimulans", "glasgow", "koma", "skala", "neurologisk", "reaktionsförmåga", "EMV", "vid medvetande", "GCS", "trauma", "centrala nervsystemet", "medvetandegrad">
 			misuse = <"Används inte för att bedöma spädbarn och småbarn. En Pediatrisk Glasgow koma-skala arketyp kommer att krävas för att säkerställa att ögon- motoriska- och verbala reaktionen är lämpliga för barnets ålder och förmåga.">
+		>
+		["es-ar"] = <
+			language = <[ISO_639-1::es-ar]>
+			purpose = <"Para el registro de las respuestas clínicas a estímulos definidos por parte de un sujeto de cuidados, como evaluación objetiva del nivel de conciencia.">
+			use = <"Utilizar para registrar respuestas clínicas a estímulos por parte de un adulto sujeto de cuidados. Se utiliza comunmente para establecer un nivel de conciencia y una evaluación de la función neurológico basales y/o para la detección de pacientes que puedan requerir una intervención médica inmediata.
+La escala de Glasgow tiene tres subescalas O (ocular), V (Verbal) y M (motora). En la práctica clínica todas las subclases son informadas individualmente junto con el \"Puntaje total\", si corresponde.
+El registro de cada respuesta O, V y M es obligatorio. Si una respuesta no puede ser evaluada, el valor nulo \"No aplica\" debe ser registrado; no utilizar el valor ordidnal \"Ninguna\" para registrar un componente ausente. Los detalles acerca de la razón por la cual no se pudo evaluar una respuesta puede ser registrada en el elemento \"Factores de confusión\".
+El \"Puntaje total\" puede ser derivado de la suma de los puntajes registrados para las respuestas ocular, verbal y motora. No es apropiado registrar un \"Puntaje total\" toda vez que uno o mas componentes no son evaluables ya que eso determinaría un puntaje artificialmente bajo. Es este caso debe registrarse el perfil OVM.
+Los valores para las tres respuestas deben ser considerados separadamente, al igual que como suma. El \"perfil OVM\" puede obtenerse mediante la concatenación de cada una de las respuestas ocular, verbal y motora registradas. Por ejemplo, O3 V4 M2 representa el estado consciente de un individuo que abre los ojos antes el estímulo verbal, emite sonidos incomprensibles y tiene una respuesta extensora al estímulo.
+El \"Puntaje total\" mínimo posible es de 3 (equivalente a O1 V1 M1) y el máximo posible es 15 (equivalente a O4 V5 M6).
+En el uso práctico, la escala del coma de Glasgow es registrada como uno de los componentes del monitoreo clínico, utilizando mediciones puntuales en el tiempo, secuenciales y repetidas. La fecha y la hora deben ser registradas en cada evaluación, al igual que cualquier factor que pueda influenciar la interpretación de los cambios. Los cambios en el \"Puntaje total\" o en cualquiera de los valores O, V o M pueden tener tanto significado clínico como el valor inicialmente registrado.">
+			keywords = <"respuesta", "motora", "verbal", "ocular", "estímulo", "Glasgow", "coma", "escala", "neurológica", "respuesta", "OVM", "EVM", "conciente", "GCS", "trauma", "sistema nervioso central", "consciencia">
+			misuse = <"No debe ser utilizada en niños - el arquetipo para la Escala del Coma de Glasgow Pediátrica se requerirá para asegurar que las respuestas ocular, verbal y motora sean las apropiadas para la edad y capacidades del niño.">
 		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere klinisk respons på spesifikk stimuli, som en objektiv vurdering av bevissthetsnivået til en pasient.">
-			keywords = <"respons","motorikk","verbal","øye","stimuli","koma","skala","nevrologisk","responsitivitet","ØVM","ØMV","Bevisst","GCS","traume","sentralnervesystemet","bevisstløs","CNS">
 			use = <"Brukes for å registrere den kliniske responsen på spesifikk stimuli hos en voksen pasient. Brukes vanligvis for å etablere en basis for bevissthetsnivå og nevrologisk funksjonsnivå og/eller for å fange opp pasienter som trenger en øyeblikkelig medisinsk intervensjon.
 
 Glasgow coma scale har tre subskalaer Ø (øye), V (Verbal) og M (Motorisk). I klinisk praksis rapporteres alle de tre subskalaene individuelt, samt \"Totalskår\" dersom aktuelt.
@@ -116,27 +124,13 @@ De tre responsverdiene vurderes separat og som en totalskår. \"ØVM-profilen\" 
 En totalskår kan som et minimum ha verdien 3 (Tilsvarer Ø1, V1, M1) og en maksimumsverdi på 15 (Ø4, V5, M6).
 
 I praksis registreres Glasgow coma scale som en del av klinisk monitorering, målingene utføres sekvensielt og som gjentagende tidspunktmålinger. Dato og tid bør registreres for hver enkelt måling, på samme måte som faktorer som kan påvirke tolkning av målingen. Endringer i \"Totalskår\" eller verdiene Ø, V eller M har vanligvis en like stor klinisk betydning som verdien som først ble registrert.">
+			keywords = <"respons", "motorikk", "verbal", "øye", "stimuli", "koma", "skala", "nevrologisk", "responsitivitet", "ØVM", "ØMV", "Bevisst", "GCS", "traume", "sentralnervesystemet", "bevisstløs", "CNS">
 			misuse = <"Brukes ikke for å vurdere spedbarn og små barn - en vil da måtte bruke en arketype for Paediatric Glasgow Coma Scale for å sikre at valgene knyttet til øyne, motorikk og verbal respons valg er best tilpasset barnets alder og evner.">
-		>
-		["es-ar"] = <
-			language = <[ISO_639-1::es-ar]>
-			purpose = <"Para el registro de las respuestas clínicas a estímulos definidos por parte de un sujeto de cuidados, como evaluación objetiva del nivel de conciencia.">
-			keywords = <"respuesta","motora","verbal","ocular","estímulo","Glasgow","coma","escala","neurológica","respuesta","OVM","EVM","conciente","GCS","trauma","sistema nervioso central","consciencia">
-			use = <"Utilizar para registrar respuestas clínicas a estímulos por parte de un adulto sujeto de cuidados. Se utiliza comunmente para establecer un nivel de conciencia y una evaluación de la función neurológico basales y/o para la detección de pacientes que puedan requerir una intervención médica inmediata.
-La escala de Glasgow tiene tres subescalas O (ocular), V (Verbal) y M (motora). En la práctica clínica todas las subclases son informadas individualmente junto con el \"Puntaje total\", si corresponde.
-El registro de cada respuesta O, V y M es obligatorio. Si una respuesta no puede ser evaluada, el valor nulo \"No aplica\" debe ser registrado; no utilizar el valor ordidnal \"Ninguna\" para registrar un componente ausente. Los detalles acerca de la razón por la cual no se pudo evaluar una respuesta puede ser registrada en el elemento \"Factores de confusión\".
-El \"Puntaje total\" puede ser derivado de la suma de los puntajes registrados para las respuestas ocular, verbal y motora. No es apropiado registrar un \"Puntaje total\" toda vez que uno o mas componentes no son evaluables ya que eso determinaría un puntaje artificialmente bajo. Es este caso debe registrarse el perfil OVM.
-Los valores para las tres respuestas deben ser considerados separadamente, al igual que como suma. El \"perfil OVM\" puede obtenerse mediante la concatenación de cada una de las respuestas ocular, verbal y motora registradas. Por ejemplo, O3 V4 M2 representa el estado consciente de un individuo que abre los ojos antes el estímulo verbal, emite sonidos incomprensibles y tiene una respuesta extensora al estímulo.
-El \"Puntaje total\" mínimo posible es de 3 (equivalente a O1 V1 M1) y el máximo posible es 15 (equivalente a O4 V5 M6).
-En el uso práctico, la escala del coma de Glasgow es registrada como uno de los componentes del monitoreo clínico, utilizando mediciones puntuales en el tiempo, secuenciales y repetidas. La fecha y la hora deben ser registradas en cada evaluación, al igual que cualquier factor que pueda influenciar la interpretación de los cambios. Los cambios en el \"Puntaje total\" o en cualquiera de los valores O, V o M pueden tener tanto significado clínico como el valor inicialmente registrado.">
-			misuse = <"No debe ser utilizada en niños - el arquetipo para la Escala del Coma de Glasgow Pediátrica se requerirá para asegurar que las respuestas ocular, verbal y motora sean las apropiadas para la edad y capacidades del niño.">
 		>
 		["pt-br"] = <
 			language = <[ISO_639-1::pt-br]>
 			purpose = <"Para registar informações clínicas sobre a resposta de um sujeito a estímulos como uma avaliação objetiva do estado de consciência de um sujeito.
 A escala de coma de Glasgow (ECG) é uma escala neurológica que parece constituir-se num método confiável e objetivo de registrar o nível de consciência de uma pessoa, para avaliação inicial e contínua após um traumatismo craniano.">
-			keywords = <"resposta","motora","verbal","visual","estímulo","glasgow","coma","escala","neurológicas","responsividade","OVM","consciência","ECG","trauma","sistema nervoso central","inconsciente">
-			copyright = <"© openEHR Foundation">
 			use = <"Use para registrar observações clínicas relacionadas a responsividade a estímulos de um indivíduo adulto. É utilizada comumente para estabelecer um nível de consciência basal e avaliação neurológica funcional e ou para detectar pacientes que possam necessitar intervenções médicas imediatas.
 
 Em termos práticos, a Escala de Coma de Glasgow é frequentemente calculada como variável de monitoramento, utilizando reavaliações sequenciais. Data e hora devem ser registradas para cada medida assim como fatores que possam influenciar na interpretação do score. Modificações no score total ou nos valores O, V ou M podem ter maior significado clínico que os valores registrados inicialmente.
@@ -152,13 +146,13 @@ O menor valor possível do score é 3 (equivalente a O1 V1 M1) e o máximo poss�
 Um registro de resposta para cada O, V e M é mandatório. Se a resposta não puder ser determinada então a opção \"não se aplica\" é o registro apropriado. Se uma das respostas não puder ser acessada - por exemplo o indivíduo está entubado e não é capaz de responder verbalmente, ou paralisado e não é esperada resposta motora - o score registrado para esta resposta é 1 e um detalhe é registrado. Se um indivíduo está entubado o componente de resposta verbal pode ser representado como V1t, em que t = tubo, ou V1entubado. Se o indivíduo tem um edema facial ou periorbitário intenso ou lesões que o impeçam de abrir os olhos, o componente de resposta ocular pode ser representado como O1f, em que f=fechado. Ás vezes o valor numérico pode ser omitido, neste caso o componente de resposta ocular deve ser expresso como Of - por exemplo, Of V4 M2. O motivo de não ser possível acessar a resposta pode ser registrado no campo ´comentários´.
 
 Suporte a decisão clínica pode ser baseado em registros específicos para cada um dos padrões de respostas O, V e M em detrimento dos valores derivados do score composto.">
+			keywords = <"resposta", "motora", "verbal", "visual", "estímulo", "glasgow", "coma", "escala", "neurológicas", "responsividade", "OVM", "consciência", "ECG", "trauma", "sistema nervoso central", "inconsciente">
 			misuse = <"Não deve ser utilizado para avaliar recém nascidos e e crianças de colo - para tal, utilizar OBSERVATION.glasgow_coma-paediatric.v1.adl para garantir respostas apropriados para a idade e capacidade da criança.">
+			copyright = <"© openEHR Foundation">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record clinical responses of an adult to defined stimuli as an objective assessment of the level of consciousness.">
-			keywords = <"response","motor","verbal","eye","stimulus","glasgow","coma","scale","neurological","responsiveness","EMV","conscious","GCS","trauma","central nervous system","consciousness">
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record clinical responses of an adult to defined stimuli as an objective assessment of the level of consciousness. It is commonly used to establish a baseline conscious state and neurological function assessment and/or to detect patients who may require immediate medical intervention.
 
 The Glasgow coma scale has three subscales E (eye), V (verbal) and M (motor). In clinical practice all three subscales are reported individually plus the 'Total score', if applicable.
@@ -172,9 +166,13 @@ The three response values are considered separately as well as their sum. The 'E
 The minimum possible 'Total score' value is 3 (equivalent to E1 V1 M1) and the maximum possible is 15 (equivalent to E4 V5 M6).
 
 In practical use, Glasgow coma scale is recorded as one component of clinical monitoring, using sequential and repeated point-in-time measurements. Date and time should be recorded for each measurement, as well as any factors that may influence interpretation of changes. Changes in 'Total score' or any E, V or M values may have as much clinical significance as the value recorded initially.">
+			keywords = <"response", "motor", "verbal", "eye", "stimulus", "glasgow", "coma", "scale", "neurological", "responsiveness", "EMV", "conscious", "GCS", "trauma", "central nervous system", "consciousness">
 			misuse = <"Not to be used for assessing infants and young children - use OBSERVATION.glasgow_coma_scale_paediatric for this purpose to ensure that the eye, motor and verbal response choices are appropriate for the age and ability of the child.">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Tomas Alme, DIPS, Norway", "Nadim Anani, Karolinska Institutet, Sweden", "Vebjoern Arntzen, Oslo university hospital, Norway", "Koray Atalag, University of Auckland, New Zealand", "Silje Ljosland Bakke, Bergen Hospital Trust, Norway", "Lars Bitsch-Larsen, Haukeland University hospital, Norway", "Martin Boeker, Medical Center - University of Freiburg, Germany", "Marja Buur, Medisch Centrum Alkmaar/ Code24, Netherlands", "Margaret Campbell, Queensland Health, Australia", "Rong Chen, Cambio Healthcare Systems, Sweden", "Stephen Chu, Queensland Health, Australia", "Tamsin Cockayne, Australia", "Marc Cotran, identity vision systems, Canada", "Angela de Zwart, Orion Health, New Zealand", "Einar Fosse, National Centre for Integrated Care and Telemedicine, Norway", "Sebastian Garde, Ocean Informatics, Germany", "Christian Ghan, The Chris O'Brien Lifehouse at RPA, Australia", "William Goossen, Results 4 Care, Netherlands", "Heather Grain, Llewelyn Grain Informatics, Australia", "Birger Haarbrandt, Hannover Medical School, Germany", "Sam Heard, Ocean Informatics, Australia", "Oliver Hosking, Remote Health NT, Australia", "Evelyn Hovenga, EJSH Consulting, Australia", "Eugene Igras, IRIS Systems, Inc., Canada", "Sundaresan Jagannathan, Scottish NHS, United Kingdom", "Konstantinos Kalliamvakos, Cambio Healthcare Systems, Sweden", "Lars Karlsen, DIPS ASA, Norway", "Shinji Kobayashi, Kyoto University, Japan", "Sergey Kovalenko, Chelyabinsk Regional Children Hospital, Russia", "Heather Leslie, Atomica Informatics, Australia (Editor)", "Hallvard Lærum, Oslo University Hospital, Norway", "Luis Marco Ruiz, Norwegian Center for Integrated Care and Telemedicine, Norway", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (Editor)", "Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands", "Andrej Orel, Marand d.o.o., Slovenia", "Michael Reynolds, Great Lakes Pediatric Associates, PLLC, United States", "Hossein Riazi, Iran", "Arturo Romero, SESCAM, Spain", "Jussara Rotzsch, UNB, Brazil", "Anoop Shah, University College London, United Kingdom", "Tony Shannon, NHS, United Kingdom", "Gary Sinclair, NT DoH, Australia", "Tim Sturgill, United States", "Soon Ghee Yap, Singapore General Hospital, Singapore">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -188,16 +186,14 @@ Teasdale G, Jennett B. Assessment of coma and impaired consciousness. A practica
 
 Teasdale GM, Murray L. Revisiting the Glasgow Coma Scale and Coma Score. Intensive Care Med. 2000 Feb;26(2):153-4. doi: 10.1007/s001340050037. PubMed PMID: 10784300.
 
-V3 DCModels R1 I1 2010 Sep - Glasgow Coma Scale v0.75 [Internet]. Health Level Seven International. Published Jan 2014 [accessed 2019 Oct 08]. Available at: https://github.com/DetailedClinicalModels/Detailed-Clinical-Models/blob/master/Glasgow%20Coma%20Scale%20(GCS)/org.hl7.GlasgowComaScale(15pointversion)English-v0.75.pdf.
-
-Avgrenet fra: Glasgow Coma Scale (GCS), Published archetype [Internet]. openEHR Foundation, openEHR Clinical Knowledge Manager [cited: 2023-07-11]. Available from: https://ckm.openehr.org/ckm/archetypes/1013.1.137">
+V3 DCModels R1 I1 2010 Sep - Glasgow Coma Scale v0.75 [Internet]. Health Level Seven International. Published Jan 2014 [accessed 2019 Oct 08]. Available at: https://github.com/DetailedClinicalModels/Detailed-Clinical-Models/blob/master/Glasgow%20Coma%20Scale%20(GCS)/org.hl7.GlasgowComaScale(15pointversion)English-v0.75.pdf.">
 		["current_contact"] = <"Heather Leslie, Atomica Informatics, heather.leslie@atomicainformatics.com">
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"D7D401954BEC525B01DAD3F3853A2ED8">
-		["build_uid"] = <"66464c86-849d-4e62-bab2-2c860a91da94">
-		["revision"] = <"1.1.0">
+		["MD5-CAM-1.0.1"] = <"6C9DE7307EE72E4041258332EA705382">
+		["build_uid"] = <"661d7a86-424d-403e-8040-d2db2d8bee42">
+		["revision"] = <"1.2.0">
 	>
 
 definition
@@ -303,6 +299,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
