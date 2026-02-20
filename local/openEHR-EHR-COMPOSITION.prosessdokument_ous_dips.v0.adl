@@ -1,0 +1,80 @@
+archetype (adl_version=1.4; uid=9c0b54a6-d764-4b58-8edd-ee2554445720)
+	openEHR-EHR-COMPOSITION.prosessdokument_ous_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-03-25">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA ( OUS HF">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Til bruk ved prosessdokumenter ved OUS.">
+			copyright = <"© OUS HF /  DIPS ASA">
+			use = <"Til bruk ved prosessdokumenter ved OUS.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"DD99D9AF6A2D62F315264A4489B099E3">
+		["build_uid"] = <"1bf01450-7538-4c13-ae5d-c63d6eb45de3">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	COMPOSITION[at0000] matches {    -- Prosessdokument ous dips
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {
+					[openehr::433]
+				}
+			}
+		}
+		context matches {
+			EVENT_CONTEXT matches {
+				other_context matches {
+					ITEM_TREE[at0001] matches {    -- Tree
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype CLUSTER[at0002] occurrences matches {0..*} matches {    -- Utvidelse
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Prosessdokument ous dips">
+					description = <"Benyttes til prosessdokumenter hvor ikke-klinikere skal ha adgang til dokumentene. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Utvidelse">
+					description = <"*">
+				>
+			>
+		>
+	>
