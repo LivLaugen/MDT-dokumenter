@@ -1,0 +1,60 @@
+archetype (adl_version=1.4; uid=c4fb2821-879e-450b-8b14-c839cb57cd03)
+	openEHR-EHR-SECTION.composite_diagnosis.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"3EC32809BC687B825491D14BA20ABC4A">
+		["build_uid"] = <"0d23cdaf-4821-40f1-9c46-2a5605450bea">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	SECTION[at0000] matches {    -- Composite diagnosis
+		items cardinality matches {1..*; unordered} matches {
+			allow_archetype EVALUATION occurrences matches {1..*} matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.problem_diagnosis(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype SECTION occurrences matches {0..5} matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-SECTION\.diagnosis_list(-[a-zA-Z0-9_]+)*\.v0/}
+			}
+			allow_archetype OBSERVATION occurrences matches {0..*} matches {
+				include
+					archetype_id/value matches {/openEHR-EHR-OBSERVATION\.cgas(-[a-zA-Z0-9_]+)*\.v0/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Composite diagnosis">
+					description = <"unknown">
+				>
+			>
+		>
+	>
