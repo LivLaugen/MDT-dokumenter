@@ -1,0 +1,101 @@
+archetype (adl_version=1.4; uid=6fff1dec-3331-4b98-bdd0-f372284b39df)
+	openEHR-EHR-ITEM_TREE.om_ikke_to.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"CF30D3FEBB9A087B158B77A577B10794">
+		["build_uid"] = <"4a4e1d0d-4efa-4644-bad0-9bd7ab600fff">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ITEM_TREE[at0000] occurrences matches {0..*} matches {    -- Vedtak ikke tph
+		items cardinality matches {0..*; unordered} matches {
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Pasientens ankomst til institusjonen
+				value matches {
+					DV_DATE matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0005] occurrences matches {0..*} matches {    -- Faglig ansvalig
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.faglig_ansvarlig(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			ELEMENT[at0006] occurrences matches {0..1} matches {    -- Pasienten er gitt anledning til å uttale seg.
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			ELEMENT[at0007] occurrences matches {0..1} matches {    -- Nærmeste pårørende er gitt anledning til å uttale seg, jf. psykisk helsevernloven paragraf 3-9
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			ELEMENT[at0008] occurrences matches {0..1} matches {    -- Den som har fremsatt begjæring om tvungent psykisk helsevern er gitt anledning til å uttale seg
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {    -- Den som har fremsatt begjæring om tvungent psykisk helsevern er informert om vedtaket og om sin klageadgang.
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vedtak ikke tph">
+					description = <"">
+				>
+				["at0002"] = <
+					text = <"Pasientens ankomst til institusjonen">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Faglig ansvalig">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Pasienten er gitt anledning til å uttale seg.">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Nærmeste pårørende er gitt anledning til å uttale seg, jf. psykisk helsevernloven paragraf 3-9">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Den som har fremsatt begjæring om tvungent psykisk helsevern er gitt anledning til å uttale seg">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Den som har fremsatt begjæring om tvungent psykisk helsevern er informert om vedtaket og om sin klageadgang.">
+					description = <"">
+				>
+			>
+		>
+	>
