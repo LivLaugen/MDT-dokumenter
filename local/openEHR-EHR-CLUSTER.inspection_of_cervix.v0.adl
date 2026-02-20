@@ -1,0 +1,235 @@
+archetype (adl_version=1.4; uid=98091e5f-ed47-40fe-9cef-e9b080effcce)
+	openEHR-EHR-CLUSTER.inspection_of_cervix.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-05-14">
+		["name"] = <"Vebjørn Arntzen">
+		["organisation"] = <"Oslo universitetssykehus HF, Norway">
+		["email"] = <"varntzen@ous-hf.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Arnt Løberg Sæter. DIPS ASA","Heather Leslie, Ocean informatics, Australia">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere funn ved inspesksjon av cervix.">
+			keywords = <"Cervix","Livmorhals">
+			copyright = <"© Nasjonal IKT HF">
+			misuse = <"Skal ikke brukes ved andre enheter enn Olafiaklinikken inntil den er gjennomarbeidet med innspill fra andre faggrupper enn venerologer.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["current_contact"] = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway, varntzen@ous-hf.no">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"47339D575596B2D2ADD3B8111EAC76C4">
+		["build_uid"] = <"f79d0c9d-92ff-400f-a23a-9317db072984">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Inspeksjon av cervix
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Beskrivelse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Utflod
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0003,    -- Tilstede
+							at0004]    -- Fraværende
+						}
+					}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Utseende av utflod
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0006,    -- Klar
+							at0007,    -- Mucopurulent
+							at0008,    -- Mursteinsfarget
+							at0009]    -- Friskt blødende
+						}
+					}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Ektopi
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0011,    -- Tilstede
+							at0012]    -- Fraværende
+						}
+					}
+				}
+			}
+			ELEMENT[at0014] occurrences matches {0..1} matches {    -- Ektopi beskrivelse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0013] occurrences matches {0..1} matches {    -- Multimedia
+				value matches {
+					DV_MULTIMEDIA matches {
+						media_type matches {
+							[openEHR::
+							425,
+							426,
+							427,
+							428,
+							429,
+							401,
+							402,
+							404,
+							405,
+							406,
+							407,
+							414]
+						}
+					}
+				}
+			}
+			CLUSTER[at0015] occurrences matches {0..*} matches {    -- Andre funn cervix
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0016] occurrences matches {0..1} matches {    -- Funn
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0017,    -- Vorter
+									at0019,    -- Skjør
+									at0020,    -- Tumor
+									at0021,    -- Nabothian cyste
+									at0023]    -- Annet
+								}
+							}
+						}
+					}
+					ELEMENT[at0022] occurrences matches {0..1} matches {    -- Detaljert beskrivelse av funn
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Inspeksjon av cervix">
+					description = <"Foreløpig , uferdig arketype. Per mai 2015, kun til bruk for Olafiaklinikken, OUS.">
+				>
+				["at0001"] = <
+					text = <"Beskrivelse">
+					description = <"Tekstlig beskrivelse av funn, dersom de strukturerte feltene ikke benyttes eller ikke er relevante.">
+				>
+				["at0002"] = <
+					text = <"Utflod">
+					description = <"Markering av om utflod er tilstede eller fraværende.">
+				>
+				["at0003"] = <
+					text = <"Tilstede">
+					description = <"Utflod er tilstede.">
+				>
+				["at0004"] = <
+					text = <"Fraværende">
+					description = <"Utflod er ikke til stede.">
+				>
+				["at0005"] = <
+					text = <"Utseende av utflod">
+					description = <"Kategorisering av utflod fra cervix.">
+				>
+				["at0006"] = <
+					text = <"Klar">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Mucopurulent">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Mursteinsfarget">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Friskt blødende">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Ektopi">
+					description = <"Markering av om tilstedeværelse eller ikke av ektopi.">
+				>
+				["at0011"] = <
+					text = <"Tilstede">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Fraværende">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Multimedia">
+					description = <"Digital fremstilling av cervix.">
+					comment = <"For eksempel en tegning eller digitalt bilde eller video.">
+				>
+				["at0014"] = <
+					text = <"Ektopi beskrivelse">
+					description = <"">
+					comment = <"Tekstlig beskrivelse av ektopi">
+				>
+				["at0015"] = <
+					text = <"Andre funn cervix">
+					description = <"Markering og beskrivelse av andre funn ved inspeksjon av cervix.">
+				>
+				["at0016"] = <
+					text = <"Funn">
+					description = <"Beskrivelse av annet funn.">
+				>
+				["at0017"] = <
+					text = <"Vorter">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Skjør">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Tumor">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Nabothian cyste">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Detaljert beskrivelse av funn">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Annet">
+					description = <"">
+				>
+			>
+		>
+	>
