@@ -1,0 +1,202 @@
+archetype (adl_version=1.4; uid=4a5c2155-a734-467e-af1d-2e7d57d4cf85)
+	openEHR-EHR-OBSERVATION.selection_list.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nn"] = <
+			language = <[ISO_639-1::nn]>
+			author = <
+			>
+		>
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2022-04-28">
+		["name"] = <"John Tore Valand">
+		["organisation"] = <"Helse Vest IKT AS">
+		["email"] = <"john.tore.valand@helse-vest-ikt.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Marit Alice Venheim, Helse Vest IKT", ...>
+	details = <
+		["nn"] = <
+			language = <[ISO_639-1::nn]>
+			purpose = <"*To record details about a simple selection list where a question may be recorded as either \"present\" or \"indeterminate\". (en)">
+			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
+			use = <"*Use to record details about a simple selection list where a question may be recorded as either \"present\" or \"indeterminate\". (en)">
+			misuse = <"*Not to be used to create a framework for recording answers to pre-defined screening questions. (en)">
+		>
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere detaljer om en enkel utvalgsliste der et spørsmål kan registreres som enten \"tilstede\" eller \"ubestemt\".">
+			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
+			use = <"For å registrere detaljer om en enkel utvalgsliste der et spørsmål kan registreres som enten \"tilstede\" eller \"ubestemt\".">
+			misuse = <"Brukes ikke for å lage et rammeverk for registrering av svar på forhåndsdefinerte spørsmål.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record details about a simple selection list where a question may be recorded as either \"present\" or \"indeterminate\".">
+			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
+			use = <"Use to record details about a simple selection list where a question may be recorded as either \"present\" or \"indeterminate\".">
+			misuse = <"Not to be used to create a framework for recording answers to pre-defined screening questions.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"BE012F4D9F3FF3B3F14F2A32B23B07A6">
+		["build_uid"] = <"1589a4fa-0d9d-489f-9cdc-97c1d20647b9">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Selection list
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..*} matches {    -- List
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0005] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0006] occurrences matches {0..*} matches {    -- CLUSTER_SLOT
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Selection list">
+					description = <"A simple selection list where a question may be recorded as either \"present\" or \"indeterminate\".">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"List">
+					description = <"A simple selection list where a question may be recorded as either \"present\" or \"indeterminate\".">
+					comment = <"This element is intended to be used with a value set of for exsample procedure names, diseases and represented as a multiple choice list. Persisting a procedure name or disease implies that the procedure or disease is present, while a procedure or disease not persisted implies that the procedure or disease is either not present or the question has not been considered. This is a common way of representing patient forms, as a pragmatic way to limit the number of clicks required to finish a form.">
+				>
+				["at0005"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"CLUSTER_SLOT">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Utvalgsliste">
+					description = <"En enkel utvalgsliste der et spørsmål kan registreres som enten \"tilstede\" eller \"ubestemt\".">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Uspesifisert hendelse">
+					description = <"Standard, uspesifisert tidspunkt eller tidsintervall som kan defineres mer eksplisitt i et templat eller i en applikasjon.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Liste">
+					description = <"En enkel utvalgsliste der et spørsmål kan registreres som enten \"tilstede\" eller \"ubestemt\".">
+					comment = <"Dette elementet er ment å brukes med et verdisett med for eksempel prosedyrenavn, sykdommer og representert som en flervalgsliste. Nedlagret prosedyrenavn eller sykdom innebærer at prosedyren eller sykdommen er tilstede, mens en prosedyre eller sykdom som ikke ble lagret innebærer at prosedyren eller sykdommen enten ikke er til stede eller at spørsmålet ikke har blitt vurdert. Dette er en vanlig måte å representere pasientskjemaer på, som en pragmatisk måte å begrense antall klikk som kreves for å fullføre et skjema.">
+				>
+				["at0005"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Tilleggsinformasjon">
+					description = <"Ytterligere informasjon som trengs for å kunne registrere lokalt definert innhold eller for å tilpasse til andre referansemodeller/formalismer.">
+					comment = <"For eksempel lokale informasjonsbehov eller ytterligere metadata for å kunne tilpasse til tilsvarende konsepter i FHIR.">
+				>
+			>
+		>
+		["nn"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Selection list (en)">
+					description = <"*A simple selection list where a question may be recorded as either \"present\" or \"indeterminate\". (en)">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"*Any event (en)">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"*List (en)">
+					description = <"*A simple selection list where a question may be recorded as either \"present\" or \"indeterminate\". (en)">
+					comment = <"*This element is intended to be used with a value set of for exsample procedure names, diseases and represented as a multiple choice list. Persisting a procedure name or disease implies that the procedure or disease is present, while a procedure or disease not persisted implies that the procedure or disease is either not present or the question has not been considered. This is a common way of representing patient forms, as a pragmatic way to limit the number of clicks required to finish a form. (en)">
+				>
+				["at0005"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"*CLUSTER_SLOT (en)">
+					description = <"*Additional information required to extend the model with local content or to align with other reference models or formalisms. (en)">
+					comment = <"*For example: local information requirements; or additional metadata to align with FHIR. (en)">
+				>
+			>
+		>
+	>
