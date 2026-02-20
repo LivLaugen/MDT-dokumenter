@@ -1,0 +1,445 @@
+archetype (adl_version=1.4; uid=5a18267c-d7ba-4391-ba5d-57505659c681)
+	openEHR-EHR-CLUSTER.oct_retinal_ous_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-03-27">
+		["name"] = <"Thomas Pedersen Baerland">
+		["organisation"] = <"Oslo University Hospital / DIPS ASA">
+		["email"] = <"tba@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Brukes til registrering av resultat av retinal oct undersøkelse og til lagring av tolkningen av undersøkelsen.">
+			copyright = <"© OUS HF / DPIS ASA">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"F7501064BB92E3A48CF3C8A1750820B9">
+		["build_uid"] = <"6257ba5b-21cf-4c08-9229-2a97c7cd8e18">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Oct retinal ous dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Beskrivelse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {    -- Sentral retinal tykkelse CRT
+				value matches {
+					DV_QUANTITY matches {*}
+				}
+			}
+			ELEMENT[at0020] occurrences matches {0..1} matches {    -- Involvering av anatomisk struktur
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0015] occurrences matches {0..1} matches {    -- Relativ størrelse areal PD
+				value matches {
+					DV_QUANTITY matches {*}
+				}
+			}
+			ELEMENT[at0016] occurrences matches {0..1} matches {    -- Absolutt størrelse areal mm2
+				value matches {
+					DV_QUANTITY matches {*}
+				}
+			}
+			CLUSTER[at0002] occurrences matches {0..1} matches {    -- Ødem
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Ødemstatus sammendrag
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Intraretinalt ødem
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Subretinalt ødem
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- PED
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- Tendens utvikling
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			CLUSTER[at0010] occurrences matches {0..1} matches {    -- Full tykkelse makulahull FTMH
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0011] occurrences matches {0..1} matches {    -- Minste apertur størrelse
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::122]>
+								list = <
+									["1"] = <
+										units = <"um">
+										magnitude = <|0.0..4000.0|>
+										precision = <|0|>
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {    -- Klassifisering
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0014] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			CLUSTER[at0017] occurrences matches {0..1} matches {    -- Membraner og traksjon
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0030] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0023] occurrences matches {0..1} matches {    -- Bakre korpusløsning
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0018] occurrences matches {0..1} matches {    -- Vitromakulær adhesjon VMA
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0019] occurrences matches {0..1} matches {    -- Vitromakulær traksjon VMT
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0021] occurrences matches {0..1} matches {    -- Lammelære hull
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0022] occurrences matches {0..1} matches {    -- Makulaskiser
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0032] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			CLUSTER[at0024] occurrences matches {0..1} matches {    -- Blødning
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0031] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0025] occurrences matches {0..1} matches {    -- Korpusblødning
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0026] occurrences matches {0..1} matches {    -- Subhyaloidal blødning
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0027] occurrences matches {0..1} matches {    -- Sub ILM blødning
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0028] occurrences matches {0..1} matches {    -- Intraretinal blødning
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0029] occurrences matches {0..1} matches {    -- Subretinal blødning
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0033] occurrences matches {0..1} matches {    -- Detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0034] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			CLUSTER[at0035] occurrences matches {0..1} matches {    -- Atrofier
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0037] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0039] occurrences matches {0..1} matches {    -- Antall
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0040] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0048] occurrences matches {0..1} matches {    -- Størrelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0036] occurrences matches {0..1} matches {    -- Druser
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0042] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0044] occurrences matches {0..1} matches {    -- Antall
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0046] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0047] occurrences matches {0..1} matches {    -- Størrelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Oct retinal ous dips">
+					description = <"Brukes til registrering av resultat av retinal oct undersøkelse og til lagring av tolkningen av undersøkelsen.">
+				>
+				["at0001"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Ødem">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Ødemstatus sammendrag">
+					description = <"Våt/Tørr">
+				>
+				["at0004"] = <
+					text = <"Intraretinalt ødem">
+					description = <"Tendens litt/mye bedre/verre">
+				>
+				["at0005"] = <
+					text = <"Subretinalt ødem">
+					description = <"Tendens litt/mye bedre/verre">
+				>
+				["at0006"] = <
+					text = <"PED">
+					description = <"Tendens litt/mye bedre/verre">
+				>
+				["at0007"] = <
+					text = <"Tendens utvikling">
+					description = <"Tendens litt/mye bedre/verre">
+				>
+				["at0008"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Sentral retinal tykkelse CRT">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Full tykkelse makulahull FTMH">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Minste apertur størrelse">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Klassifisering">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Relativ størrelse areal PD">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Absolutt størrelse areal mm2">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Membraner og traksjon">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Vitromakulær adhesjon VMA">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Vitromakulær traksjon VMT">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Involvering av anatomisk struktur">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Lammelære hull">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Makulaskiser">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Bakre korpusløsning">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Blødning">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Korpusblødning">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Subhyaloidal blødning">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Sub ILM blødning">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Intraretinal blødning">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Subretinal blødning">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Atrofier">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Druser">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Antall">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Antall">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Størrelse">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Størrelse">
+					description = <"*">
+				>
+			>
+		>
+	>
