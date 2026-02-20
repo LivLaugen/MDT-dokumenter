@@ -1,0 +1,90 @@
+archetype (adl_version=1.4; uid=4c3922e1-edd2-407f-bde1-47aa8417f1a3)
+	openEHR-EHR-EVALUATION.annen_prosedyreendring_kj_no.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere informasjon om andre endringer i behandlingsrutiner, inkludert begrensninger i behandling, for kritisk informasjon i kjernejournal.">
+			keywords = <"kjernejournal","kritisk informasjon">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes for å registrere informasjon om andre endringer i behandlingsrutiner, inkludert begrensninger i behandling, for kritisk informasjon i kjernejournal.
+
+Denne arketypen er laget fordi samlebetegnelsen \"Annen prosedyreendring\" med kodeverk 7522 Prosedyreendringer i kjernejournalens kritisk informasjon samler konseptene pasientpreferanse (reservasjon mot blodtransfusjon), administrativ informasjon (avtale om åpen retur, spesifikk lege/avdeling bør kontaktes ved forverring) og anbefaling (Anbefalt spesifisert behandlingsprosedyre, annen endring i prosedyrer) i ett og samme kodesett.">
+			misuse = <"Brukes ikke for annet enn å registrere informasjon om andre endringer i behandlingsrutiner, inkludert begrensninger i behandling, for kritisk informasjon i kjernejournal.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"E59C54C04512AE0E082985241081E153">
+		["build_uid"] = <"eff40de0-fa3e-4a05-8752-2712380104c9">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Annen prosedyreendring
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Prosedyreendring
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Gyldig til dato
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Kommentar
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Annen prosedyreendring">
+					description = <"Informasjon om andre endringer i behandlingsrutiner, inkludert begrensninger i behandling, for kritisk informasjon i kjernejournal.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Prosedyreendring">
+					description = <"Angivelse av prosedyreendringen.">
+					comment = <"Skal i utgangspunktet kodes ved hjelp av kodeverk 7522 Prosedyreendringer, men kan være fritekst dersom andre endringer i prosedyrer skal registreres.">
+				>
+				["at0003"] = <
+					text = <"Gyldig til dato">
+					description = <"Dato for når prosedyreendringen er gyldig til.">
+				>
+				["at0004"] = <
+					text = <"Kommentar">
+					description = <"Eventuelle kommentarer om prosedyreendringen.">
+				>
+			>
+		>
+	>
