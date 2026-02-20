@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=81a9f283-95db-4456-8ee5-aabff4625661)
+﻿archetype (adl_version=1.4; uid=f0309ce0-a669-443f-b666-50eac5790ac3)
 	openEHR-EHR-OBSERVATION.esas_r.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Edmonton Symptom Assessment System Revised (ESAS-r)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -16,44 +15,43 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2019-03-28">
 		["name"] = <"John Tore Valand">
 		["organisation"] = <"Helse Bergen HF">
+		["date"] = <"2019-03-28">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Nuno Abreu, Oporto Hospital Center, Portugal","Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Heidi Aursand, Oslo universitetssykehus, Norway","Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)","June Susanne Berge, DIPS AS, Norway","SB Bhattacharyya, Sudisa Consultancy Services, India","Mikkel Gaup Grønmo, FSE, Helse Nord, Norway (Nasjonal IKT redaktør)","Nina Hauge, Helse Fonna, Norway","Anca Heyd, DIPS ASA, Norway","Terje Bektesevic Holmlund, UiT Norges arktiske universitet, Norway","Evelyn Hovenga, EJSH Consulting, Australia","Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway","Sergey Kovalenko, Chelyabinsk Regional Children Hospital, Russia","Liv Laugen, Oslo universitetssykehus, Norway","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","Siv Marie Lien, DIPS ASA, Norway","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Andrej Orel, Marand d.o.o., Slovenia","Jayashree Panickar, Karolinska Institute, Sweden","Kjersti Solvåg, HAraldsplass Diakonale Sykehus, Norway","Micaela Thierley, Helse Bergen/Haraldsplass sykehus, Norway","John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)","Sebastian von Hofacker, Haradsplass Diakonale Sykehus, Norway">
 	details = <
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere en selvrapportert vurdering av symptomer, vanligvis innenfor en palliativ omsorg.
 
 ">
-			keywords = <"palliativ", ...>
-			copyright = <"© openEHR Foundation">
 			use = <"Brukes for å registrere en selvrapportert vurdering av symptomer, vanligvis innenfor en palliativ omsorg.
 
 ESAS-r er ment for å følge pasientens perspektiv på symptomer, men i noen tilfeller der pasienten ikke er i stand til å selvrapportere, kan det være nødvendig å registrere en klinikers perspektiv. I slike tilfeller registreres klinikeren som kilden til informasjonen ved å benytte attributtet \"Information provider\" fra referansemodellen.
 
 Hvert symptom er rangert på en skala fra 0 til 10, med 0 som representerer fravær av symptomet og 10 representerer den maksimale opplevelsen av symptomet. Hvis det ikke er mulig å vurdere et symptom, bruk nullverdien \"Not applicable\"' for å indikere \"Kan ikke vurdere\" på det aktuelle symptomet.">
+			keywords = <"palliativ", ...>
 			misuse = <"Brukes ikke for å registrere et enkelt symptom eller sykdomstegn, bruk arketypen CLUSTER.symptom_sign (Symptom/Sykdomstegn) for dette formålet.">
+			copyright = <"© openEHR Foundation">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record a self-reported assessment of symptoms, usually within a palliative care setting.">
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record a self-reported assessment of symptoms, usually within a palliative care setting.
 
 The ESAS-r is intended to capture the patient’s perspective on symptoms, however in some cases where the patient is unable to self-report, the source of information may be from a carer. In this situation, record the care as the source of information using the Information provider attribute in the Reference Model.
 
 Each symptom is rated on a 0 to 10 scale, with 0 representing an absence of the symptom and 10 representing the maximal experience of the symptom. If it is not possible to rate a symptom, use the null flavour 'Not applicable' to indicate 'Unable to assess' on the relevant symptom.">
 			misuse = <"Not to be used to record details about a symptom or sign - use the CLUSTER.symptom_sign archetype for this purpose.">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Nuno Abreu, Oporto Hospital Center, Portugal", "Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)", "Heidi Aursand, Oslo universitetssykehus, Norway", "Silje Ljosland Bakke, Nasjonal IKT HF, Norway", "Terje Bektesevic Holmlund, UiT Norges arktiske universitet, Norway", "SB Bhattacharyya, Sudisa Consultancy Services, India", "Mikkel Gaup Grønmo, FSE, Helse Nord, Norway (Nasjonal IKT redaktør)", "Nina Hauge, Helse Fonna, Norway", "Anca Heyd, DIPS ASA, Norway", "Evelyn Hovenga, EJSH Consulting, Australia", "Sergey Kovalenko, Chelyabinsk Regional Children Hospital, Russia", "Liv Laugen, Oslo universitetssykehus, Norway", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "Siv Marie Lien, DIPS ASA, Norway", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway", "Andrej Orel, Marand d.o.o., Slovenia", "Jayashree Panickar, Karolinska Institute, Sweden", "Kjersti Solvåg, HAraldsplass Diakonale Sykehus, Norway", "Norwegian Review Summary, Nasjonal IKT HF, Norway", "June Susanne Berge, DIPS AS, Norway", "Micaela Thierley, Helse Bergen/Haraldsplass sykehus, Norway", "John Tore Valand, Helse Bergen, Norway (openEHR Editor)", "Sebastian von Hofacker, Haradsplass Diakonale Sykehus, Norway">
 	other_details = <
-		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
 		["references"] = <"Bruera E, Kuehn N, Miller MJ, Selmser P, Macmillan K. The Edmonton Symptom Assessment System (ESAS): a simple method for the assessment of palliative care patients. J Palliat Care. 1991 Summer;7(2):6-9. PubMed PMID: 1714502.
 
@@ -65,9 +63,9 @@ Watanabe SM, Nekolaichuk C, Beaumont C, Johnson L, Myers J, Strasser F. A multic
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"0F570B7F00D4E49B843FCFC910EDCA1B">
-		["build_uid"] = <"41fb82d0-3f28-4b6f-a6de-83961be2ba2c">
-		["revision"] = <"1.0.0">
+		["MD5-CAM-1.0.1"] = <"869B10A78B155905A8632F2A70373ED7">
+		["build_uid"] = <"d2870951-d3a1-4ca9-8573-0bd66d06c203">
+		["revision"] = <"1.0.1">
 	>
 
 definition
@@ -176,6 +174,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
