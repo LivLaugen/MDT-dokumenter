@@ -1,0 +1,2487 @@
+archetype (adl_version=1.4; uid=f26a0ede-2920-43f6-bdcb-dd0e2a2ff6fa)
+	openEHR-EHR-OBSERVATION.livets_siste_dager.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2023-05-25">
+		["name"] = <"John Tore Valand">
+		["organisation"] = <"Helse Vest IKT AS">
+		["email"] = <"john.tore.valand@helse-vest-ikt.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Representerer side 1, 3, 4, 7 og 8 i dokumentet.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Avgrenet fra: <Legg til en referanse til den originale ressursen her>
+
+Kompetansesenter i lindrande behandling Helseregion Vest.
+Dette dokumentet er utarbeidet i henhold til anbefalinger fra International Collaborative for Best Care for the Dying Person">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"2C7A10E1178C0272D1196A664B4FE657">
+		["build_uid"] = <"3055ca49-9b68-411b-9653-fe808469a0cd">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Livets siste dager
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {    -- Kriterier for å bruke denne planen for lindring til døende:
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {    -- 1. Alle mulige reversible årsaker til pasientens tilstand er vurdert.
+												value matches {
+													DV_BOOLEAN matches {*}
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {    -- 2. Behandlingsteamet, minimum lege og sykepleier, er enige om at pasienten er døende.
+												value matches {
+													DV_BOOLEAN matches {*}
+												}
+											}
+											CLUSTER[at0007] occurrences matches {0..1} matches {    -- I tillegg vil minst to av følgende punkter vanligvis være oppfylt
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0008] occurrences matches {0..1} matches {    -- Pasienten er sengeliggende
+														value matches {
+															DV_BOOLEAN matches {*}
+														}
+													}
+													ELEMENT[at0009] occurrences matches {0..1} matches {    -- Pasienten er i lengre perioder ikke kontaktbar
+														value matches {
+															DV_BOOLEAN matches {*}
+														}
+													}
+													ELEMENT[at0010] occurrences matches {0..1} matches {    -- Pasienten klarer bare å drikke små slurker
+														value matches {
+															DV_BOOLEAN matches {*}
+														}
+													}
+													ELEMENT[at0011] occurrences matches {0..1} matches {    -- Pasienten kan ikke lenger svelge tabletter
+														value matches {
+															DV_BOOLEAN matches {*}
+														}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0012] occurrences matches {0..1} matches {    -- DEL 1 Første vurdering (vurdering ved inklusjon)
+										items cardinality matches {1..*; unordered} matches {
+											CLUSTER[at0013] occurrences matches {0..1} matches {    -- Diagnose og personopplysninger
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0014] occurrences matches {0..1} matches {    -- Hoveddiagnose
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0015] occurrences matches {0..*} matches {    -- Bidiagnoser
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0016] occurrences matches {0..1} matches {    -- Nasjonalitet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0018] occurrences matches {0..1} matches {    -- Kjønn
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0017] occurrences matches {0..1} matches {    -- Innlagt dato
+														value matches {
+															DV_DATE_TIME matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0019] occurrences matches {0..1} matches {    -- Symptomer og funn
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0020] occurrences matches {0..1} matches {    -- Er i stand til å svelge
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0021,    -- Ja
+																	at0022]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0023] occurrences matches {0..1} matches {    -- Kvalm
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0024,    -- Ja
+																	at0025]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0026] occurrences matches {0..1} matches {    -- Brekninger, oppkast
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0027,    -- Ja
+																	at0028]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0029] occurrences matches {0..1} matches {    -- Obstipert
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0030,    -- Ja
+																	at0031]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0032] occurrences matches {0..1} matches {    -- Forvirret
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0033,    -- Ja
+																	at0034]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0035] occurrences matches {0..1} matches {    -- Urolig, agitert
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0036,    -- Ja
+																	at0037]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0038] occurrences matches {0..1} matches {    -- Rastløs
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0039,    -- Ja
+																	at0040]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0041] occurrences matches {0..1} matches {    -- Anspent, engstelig
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0042,    -- Ja
+																	at0043]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0044] occurrences matches {0..1} matches {    -- Våken
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0045,    -- Ja
+																	at0046]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0047] occurrences matches {0..1} matches {    -- Bevisst
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0048,    -- Ja
+																	at0049]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0050] occurrences matches {0..1} matches {    -- Vannlatingsbesvær, UVI
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0051,    -- Ja
+																	at0052]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0053] occurrences matches {0..1} matches {    -- Kateterisert
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0054,    -- Ja
+																	at0055]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0056] occurrences matches {0..1} matches {    -- Surkling i luftveiene
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0057,    -- Ja
+																	at0058]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0059] occurrences matches {0..1} matches {    -- Dyspne
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0060,    -- Ja
+																	at0061]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0062] occurrences matches {0..1} matches {    -- Smerte
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0063,    -- Ja
+																	at0064]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0065] occurrences matches {0..1} matches {    -- Annet (f.eks. ødemer, kløe)
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0066,    -- Ja
+																	at0067]    -- Nei
+																}
+															}
+														}
+													}
+												}
+											}
+											CLUSTER[at0252] occurrences matches {0..1} matches {    -- Mål 1 Vurdering av medikasjon
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0069] occurrences matches {0..1} matches {    -- Aktuell medikasjon er vurdert og ikke-essensielle medikamenter seponert
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0070,    -- Ja
+																	at0071]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0268] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0269] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0068] occurrences matches {0..1} matches {    -- Mål 2 Behovsmedikasjon til subkutan administrasjon er ordinert for følgende symptomer etter avdelingens prosedyrer
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0072] occurrences matches {0..1} matches {    -- Smerter
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0073,    -- Ja
+																	at0074]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0075] occurrences matches {0..1} matches {    -- Uro, agitasjon
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0076,    -- Ja
+																	at0077]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0078] occurrences matches {0..1} matches {    -- Surkling i luftveiene
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0079,    -- Ja
+																	at0080]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0081] occurrences matches {0..1} matches {    -- Kvalme og brekninger
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0082,    -- Ja
+																	at0083]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0084] occurrences matches {0..1} matches {    -- Dyspne
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0085,    -- Ja
+																	at0086]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0270] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0271] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0090] occurrences matches {0..1} matches {    -- Mål 3 Uhensiktsmessige tiltak er seponert. Beslutningene bygger på grundig vurdering av alle aktuelle tiltak.
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0091] occurrences matches {0..1} matches {    -- Blodprøver
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0092,    -- Ikke aktuelt
+																	at0093,    -- Ja
+																	at0094]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0095] occurrences matches {0..1} matches {    -- Antibiotika
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0096,    -- Ikke aktuelt
+																	at0097,    -- Ja
+																	at0098]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0099] occurrences matches {0..1} matches {    -- Væskebehandling
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0100,    -- Ikke aktuelt
+																	at0101,    -- Ja
+																	at0102]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0103] occurrences matches {0..1} matches {    -- Ernæringsbehandling
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0104,    -- Ikke aktuelt
+																	at0105,    -- Ja
+																	at0106]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0087] occurrences matches {0..1} matches {    -- Journalført at hjerte-lungeredning ikke er aktuelt (HLR-)
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0088,    -- Ja
+																	at0089]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0114] occurrences matches {0..1} matches {    -- Ev. andre tiltak seponert
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0107] occurrences matches {0..1} matches {    -- Deaktivering av implantert defibrillator (ICD)
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0108,    -- Ikke aktuelt
+																	at0109,    -- Ja
+																	at0110]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0273] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0272] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0254] occurrences matches {0..1} matches {    -- Mål 3a Vurdering av pleietiltak
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0115] occurrences matches {0..1} matches {    -- Det er tatt en avgjørelse om å avslutte uhensiktsmessige pleietiltak
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0116,    -- Ja
+																	at0117]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0274] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0275] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0276] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0277] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0255] occurrences matches {0..1} matches {    -- Mål 3b Subkutan medisinering
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0118] occurrences matches {0..1} matches {    -- Subkutan pumpe er satt i gang innen 4 timer etter at den ble forordnet av legen
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0119,    -- Ikke aktuelt
+																	at0120,    -- Ja
+																	at0121]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0278] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0279] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0122] occurrences matches {0..1} matches {    -- Mål 4 Evne til å kommunisere på norsk er vurdert som adekvat
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0123] occurrences matches {0..1} matches {    -- Hos pasienten
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0124,    -- Komatøs
+																	at0125,    -- Ja
+																	at0126]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0127] occurrences matches {0..1} matches {    -- Hos de pårørende
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0128,    -- Ja
+																	at0129]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0280] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0281] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0130] occurrences matches {0..1} matches {    -- Mål 5 Innsikt i pasientens tilstand er vurdert
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0131] occurrences matches {0..1} matches {    -- Pasienten er klar over diagnosen
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0132,    -- Komatøs
+																	at0133,    -- Ja
+																	at0134]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0135] occurrences matches {0..1} matches {    -- De pårørende er klar over diagnosen
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0136,    -- Ja
+																	at0137]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0138] occurrences matches {0..1} matches {    -- Pasienten er klar over at han/hun er døende
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0139,    -- Komatøs
+																	at0140,    -- Ja
+																	at0141]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0142] occurrences matches {0..1} matches {    -- De pårørende er klar over at pasienten er døende
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0143,    -- Ja
+																	at0144]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0145] occurrences matches {0..1} matches {    -- Behov hos barn/ungdom som pårørende er vurdert
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0146,    -- Ikke aktuelt
+																	at0147,    -- Ja
+																	at0148]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0282] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0283] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0149] occurrences matches {0..1} matches {    -- Mål 6 Åndelige/eksistensielle behov er vurdert
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0151] occurrences matches {0..1} matches {    -- Hos pasienten
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0152,    -- Komatøs
+																	at0153,    -- Ja
+																	at0154]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0155] occurrences matches {0..1} matches {    -- Hos de pårørende
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0156,    -- Ja
+																	at0157]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0158] occurrences matches {0..1} matches {    -- Pas. trosretning eller livssyn er kjent
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0159,    -- Ikke aktuelt
+																	at0160,    -- Ja
+																	at0161]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0162] occurrences matches {0..1} matches {    -- Hvis ja, hvilken/hvilket
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0163] occurrences matches {0..1} matches {    -- Gitt tilbud om kontakt med prest / annen kontaktperson
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0164,    -- Ja
+																	at0165]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0166] occurrences matches {0..1} matches {    -- Navn
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0167] occurrences matches {0..1} matches {    -- Tlf
+														value matches {
+															DV_COUNT matches {*}
+														}
+													}
+													ELEMENT[at0168] occurrences matches {0..1} matches {    -- Dato
+														value matches {
+															DV_DATE matches {*}
+														}
+													}
+													ELEMENT[at0169] occurrences matches {0..1} matches {    -- Kommentarer (spesielle behov nå, i forbindelse med dødsfallet, etter dødsfallet)
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0284] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0285] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0256] occurrences matches {0..1} matches {    -- Mål 7 Informasjon til pårørende ved forandring i pasientens tilstand
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0172] occurrences matches {0..1} matches {    -- Det er avtalt hvordan pårørende skal informeres ved forandring i pasientens tilstand
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0173,    -- Ja
+																	at0174]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0175] occurrences matches {0..1} matches {    -- Uansett tidspunkt på døgnet
+														value matches {
+															DV_BOOLEAN matches {*}
+														}
+													}
+													ELEMENT[at0176] occurrences matches {0..1} matches {    -- Ikke om natten
+														value matches {
+															DV_BOOLEAN matches {*}
+														}
+													}
+													ELEMENT[at0177] occurrences matches {0..1} matches {    -- Pårørende overnatter på sykehuset
+														value matches {
+															DV_BOOLEAN matches {*}
+														}
+													}
+													ELEMENT[at0178] occurrences matches {0..1} matches {    -- Nærmeste pårørende
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0179] occurrences matches {0..1} matches {    -- Tlf
+														value matches {
+															DV_COUNT matches {*}
+														}
+													}
+													ELEMENT[at0180] occurrences matches {0..1} matches {    -- Relasjon til pasienten
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0181] occurrences matches {0..1} matches {    -- Evt. annen pårørende:
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0182] occurrences matches {0..1} matches {    -- Tlf
+														value matches {
+															DV_COUNT matches {*}
+														}
+													}
+													ELEMENT[at0183] occurrences matches {0..1} matches {    -- Relasjon til pasienten
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0286] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0287] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0257] occurrences matches {0..1} matches {    -- Mål 8 Informasjon om sykehuset til pårørende
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0184] occurrences matches {0..1} matches {    -- Pårørende er gitt informasjon om sykehuset
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0185,    -- Ja
+																	at0186]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0288] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0289] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0258] occurrences matches {0..1} matches {    -- Mål 9 Informasjon til fastlege eller sykehjemslegen
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0187] occurrences matches {0..1} matches {    -- Fastlegen eller sykehjemslegen er klar over pasientens tilstand
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0188,    -- Ja
+																	at0189]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0190] occurrences matches {0..1} matches {    -- Hjemmesykepleien/sykehjemmet er informert dersom de er tjenesteyter
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0191,    -- Ja
+																	at0192]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0290] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0291] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0193] occurrences matches {0..1} matches {    -- Mål 10 Plan for videre behandling og pleie er forklart for og drøftet med
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0194] occurrences matches {0..1} matches {    -- Pasienten
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0195,    -- Komatøs
+																	at0196,    -- Ja
+																	at0197]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0198] occurrences matches {0..1} matches {    -- De pårørende
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0199,    -- Ja
+																	at0200]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0292] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0293] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0259] occurrences matches {0..1} matches {    -- Mål 11 Pårørendes forståelse av videre plan
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0201] occurrences matches {0..1} matches {    -- De pårørende gir uttrykk for at de forstår hva som er planen videre
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0202,    -- Ja
+																	at0203]    -- Nei
+																}
+															}
+														}
+													}
+													ELEMENT[at0294] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0295] occurrences matches {0..1} matches {    -- Effekt / resultat
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0204] occurrences matches {0..1} matches {    -- Del 3 Ved dødsfallet
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0205] occurrences matches {0..1} matches {    -- Dato og klokkeslet
+												value matches {
+													DV_DATE_TIME matches {*}
+												}
+											}
+											ELEMENT[at0206] occurrences matches {0..1} matches {    -- Klokkeslett attestert av lege
+												value matches {
+													DV_TIME matches {*}
+												}
+											}
+											ELEMENT[at0207] occurrences matches {0..1} matches {    -- Hvem var til stede
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0208] occurrences matches {0..1} matches {    -- Pårørende varslet dersom ikke til stede
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0209,    -- Ikke aktuelt
+															at0210,    -- Ja
+															at0211]    -- Nei
+														}
+													}
+												}
+											}
+											ELEMENT[at0212] occurrences matches {0..1} matches {    -- Rapport
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											CLUSTER[at0213] occurrences matches {0..1} matches {    -- Delmål etter dødsfallet
+												items cardinality matches {1..*; unordered} matches {
+													CLUSTER[at0260] occurrences matches {0..1} matches {    -- Mål 12 Informasjon til fastlegen eller sykehjemslegen
+														items cardinality matches {1..*; unordered} matches {
+															ELEMENT[at0214] occurrences matches {0..1} matches {    -- Fastlegen eller sykehjemslegen er informert om dødsfallet
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0215,    -- Ja
+																			at0216]    -- Nei
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0217] occurrences matches {0..1} matches {    -- Hjemmesykepleien/sykehjemmet er informert om dødsfallet dersom de er tjenesteyter
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0218,    -- Ja
+																			at0219]    -- Nei
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0296] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0297] occurrences matches {0..1} matches {    -- Effekt / resultat
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													CLUSTER[at0261] occurrences matches {0..1} matches {    -- Mål 13 Prosedyre ved mors
+														items cardinality matches {1..*; unordered} matches {
+															ELEMENT[at0220] occurrences matches {0..1} matches {    -- Avdelingens prosedyrer ved mors og ved stell av døde er fulgt
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0221,    -- Ja
+																			at0222]    -- Nei
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0298] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0299] occurrences matches {0..1} matches {    -- Effekt / resultat
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													CLUSTER[at0262] occurrences matches {0..1} matches {    -- Mål 14 Prosedyre etter dødsfall
+														items cardinality matches {1..*; unordered} matches {
+															ELEMENT[at0223] occurrences matches {0..1} matches {    -- Avdelingens prosedyrer etter dødsfall er fulgt
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0224,    -- Ja
+																			at0225]    -- Nei
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0226] occurrences matches {0..1} matches {    -- Syning av liket
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0227] occurrences matches {0..1} matches {    -- Fjerning av ev. pacemaker eller ICD pga kremasjon
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0228] occurrences matches {0..1} matches {    -- Obduksjon
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0229] occurrences matches {0..1} matches {    -- Registrering av dødsfallet / dødsattest fylt ut
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0230] occurrences matches {0..1} matches {    -- Journalen avsluttet og epikrise diktert
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0231] occurrences matches {0..1} matches {    -- Beskjed formidlet til ev. andre offentlige instanser
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0300] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0301] occurrences matches {0..1} matches {    -- Effekt / resultat
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													CLUSTER[at0263] occurrences matches {0..1} matches {    -- Mål 15 Informasjon til pårørende
+														items cardinality matches {1..*; unordered} matches {
+															ELEMENT[at0232] occurrences matches {0..1} matches {    -- Mål 15 De pårørende er gitt informasjon om rutiner ved dødsfall
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0233,    -- Ja
+																			at0234]    -- Nei
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0302] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0303] occurrences matches {0..1} matches {    -- Effekt / resultat
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													CLUSTER[at0264] occurrences matches {0..1} matches {    -- Mål 16 Prosedyrer vedr. verdisaker og eiendeler
+														items cardinality matches {1..*; unordered} matches {
+															ELEMENT[at0235] occurrences matches {0..1} matches {    -- Sykehusets prosedyrer vedr. pasientens verdisaker og eiendeler er fulgt
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0236,    -- Ja
+																			at0237]    -- Nei
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0238] occurrences matches {0..1} matches {    -- Eiendeler og verdisaker er signert for av identifisert person
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0239] occurrences matches {0..1} matches {    -- Gjenstander er pakket for senere avhenting
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0240] occurrences matches {0..1} matches {    -- Verdisakene er registrert og lagret på et trygt sted
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0304] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0305] occurrences matches {0..1} matches {    -- Effekt / resultat
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													CLUSTER[at0265] occurrences matches {0..1} matches {    -- Mål 17 Nødvendig informasjon
+														items cardinality matches {1..*; unordered} matches {
+															ELEMENT[at0241] occurrences matches {0..1} matches {    -- Nødvendig informasjon er gitt til rette vedkommende
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0242,    -- Ja
+																			at0243]    -- Nei
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0244] occurrences matches {0..1} matches {    -- Heftet: ”Når en av våre nærmeste dør” er utlevert
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0306] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0307] occurrences matches {0..1} matches {    -- Effekt / resultat
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													CLUSTER[at0266] occurrences matches {0..1} matches {    -- Mål 18 Skriftlig informasjon
+														items cardinality matches {1..*; unordered} matches {
+															ELEMENT[at0245] occurrences matches {0..1} matches {    -- Skriftlig informasjon til etterlatte er gitt til de pårørende
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0246,    -- Ja
+																			at0247]    -- Nei
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0248] occurrences matches {0..1} matches {    -- Informasjonshefte om sorg og aktuell oppfølging i lokalmiljøet delt ut (‘’etterlattemappe’’)
+																value matches {
+																	DV_BOOLEAN matches {*}
+																}
+															}
+															ELEMENT[at0308] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0309] occurrences matches {0..1} matches {    -- Effekt / resultat
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													CLUSTER[at0267] occurrences matches {0..1} matches {    -- Mål 19 Debrifing av personalet
+														items cardinality matches {1..*; unordered} matches {
+															ELEMENT[at0249] occurrences matches {0..1} matches {    -- Personalet er ivaretatt etter dødsfall
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0250,    -- Ja
+																			at0251]    -- Nei
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0310] occurrences matches {0..1} matches {    -- Tiltak for å oppnå målet
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0311] occurrences matches {0..1} matches {    -- Effekt / resultat
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0111] matches {*}    -- ITEM_TREE
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Livets siste dager">
+					description = <"Plan for lindring i livets sluttfase, til bruk i sykehus">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Kriterier for å bruke denne planen for lindring til døende:">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"1. Alle mulige reversible årsaker til pasientens tilstand er vurdert.">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"2. Behandlingsteamet, minimum lege og sykepleier, er enige om at pasienten er døende.">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"I tillegg vil minst to av følgende punkter vanligvis være oppfylt">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Pasienten er sengeliggende">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Pasienten er i lengre perioder ikke kontaktbar">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Pasienten klarer bare å drikke små slurker">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Pasienten kan ikke lenger svelge tabletter">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"DEL 1 Første vurdering (vurdering ved inklusjon)">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Diagnose og personopplysninger">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Hoveddiagnose">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Bidiagnoser">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Nasjonalitet">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Innlagt dato">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Kjønn">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Symptomer og funn">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Er i stand til å svelge">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Kvalm">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Brekninger, oppkast">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Obstipert">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"Forvirret">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"Urolig, agitert">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0037"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"Rastløs">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0041"] = <
+					text = <"Anspent, engstelig">
+					description = <"">
+				>
+				["at0042"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0044"] = <
+					text = <"Våken">
+					description = <"">
+				>
+				["at0045"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0046"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0047"] = <
+					text = <"Bevisst">
+					description = <"">
+				>
+				["at0048"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0049"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0050"] = <
+					text = <"Vannlatingsbesvær, UVI">
+					description = <"">
+				>
+				["at0051"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0052"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0053"] = <
+					text = <"Kateterisert">
+					description = <"">
+				>
+				["at0054"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0055"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0056"] = <
+					text = <"Surkling i luftveiene">
+					description = <"">
+				>
+				["at0057"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0058"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0059"] = <
+					text = <"Dyspne">
+					description = <"">
+				>
+				["at0060"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0061"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0062"] = <
+					text = <"Smerte">
+					description = <"">
+				>
+				["at0063"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0064"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0065"] = <
+					text = <"Annet (f.eks. ødemer, kløe)">
+					description = <"">
+				>
+				["at0066"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0067"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0068"] = <
+					text = <"Mål 2 Behovsmedikasjon til subkutan administrasjon er ordinert for følgende symptomer etter avdelingens prosedyrer">
+					description = <"">
+				>
+				["at0069"] = <
+					text = <"Aktuell medikasjon er vurdert og ikke-essensielle medikamenter seponert">
+					description = <"Hensiktsmessig peroral medikasjon er endret til subkutan, og subkutan pumpe er satt i gang hvis hensiktsmessig. Uhensiktsmessig medikasjon er seponert.">
+				>
+				["at0070"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0071"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0072"] = <
+					text = <"Smerter">
+					description = <"">
+				>
+				["at0073"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0074"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0075"] = <
+					text = <"Uro, agitasjon">
+					description = <"">
+				>
+				["at0076"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0077"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0078"] = <
+					text = <"Surkling i luftveiene">
+					description = <"">
+				>
+				["at0079"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0080"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0081"] = <
+					text = <"Kvalme og brekninger">
+					description = <"">
+				>
+				["at0082"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0083"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0084"] = <
+					text = <"Dyspne">
+					description = <"">
+				>
+				["at0085"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0086"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0087"] = <
+					text = <"Journalført at hjerte-lungeredning ikke er aktuelt (HLR-)">
+					description = <"">
+				>
+				["at0088"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0089"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0090"] = <
+					text = <"Mål 3 Uhensiktsmessige tiltak er seponert. Beslutningene bygger på grundig vurdering av alle aktuelle tiltak.">
+					description = <"">
+				>
+				["at0091"] = <
+					text = <"Blodprøver">
+					description = <"">
+				>
+				["at0092"] = <
+					text = <"Ikke aktuelt">
+					description = <"">
+				>
+				["at0093"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0094"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0095"] = <
+					text = <"Antibiotika">
+					description = <"">
+				>
+				["at0096"] = <
+					text = <"Ikke aktuelt">
+					description = <"">
+				>
+				["at0097"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0098"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0099"] = <
+					text = <"Væskebehandling">
+					description = <"">
+				>
+				["at0100"] = <
+					text = <"Ikke aktuelt">
+					description = <"">
+				>
+				["at0101"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0102"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0103"] = <
+					text = <"Ernæringsbehandling">
+					description = <"">
+				>
+				["at0104"] = <
+					text = <"Ikke aktuelt">
+					description = <"">
+				>
+				["at0105"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0106"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0107"] = <
+					text = <"Deaktivering av implantert defibrillator (ICD)">
+					description = <"Kontakt pasientens kardiolog. 
+Henvis til lokale retningslinjer og prosedyrer.
+Gi ev. informasjonsbrosjyre til pasient/pårørende.">
+				>
+				["at0108"] = <
+					text = <"Ikke aktuelt">
+					description = <"">
+				>
+				["at0109"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0110"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0111"] = <
+					text = <"ITEM_TREE">
+					description = <"">
+				>
+				["at0114"] = <
+					text = <"Ev. andre tiltak seponert">
+					description = <"">
+				>
+				["at0115"] = <
+					text = <"Det er tatt en avgjørelse om å avslutte uhensiktsmessige pleietiltak">
+					description = <"Skal en ha et regime for å snu pasienten, eller gjøre det bare ved behov, vurdere antidecubitusmadrass, vurdere huden, skal en fortsette med å ta BT, puls og temp, osv.">
+				>
+				["at0116"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0117"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0118"] = <
+					text = <"Subkutan pumpe er satt i gang innen 4 timer etter at den ble forordnet av legen">
+					description = <"">
+				>
+				["at0119"] = <
+					text = <"Ikke aktuelt">
+					description = <"">
+				>
+				["at0120"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0121"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0122"] = <
+					text = <"Mål 4 Evne til å kommunisere på norsk er vurdert som adekvat">
+					description = <"">
+				>
+				["at0123"] = <
+					text = <"Hos pasienten">
+					description = <"">
+				>
+				["at0124"] = <
+					text = <"Komatøs">
+					description = <"">
+				>
+				["at0125"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0126"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0127"] = <
+					text = <"Hos de pårørende">
+					description = <"">
+				>
+				["at0128"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0129"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0130"] = <
+					text = <"Mål 5 Innsikt i pasientens tilstand er vurdert">
+					description = <"">
+				>
+				["at0131"] = <
+					text = <"Pasienten er klar over diagnosen">
+					description = <"">
+				>
+				["at0132"] = <
+					text = <"Komatøs">
+					description = <"">
+				>
+				["at0133"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0134"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0135"] = <
+					text = <"De pårørende er klar over diagnosen">
+					description = <"">
+				>
+				["at0136"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0137"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0138"] = <
+					text = <"Pasienten er klar over at han/hun er døende">
+					description = <"">
+				>
+				["at0139"] = <
+					text = <"Komatøs">
+					description = <"">
+				>
+				["at0140"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0141"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0142"] = <
+					text = <"De pårørende er klar over at pasienten er døende">
+					description = <"">
+				>
+				["at0143"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0144"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0145"] = <
+					text = <"Behov hos barn/ungdom som pårørende er vurdert">
+					description = <"">
+				>
+				["at0146"] = <
+					text = <"Ikke aktuelt">
+					description = <"">
+				>
+				["at0147"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0148"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0149"] = <
+					text = <"Mål 6 Åndelige/eksistensielle behov er vurdert">
+					description = <"Pasienten eller de pårørende kan være engstelige for seg selv eller andre. 
+Vurder spesielle behov i forhold til familiens kulturelle bakgrunn. 
+Vurder støtte fra prest eller annen åndelig veileder.">
+				>
+				["at0151"] = <
+					text = <"Hos pasienten">
+					description = <"">
+				>
+				["at0152"] = <
+					text = <"Komatøs">
+					description = <"">
+				>
+				["at0153"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0154"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0155"] = <
+					text = <"Hos de pårørende">
+					description = <"">
+				>
+				["at0156"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0157"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0158"] = <
+					text = <"Pas. trosretning eller livssyn er kjent">
+					description = <"">
+				>
+				["at0159"] = <
+					text = <"Ikke aktuelt">
+					description = <"">
+				>
+				["at0160"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0161"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0162"] = <
+					text = <"Hvis ja, hvilken/hvilket">
+					description = <"">
+				>
+				["at0163"] = <
+					text = <"Gitt tilbud om kontakt med prest / annen kontaktperson">
+					description = <"">
+				>
+				["at0164"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0165"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0166"] = <
+					text = <"Navn">
+					description = <"">
+				>
+				["at0167"] = <
+					text = <"Tlf">
+					description = <"">
+				>
+				["at0168"] = <
+					text = <"Dato">
+					description = <"">
+				>
+				["at0169"] = <
+					text = <"Kommentarer (spesielle behov nå, i forbindelse med dødsfallet, etter dødsfallet)">
+					description = <"">
+				>
+				["at0172"] = <
+					text = <"Det er avtalt hvordan pårørende skal informeres ved forandring i pasientens tilstand">
+					description = <"">
+				>
+				["at0173"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0174"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0175"] = <
+					text = <"Uansett tidspunkt på døgnet">
+					description = <"">
+				>
+				["at0176"] = <
+					text = <"Ikke om natten">
+					description = <"">
+				>
+				["at0177"] = <
+					text = <"Pårørende overnatter på sykehuset">
+					description = <"">
+				>
+				["at0178"] = <
+					text = <"Nærmeste pårørende">
+					description = <"">
+				>
+				["at0179"] = <
+					text = <"Tlf">
+					description = <"Telefon nærmeste pårørende.">
+				>
+				["at0180"] = <
+					text = <"Relasjon til pasienten">
+					description = <"">
+				>
+				["at0181"] = <
+					text = <"Evt. annen pårørende:">
+					description = <"">
+				>
+				["at0182"] = <
+					text = <"Tlf">
+					description = <"Telefon annen pårørende.">
+				>
+				["at0183"] = <
+					text = <"Relasjon til pasienten">
+					description = <"">
+				>
+				["at0184"] = <
+					text = <"Pårørende er gitt informasjon om sykehuset">
+					description = <"Skriftlig informasjon om parkering, telefon, mat og drikke, overnatting og annen praktisk informasjon.">
+				>
+				["at0185"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0186"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0187"] = <
+					text = <"Fastlegen eller sykehjemslegen er klar over pasientens tilstand">
+					description = <"">
+				>
+				["at0188"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0189"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0190"] = <
+					text = <"Hjemmesykepleien/sykehjemmet er informert dersom de er tjenesteyter">
+					description = <"">
+				>
+				["at0191"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0192"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0193"] = <
+					text = <"Mål 10 Plan for videre behandling og pleie er forklart for og drøftet med">
+					description = <"">
+				>
+				["at0194"] = <
+					text = <"Pasienten">
+					description = <"">
+				>
+				["at0195"] = <
+					text = <"Komatøs">
+					description = <"">
+				>
+				["at0196"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0197"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0198"] = <
+					text = <"De pårørende">
+					description = <"">
+				>
+				["at0199"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0200"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0201"] = <
+					text = <"De pårørende gir uttrykk for at de forstår hva som er planen videre">
+					description = <"De pårørende er klar over at videre behandling og pleie har fokus på at pasienten er døende. 
+De pårørende har fått komme frem med sine
+ønsker og bekymringer, og disse er dokumentert.
+Selve plandokumentet kan drøftes hvis dette vurderes som hensiktsmessig.Skriftlig informasjon kan være aktuelt, ev. tilpasset alder og språk.">
+				>
+				["at0202"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0203"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0204"] = <
+					text = <"Del 3 Ved dødsfallet">
+					description = <"">
+				>
+				["at0205"] = <
+					text = <"Dato og klokkeslet">
+					description = <"Dato og klokkeslett for dødsfall.">
+				>
+				["at0206"] = <
+					text = <"Klokkeslett attestert av lege">
+					description = <"Klokkeslett dødsfall ble attestert av lege.">
+				>
+				["at0207"] = <
+					text = <"Hvem var til stede">
+					description = <"">
+				>
+				["at0208"] = <
+					text = <"Pårørende varslet dersom ikke til stede">
+					description = <"">
+				>
+				["at0209"] = <
+					text = <"Ikke aktuelt">
+					description = <"">
+				>
+				["at0210"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0211"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0212"] = <
+					text = <"Rapport">
+					description = <"">
+				>
+				["at0213"] = <
+					text = <"Delmål etter dødsfallet">
+					description = <"">
+				>
+				["at0214"] = <
+					text = <"Fastlegen eller sykehjemslegen er informert om dødsfallet">
+					description = <"Ta kontakt neste arbeidsdag hvis dødsfallet skjer utenom arbeidstiden.">
+				>
+				["at0215"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0216"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0217"] = <
+					text = <"Hjemmesykepleien/sykehjemmet er informert om dødsfallet dersom de er tjenesteyter">
+					description = <"">
+				>
+				["at0218"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0219"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0220"] = <
+					text = <"Avdelingens prosedyrer ved mors og ved stell av døde er fulgt">
+					description = <"Spesielle religiøse/kulturelle behov ivaretatt.">
+				>
+				["at0221"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0222"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0223"] = <
+					text = <"Avdelingens prosedyrer etter dødsfall er fulgt">
+					description = <"">
+				>
+				["at0224"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0225"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0226"] = <
+					text = <"Syning av liket">
+					description = <"">
+				>
+				["at0227"] = <
+					text = <"Fjerning av ev. pacemaker eller ICD pga kremasjon">
+					description = <"">
+				>
+				["at0228"] = <
+					text = <"Obduksjon">
+					description = <"">
+				>
+				["at0229"] = <
+					text = <"Registrering av dødsfallet / dødsattest fylt ut">
+					description = <"">
+				>
+				["at0230"] = <
+					text = <"Journalen avsluttet og epikrise diktert">
+					description = <"">
+				>
+				["at0231"] = <
+					text = <"Beskjed formidlet til ev. andre offentlige instanser">
+					description = <"">
+				>
+				["at0232"] = <
+					text = <"Mål 15 De pårørende er gitt informasjon om rutiner ved dødsfall">
+					description = <"Brosjyre med praktisk informasjon ved dødsfall er gitt til de pårørende.">
+				>
+				["at0233"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0234"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0235"] = <
+					text = <"Sykehusets prosedyrer vedr. pasientens verdisaker og eiendeler er fulgt">
+					description = <"">
+				>
+				["at0236"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0237"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0238"] = <
+					text = <"Eiendeler og verdisaker er signert for av identifisert person">
+					description = <"">
+				>
+				["at0239"] = <
+					text = <"Gjenstander er pakket for senere avhenting">
+					description = <"">
+				>
+				["at0240"] = <
+					text = <"Verdisakene er registrert og lagret på et trygt sted">
+					description = <"">
+				>
+				["at0241"] = <
+					text = <"Nødvendig informasjon er gitt til rette vedkommende">
+					description = <"">
+				>
+				["at0242"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0243"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0244"] = <
+					text = <"Heftet: ”Når en av våre nærmeste dør” er utlevert">
+					description = <"">
+				>
+				["at0245"] = <
+					text = <"Skriftlig informasjon til etterlatte er gitt til de pårørende">
+					description = <"">
+				>
+				["at0246"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0247"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0248"] = <
+					text = <"Informasjonshefte om sorg og aktuell oppfølging i lokalmiljøet delt ut (‘’etterlattemappe’’)">
+					description = <"">
+				>
+				["at0249"] = <
+					text = <"Personalet er ivaretatt etter dødsfall">
+					description = <"Formell/uformell refleksjon/debriefing (tilgjengelig mal: ‘’Refleksjon etter dødsfall’’).">
+				>
+				["at0250"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0251"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0252"] = <
+					text = <"Mål 1 Vurdering av medikasjon">
+					description = <"">
+				>
+				["at0254"] = <
+					text = <"Mål 3a Vurdering av pleietiltak">
+					description = <"">
+				>
+				["at0255"] = <
+					text = <"Mål 3b Subkutan medisinering">
+					description = <"">
+				>
+				["at0256"] = <
+					text = <"Mål 7 Informasjon til pårørende ved forandring i pasientens tilstand">
+					description = <"">
+				>
+				["at0257"] = <
+					text = <"Mål 8 Informasjon om sykehuset til pårørende">
+					description = <"">
+				>
+				["at0258"] = <
+					text = <"Mål 9 Informasjon til fastlege eller sykehjemslegen">
+					description = <"">
+				>
+				["at0259"] = <
+					text = <"Mål 11 Pårørendes forståelse av videre plan">
+					description = <"">
+				>
+				["at0260"] = <
+					text = <"Mål 12 Informasjon til fastlegen eller sykehjemslegen">
+					description = <"">
+				>
+				["at0261"] = <
+					text = <"Mål 13 Prosedyre ved mors">
+					description = <"">
+				>
+				["at0262"] = <
+					text = <"Mål 14 Prosedyre etter dødsfall">
+					description = <"">
+				>
+				["at0263"] = <
+					text = <"Mål 15 Informasjon til pårørende">
+					description = <"">
+				>
+				["at0264"] = <
+					text = <"Mål 16 Prosedyrer vedr. verdisaker og eiendeler">
+					description = <"">
+				>
+				["at0265"] = <
+					text = <"Mål 17 Nødvendig informasjon">
+					description = <"">
+				>
+				["at0266"] = <
+					text = <"Mål 18 Skriftlig informasjon">
+					description = <"">
+				>
+				["at0267"] = <
+					text = <"Mål 19 Debrifing av personalet">
+					description = <"">
+				>
+				["at0268"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"Dokumentasjon av medikamentutlevering skal føres på kurve.">
+				>
+				["at0269"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0270"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"Dokumentasjon av medikamentutlevering skal føres på kurve.">
+				>
+				["at0271"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0272"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0273"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"Dokumentasjon av medikamentutlevering skal føres på kurve.">
+				>
+				["at0274"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"Dokumentasjon av medikamentutlevering skal føres på kurve.">
+				>
+				["at0275"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0276"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0277"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0278"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"Dokumentasjon av medikamentutlevering skal føres på kurve.">
+				>
+				["at0279"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0280"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0281"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0282"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0283"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0284"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0285"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0286"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0287"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0288"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0289"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0290"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0291"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0292"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0293"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0294"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0295"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0296"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0297"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0298"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0299"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0300"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0301"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0302"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0303"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0304"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0305"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0306"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0307"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0308"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0309"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+				["at0310"] = <
+					text = <"Tiltak for å oppnå målet">
+					description = <"">
+				>
+				["at0311"] = <
+					text = <"Effekt / resultat">
+					description = <"Ble mål oppnådd.">
+				>
+			>
+		>
+	>
