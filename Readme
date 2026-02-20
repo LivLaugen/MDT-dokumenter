@@ -1,0 +1,16 @@
+I produksjon nå:
+
+"templateId": "Oncology-MDT-Execution_v23",
+  "name": "Oncology-MDT-Execution",
+  "version": "1.39.0",
+  "createdTimestamp": "2025-11-17T13:10:23.9626472+01:00"
+
+"templateId": "Oncology-MDT-Evaluation_v12",
+  "name": "Oncology-MDT-Evaluation",
+  "version": "1.18.0",
+  "createdTimestamp": "2025-09-02T12:19:29.4903883+02:00",
+
+ "templateId": "Oncology-MDT-Request_v10",
+  "name": "Oncology-MDT-Request",
+  "version": "1.26.0",
+  "createdTimestamp": "2025-11-11T14:42:34.2935948+01:00",
