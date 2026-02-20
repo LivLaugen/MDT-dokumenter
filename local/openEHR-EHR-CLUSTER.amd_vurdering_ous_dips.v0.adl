@@ -1,0 +1,246 @@
+archetype (adl_version=1.4; uid=2583ec80-fc95-469c-987d-0c62f43686e4)
+	openEHR-EHR-CLUSTER.amd_vurdering_ous_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-03-26">
+		["name"] = <"Thomas Pedersen Baerland">
+		["organisation"] = <"Oslo University Hospital / DIPS ASA">
+		["email"] = <"tba@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Arne Løberg Sæter", ...>
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Kvalitativ og strukturert beskrivelse og oppsummering av resulatet av klinisk og supplerende sundersøkelser av pasient med aldersrelatert makuladegenerasjon AMD.">
+			copyright = <"© OUS HF / DIPS ASA">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["current_contact"] = <"Thomas Pedersen Baerland, Oslo University Hospital / DIPS ASA<tba@dips.no>">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"72D6A037753FD3EC8C9F2AE1666D4933">
+		["build_uid"] = <"59533e2a-7541-4589-8469-64a03bf6eba4">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Amd vurdering ous dips
+		items cardinality matches {1..*; unordered} matches {
+			CLUSTER[at0001] occurrences matches {0..1} matches {    -- Tørr amd
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0019] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0018] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+					CLUSTER[at0010] occurrences matches {0..1} matches {    -- Druser
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0011] occurrences matches {0..1} matches {    -- Type
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0012] occurrences matches {0..1} matches {    -- Størrelse
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0013] occurrences matches {0..1} matches {    -- Mønster
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0014] occurrences matches {0..1} matches {    -- Beliggenhet
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {    -- Fokal hyperpigmentering
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0016] occurrences matches {0..1} matches {    -- Atrofi
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0002] occurrences matches {0..1} matches {    -- Elsudativ amd
+				items cardinality matches {1..*; unordered} matches {
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Type CNV
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Type ødem
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Ødem
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- Endring ødem
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Komplikasjoner
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0009] occurrences matches {0..*} matches {    -- Behandling eksudativ AMD
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			ELEMENT[at0020] occurrences matches {0..1} matches {    -- Diagnostikk
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0021] occurrences matches {0..1} matches {    -- Oppsummering
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0022] occurrences matches {0..1} matches {    -- Lateralitet
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Amd vurdering ous dips">
+					description = <"Kvalitativ og strukturert beskrivelse og oppsummering av resulatet av klinisk og supplerende sundersøkelser av pasient med aldersrelatert makuladegenerasjon AMD.">
+				>
+				["at0001"] = <
+					text = <"Tørr amd">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Elsudativ amd">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Type CNV">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Type ødem">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Ødem">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Endring ødem">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Komplikasjoner">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Behandling eksudativ AMD">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Druser">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Type">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Størrelse">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Mønster">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Beliggenhet">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Fokal hyperpigmentering">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Atrofi">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Beskrivelse">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Diagnostikk">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Oppsummering">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Lateralitet">
+					description = <"*">
+				>
+			>
+		>
+	>
