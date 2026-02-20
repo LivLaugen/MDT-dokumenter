@@ -1,0 +1,481 @@
+archetype (adl_version=1.4; uid=6efd8861-7ef6-4217-ac24-fa35fe4d0569)
+	openEHR-EHR-CLUSTER.endoftreatmentreport_thymatroniv.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Kanika Kuwelker">
+				["organisation"] = <"Helse Vest IKT">
+				["email"] = <"kanika.kuwelker@helse-vest-ikt.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2022-08-30">
+		["name"] = <"Kanika Kuwelker">
+		["organisation"] = <"Helse Vest IKT">
+		["email"] = <"kanika.kuwelker@helse-vest-ikt.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere endepunkter og indekser i sluttrapporten levert av Thymatron IV under anfallsovervåking i elektrosjokkbehandling (ECT).">
+			keywords = <"thymatron, thymatron IV, elektrosjokkbehandling, ECT, elektroencephalogram, EEG", ...>
+			use = <"Bruk for å registrere endepunkter og indekser i sluttrapporten levert av Thymatron IV under anfallsovervåking i elektrosjokkbehandling (ECT).">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record endpoints and indices in the end-of-treatment report provided by Thymatron IV during seizure monitoring in electroconversion therapy (ECT).">
+			keywords = <"thymatron, thymatron IV, electroconversion therapy, ECT, electroencephalography, EEG", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to record endpoints and indices in the end-of-treatment report provided by Thymatron IV during seizure monitoring in electroconversion therapy (ECT).">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Avgrenet fra: <Legg til en referanse til den originale ressursen her>
+
+Somatics LLC. User Manual Thymatron® System IV. [Internet]. Venice, Florida: Somatics LLC; 2021. Available from: http://www.thymatron.com/downloads/System_IV_Instruction_Manual_Rev22.pdf.">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"28A8661F7A4EFF4EEB8CA59433221D2F">
+		["build_uid"] = <"cbd467cb-4543-46e5-b237-c53cdc531a13">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- End-of-treatment report Thymatron IV
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- % Energy Set
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::507]>
+						list = <
+							["1"] = <
+								units = <"%">
+								magnitude = <|>=0.0|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Charge Delivered
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::498]>
+						list = <
+							["1"] = <
+								units = <"mC">
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Current
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::334]>
+						list = <
+							["1"] = <
+								units = <"A">
+								magnitude = <|>=0.0|>
+								precision = <|2|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Stimulus Duration
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::128]>
+						list = <
+							["1"] = <
+								units = <"s">
+								magnitude = <|>=0.0|>
+								precision = <|1|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Frequency
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::382]>
+						list = <
+							["1"] = <
+								units = <"Hz">
+								magnitude = <|>=0.0|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..1} matches {    -- Pulse Width
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::128]>
+						list = <
+							["1"] = <
+								units = <"ms">
+								magnitude = <|>=0.0|>
+								precision = <|2|>
+							>
+						>
+					>
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0007] occurrences matches {0..1} matches {    -- Static Impedance
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::375]>
+						list = <
+							["1"] = <
+								units = <"Ohm">
+								magnitude = <|>=0.0|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0008] occurrences matches {0..1} matches {    -- Dynamic Impedance
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::375]>
+						list = <
+							["1"] = <
+								units = <"Ohm">
+								magnitude = <|>=0.0|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {    -- EEG Endpoint
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::128]>
+						list = <
+							["1"] = <
+								units = <"s">
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- EMG Endpoint
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::128]>
+						list = <
+							["1"] = <
+								units = <"s">
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0011] occurrences matches {0..1} matches {    -- Base Heart Rate
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::382]>
+						list = <
+							["1"] = <
+								units = <"/min">
+								magnitude = <|>=0.0|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Peak Heart Rate
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::382]>
+						list = <
+							["1"] = <
+								units = <"/min">
+								magnitude = <|>=0.0|>
+							>
+						>
+					>
+				}
+			}
+			CLUSTER[at0019] occurrences matches {0..1} matches {    -- Seizure quality measures
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0013] occurrences matches {0..1} matches {    -- Average Seizure Energy Index
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::757]>
+								list = <
+									["1"] = <
+										units = <"uV2">
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Postictal Suppression Index
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::507]>
+								list = <
+									["1"] = <
+										units = <"%">
+										magnitude = <|0.0..100.0|>
+										precision = <|1|>
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {    -- Maximum Sustained Power
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::757]>
+								list = <
+									["1"] = <
+										units = <"uV2">
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0016] occurrences matches {0..1} matches {    -- Time to Peak Power
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::128]>
+								list = <
+									["1"] = <
+										units = <"s">
+										magnitude = <|>=0.0|>
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0017] occurrences matches {0..1} matches {    -- Maximum Sustained Coherence
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::507]>
+								list = <
+									["1"] = <
+										units = <"%">
+										magnitude = <|0.0..100.0|>
+										precision = <|1|>
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0018] occurrences matches {0..1} matches {    -- Time to Peak Coherence
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::128]>
+								list = <
+									["1"] = <
+										units = <"s">
+										magnitude = <|>=0.0|>
+									>
+								>
+							>
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"End-of-treatment report Thymatron IV">
+					description = <"Series of endpoints and indices in the end-of-treatment report provided by Thymatron IV during seizure monitoring in electrotherapy therapy (ECT).">
+				>
+				["at0001"] = <
+					text = <"% Energy Set">
+					description = <"The percent of maximum stimulus charge.">
+				>
+				["at0002"] = <
+					text = <"Charge Delivered">
+					description = <"ECT stimulus charge in millicoulombs (mC).">
+				>
+				["at0003"] = <
+					text = <"Current">
+					description = <"ECT stimulus current in ampere (A).">
+				>
+				["at0004"] = <
+					text = <"Stimulus Duration">
+					description = <"ECT stimulus duration in seconds (s).">
+				>
+				["at0005"] = <
+					text = <"Frequency">
+					description = <"ECT stimulus frequency in hertz (hz).">
+				>
+				["at0006"] = <
+					text = <"Pulse Width">
+					description = <"Pulse width of ECT stimulus in miliseconds (ms).">
+				>
+				["at0007"] = <
+					text = <"Static Impedance">
+					description = <"Impedance measured prior to application of ECT stimulus in ohm.">
+				>
+				["at0008"] = <
+					text = <"Dynamic Impedance">
+					description = <"Impedance measured during ECT stimulus in ohm.">
+				>
+				["at0009"] = <
+					text = <"EEG Endpoint">
+					description = <"Seizure duration in seconds based on automatic EEG seizure endpoint determination.">
+					comment = <"The computer-derived endpoint seizure duration measures are derived solely by calculation and are provided to aid, not replace, the physician’s judgment. It is possible for seizure activity to continue in the brain after any or all of the computer reports indicate seizure termination. It is also possible for artifact to be interpreted by the computer programs as seizure activity.">
+				>
+				["at0010"] = <
+					text = <"EMG Endpoint">
+					description = <"Seizure duration in seconds based on automatic EMG (motor) seizure endpoint determination.">
+					comment = <"The computer-derived endpoint seizure duration measures are derived solely by calculation and are provided to aid, not replace, the physician’s judgment. It is possible for seizure activity to continue in the brain after any or all of the computer reports indicate seizure termination. It is also possible for artifact to be interpreted by the computer programs as seizure activity.">
+				>
+				["at0011"] = <
+					text = <"Base Heart Rate">
+					description = <"Baseline heart rate in beats per minute as measured by ECG.">
+					comment = <"The ECG function of the Thymatron® System IV device is used only to obtain a heart rate to help assess the efficacy of the seizure; it is not intended to be used to make diagnoses.">
+				>
+				["at0012"] = <
+					text = <"Peak Heart Rate">
+					description = <"Peak heart rate in beats per minute as measured by ECG.">
+					comment = <"The ECG function of the Thymatron® System IV device is used only to obtain a heart rate to help assess the efficacy of the seizure; it is not intended to be used to make diagnoses.">
+				>
+				["at0013"] = <
+					text = <"Average Seizure Energy Index">
+					description = <"The Average Seizure Energy Index (ASEI) integrates the total ictal EEG power across the entire seizure and divides the result by the total seizure duration.">
+				>
+				["at0014"] = <
+					text = <"Postictal Suppression Index">
+					description = <"The Postictal Suppression Index (PSI) measures the percentage decrease in ictal EEG amplitude immediately following seizure termination.">
+				>
+				["at0015"] = <
+					text = <"Maximum Sustained Power">
+					description = <"The Maximum Sustained Power (MSP) measure reports the mean value of the 10-second EEG segment with the highest average power recorded during the seizure.">
+				>
+				["at0016"] = <
+					text = <"Time to Peak Power">
+					description = <"Time to Peak Power is the time elapsed from stimulus termination to the point of maximum EEG power.">
+				>
+				["at0017"] = <
+					text = <"Maximum Sustained Coherence">
+					description = <"The Maximum Sustained Coherence (COH) measure reports the mean value of the 5-second EEG segment with the highest average coherence recorded during the seizure. 
+">
+				>
+				["at0018"] = <
+					text = <"Time to Peak Coherence">
+					description = <"Time to Peak Coherence is the time elapsed from stimulus termination to the point of maximum EEG coherence.">
+				>
+				["at0019"] = <
+					text = <"Seizure quality measures">
+					description = <"">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sluttrapport Thymatron IV">
+					description = <"Serie med endepunkter og indekser i sluttrapport levert av Thymatron IV under anfallsovervåking i elektrosjokkbehandling (ECT).">
+				>
+				["at0001"] = <
+					text = <"% Energy Set">
+					description = <"Prosenten av maksimal stimulusladning.">
+				>
+				["at0002"] = <
+					text = <"Charge Delivered">
+					description = <"ECT-stimulusladning i millicoulombs (mC).">
+				>
+				["at0003"] = <
+					text = <"Current">
+					description = <"ECT-stimulusstrøm i ampere (A).">
+				>
+				["at0004"] = <
+					text = <"Stimulus Duration">
+					description = <"ECT-stimuleringsvarighet i sekunder (s).">
+				>
+				["at0005"] = <
+					text = <"Frequency">
+					description = <"ECT-stimuleringsfrekvens i hertz (hz).">
+				>
+				["at0006"] = <
+					text = <"Pulse Width">
+					description = <"Pulsbredden til ECT-stimulus i millisekunder (ms).">
+				>
+				["at0007"] = <
+					text = <"Static Impedance">
+					description = <"Impedans målt før påføring av ECT-stimulus i ohm.">
+				>
+				["at0008"] = <
+					text = <"Dynamic Impedance">
+					description = <"Impedans målt under ECT-stimulus i ohm.">
+				>
+				["at0009"] = <
+					text = <"EEG Endpoint">
+					description = <"Anfallsvarighet i sekunder basert på automatisk EEG-anfallendepunktsbestemmelse.">
+					comment = <"De dataavledede målene for endepunktanfalls varighet utledes utelukkende ved beregning og er gitt for å hjelpe, ikke erstatte, legens dømmekraft. Det er mulig for anfallsaktiviteten å fortsette i hjernen etter at noen eller alle datarapportene indikerer at anfallet er avsluttet. Det er også mulig at artefakter tolkes av dataprogrammene som anfallsaktivitet">
+				>
+				["at0010"] = <
+					text = <"EMG Endpoint">
+					description = <"Anfallsvarighet i sekunder basert på automatisk EMG (motorisk) endepunktsbestemmelse av anfall">
+					comment = <"De dataavledede målene for endepunktanfalls varighet utledes utelukkende ved beregning og er gitt for å hjelpe, ikke erstatte, legens dømmekraft. Det er mulig for anfallsaktiviteten å fortsette i hjernen etter at noen eller alle datarapportene indikerer at anfallet er avsluttet. Det er også mulig at artefakter tolkes av dataprogrammene som anfallsaktivitet">
+				>
+				["at0011"] = <
+					text = <"Base Heart Rate">
+					description = <"Baseline hjertefrekvens i slag per minutt målt med EKG.">
+					comment = <"EKG-funksjonen til Thymatron IV-enheten brukes kun for å oppnå hjertefrekvens for å hjelpe med å vurdere effekten av anfallet; det er ikke ment å brukes til å stille diagnoser.">
+				>
+				["at0012"] = <
+					text = <"Peak Heart Rate">
+					description = <"Maksimal hjertefrekvens i slag per minutt målt med EKG.">
+					comment = <"EKG-funksjonen til Thymatron IV-enheten brukes kun for å oppnå hjertefrekvens for å hjelpe med å vurdere effekten av anfallet; det er ikke ment å brukes til å stille diagnoser.">
+				>
+				["at0013"] = <
+					text = <"Average Seizure Energy Index">
+					description = <"Average Seizure Energy Index (ASEI) integrerer den totale iktale EEG-kraften over hele anfallet og deler resultatet på den totale anfallsvarigheten.">
+				>
+				["at0014"] = <
+					text = <"Postictal Suppression Index">
+					description = <"Postictal Suppression Index (PSI) måler den prosentvise reduksjonen i ictal EEG-amplitude umiddelbart etter avsluttet anfall.">
+				>
+				["at0015"] = <
+					text = <"Maximum Sustained Power">
+					description = <"Maximum Sustained Power (MSP)-målet rapporterer gjennomsnittsverdien av 10-sekunders EEG-segmentet med den høyeste gjennomsnittlige effekten registrert under anfallet.">
+				>
+				["at0016"] = <
+					text = <"Time to Peak Power">
+					description = <"Time to Peak Power er tiden som har gått fra stimulus avsluttes til punktet for maksimal EEG-effekt.">
+				>
+				["at0017"] = <
+					text = <"Maximum Sustained Coherence">
+					description = <"Maximum Sustained Coherence (COH) rapporterer gjennomsnittsverdien av 5-sekunders EEG-segmentet med den høyeste gjennomsnittlige koherensen registrert under anfallet.">
+				>
+				["at0018"] = <
+					text = <"Time to Peak Coherence">
+					description = <"Time to Peak Coherence er tiden som har gått fra stimulus avsluttes til punktet med maksimal EEG-koherens.">
+				>
+				["at0019"] = <
+					text = <"Seizure quality measures">
+					description = <"">
+				>
+			>
+		>
+	>
