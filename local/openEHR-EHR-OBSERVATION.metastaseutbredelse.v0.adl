@@ -1,0 +1,199 @@
+archetype (adl_version=1.4; uid=642672c2-017f-4ee7-9396-ef93243dc74a)
+	openEHR-EHR-OBSERVATION.metastaseutbredelse.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Ikke kjent">
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"5DB67D8BAF8F88E624D479455FCE7DE9">
+		["build_uid"] = <"75b1749b-404a-4565-abfb-53bb2e6cc101">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Metastaseutbredelse
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0023] occurrences matches {0..1} matches {    -- IngenFjernmet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {    -- Skjelettmet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {    -- Levermet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {    -- Lungemet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {    -- Hjernemet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {    -- Bekkenmet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {    -- UtenforBekkenmet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0064] occurrences matches {0..1} matches {    -- Peritoneummet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0065] occurrences matches {0..1} matches {    -- Hudmet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0030] occurrences matches {0..1} matches {    -- AnnetFjernmet
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0031] occurrences matches {0..1} matches {    -- AnnetFjernmetSpesifiser
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {    -- StorrelseFjernmet
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::497]>
+												list = <
+													["1"] = <
+														units = <"'">
+														magnitude = <|0.0..999.9|>
+														precision = <|1|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0033] occurrences matches {0..1} matches {    -- FjernmetUkjent
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Metastaseutbredelse">
+					description = <"Metastaseutbredelse på diagnosetidspunktet">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0023"] = <
+					text = <"IngenFjernmet">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Skjelettmet">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Levermet">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Hjernemet">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Lungemet">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Bekkenmet">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"UtenforBekkenmet">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"AnnetFjernmet">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"AnnetFjernmetSpesifiser">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"FjernmetUkjent">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"StorrelseFjernmet">
+					description = <"Diameter på største fjernmetastase, målt i mm">
+				>
+				["at0064"] = <
+					text = <"Peritoneummet">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Hudmet">
+					description = <"*">
+				>
+			>
+		>
+	>
