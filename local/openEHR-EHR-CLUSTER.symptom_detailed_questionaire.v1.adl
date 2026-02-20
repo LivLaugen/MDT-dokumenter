@@ -1,0 +1,407 @@
+archetype (adl_version=1.4; uid=0ce6d798-7ef6-3de2-a10a-45494c735146)
+	openEHR-EHR-CLUSTER.symptom_detailed_questionaire.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2007-02-20">
+		["name"] = <"Tony Shannon">
+		["organisation"] = <"UK NHS, Connecting for Health">
+		["email"] = <"tony.shannon@nhs.net">
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Sam Heard, Ocean Informatics","Heather Leslie, Ocean Informatics, Australia (Editor)","Ian McNicoll, Ocean Informatics, United Kingdom (Editor)">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"*To record detail about a symptom - either self-recorded by an individual or recorded on the behalf of a patient by a clinician. A complete patient history may include varying level of details about a variety of symptoms.(en)">
+			keywords = <"*complaint(en)","*presenting(en)","*symptom(en)">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"*Use to record detailed information about a symptom as told to a clinician by a patient or self-recorded by the individual/patient.
+
+This archetype allows a 'nil significant' statement to be explicitly recorded.(en)">
+			misuse = <"*Not to be used to record details about pain. Use the specialisation of this archetype - the CLUSTER.symptom-pain instead.
+
+Not to be used for diagnoses and problems that form part of a persisting Problem List - use EVALUATION.problem_diagnosis.(en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record detail about a symptom - either self-recorded by an individual or recorded on the behalf of a patient by a clinician. A complete patient history may include varying level of details about a variety of symptoms.">
+			keywords = <"complaint","presenting","symptom">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to record detailed information about a symptom as told to a clinician by a patient or self-recorded by the individual/patient.
+
+This archetype allows a 'nil significant' statement to be explicitly recorded.">
+			misuse = <"Not to be used to record details about pain. Use the specialisation of this archetype - the CLUSTER.symptom-pain instead.
+
+Not to be used for diagnoses and problems that form part of a persisting Problem List - use EVALUATION.problem_diagnosis.">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"9729E8E26C241058C223A3E97D240A59">
+		["build_uid"] = <"590b1f09-cf6d-3195-b990-1c63b9bd1778">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Symptom_detailed_questionaire
+		items cardinality matches {1..*; unordered} matches {
+			CLUSTER[at0156] occurrences matches {0..1} matches {    -- Detailed characteristics
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0032] occurrences matches {0..1} matches {    -- Character
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0008] occurrences matches {0..1} matches {    -- Onset Type
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0009,    -- Gradual
+							at0036,    -- Rapid
+							at0010]    -- Sudden
+						}
+					}
+				}
+			}
+			ELEMENT[at0155] occurrences matches {0..1} matches {    -- Site
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0163] occurrences matches {0..1} matches {    -- Duration
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0164,    -- Minutes
+							at0165,    -- Hours
+							at0166,    -- Days
+							at0167,    -- Weeks
+							at0168]    -- Months
+						}
+					}
+				}
+			}
+			ELEMENT[at0169] occurrences matches {0..1} matches {    -- Duration Fits/Seizures/Attacks
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0176,    -- None
+							at0175,    -- Seconds
+							at0170,    -- Minutes
+							at0171,    -- Hours
+							at0172,    -- Days
+							at0173]    -- Weeks
+						}
+					}
+				}
+			}
+			CLUSTER[at0014] occurrences matches {0..1} matches {    -- Precipitating factors
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0015] occurrences matches {1..*} matches {    -- Precipitating Factor
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0018] occurrences matches {0..1} matches {    -- Modifying factors
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0019] occurrences matches {0..*} matches {    -- Factor
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0161] occurrences matches {0..1} matches {    -- Other symptoms
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0162] occurrences matches {0..1} matches {    -- Other symptom
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0159] occurrences matches {0..1} matches {    -- Other questions
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0160] occurrences matches {0..1} matches {    -- Question
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"SNOMED-CT", ...>
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Symptom_detailed_questionaire">
+					description = <"A subjective observation by an individual about departure from normal function and which may indicate the presence of disease or abnormality. Either self-recorded or recorded on the behalf of a patient by a clinician.">
+				>
+				["at0008"] = <
+					text = <"Onset Type">
+					description = <"The nature of the onset of the symptom.">
+				>
+				["at0009"] = <
+					text = <"Gradual">
+					description = <"Over a longer period of time.">
+				>
+				["at0010"] = <
+					text = <"Sudden">
+					description = <"Almost immediate.">
+				>
+				["at0014"] = <
+					text = <"Precipitating factors">
+					description = <"Factors that trigger or bring on the symptom.">
+				>
+				["at0015"] = <
+					text = <"Precipitating Factor">
+					description = <"An event or activity that brings on or triggers the symptom.">
+				>
+				["at0018"] = <
+					text = <"Modifying factors">
+					description = <"Information about a specific factor that changes the symptom.">
+				>
+				["at0019"] = <
+					text = <"Factor">
+					description = <"An event or activity that modifies the symptom.">
+				>
+				["at0032"] = <
+					text = <"Character">
+					description = <"The character of the symptom.">
+				>
+				["at0036"] = <
+					text = <"Rapid">
+					description = <"Over a short period of time.">
+				>
+				["at0155"] = <
+					text = <"Site">
+					description = <"The site on the body where the symptom was located.">
+				>
+				["at0156"] = <
+					text = <"Detailed characteristics">
+					description = <"*">
+				>
+				["at0159"] = <
+					text = <"Other questions">
+					description = <"*">
+				>
+				["at0160"] = <
+					text = <"Question">
+					description = <"*">
+				>
+				["at0161"] = <
+					text = <"Other symptoms">
+					description = <"*">
+				>
+				["at0162"] = <
+					text = <"Other symptom">
+					description = <"*">
+				>
+				["at0163"] = <
+					text = <"Duration">
+					description = <"How long the patient has suffered from the symptom">
+				>
+				["at0164"] = <
+					text = <"Minutes">
+					description = <"Symptom has been present for minutes">
+				>
+				["at0165"] = <
+					text = <"Hours">
+					description = <"Symptom has been present for hours">
+				>
+				["at0166"] = <
+					text = <"Days">
+					description = <"Symptom has been present for days">
+				>
+				["at0167"] = <
+					text = <"Weeks">
+					description = <"Symptom has been present for weeks">
+				>
+				["at0168"] = <
+					text = <"Months">
+					description = <"Symptom has been present for months">
+				>
+				["at0169"] = <
+					text = <"Duration Fits/Seizures/Attacks">
+					description = <"*">
+				>
+				["at0170"] = <
+					text = <"Minutes">
+					description = <"Fits/Seizures/Attacks typically lasts for minutes">
+				>
+				["at0171"] = <
+					text = <"Hours">
+					description = <"Fits/Seizures/Attacks typically lasts for  hours">
+				>
+				["at0172"] = <
+					text = <"Days">
+					description = <"Fits/Seizures/Attacks typically lasts for days">
+				>
+				["at0173"] = <
+					text = <"Weeks">
+					description = <"Fits/Seizures/Attacks typically lasts for weeks">
+				>
+				["at0175"] = <
+					text = <"Seconds">
+					description = <"Fits/Seizures/Attacks typically lasts for seconds">
+				>
+				["at0176"] = <
+					text = <"None">
+					description = <"The patients does not have Fits/Seizures/Attacks ">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Symptom_detailed_questionaire(en)">
+					description = <"*A subjective observation by an individual about departure from normal function and which may indicate the presence of disease or abnormality. Either self-recorded or recorded on the behalf of a patient by a clinician.(en)">
+				>
+				["at0008"] = <
+					text = <"Debut">
+					description = <"Hvordan symptomet startet opp">
+				>
+				["at0009"] = <
+					text = <"Gradvis, lang tid">
+					description = <"Startet gradvis over lang tid">
+				>
+				["at0010"] = <
+					text = <"Plutselig">
+					description = <"Startet brått">
+				>
+				["at0014"] = <
+					text = <"Utløsende faktorer">
+					description = <"Faktorer som utløser symptomer">
+				>
+				["at0015"] = <
+					text = <"Utløsende faktor">
+					description = <"Utløsende faktor">
+				>
+				["at0018"] = <
+					text = <"Modifiserende faktorer">
+					description = <"Faktorer som påvirker symptomet">
+				>
+				["at0019"] = <
+					text = <"Modifiserende faktor">
+					description = <"Faktor som påvirker symptomet">
+				>
+				["at0032"] = <
+					text = <"Kjennetegn">
+					description = <"*The character of the symptom.(en)">
+				>
+				["at0036"] = <
+					text = <"Gradvis, kort tid">
+					description = <"Startet gradvis over kort tid">
+				>
+				["at0155"] = <
+					text = <"Lokalisering">
+					description = <"Hvor på kroppen merker pasienten symptomet">
+				>
+				["at0156"] = <
+					text = <"Detaljerte kjennetegn">
+					description = <"Detaljerte kjennetegn på symptomet">
+				>
+				["at0159"] = <
+					text = <"Andre spørsmål">
+					description = <"**(en)">
+				>
+				["at0160"] = <
+					text = <"Spørsmål">
+					description = <"**(en)">
+				>
+				["at0161"] = <
+					text = <"Andre tilhørende symptomer">
+					description = <"Andre tilhørende symptomer">
+				>
+				["at0162"] = <
+					text = <"Annet symptom">
+					description = <"**(en)">
+				>
+				["at0163"] = <
+					text = <"Varighet">
+					description = <"Hvor lenge pasienten har merket symptomet">
+				>
+				["at0164"] = <
+					text = <"Minutter">
+					description = <"Symptomet har vært tilstede i minutter">
+				>
+				["at0165"] = <
+					text = <"Timer">
+					description = <"Symptomet har vært tilstede i timer">
+				>
+				["at0166"] = <
+					text = <"Dager">
+					description = <"Symptomet har vært tilstede i dager">
+				>
+				["at0167"] = <
+					text = <"Uker">
+					description = <"Symptomet har vært tilstede i uker">
+				>
+				["at0168"] = <
+					text = <"Måneder">
+					description = <"Symptomet har vært tilstede i måneder">
+				>
+				["at0169"] = <
+					text = <"Varighet anfall">
+					description = <"Hvor lenge varer typisk  eventuelle anfall ">
+				>
+				["at0170"] = <
+					text = <"*Minutes(en)">
+					description = <"*Symptom has been present for minutes(en)">
+				>
+				["at0171"] = <
+					text = <"*Hours(en)">
+					description = <"*Symptom has been present for hours(en)">
+				>
+				["at0172"] = <
+					text = <"*Days(en)">
+					description = <"*Symptom has been present for days(en)">
+				>
+				["at0173"] = <
+					text = <"*Weeks(en)">
+					description = <"*Symptom has been present for weeks(en)">
+				>
+				["at0175"] = <
+					text = <"*Seconds(en)">
+					description = <"*Fits/Seizures/Attacks typically lasts for seconds(en)">
+				>
+				["at0176"] = <
+					text = <"*None(en)">
+					description = <"*The patients does not have Fits/Seizures/Attacks (en)">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["SNOMED-CT"] = <
+			items = <
+				["at0000"] = <[SNOMED-CT::19019007]>
+				["at0014"] = <[SNOMED-CT::57465006]>
+				["at0015"] = <[SNOMED-CT::57465006]>
+			>
+		>
+	>
