@@ -1,0 +1,308 @@
+archetype (adl_version=1.4; uid=9ace17ba-4ca0-4168-8ad6-bc8f0956765f)
+	openEHR-EHR-OBSERVATION.pf_ratio.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			author = <
+				["name"] = <"Sarah Ballout">
+				["organisation"] = <"MHH-Hannover">
+				["email"] = <"ballout.sarah@mh-hannover.de">
+			>
+		>
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"John Tore Valand, Vebjørn Arntzen">
+				["organisation"] = <"Helse Bergen University Hospital, Oslo University Hospital">
+				["email"] = <"varntzen@ous-hf.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2020-03-27">
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Atomica Informatics">
+		["email"] = <"heather.leslie@atomicainformatics.com">
+	>
+	lifecycle_state = <"published">
+	other_contributors = <"Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)","SB Bhattacharyya, Sudisa Consultancy Services, India","Grant Forrest, NHS Scotland, United Kingdom","Mikkel Gaup Grønmo, Helse-Nord, FSE, Norway (openEHR Editor)","Anca Heyd, DIPS ASA, Norway","Evelyn Hovenga, EJSH Consulting, Australia","Liv Laugen, ​Oslo University Hospital, Norway, Norway (openEHR Editor)","Heather Leslie, Atomica Informatics, Australia","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom","Ana Pereira, CINTESIS, CUF-Porto, Portugal","Søren Pischke, MD PhD, Senior Consultant, Department of Emergencies and Critical Care, Oslo University Hospital, Norway","Benjamin Senst, Germany","Trine Strand, Oslo Universitetssykehus (OUS), Norway","Natalia Strauch, Medizinische Hochschule Hannover, Germany","Roy Støle, OUS, Norway","Norwegian Review Summary, Nasjonal IKT HF, Norway","Micaela Thierley, Helse Vest IKT, Norway","Rowan Thomas, St. Vincent's Hospital Melbourne, Australia","Jeremy Tong, NHS, United Kingdom","Guri Tømmervåg, DIPS AS, Norway","John Tore Valand, Helse Bergen, Norway (openEHR Editor)","Marit Alice Venheim, Helse Vest IKT, Norway (openEHR Editor)">
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"*Use to record the ratio between the partial pressure of oxygen in blood (PaO₂) and the fraction of oxygen in the inspired air (FiO₂). (en)">
+			keywords = <"*Carrico (en)","*Horowitz (en)","*index (en)","*ratio (en)","*PF (en)","*P/F (en)","*PaO2 (en)","*FiO2 (en)">
+			use = <"*Use to record the ratio between the partial pressure of oxygen in blood (PaO₂), and the fraction of oxygen in the inspired air (FiO₂).
+
+The value of PaO₂ will usually be recorded elsewhere in the health record as part of an arterial blood gas test result (OBSERVATION.laboratory_test_result).
+
+The value of FiO₂ will usually be recorded elsewhere in the health record using the 'FiO₂' data element (at0052) in the CLUSTER.inspired_oxygen.
+
+This ratio may be used within other scores, such as SOFA Score (OBSERVATION.sofa_score), SMART-COP risk score, ARDS severity score and Simplified Acute Physiology Score (SAPS) II. (en)">
+		>
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere ratio mellom partialtrykk av oksygen i blod (PaO₂) og fraksjon av oksygen i den innåndede luften (FiO₂).">
+			keywords = <"Carrico","Horowitz","indeks","ratio","PF","P/F","PaO2","FiO2","oksygenering","oksygeneringsbehov">
+			use = <"Bruk for å registrere ratio mellom partialtrykk av oksygen i blod (PaO₂) og fraksjon av oksygen i den innåndede luften (FiO₂).
+
+Verdien for PaO₂ blir normalt registrert annet sted i pasientjournalen, for eksempel som del av svar på arteriell blodgassanalyse (OBSERVATION.laboratory_test_result).
+
+Verdien for FiO₂ blir normalt registrert annet sted i pasientjournalen, i elementet 'FiO₂' (at0052) i CLUSTER.inspired_oxygen (Innåndet oksygen).
+
+Denne ratioen kan brukes i andre skårer, som for eksempel SOFA skår (OBSERVATION.sofa_score), SMART-COP risk skår, ARDS severity score og Simplified Acute Physiology Score (SAPS) II.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Use to record the ratio between the partial pressure of oxygen in blood (PaO₂) and the fraction of oxygen in the inspired air (FiO₂).">
+			keywords = <"Carrico","Horowitz","index","ratio","PF","P/F","PaO2","FiO2">
+			copyright = <"© openEHR Foundation">
+			use = <"Use to record the ratio between the partial pressure of oxygen in blood (PaO₂), and the fraction of oxygen in the inspired air (FiO₂).
+
+The value of PaO₂ will usually be recorded elsewhere in the health record as part of an arterial blood gas test result (OBSERVATION.laboratory_test_result).
+
+The value of FiO₂ will usually be recorded elsewhere in the health record using the 'FiO₂' data element (at0052) in the CLUSTER.inspired_oxygen.
+
+This ratio may be used within other scores, such as SOFA Score (OBSERVATION.sofa_score), SMART-COP risk score, ARDS severity score and Simplified Acute Physiology Score (SAPS) II.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["references"] = <"Avgrenet fra: PaO₂/FiO₂ ratio, Draft archetype [Internet]. openEHR Foundation, openEHR Clinical Knowledge Manager [cited: 2020-08-19]. Available from: https://ckm.openehr.org/ckm/archetypes/1013.1.4537
+
+Mortelliti MP, Manning HL. Acute respiratory distress syndrome. Am Fam Physician. 2002 May 1;65(9):1823-30. PMID: 12018805.
+
+ICU management and referral guidelines for severe hypoxic respiratory failure [Internet]. Wales: South Wales Critical Care Network; 2015 Dec [cited 2020 Jun 09]. 15p. Available from http://www.wales.nhs.uk/sites3/documents/962/Welsh%20Critical%20Care%20Networks%20-%20Severe%20hypoxic%20respiratory%20failure%20guidelines.pdf.">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"0DD9AF8F6896AABB2066005703AD16EB">
+		["build_uid"] = <"ae269c61-d872-4ee8-9175-5910655ab5fd">
+		["revision"] = <"1.0.0">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- PaO₂/FiO₂ ratio
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					POINT_EVENT[at0002] occurrences matches {0..*} matches {    -- Any point in time event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0004] matches {    -- Ratio
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::125]>
+												list = <
+													["1"] = <
+														units = <"kPa">
+													>
+													["2"] = <
+														units = <"mm[Hg]">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {    -- Clinical interpretation
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0009] matches {    -- Item tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0010] occurrences matches {0..1} matches {    -- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0005] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0006] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"PaO₂/FiO₂ ratio">
+					description = <"Ratio between the partial pressure of oxygen in blood (PaO₂) and the fraction of oxygen in the inhaled air (FiO₂).">
+					comment = <"Also known as the PF ratio, Carrico index or Horowitz quotient.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any point in time event">
+					description = <"Default, unspecified point in time event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Ratio">
+					description = <"Calculated ratio.">
+				>
+				["at0005"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+				["at0007"] = <
+					text = <"Clinical interpretation">
+					description = <"A clinical interpretation of the PaO₂/FiO₂ ratio.">
+				>
+				["at0008"] = <
+					text = <"Comment">
+					description = <"Additional narrative about the PaO₂/FiO₂ ratio not captured in other fields.">
+				>
+				["at0009"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0010"] = <
+					text = <"Confounding factors">
+					description = <"Issues or factors that may impact on measurement of the PaO₂/FiO₂ ratio, not captured in other fields.">
+				>
+			>
+		>
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"*PaO₂/FiO₂ ratio (en)">
+					description = <"*Ratio between the partial pressure of oxygen in blood (PaO₂) and the fraction of oxygen in the inhaled air (FiO₂). (en)">
+					comment = <"*Also known as the PF ratio, Carrico index or Horowitz quotient. (en)">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Beliebiges Ereignis zu einem Zeitpunkt.">
+					description = <"Standardwert, ein undefinierter/s Zeitpunkt oder Intervallereignis, das explizit im Template oder zur Laufzeit der Anwendung definiert werden kann.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"*Ratio (en)">
+					description = <"*Calculated ratio. (en)">
+				>
+				["at0005"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Erweiterung">
+					description = <"Zusätzliche Informationen, die zur Erfassung lokaler Inhalte oder zur Anpassung an andere Referenzmodelle/Formalismen erforderlich sind.">
+					comment = <"Zum Beispiel: Lokale Informationsanforderungen oder zusätzliche Metadaten, um Verknüpfungen mit FHIR herzustellen.">
+				>
+				["at0007"] = <
+					text = <"*Clinical interpretation (en)">
+					description = <"*A clinical interpretation of the PaO₂/FiO₂ ratio. (en)">
+				>
+				["at0008"] = <
+					text = <"*Comment (en)">
+					description = <"*Additional narrative about the PaO₂/FiO₂ ratio not captured in other fields. (en)">
+				>
+				["at0009"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0010"] = <
+					text = <"*Confounding factors (en)">
+					description = <"*Issues or factors that may impact on measurement of the PaO₂/FiO₂ ratio, not captured in other fields. (en)">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"PaO₂/FiO₂ ratio">
+					description = <"Ratio mellom partialtrykk av oksygen i blod (PaO₂) og fraksjon av oksygen i den innåndede luften (FiO₂).">
+					comment = <"Også kjent som PF ratio, Carrico index eller Horrowitz kvotient.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Uspesifisert tidspunkthendelse">
+					description = <"Standard, uspesifisert tidspunkt som kan defineres mer eksplisitt i en template eller i en applikasjon.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Ratio">
+					description = <"Kalkulert ratio.">
+				>
+				["at0005"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Tilleggsinformasjon">
+					description = <"Ytterligere informasjon som trengs for å kunne registrere lokalt definert innhold eller for å tilpasse til andre referansemodeller/formalismer.">
+					comment = <"For eksempel lokale informasjonsbehov eller ytterligere metadata for å kunne tilpasse til tilsvarende konsepter i FHIR.">
+				>
+				["at0007"] = <
+					text = <"Klinisk tolkning">
+					description = <"En klinisk tolkning av PaO₂/FiO₂ ratio.">
+				>
+				["at0008"] = <
+					text = <"Kommentar">
+					description = <"Ytterligere fritekst om PaO₂/FiO₂ ratio og som ikke er fanget i andre felt.">
+				>
+				["at0009"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0010"] = <
+					text = <"Konfunderende faktorer">
+					description = <"Fritekstbeskrivelse av faktorer som kan ha påvirkning på målingen av PaO₂/FiO₂ ratio.">
+				>
+			>
+		>
+	>
