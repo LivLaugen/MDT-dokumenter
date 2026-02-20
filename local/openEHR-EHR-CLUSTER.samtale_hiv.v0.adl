@@ -1,0 +1,287 @@
+archetype (adl_version=1.4; uid=a17a4d33-cf74-42bc-a3c1-61834ecac821)
+	openEHR-EHR-CLUSTER.samtale_hiv.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-11-10">
+		["name"] = <"DIPS ASA">
+		["organisation"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			misuse = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"B608B29DA4EFD428CAB8CF48F003C839">
+		["build_uid"] = <"ee4d8fe7-3519-4d72-ae89-b354cfcd2048">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Samtale hiv
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0020] occurrences matches {0..1} matches {    -- Psykisk reaksjon på diagnosen
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0019] occurrences matches {0..1} matches {    -- Kunnskap om HIV
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0021] occurrences matches {0..1} matches {    -- Kjennskap til andre HIV-positive
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0022] occurrences matches {0..1} matches {    -- Noen å dele nyheten med
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0080] occurrences matches {0..1} matches {    -- Erfaringer med å dele nyheten
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0075] occurrences matches {0..1} matches {    -- Familie/sosialt
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0051] occurrences matches {0..1} matches {    -- Tidligere sykdommer
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0052] occurrences matches {0..1} matches {    -- Arvelige belastninger
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0053] occurrences matches {0..1} matches {    -- Naturlige funksjoner
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0045] occurrences matches {0..1} matches {    -- Pasientens spørsmål
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0049] occurrences matches {0..1} matches {    -- Tilbud om hepatittvaksine
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0026] occurrences matches {0..1} matches {    -- Pasientens planer resten av dagen
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0028] occurrences matches {0..1} matches {    -- Mental helse/rus
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0044] occurrences matches {0..*} matches {    -- Informert om
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0040] occurrences matches {0..1} matches {    -- Vurdering av PEP for partner
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0041] occurrences matches {0..1} matches {    -- Sjekk for SOI
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0056] occurrences matches {0..1} matches {    -- Info til fastlege
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0066] occurrences matches {0..1} matches {    -- Utfyllende opplysninger
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0078] occurrences matches {0..1} matches {    -- Dato siste neg. HIV test
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0079] occurrences matches {0..1} matches {    -- Antatt smittetidspunkt
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0081] occurrences matches {0..*} matches {    -- Annet
+				include
+					archetype_id/value matches {/.*/}
+			}
+			ELEMENT[at0082] occurrences matches {0..1} matches {    -- Cervix cytologi
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0087,    -- Tatt
+							at0088,    -- Ønsket ikke
+							at0089]    -- Ikke aktuelt
+						}
+					}
+				}
+			}
+			ELEMENT[at0085] occurrences matches {0..1} matches {    -- Aktuelt
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0086] occurrences matches {0..1} matches {    -- Råd om vaksine
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Samtale hiv">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0019"] = <
+					text = <"Kunnskap om HIV">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0020"] = <
+					text = <"Psykisk reaksjon på diagnosen">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0021"] = <
+					text = <"Kjennskap til andre HIV-positive">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0022"] = <
+					text = <"Noen å dele nyheten med">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0026"] = <
+					text = <"Pasientens planer resten av dagen">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0028"] = <
+					text = <"Mental helse/rus">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0040"] = <
+					text = <"Vurdering av PEP for partner">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0041"] = <
+					text = <"Sjekk for SOI">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0044"] = <
+					text = <"Informert om">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0045"] = <
+					text = <"Pasientens spørsmål">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0049"] = <
+					text = <"Tilbud om hepatittvaksine">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0051"] = <
+					text = <"Tidligere sykdommer">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0052"] = <
+					text = <"Arvelige belastninger">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0053"] = <
+					text = <"Naturlige funksjoner">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0056"] = <
+					text = <"Info til fastlege">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0066"] = <
+					text = <"Utfyllende opplysninger">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0075"] = <
+					text = <"Familie/sosialt">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0078"] = <
+					text = <"Dato siste neg. HIV test">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0079"] = <
+					text = <"Antatt smittetidspunkt">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0080"] = <
+					text = <"Erfaringer med å dele nyheten">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0081"] = <
+					text = <"Annet">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0082"] = <
+					text = <"Cervix cytologi">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0085"] = <
+					text = <"Aktuelt">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0086"] = <
+					text = <"Råd om vaksine">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0087"] = <
+					text = <"Tatt">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0088"] = <
+					text = <"Ønsket ikke">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0089"] = <
+					text = <"Ikke aktuelt">
+					description = <"Beskrivelse burde vært her.">
+				>
+			>
+		>
+	>
