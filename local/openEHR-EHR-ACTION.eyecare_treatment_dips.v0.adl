@@ -1,0 +1,211 @@
+archetype (adl_version=1.4; uid=959a6399-2ef7-4117-bb64-aeaaa65ff210)
+	openEHR-EHR-ACTION.eyecare_treatment_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2023-06-11">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS AS">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Benyttes for å følges status på en klinisk prosess.">
+			keywords = <"øye, eyecare", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Benyttes for oppfølging av en behandling eller utredning for øyeproblem. ">
+			misuse = <"Skal ikke benyttes for andre lidelser. ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Avgrenet fra: <Legg til en referanse til den originale ressursen her>">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"D9234757FC245C33155A4A2C8447ABA5">
+		["build_uid"] = <"ff9c3cd5-12ff-405a-886a-32f735cf68fe">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Oftalmologi kontakt
+		description matches {
+			ITEM_TREE matches {
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Behandlingsnavn
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Behandlingstype
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0007] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+		ism_transition matches {
+			ISM_TRANSITION[at0001] matches {    -- Bestilt
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::524]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0001]    -- Bestilt
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0009] matches {    -- Planlagt
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::524]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0009]    -- Planlagt
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0002] matches {    -- Pågår
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::245]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0002]    -- Pågår
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0010] matches {    -- Avbrutt
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::531]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0010]    -- Avbrutt
+						}
+					}
+				}
+			}
+			ISM_TRANSITION[at0003] matches {    -- Ferdig
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0003]    -- Ferdig
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE matches {
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {    -- Tilleggsinformasjon
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Oftalmologi kontakt">
+					description = <"Benyttes for å følge fremdriften av en behandling/oppmøte for øyefaget. ">
+				>
+				["at0001"] = <
+					text = <"Bestilt">
+					description = <"Tjenesten er bestilt">
+				>
+				["at0002"] = <
+					text = <"Pågår">
+					description = <"Tjenesten har startet og er aktivt">
+				>
+				["at0003"] = <
+					text = <"Ferdig">
+					description = <"Tjenesten er fullført. ">
+				>
+				["at0004"] = <
+					text = <"Behandlingsnavn">
+					description = <"Definisjon av typen behandling som skal gis. Benyttes kodeverk så langt som mulig for å definere kategorien av behandlinger. ">
+				>
+				["at0005"] = <
+					text = <"Behandlingstype">
+					description = <"Benyttes for å gruppere type behandling. ">
+				>
+				["at0006"] = <
+					text = <"Beskrivelse">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Detaljer">
+					description = <"Slot for spesifikke utvidelser for ulike behandlinger">
+				>
+				["at0008"] = <
+					text = <"Tilleggsinformasjon">
+					description = <"Slot for utvidelse av protokoll">
+				>
+				["at0009"] = <
+					text = <"Planlagt">
+					description = <"Tjenesten er planlagt, dvs. forberedelser har startet">
+				>
+				["at0010"] = <
+					text = <"Avbrutt">
+					description = <"Tjenesten ble avbrutt. ">
+				>
+			>
+		>
+	>
