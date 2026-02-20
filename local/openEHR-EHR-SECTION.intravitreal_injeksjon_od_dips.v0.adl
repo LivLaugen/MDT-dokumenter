@@ -1,0 +1,50 @@
+archetype (adl_version=1.4; uid=ab25bc43-0675-42ea-967b-084ada5c4ef9)
+	openEHR-EHR-SECTION.intravitreal_injeksjon_od_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-03-25">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Avsnitt i dokumentet for intravitreal injeksjon. Egen SECTION benyttes for å kunne legge til flere injeksjoner som både består av en prosedyre og en action. Generisk SECTION.adhoc kan ikke benyttes da denne ikke kan ha flere instanser om den har fått endret navn.">
+			copyright = <"© OUS HF">
+			use = <"Til bruk for å lage et avsnitt i dokumentet for intravitreal injeksjon ved OUS Øyeavdelingen.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"B907C2B840B6F0756DE1E4875CED9E3B">
+		["build_uid"] = <"971aa135-5c35-47bd-afb9-118d6a5a44a3">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	SECTION[at0000] matches {*}    -- Intravitreal injeksjon od
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Intravitreal injeksjon od">
+					description = <"unknown">
+				>
+			>
+		>
+	>
