@@ -1,0 +1,260 @@
+archetype (adl_version=1.4; uid=f6bf4400-ad95-40fb-8ea6-21134c1b2086)
+	openEHR-EHR-CLUSTER.tnm_staging_7th.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Kristin Eik">
+				["organisation"] = <"Kreftregisteret">
+				["email"] = <"kristin.eik@kreftregisteret.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"27/07/2009">
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics Scotland">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Heather Leslie Ocean Informatics Australia","Sam Heard Ocean Informatics Australia","Koray Atalag, University of Auckland, New Zealand">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Arketype for å beskrive klassifisering og gradering av maligne svulster ved å benytte TNM klassifikasjon 7.utgave. Hver krefttype har en unik TNM-klassifisering og det vil være hensiktsmessig å spesialisere denne arketypen for å gjenspeile de spesifikke kravene, og at bruk av denne arketypen begrenses.">
+			keywords = <"tumor","TNM","malignitet","kreft","klassifisering","klassifikasjon","grad","gradering","stadium","lymfeknute","metastase","spredning">
+			use = <"Kan spesialiseres eller templat-begrenses for hver enkelt tumor, f.eks. TNM-klassifisering av bronkialt karsinom.">
+			misuse = <"Bør normalt ikke benyttes til TNM-klassifisering uten spesialisering eller templat-begrensninger.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"A framework archetype for the recording of classification and grading of malignancies using the TNM classification 7th Edition. Each malignancy has a unique TNM staging classification and it would be normal to further constrain this archetype to reflect these individual requirements.">
+			keywords = <"tumour","TNM","malignancy","cancer","staging","classification","grade","grading","stage","lymph node","metastasis">
+			copyright = <"© copyright (c) 2010 openEHR foundation, Nasjonal IKT HF">
+			use = <"May be specialised or template-constrained for each particular tumour. e.g. TNM classification for bronchial carcinoma">
+			misuse = <"Should not normally be used for TNM classification without specialisation or template-constraints">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Sobin LH. TNM Classification of Malignant Tumours 7th Edition.  John Wiley and Sons; 2009.">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"D301AA035F28B0302ADFCE4AD60F3ED6">
+		["build_uid"] = <"0052ce16-ce23-4319-9ec9-e817a4abfbd6">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Tumour - TNM Cancer staging 7th Edition
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Primary tumour (T)
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Regional lymph nodes (N)
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Distant metastasis (M)
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0025] occurrences matches {0..1} matches {    -- Residual tumour (R)
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0046] occurrences matches {0..1} matches {    -- Histopathological grading (G)
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0047,    -- GX
+							at0048,    -- G1
+							at0049,    -- G2
+							at0050,    -- G3
+							at0051]    -- G4
+						}
+					}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Overall staging
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0052] occurrences matches {0..1} matches {    -- Descriptors
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0053] occurrences matches {0..*} matches {    -- Descriptor
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0014] occurrences matches {0..1} matches {    -- Stage grouping
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Comment
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tumour - TNM Cancer staging 7th Edition">
+					description = <"A framework for the classification and grading of malignancies using the TNM classification system 7th Edition.">
+				>
+				["at0003"] = <
+					text = <"Primary tumour (T)">
+					description = <"Assessment of the primary tumour.">
+				>
+				["at0004"] = <
+					text = <"Regional lymph nodes (N)">
+					description = <"Assessment of the regional lymph nodes.">
+				>
+				["at0005"] = <
+					text = <"Distant metastasis (M)">
+					description = <"Assessment of distant metastasis.">
+				>
+				["at0010"] = <
+					text = <"Overall staging">
+					description = <"The overall staging derived from each T, N and M component e.g T1aM0NX. May include additional TNM descriptors.">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"A text comment on the staging.">
+				>
+				["at0014"] = <
+					text = <"Stage grouping">
+					description = <"The TNM Stage grouping.">
+				>
+				["at0025"] = <
+					text = <"Residual tumour (R)">
+					description = <"Assessment of post-treatment residual tumour.">
+				>
+				["at0046"] = <
+					text = <"Histopathological grading (G)">
+					description = <"TNM histopathological grading classification. ">
+				>
+				["at0047"] = <
+					text = <"GX">
+					description = <"Grade of differentiation cannot be assessed.">
+				>
+				["at0048"] = <
+					text = <"G1">
+					description = <"Well differentiated.">
+				>
+				["at0049"] = <
+					text = <"G2">
+					description = <"Moderately differentiated.">
+				>
+				["at0050"] = <
+					text = <"G3">
+					description = <"Poorly differentiated.">
+				>
+				["at0051"] = <
+					text = <"G4">
+					description = <"Undifferentiated.">
+				>
+				["at0052"] = <
+					text = <"Descriptors">
+					description = <"Additional tumour specific TNM descriptors.">
+				>
+				["at0053"] = <
+					text = <"Descriptor">
+					description = <"Additional tumour specific TNM descriptor.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"TNM-klassifisering av kreftsykdom 7.utgave">
+					description = <"Strukturert klassifisering og gradering av maligne svulster ved TNM klassifikasjonssystem 7. utgave.">
+				>
+				["at0003"] = <
+					text = <"Primærtumor (T)">
+					description = <"Vurdering av primærtumor.">
+				>
+				["at0004"] = <
+					text = <"Regionale lymfeknuter (N)">
+					description = <"Vurdering av regionale lymfeknuter.">
+				>
+				["at0005"] = <
+					text = <"Fjernmetastaser (M)">
+					description = <"Vurdering av fjernmetastaser.">
+				>
+				["at0010"] = <
+					text = <"Samlet klassifisering">
+					description = <"Den totale klassifisering som er avledet fra hver T, N og M komponent f.eks T1aNXM0. Kan inkludere ekstra TNM-deskriptorer.">
+				>
+				["at0012"] = <
+					text = <"Kommentar">
+					description = <"Kommentar til klassifiseringen.">
+				>
+				["at0014"] = <
+					text = <"Gruppering av stadium">
+					description = <"Gruppering av TNM-stadium.">
+				>
+				["at0025"] = <
+					text = <"Resttumor (R)">
+					description = <"Vurdering av resttumor etter behandling.">
+				>
+				["at0046"] = <
+					text = <"Histopatologisk differensieringsgrad (G)">
+					description = <"TNM-klassifisering av histopatologisk differensieringsgrad.">
+				>
+				["at0047"] = <
+					text = <"GX">
+					description = <"Differensieringsgrad kan ikke vurderes.">
+				>
+				["at0048"] = <
+					text = <"G1">
+					description = <"Høyt differensiert.">
+				>
+				["at0049"] = <
+					text = <"G2">
+					description = <"Middels/moderat differensiert.">
+				>
+				["at0050"] = <
+					text = <"G3">
+					description = <"Lite/lavt differensiert.">
+				>
+				["at0051"] = <
+					text = <"G4">
+					description = <"Udifferensiert.">
+				>
+				["at0052"] = <
+					text = <"Deskriptorer">
+					description = <"Ekstra tumorspesifikke TNM-deskriptorer.">
+				>
+				["at0053"] = <
+					text = <"Deskriptor">
+					description = <"Ekstra tumorspesifikk TNM-deskriptor.">
+				>
+			>
+		>
+	>
