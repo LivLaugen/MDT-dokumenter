@@ -1,0 +1,58 @@
+archetype (adl_version=1.4; uid=23a91f74-1f76-44bc-bf84-71981b8c314b)
+	openEHR-EHR-CLUSTER.admission_details.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"To record details related to an admission, to fit in the details slot in the archetype Reason for encounter">
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"1D5B6EF61316DA7B72D0D89D5C8537FE">
+		["build_uid"] = <"1de1f6ff-e4e2-468d-a456-6a62e68b4ca4">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Referral details
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Henvisningsårsak
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Referral details">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Henvisningsårsak">
+					description = <"*">
+				>
+			>
+		>
+	>
