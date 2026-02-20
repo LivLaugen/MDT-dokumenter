@@ -1,0 +1,62 @@
+archetype (adl_version=1.4; uid=61a13d73-d46f-4084-aba2-b807449d99fd)
+	openEHR-EHR-INSTRUCTION.vedtak_tvangsbehandling.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"C6B412F4620691F927E4CCAAD18EDB41">
+		["build_uid"] = <"a55d5b6e-d653-48f8-a9a1-94dd63a7a34c">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	INSTRUCTION[at0000] matches {    -- Vedtak tvangsbehandling
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0001] occurrences matches {0..1} matches {    -- Tvangsbehandling
+				action_archetype_id matches {/openEHR-EHR-ACTION\.vedta_tvangsbehandling\.v1/}
+				description matches {
+					ITEM_TREE[at0002] matches {*}    -- Tree
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vedtak tvangsbehandling">
+					description = <"">
+				>
+				["at0001"] = <
+					text = <"Tvangsbehandling">
+					description = <"">
+				>
+				["at0002"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+			>
+		>
+	>
