@@ -1,0 +1,78 @@
+archetype (adl_version=1.4; uid=796ec9b5-91cf-42db-b73c-bec718ecdec6)
+	openEHR-EHR-EVALUATION.stimulantia_ous_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2017-03-25">
+		["name"] = <"Thomas Pedersen Baerland">
+		["organisation"] = <"Oslo University Hospital / DIPS ASA">
+		["email"] = <"tba@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Arne Løberg Sæter", ...>
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Registrere som tekst hva pasienten bruker av stimulerende substanser. Her inngår blant annet røyk, alkohol, stoff, anabole steroider, vanedannende tabletter mm.">
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"C18B543343E1FE8CA5F01B05E505BA3B">
+		["build_uid"] = <"373b7b5d-427b-48b7-b466-258a1d25d063">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Stimulantia
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Stimulantia
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {    -- Detaljer
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Stimulantia">
+					description = <"Stimulantia som brukes av pasienten. Røyk, alkohol, stoff, anabole steroider, vanedannende tabletter">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Stimulantia">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Detaljer">
+					description = <"*">
+				>
+			>
+		>
+	>
