@@ -1,0 +1,913 @@
+archetype (adl_version=1.4; uid=c16ba283-081b-3e70-a99d-878be352f92f)
+	openEHR-EHR-CLUSTER.symptom_initial_questionaire_dizziness.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			author = <
+				["name"] = <"Jasmin Buck, Sebastian Garde">
+				["organisation"] = <"University of Heidelberg, Central Queensland University">
+			>
+		>
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+		["ar-sy"] = <
+			language = <[ISO_639-1::ar-sy]>
+			author = <
+				["name"] = <"Mona Saleh">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2007-02-20">
+		["name"] = <"Tony Shannon">
+		["organisation"] = <"UK NHS, Connecting for Health">
+		["email"] = <"tony.shannon@nhs.net">
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Sam Heard, Ocean Informatics","Heather Leslie, Ocean Informatics, Australia (Editor)","Ian McNicoll, Ocean Informatics, United Kingdom (Editor)">
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"*To record detail about a symptom - either self-recorded by an individual or recorded on the behalf of a patient by a clinician. A complete patient history may include varying level of details about a variety of symptoms.(en)">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"*Use to record detailed information about a symptom as told to a clinician by a patient or self-recorded by the individual/patient.
+
+This archetype allows a 'nil significant' statement to be explicitly recorded.(en)">
+			misuse = <"*Sollte nur für Symptome benutzt werden. (en)">
+		>
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"*To contain relevant questions and record detail about a symptom. This is the genaral master archetype, that will be spesialized for each symptom later(en)">
+			keywords = <"*complaint(en)","*presenting(en)","*symptom(en)">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"*Use to present questionaire and record detailed information about a symptom as told to a clinician by a patient or self-recorded by the individual/patient.
+
+(en)">
+			misuse = <"*Not to be used as anything else than a master for specializations.(en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To contain relevant questions and record detail about a symptom. This is the genaral master archetype, that will be spesialized for each symptom later">
+			keywords = <"complaint","presenting","symptom">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to present questionaire and record detailed information about a symptom as told to a clinician by a patient or self-recorded by the individual/patient.
+
+">
+			misuse = <"Not to be used as anything else than a master for specializations.">
+		>
+		["ar-sy"] = <
+			language = <[ISO_639-1::ar-sy]>
+			purpose = <"*To record detail about a symptom - either self-recorded by an individual or recorded on the behalf of a patient by a clinician. A complete patient history may include varying level of details about a variety of symptoms.(en)">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"*Use to record detailed information about a symptom as told to a clinician by a patient or self-recorded by the individual/patient.
+
+This archetype allows a 'nil significant' statement to be explicitly recorded.(en)">
+			misuse = <"*Not to be used to record details about pain. Use the specialisation of this archetype - the CLUSTER.symptom-pain instead.
+
+Not to be used for diagnoses and problems that form part of a persisting Problem List - use EVALUATION.problem_diagnosis.(en)">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"46FD8603D547C98090369F81F70498E7">
+		["build_uid"] = <"c97444d9-86c9-3e52-b174-dadd5dcd35ca">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Symptom questionaire dizziness
+		items cardinality matches {1..*; unordered} matches {
+			CLUSTER[at0152] occurrences matches {0..1} matches {    -- Deflecting symptoms
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0153] occurrences matches {0..*} matches {    -- Loss of consciousness?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0172,    -- Yes (If so: Loss of consciousness should be investigated as primary symptom)
+									at0175]    -- No
+								}
+							}
+						}
+					}
+					ELEMENT[at0156] occurrences matches {0..1} matches {    -- Paralysis or speech problems?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0173,    -- Yes (If so; paralysis or speec problems should be considered as primary symptom)
+									at0176]    -- No
+								}
+							}
+						}
+					}
+					ELEMENT[at0157] occurrences matches {0..1} matches {    -- Recent head trauma?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0174,    -- Yes (If so: Recent head trauma should be investigated as primary symptom)
+									at0177]    -- No
+								}
+							}
+						}
+					}
+				}
+			}
+			ELEMENT[at0021] occurrences matches {0..1} matches {    -- Impact
+				value matches {
+					1|[local::at0044],
+					2|[local::at0023],
+					5|[local::at0024],
+					8|[local::at0025],
+					9|[local::at0045]
+				}
+			}
+			ELEMENT[at0037] occurrences matches {0..1} matches {    -- Progression
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0039,    -- Decreasing
+							at0040,    -- Stable
+							at0041]    -- Increasing
+						}
+					}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Variation
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0004,    -- Constant
+							at0005,    -- Intermittent
+							at0006]    -- Fluctuating
+						}
+					}
+				}
+			}
+			CLUSTER[at0154] occurrences matches {0..1} matches {    -- Characteristics
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0032] occurrences matches {0..1} matches {    -- Seizures/fits/attacks?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0162,    -- Yes
+									at0163]    -- No
+								}
+							}
+						}
+					}
+					ELEMENT[at0158] occurrences matches {0..1} matches {    -- Rotational feeling?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0164,    -- Yes
+									at0165]    -- No
+								}
+							}
+						}
+					}
+					ELEMENT[at0159] occurrences matches {0..1} matches {    -- Unstability, boatdeck sensation?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0166,    -- Yes
+									at0167]    -- No
+								}
+							}
+						}
+					}
+					ELEMENT[at0160] occurrences matches {0..1} matches {    -- Tendency to faint?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0168,    -- Yes
+									at0169]    -- No
+								}
+							}
+						}
+					}
+					ELEMENT[at0161] occurrences matches {0..1} matches {    -- Falling?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0170,    -- Yes
+									at0171]    -- No
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"SNOMED-CT", ...>
+	term_definitions = <
+		["ar-sy"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Symptom(en)">
+					description = <"*A subjective observation by an individual about departure from normal function and which may indicate the presence of disease or abnormality. Either self-recorded or recorded on the behalf of a patient by a clinician.(en)">
+				>
+				["at0003"] = <
+					text = <"التنوع">
+					description = <"تنوع العرض">
+				>
+				["at0004"] = <
+					text = <"ثابت">
+					description = <"العرض موجود بشكل ثابت/مستمر">
+				>
+				["at0005"] = <
+					text = <"متقطع">
+					description = <"العرض موجود في بعض الأوقات و غائب في البعض الآخر">
+				>
+				["at0006"] = <
+					text = <"متموج">
+					description = <"العرض يتغير بشكل مؤثر و لكنه موجود في جميع الأوقات">
+				>
+				["at0021"] = <
+					text = <"*Impact(en)">
+					description = <"*The severity of the symptom in its impact on daily living.(en)">
+				>
+				["at0023"] = <
+					text = <"متوسط">
+					description = <"العرض لا يتداخل بشكل كبير مع الأنشطة اليومية">
+				>
+				["at0024"] = <
+					text = <"متوسط">
+					description = <"العرض يؤثر على الأنشطة اليومية">
+				>
+				["at0025"] = <
+					text = <"شديد">
+					description = <"العرض يمنع بعض الأنشطة اليومية المحورية">
+				>
+				["at0032"] = <
+					text = <"الخاصية">
+					description = <"خاصية العرض">
+				>
+				["at0037"] = <
+					text = <"التقدم">
+					description = <"تقدم العرض مقارنة بالماضي">
+				>
+				["at0039"] = <
+					text = <"يقل">
+					description = <"شدة العرض تقل بمرور الزمن">
+				>
+				["at0040"] = <
+					text = <"مستقر">
+					description = <"لم يتغير العرض عبر الزمن ">
+				>
+				["at0041"] = <
+					text = <"متزايد">
+					description = <"شدة العرض تزيد عبر الزمن">
+				>
+				["at0044"] = <
+					text = <"طفيف">
+					description = <"العرض طفيف و لا يسبب مشكلة">
+				>
+				["at0045"] = <
+					text = <"شديد جدا">
+					description = <"العرض عند الحد الأقصى من الشدة و يمنع القيام بأي أنشطة">
+				>
+				["at0152"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+				["at0153"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0154"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+				["at0156"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0157"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0158"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0159"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0160"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0161"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0162"] = <
+					text = <"*Yes(en)">
+					description = <"**(en)">
+				>
+				["at0163"] = <
+					text = <"*No(en)">
+					description = <"**(en)">
+				>
+				["at0164"] = <
+					text = <"*Yes(en)">
+					description = <"*The patient has experienced rotational feeling of dizziness(en)">
+				>
+				["at0165"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced rotational feeling of dizziness(en)">
+				>
+				["at0166"] = <
+					text = <"*Yes(en)">
+					description = <"*The patient has experienced unstability or boat deck sensation of dizziness(en)">
+				>
+				["at0167"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced unstability or boat deck sensation of dizziness(en)">
+				>
+				["at0168"] = <
+					text = <"*Yes(en)">
+					description = <"*The patient has experienced tendency to faint of dizziness(en)">
+				>
+				["at0169"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced tendency to faint of dizziness(en)">
+				>
+				["at0170"] = <
+					text = <"*Yes(en)">
+					description = <"*The patient has experienced tendency to falling of dizziness(en)">
+				>
+				["at0171"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced tendency to falling of dizziness(en)">
+				>
+				["at0172"] = <
+					text = <"*Yes (If so: Loss of consciousness should be investigated as primary symptom)(en)">
+					description = <"*The patient has experienced loss of consciousness as part of the dizziness(en)">
+				>
+				["at0173"] = <
+					text = <"*Yes (If so: Loss of consciousness should be investigated as primary symptom)(en)">
+					description = <"**(en)">
+				>
+				["at0174"] = <
+					text = <"*Yes (If so: Recent head trauma should be investigated as primary symptom)(en)">
+					description = <"**(en)">
+				>
+				["at0175"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced Loss of consciousness (en)">
+				>
+				["at0176"] = <
+					text = <"*No(en)">
+					description = <"*Patient has not experienced paralysis or speech problems(en)">
+				>
+				["at0177"] = <
+					text = <"*No(en)">
+					description = <"*Patient has not suffered from recent head trauma(en)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Symptom questionaire dizziness">
+					description = <"A subjective observation by an individual about departure from normal function and which may indicate the presence of disease or abnormality. Either self-recorded or recorded on the behalf of a patient by a clinician.">
+				>
+				["at0003"] = <
+					text = <"Variation">
+					description = <"The variation of the symptom.">
+				>
+				["at0004"] = <
+					text = <"Constant">
+					description = <"The symptom is constantly present.">
+				>
+				["at0005"] = <
+					text = <"Intermittent">
+					description = <"The symptom is present at times and not at others.">
+				>
+				["at0006"] = <
+					text = <"Fluctuating">
+					description = <"The symptom varys considerably but is almost always present.">
+				>
+				["at0021"] = <
+					text = <"Impact">
+					description = <"The severity of the symptom in its impact on daily living.">
+				>
+				["at0023"] = <
+					text = <"Mild">
+					description = <"The symptom does not interfere greatly with day to day activities.">
+				>
+				["at0024"] = <
+					text = <"Moderate">
+					description = <"The symptom interferes with day to day activities.">
+				>
+				["at0025"] = <
+					text = <"Severe">
+					description = <"The symptom prohibits some key daily activities.">
+				>
+				["at0032"] = <
+					text = <"Seizures/fits/attacks?">
+					description = <"The character of the symptom.">
+				>
+				["at0037"] = <
+					text = <"Progression">
+					description = <"The progress of the symptom relative to the past.">
+				>
+				["at0039"] = <
+					text = <"Decreasing">
+					description = <"The symptom is decreasing in intensity over time.">
+				>
+				["at0040"] = <
+					text = <"Stable">
+					description = <"The symptom has not changed over time.">
+				>
+				["at0041"] = <
+					text = <"Increasing">
+					description = <"The symptom is increasing in intensity over time.">
+				>
+				["at0044"] = <
+					text = <"Trivial">
+					description = <"The symptom is trivial and causes no problems.">
+				>
+				["at0045"] = <
+					text = <"Very severe">
+					description = <"The symptom is almost maximum possible intensity and prohibits any activity.">
+				>
+				["at0152"] = <
+					text = <"Deflecting symptoms">
+					description = <"Symptoms that override the current symptom in medical priority, and may be the one the patient mentions first.">
+				>
+				["at0153"] = <
+					text = <"Loss of consciousness?">
+					description = <"Specific symptom, that if present, should have focus in further inquiry.">
+				>
+				["at0154"] = <
+					text = <"Characteristics">
+					description = <"*">
+				>
+				["at0156"] = <
+					text = <"Paralysis or speech problems?">
+					description = <"Specific symptom, that if present, should have focus in further inquiry.">
+				>
+				["at0157"] = <
+					text = <"Recent head trauma?">
+					description = <"Specific symptom, that if present, should have focus in further inquiry.">
+				>
+				["at0158"] = <
+					text = <"Rotational feeling?">
+					description = <"*">
+				>
+				["at0159"] = <
+					text = <"Unstability, boatdeck sensation?">
+					description = <"*">
+				>
+				["at0160"] = <
+					text = <"Tendency to faint?">
+					description = <"*">
+				>
+				["at0161"] = <
+					text = <"Falling?">
+					description = <"*">
+				>
+				["at0162"] = <
+					text = <"Yes">
+					description = <"The patient has experienced Seizures/fist/attack of dizziness">
+				>
+				["at0163"] = <
+					text = <"No">
+					description = <"The patient has not experienced Seizures/fist/attack of dizziness">
+				>
+				["at0164"] = <
+					text = <"Yes">
+					description = <"The patient has experienced rotational feeling of dizziness">
+				>
+				["at0165"] = <
+					text = <"No">
+					description = <"The patient has not experienced rotational feeling of dizziness">
+				>
+				["at0166"] = <
+					text = <"Yes">
+					description = <"The patient has experienced feeling of unstability or boatdeck sensation of dizziness">
+				>
+				["at0167"] = <
+					text = <"No">
+					description = <"The patient has not experienced feeling of unstability or boatdeck sensation of dizziness">
+				>
+				["at0168"] = <
+					text = <"Yes">
+					description = <"The patient has experienced tendency to faint of dizziness">
+				>
+				["at0169"] = <
+					text = <"No">
+					description = <"The patient has not experienced tendency to faint of dizziness">
+				>
+				["at0170"] = <
+					text = <"Yes">
+					description = <"The patient has experienced tendency to falling of dizziness">
+				>
+				["at0171"] = <
+					text = <"No">
+					description = <"The patient has not experienced tendency to falling of dizziness">
+				>
+				["at0172"] = <
+					text = <"Yes (If so: Loss of consciousness should be investigated as primary symptom)">
+					description = <"The patient has experienced loss of consciousness as part of the dizziness">
+				>
+				["at0173"] = <
+					text = <"Yes (If so; paralysis or speec problems should be considered as primary symptom)">
+					description = <"The patient has experienced paralysis or speechproblems as part of the dizziness">
+				>
+				["at0174"] = <
+					text = <"Yes (If so: Recent head trauma should be investigated as primary symptom)">
+					description = <"The patient has experienced recent head trauma as part of the dizziness">
+				>
+				["at0175"] = <
+					text = <"No">
+					description = <"The patient has not experienced Loss of consciousness ">
+				>
+				["at0176"] = <
+					text = <"No">
+					description = <"Patient has not experienced paralysis or speech problems">
+				>
+				["at0177"] = <
+					text = <"No">
+					description = <"Patient has not suffered from recent head trauma">
+				>
+			>
+		>
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Symptom">
+					description = <"*A subjective observation by an individual about departure from normal function and which may indicate the presence of disease or abnormality. Either self-recorded or recorded on the behalf of a patient by a clinician.(en)">
+				>
+				["at0003"] = <
+					text = <"Variation">
+					description = <"die Variationen des Symptoms">
+				>
+				["at0004"] = <
+					text = <"Dauerhaft">
+					description = <"das Symptom ist dauerhaft anwesend">
+				>
+				["at0005"] = <
+					text = <"Zeitweise">
+					description = <"das Symptom ist abwechselnd anwesend und nicht anwesend">
+				>
+				["at0006"] = <
+					text = <"Variabel">
+					description = <"das Symptom variiert deutlich, ist aber praktisch ständig anwesend">
+				>
+				["at0021"] = <
+					text = <"*Impact(en)">
+					description = <"*The severity of the symptom in its impact on daily living.(en)">
+				>
+				["at0023"] = <
+					text = <"gelinde">
+					description = <"das Symptom beeinträchtigt alltägliche Handlungen nicht ernsthaft">
+				>
+				["at0024"] = <
+					text = <"mäßig">
+					description = <"das Symptom beeinträchtigt alltägliche Handlungen">
+				>
+				["at0025"] = <
+					text = <"schwer">
+					description = <"das Symptom verhindert wichtige alltägliche Handlungen">
+				>
+				["at0032"] = <
+					text = <"Art">
+					description = <"die Art des Symptoms">
+				>
+				["at0037"] = <
+					text = <"Entwicklung">
+					description = <"die Entwicklung des Symptoms im Hinblick auf die Vergangenheit">
+				>
+				["at0039"] = <
+					text = <"nachlassend">
+					description = <"die Intensität des Symptoms hat im Laufe der Zeit nachgelassen">
+				>
+				["at0040"] = <
+					text = <"stabil">
+					description = <"das Symptom hat sich im Laufe der Zeit nicht verändert">
+				>
+				["at0041"] = <
+					text = <"zunehmend">
+					description = <"die Intensität des Symptoms hat im Laufe der Zeit zugenommen">
+				>
+				["at0044"] = <
+					text = <"geringfügig">
+					description = <"das Symptom ist geringfügig und verursacht keine Probleme">
+				>
+				["at0045"] = <
+					text = <"sehr schwerwiegend">
+					description = <"das Symptom hat fast die maximal mögliche Intensität und verhindert jegliche Handlungen">
+				>
+				["at0152"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+				["at0153"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0154"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+				["at0156"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0157"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0158"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0159"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0160"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0161"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0162"] = <
+					text = <"*Yes(en)">
+					description = <"**(en)">
+				>
+				["at0163"] = <
+					text = <"*No(en)">
+					description = <"**(en)">
+				>
+				["at0164"] = <
+					text = <"*Yes(en)">
+					description = <"*The patient has experienced rotational feeling of dizziness(en)">
+				>
+				["at0165"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced rotational feeling of dizziness(en)">
+				>
+				["at0166"] = <
+					text = <"*Yes(en)">
+					description = <"*The patient has experienced unstability or boat deck sensation of dizziness(en)">
+				>
+				["at0167"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced unstability or boat deck sensation of dizziness(en)">
+				>
+				["at0168"] = <
+					text = <"*Yes(en)">
+					description = <"*The patient has experienced tendency to faint of dizziness(en)">
+				>
+				["at0169"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced tendency to faint of dizziness(en)">
+				>
+				["at0170"] = <
+					text = <"*Yes(en)">
+					description = <"*The patient has experienced tendency to falling of dizziness(en)">
+				>
+				["at0171"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced tendency to falling of dizziness(en)">
+				>
+				["at0172"] = <
+					text = <"*Yes (If so: Loss of consciousness should be investigated as primary symptom)(en)">
+					description = <"*The patient has experienced loss of consciousness as part of the dizziness(en)">
+				>
+				["at0173"] = <
+					text = <"*Yes (If so: Loss of consciousness should be investigated as primary symptom)(en)">
+					description = <"**(en)">
+				>
+				["at0174"] = <
+					text = <"*Yes (If so: Recent head trauma should be investigated as primary symptom)(en)">
+					description = <"**(en)">
+				>
+				["at0175"] = <
+					text = <"*No(en)">
+					description = <"*The patient has not experienced Loss of consciousness (en)">
+				>
+				["at0176"] = <
+					text = <"*No(en)">
+					description = <"*Patient has not experienced paralysis or speech problems(en)">
+				>
+				["at0177"] = <
+					text = <"*No(en)">
+					description = <"*Patient has not suffered from recent head trauma(en)">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Symptom spørreskjema svimmelhet">
+					description = <"*A subjective observation by an individual about departure from normal function and which may indicate the presence of disease or abnormality. Either self-recorded or recorded on the behalf of a patient by a clinician.(en)">
+				>
+				["at0003"] = <
+					text = <"Variasjon">
+					description = <"*The variation of the symptom.(en)">
+				>
+				["at0004"] = <
+					text = <"Vedvarende og konstant">
+					description = <"Symptomet er der hele tiden, like sterkt">
+				>
+				["at0005"] = <
+					text = <"Kommer og går">
+					description = <"Symptomet er der deler av tiden, men ikke alltid">
+				>
+				["at0006"] = <
+					text = <"Svingende">
+					description = <"Symptom varierer i intensitet, men er nesten alltid  til stede">
+				>
+				["at0021"] = <
+					text = <"Symptomgrad">
+					description = <"*The severity of the symptom in its impact on daily living.(en)">
+				>
+				["at0023"] = <
+					text = <"Milde">
+					description = <"*The symptom does not interfere greatly with day to day activities.(en)">
+				>
+				["at0024"] = <
+					text = <"Moderate">
+					description = <"*The symptom interferes with day to day activities.(en)">
+				>
+				["at0025"] = <
+					text = <"Betydelige">
+					description = <"*The symptom prohibits some key daily activities.(en)">
+				>
+				["at0032"] = <
+					text = <"Anfall?">
+					description = <"*The character of the symptom.(en)">
+				>
+				["at0037"] = <
+					text = <"Utvikling">
+					description = <"*The progress of the symptom relative to the past.(en)">
+				>
+				["at0039"] = <
+					text = <"Avtagende">
+					description = <"Symptomer avtar i over tid">
+				>
+				["at0040"] = <
+					text = <"Uendret">
+					description = <"Symptomet har ikke endret seg over tid">
+				>
+				["at0041"] = <
+					text = <"Økende">
+					description = <"Symptomet øker over tid">
+				>
+				["at0044"] = <
+					text = <"*Trivial(en)">
+					description = <"*The symptom is trivial and causes no problems.(en)">
+				>
+				["at0045"] = <
+					text = <"Alvorlige">
+					description = <"*The symptom is almost maximum possible intensity and prohibits any activity.(en)">
+				>
+				["at0152"] = <
+					text = <"Overstyrende symptomer">
+					description = <"Symptomer som er oversstyrende i forhold til svimmelhet og som bør undersøkes videre som primærsymptom, hvis pasienten opplever dem.">
+				>
+				["at0153"] = <
+					text = <"Besvimelse?">
+					description = <"*Name of specific symptom, that if present, should have focus in further inquiry.(en)">
+				>
+				["at0154"] = <
+					text = <"Typiske trekk">
+					description = <"Kjennetegn på svimmelheten">
+				>
+				["at0156"] = <
+					text = <"Lammelser eller talevansker?">
+					description = <"Specific symptom, that if present, should have focus in further inquiry.">
+				>
+				["at0157"] = <
+					text = <"Nylig hodeskade?">
+					description = <"Specific symptom, that if present, should have focus in further inquiry.">
+				>
+				["at0158"] = <
+					text = <"Rotasjonsfølelse?">
+					description = <"*">
+				>
+				["at0159"] = <
+					text = <"Ustøhetsfølelse, båtdekksopplevelse?">
+					description = <"*">
+				>
+				["at0160"] = <
+					text = <"Følelse av å ville besvime?">
+					description = <"*">
+				>
+				["at0161"] = <
+					text = <"Falltendens?">
+					description = <"*">
+				>
+				["at0162"] = <
+					text = <"Ja">
+					description = <"Pasienten har anfall av svimmelhet">
+				>
+				["at0163"] = <
+					text = <"Nei">
+					description = <"Pasienten har ikke anfall av svimmelhet">
+				>
+				["at0164"] = <
+					text = <"Ja">
+					description = <"Pasienten opplever rotasjonsfølelse i forbindelse med svimmelheten">
+				>
+				["at0165"] = <
+					text = <"Nei">
+					description = <"Pasienten opplever ikke rotasjonsfølelse i forbindelse med svimmelheten">
+				>
+				["at0166"] = <
+					text = <"Ja">
+					description = <"Pasienten opplever ustøhetsfølelse eller båtdekksopplevelse i forbindelse med svimmelheten">
+				>
+				["at0167"] = <
+					text = <"Nei">
+					description = <"Pasienten opplever ikke ustøhetsfølelse eller båtdekksopplevelse i forbindelse med svimmelheten">
+				>
+				["at0168"] = <
+					text = <"Ja">
+					description = <"Pasienten opplever følelse av å ville besvime i forbindelse med svimmelheten">
+				>
+				["at0169"] = <
+					text = <"Nei">
+					description = <"Pasienten opplever ikke følelse av å ville besvime i forbindelse med svimmelheten">
+				>
+				["at0170"] = <
+					text = <"Ja">
+					description = <"Pasienten opplever tendens til å falle i forbindelse med svimmelheten">
+				>
+				["at0171"] = <
+					text = <"Nei">
+					description = <"Pasienten opplever ikke tendens til å falle i forbindelse med svimmelheten">
+				>
+				["at0172"] = <
+					text = <"Ja (I såfall bør besvimelsen undersøkes som primært symptom)">
+					description = <"Pasienten har opplevd besvimelse i forbindelse med svimmelheten">
+				>
+				["at0173"] = <
+					text = <"Ja (I såfall bør lammelser eller talevansker undersøkes som primært symptom)">
+					description = <"Pasienten har opplevd lammelser eller talevansker i forbindelse med svimmelheten">
+				>
+				["at0174"] = <
+					text = <"Ja (I såfall bør nylig hodeskade undersøkes som primært symptom)">
+					description = <"Pasienten har opplevd nylig hodeskade i forbindelse med svimmelheten">
+				>
+				["at0175"] = <
+					text = <"Nei">
+					description = <"Pasienten har ikke opplevd besvimelse i forbindelse med svimmelheten">
+				>
+				["at0176"] = <
+					text = <"Nei">
+					description = <"Pasienten har ikke opplevd lammelser eller talevansker i forbindelse med svimmelheten">
+				>
+				["at0177"] = <
+					text = <"Nei">
+					description = <"Pasienten har ikke hatt nylig hodeskade i forbindelse med svimmelheten">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["SNOMED-CT"] = <
+			items = <
+				["at0000"] = <[SNOMED-CT::19019007]>
+				["at0021"] = <[SNOMED-CT::162465004]>
+				["at0023"] = <[SNOMED-CT::162468002]>
+				["at0024"] = <[SNOMED-CT::162469005]>
+				["at0025"] = <[SNOMED-CT::162470006]>
+				["at0039"] = <[SNOMED-CT::260371004]>
+				["at0040"] = <[SNOMED-CT::58158008]>
+				["at0041"] = <[SNOMED-CT::260369004]>
+				["at0044"] = <[SNOMED-CT::162466003]>
+				["at0045"] = <[SNOMED-CT::162471005]>
+			>
+		>
+	>
