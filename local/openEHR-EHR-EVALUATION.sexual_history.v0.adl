@@ -1,0 +1,179 @@
+archetype (adl_version=1.4; uid=b7ed403e-7214-44cc-9e92-9005ec02031c)
+	openEHR-EHR-EVALUATION.sexual_history.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2015-11-12">
+		["name"] = <"DIPS ASA">
+		["organisation"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			misuse = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Preliminary archetype to used at Olafia Clinic, Oslo university hospital.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Preliminary archetype to used at Olafia Clinic, Oslo university hospital.">
+			misuse = <"Preliminary archetype to used at Olafia Clinic, Oslo university hospital.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"0A652AE4D0B94DA590D8157669C66680">
+		["build_uid"] = <"1137093e-4adf-4337-ae36-96511d6a803a">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Sexual history
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Ever had sex?
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0009,    -- Yes
+									at0010,    -- No
+									at0011]    -- Not sure
+								}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Age of sexual debut
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::128]>
+								list = <
+									["1"] = <
+										units = <"a">
+										precision = <|0|>
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..*} matches {    -- Genders had sex with
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Description to partner gender
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Seksuell historie">
+					description = <"Persistente opplysninger om et individs seksualhistorie.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Noen gang hatt sex?">
+					description = <"Markering om pasienten har debutert seksuelt.">
+				>
+				["at0003"] = <
+					text = <"Alder ved seksuell debut">
+					description = <"Alder ved seksuell debut.">
+				>
+				["at0004"] = <
+					text = <"Kjønn pasienten har hatt sex med">
+					description = <"Benevnelse av hvilke kjønn pasienten har hatt sex med historisk.">
+				>
+				["at0009"] = <
+					text = <"Ja">
+					description = <"Ja">
+				>
+				["at0010"] = <
+					text = <"Nei">
+					description = <"Nei">
+				>
+				["at0011"] = <
+					text = <"Usikker">
+					description = <"Usikker">
+				>
+				["at0012"] = <
+					text = <"Beskrivelse til kjønn pas har hatt sex med">
+					description = <"Fritekstlig beskrivelse av partners kjønn, dersom nødvendig.">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sexual history">
+					description = <"Persistent information of the sexual history of an individual.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Ever had sex?">
+					description = <"Whether the individial ever have had sex.">
+				>
+				["at0003"] = <
+					text = <"Age of sexual debut">
+					description = <"Age when sexual debut.">
+				>
+				["at0004"] = <
+					text = <"Genders had sex with">
+					description = <"Genders the individual ever have had sex with.">
+				>
+				["at0009"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Not sure">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Description to partner gender">
+					description = <"Narrative description to partners gender, if needed.">
+				>
+			>
+		>
+	>
