@@ -1,0 +1,194 @@
+archetype (adl_version=1.4; uid=8b187fdc-6957-4b8a-bf50-ee37be4c1672)
+	openEHR-EHR-OBSERVATION.confusion_assessment_method.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2019-02-18">
+		["name"] = <"John Tore Valand">
+		["organisation"] = <"Helse Bergen HF">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å kartlegge eldre pasienter som opptrer desorientert/forvirret eller som har vist endring i oppførsel eller framferd.">
+			keywords = <"forvirring","desorientert">
+			use = <"Brukes for kartlegging av eldre pasienter som opptrer desorientert/forvirret eller som har vist endring i oppfersel eller framferd, for diagnostikk av delirium (akutt forvirring).">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["references"] = <"Inouye SK, van Dyck CH, Alessi CA et al. Clarifying confusion: the Confusion Assessment Method. A new
+method for detection of delirium. Ann Intern Med 1990; 113: 941–948. (http://www.guysandstthomas.nhs.uk/resources/our-services/acute-medicine-gi-surgery/elderly-care/cam-diagnostic-algorithm.pdf).
+
+Norsk oversettelse: Norsk forening for geriatri. Confusion assessment method (CAM) kortversjon. Hentet fra: https://www.legeforeningen.no/contentassets/21ef25cf569d44749573de21a8d6b043/confusion-assessment-method-cam-kortversjonen.pdf 24.09.20.
+
+CAM assessment RESET, Draft archetype [Internet]. Apperta UK, Apperta UK Clinical Knowledge Manager [cited: 2019-02-18]. Available from: https://ckm.apperta.org/ckm/#showArchetype_1051.32.795">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"63011670D4947C1CAF4E0D6C223AFE82">
+		["build_uid"] = <"7b54bc8f-00ce-428b-b430-9b7c46520a2a">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Confusion assesment method (CAM) Kortversjon
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {0..*; unordered} matches {
+					POINT_EVENT[at0002] occurrences matches {0..*} matches {    -- Uspesifisert tidspunkthendelse
+						data matches {
+							ITEM_TREE[at0003] matches {    -- ItemTree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- 1 (a). AKUTT DEBUT OG VEKSLENDE FORLØP
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {    -- 1 (b). AKUTT DEBUT OG VEKSLENDE FORLØP
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {    -- 2. UOPPMERKSOMHET
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {    -- 3. DESORGANISERT TANKEGANG
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- 4. ENDRET BEVISSTHETSNIVÅ
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0016,    -- Våken (normal)
+													at0009,    -- Oppspilt (anspent)
+													at0010,    -- Somnolent (søvnig, lett å vekke)
+													at0011,    -- Stuporøs (omtåket, vanskelig å vekke)
+													at0012]    -- Komatøs (umulig å vekke)
+												}
+											}
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {    -- Delirium?
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {    -- Kommentar
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0014] matches {    -- ItemTree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0015] occurrences matches {0..*} matches {    -- Tilleggsinformasjon
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Confusion assesment method (CAM) Kortversjon">
+					description = <"Confusion Assesment Method (CAM) er et validert instrument til screening for delirium.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Uspesifisert tidspunkthendelse">
+					description = <"Uspesifisert tidspunkt som kan defineres mer eksplisitt i en templat eller i en applikasjon.">
+				>
+				["at0003"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"1 (a). AKUTT DEBUT OG VEKSLENDE FORLØP">
+					description = <"Finnes det tegn på akutte endringer i pasientens mentale tilstand i forhold til hvordan han/hun er til vanlig?">
+				>
+				["at0005"] = <
+					text = <"1 (b). AKUTT DEBUT OG VEKSLENDE FORLØP">
+					description = <"Vekslet den (unormale) atferden i løpet av dagen, det vil si, hadde tegnene en tendens til å komme og gå eller øke eller avta i styrke?">
+				>
+				["at0006"] = <
+					text = <"2. UOPPMERKSOMHET">
+					description = <"Hadde pasienten problemer med å holde oppmerksomheten, for eksempel ble han/hun lett distrahert, eller hadde han/hun problemer med å få med seg det som ble sagt?">
+				>
+				["at0007"] = <
+					text = <"3. DESORGANISERT TANKEGANG">
+					description = <"Var pasientens tankegang desorganisert eller usammenhengende.">
+					comment = <"For eksempel usammenhengende eller irrelevant konversasjon, uklare eller ulogiske tankerekker, uforutsigbar endring fra tema til tema?">
+				>
+				["at0008"] = <
+					text = <"4. ENDRET BEVISSTHETSNIVÅ">
+					description = <"Generelt sett, hvordan vurderer du pasientens bevissthetsnivå?">
+				>
+				["at0009"] = <
+					text = <"Oppspilt (anspent)">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Somnolent (søvnig, lett å vekke)">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Stuporøs (omtåket, vanskelig å vekke)">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Komatøs (umulig å vekke)">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Kommentar">
+					description = <"Ytterligere kommentar til CAM som ikke er fanget opp i andre felt.">
+				>
+				["at0014"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0015"] = <
+					text = <"Tilleggsinformasjon">
+					description = <"Ytterligere informasjon som trengs for å kunne registrere lokalt definert innhold eller for å tilpasse til andre referansemodeller/formalismer.">
+					comment = <"For eksempel lokale informasjonsbehov eller ytterligere metadata for å kunne tilpasse til tilsvarende konsepter i FHIR.">
+				>
+				["at0016"] = <
+					text = <"Våken (normal)">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Delirium?">
+					description = <"For å stille diagnosen delirium med CAM algoritmen kreves det at trinn 1 og 2 og enten 3 eller 4 er oppfylt.">
+				>
+			>
+		>
+	>
