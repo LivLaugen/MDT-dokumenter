@@ -1,0 +1,401 @@
+archetype (adl_version=1.4; uid=a9ce35e4-b19a-409a-853e-346fa2635331)
+	openEHR-EHR-OBSERVATION.bipedallocomotion.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2022-07-05">
+		["name"] = <"Kanika Kuwelker">
+		["organisation"] = <"Helse Vest IKT">
+		["email"] = <"kanika.kuwelker@helse-vest-ikt.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record measurements about an individual's bipedal locomotion.">
+			keywords = <"gait, walking, running, jogging, locomotion", ...>
+			copyright = <"© openEHR Foundation">
+			use = <"Use to record measurements about an individual's bipedal locomotion.
+
+The archetype can be used tor record the actual recordings of a gait speed test. The result of the test can be used as a basis for scoring in assesment tools like Short physical performance battery.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["references"] = <"">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"A72E607A4BADE7ED0EF4183770097FBA">
+		["build_uid"] = <"fc1fc86c-832a-4a3f-86c6-5a5689070bb1">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Bipedal locomotion
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0018] occurrences matches {0..1} matches {    -- Type of bipedal locomotion
+										value matches {
+											DV_TEXT matches {*}
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0019,    -- Walking
+													at0020]    -- Running/jogging
+												}
+											}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {    -- Distance
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"m">
+														magnitude = <|>=0.0|>
+													>
+													["2"] = <
+														units = <"[ft_i]">
+													>
+													["3"] = <
+														units = <"km">
+													>
+													["4"] = <
+														units = <"[yd_i]">
+													>
+													["5"] = <
+														units = <"[mi_i]">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Time
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"s">
+														magnitude = <|>=0.0|>
+														precision = <|2|>
+													>
+													["2"] = <
+														units = <"min">
+													>
+													["3"] = <
+														units = <"h">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- Speed
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::338]>
+												list = <
+													["1"] = <
+														units = <"m/s">
+														magnitude = <|>=0.0|>
+														precision = <|2|>
+													>
+													["2"] = <
+														units = <"[ft_i]/s">
+													>
+													["3"] = <
+														units = <"cm/s">
+													>
+													["4"] = <
+														units = <"[ft_i]/min">
+													>
+													["5"] = <
+														units = <"[mi_i]/h">
+													>
+													["6"] = <
+														units = <"km/h">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {    -- Pace
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::759]>
+												list = <
+													["1"] = <
+														units = <"min/km">
+													>
+													["2"] = <
+														units = <"s/m">
+													>
+													["3"] = <
+														units = <"min/[mi_i]">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0046] occurrences matches {0..1} matches {    -- Clinical description
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {    -- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0030] matches {    -- *Item tree (nb)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0044] occurrences matches {0..1} matches {    -- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0031] occurrences matches {0..1} matches {    -- Footwear
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0032] occurrences matches {0..2} matches {    -- Assistive device
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0057,    -- None
+													at0035,    -- Ankle-foot orthosis (AFO)
+													at0036,    -- Cane/walking stick
+													at0037,    -- Crutch
+													at0047,    -- Walker
+													at0048]    -- Rollator
+												}
+											}
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {    -- Incline
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::497]>
+												list = <
+													["1"] = <
+														units = <"deg">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0014] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0022] occurrences matches {0..1} matches {    -- Terrain/surface
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0023,    -- Floor inside
+									at0024,    -- Treadmill
+									at0025,    -- Stairs
+									at0026,    -- Running track
+									at0027,    -- Road
+									at0028]    -- Rough terrain
+								}
+							}
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0045] occurrences matches {0..1} matches {    -- Specific protocol
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0043] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Bipedal locomotion">
+					description = <"Measurements of an individual's bipedal locomotion.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Time">
+					description = <"The time used to cover a distance during the task.
+">
+					comment = <"The time can either be predefined or manually recorded after the test.
+For exampel: 6-minute walk test where the time is set to six minutes.">
+				>
+				["at0006"] = <
+					text = <"Distance">
+					description = <"The distance moved during the task.">
+					comment = <"The distance can either be predefined or manually recorded after the test/exercise.
+For example: Short physical performance battery where the distance is set to four meters.">
+				>
+				["at0008"] = <
+					text = <"Speed">
+					description = <"The rate at which a distance is covered (distance/time) during the task.">
+				>
+				["at0014"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0016"] = <
+					text = <"Comment">
+					description = <"Additional narrative about the task not covered in other fields.">
+				>
+				["at0017"] = <
+					text = <"Pace">
+					description = <"The rate at which a distance is covered (time/distance) during the task.">
+				>
+				["at0018"] = <
+					text = <"Type of bipedal locomotion">
+					description = <"The type of bipedal locomotion.">
+					comment = <"For example: walking, running, etc.">
+				>
+				["at0019"] = <
+					text = <"Walking">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Running/jogging">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Terrain/surface">
+					description = <"The type of terrain or surface during the task.">
+				>
+				["at0023"] = <
+					text = <"Floor inside">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Treadmill">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Stairs">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Running track">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Road">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Rough terrain">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"*Item tree (nb)">
+					description = <"@ internal @">
+				>
+				["at0031"] = <
+					text = <"Footwear">
+					description = <"Specific type of footwear or barefoot during the task.">
+				>
+				["at0032"] = <
+					text = <"Assistive device">
+					description = <"The type of assistive device(s) used during the task.">
+					comment = <"Occurence is set to 0..2 to support cases where bilateral assisitve device is utilized.">
+				>
+				["at0034"] = <
+					text = <"Incline">
+					description = <"The tilt of the surface on which the person is moving on during the task.">
+					comment = <"For example: The angle of a treadmill.">
+				>
+				["at0035"] = <
+					text = <"Ankle-foot orthosis (AFO)">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Cane/walking stick">
+					description = <"">
+				>
+				["at0037"] = <
+					text = <"Crutch">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local context or to align with other reference models/formalisms.">
+					comment = <"For example: Local hospital departmental infomation or additional metadata to align with FHIR.">
+				>
+				["at0044"] = <
+					text = <"Confounding factors">
+					description = <"Narrative description of any issues or factors that may impact on the measurement.">
+					comment = <"For example: \"The patient had a cold\" or \"The patient tripped but did not fall\".">
+				>
+				["at0045"] = <
+					text = <"Specific protocol">
+					description = <"The context or method for the recording.">
+					comment = <"For example: Used standardised protocols when recording the gait speed used to calculate the Short physical performance battery.">
+				>
+				["at0046"] = <
+					text = <"Clinical description">
+					description = <"A clinical description of the execution of the task.">
+				>
+				["at0047"] = <
+					text = <"Walker">
+					description = <"">
+				>
+				["at0048"] = <
+					text = <"Rollator">
+					description = <"">
+				>
+				["at0057"] = <
+					text = <"None">
+					description = <"">
+				>
+			>
+		>
+	>
