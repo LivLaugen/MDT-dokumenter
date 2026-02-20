@@ -1,0 +1,233 @@
+archetype (adl_version=1.4; uid=61434d54-b056-46c5-af41-aeaa4266ed3b)
+	openEHR-EHR-CLUSTER.genetic_variant_no.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2016-02-10">
+		["name"] = <"Hallvard Lærum">
+		["organisation"] = <"Oslo Universitetssykehus HF">
+		["email"] = <"hallar@ous-hf.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)","Hallvard Lærum, Oslo Universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Lars Retterstøl, MD PhD, Department of medical genetics, Oslo University Hospital HF, Norway","John Tore Valand, Helse Bergen HF, Norway (Nasjonal IKT redaktør)">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To accurately describe a genetic variant in humans as found in various genetic investigations. The archetype is used as a basis for documentation of the patient genome, and to guide decision support.">
+			keywords = <"mutation","genetic","gene","variant">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Register genetic variants as a basis for genetic counselling, pharmacogenetics, and risk factor and prognosis assessment.">
+			misuse = <"Not to be used for description of chromosomes or chromosomal abnormalities.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Ginsbury G & Huntington FW: Essentials of genomic and personalized medicine. Academic press 2010 ISBN 978-0-12-374934-5">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"0ED425AE8427C730AC4E53D31B943CA0">
+		["build_uid"] = <"1ee8d7f5-58a3-4d49-89c4-5e4a67d76fec">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Genetic variant
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Gene name
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- DNA origin
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0013,    -- Nucleus
+							at0014,    -- Mitochondrium
+							at0015]    -- Other
+						}
+					}
+				}
+			}
+			ELEMENT[at0022] occurrences matches {0..1} matches {    -- Somatic or germline origin
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0023,    -- Somatic mutation
+							at0024,    -- Germline mutations
+							at0026]    -- No mutation detected
+						}
+					}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Chromosome number
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Normal or pathologic
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0006,    -- Normal
+							at0007,    -- Probably normal
+							at0025,    -- Unknown
+							at0008,    -- Probably pathologic
+							at0009]    -- Pathologic
+						}
+					}
+				}
+			}
+			allow_archetype CLUSTER[at0016] occurrences matches {0..*} matches {    -- Alleles
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.allele_details(-[a-zA-Z0-9_]+)*\.v0/}
+				exclude
+					archetype_id/value matches {/.*/}
+			}
+			ELEMENT[at0010] occurrences matches {0..*} matches {    -- Description of variant
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0011] occurrences matches {0..*} matches {    -- Effect of variant
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0018] occurrences matches {0..1} matches {    -- Genomic reference sequence
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0019] occurrences matches {0..1} matches {    -- cDNA reference sequence
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0020] occurrences matches {0..1} matches {    -- mRNA reference sequence
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0021] occurrences matches {0..1} matches {    -- Protein reference sequence
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Genetic variant">
+					description = <"Description of the content of a certain gene. The gene consists of two alleles, which are described separately.">
+				>
+				["at0001"] = <
+					text = <"Gene name">
+					description = <"The name of the gene described, as defined by the HUGO gene nomenclature committee (HGNC).">
+				>
+				["at0002"] = <
+					text = <"Chromosome number">
+					description = <"The chromosome number on which the gene is found.">
+				>
+				["at0005"] = <
+					text = <"Normal or pathologic">
+					description = <"Whether or not the specific variant causes disease.">
+				>
+				["at0006"] = <
+					text = <"Normal">
+					description = <"The variant does not cause disease.">
+				>
+				["at0007"] = <
+					text = <"Probably normal">
+					description = <"The gene probably does not cause disease.">
+				>
+				["at0008"] = <
+					text = <"Probably pathologic">
+					description = <"The gene probably causes disease.">
+				>
+				["at0009"] = <
+					text = <"Pathologic">
+					description = <"The gene causes disease.">
+				>
+				["at0010"] = <
+					text = <"Description of variant">
+					description = <"Description and interpretation of genetic variant.">
+				>
+				["at0011"] = <
+					text = <"Effect of variant">
+					description = <"Effect of the variant on physiologic, patophysiologic or pharmacologic mechanisms.">
+				>
+				["at0012"] = <
+					text = <"DNA origin">
+					description = <"The cellular origin of the gene.">
+				>
+				["at0013"] = <
+					text = <"Nucleus">
+					description = <"The gene is located in the nucleus.">
+				>
+				["at0014"] = <
+					text = <"Mitochondrium">
+					description = <"The gene is located in the mitochondrium.">
+				>
+				["at0015"] = <
+					text = <"Other">
+					description = <"Other origins of the gene.">
+				>
+				["at0016"] = <
+					text = <"Alleles">
+					description = <"Details describing each copy of a certain gene present in an individual.">
+				>
+				["at0018"] = <
+					text = <"Genomic reference sequence">
+					description = <"The genomic reference sequence used for comparison.">
+				>
+				["at0019"] = <
+					text = <"cDNA reference sequence">
+					description = <"The cDMA reference sequence used for comparison.">
+				>
+				["at0020"] = <
+					text = <"mRNA reference sequence">
+					description = <"The mRNA reference sequence used for comparison.">
+				>
+				["at0021"] = <
+					text = <"Protein reference sequence">
+					description = <"The protein reference sequence used for comparison.">
+				>
+				["at0022"] = <
+					text = <"Somatic or germline origin">
+					description = <"Main origin of mutation.">
+				>
+				["at0023"] = <
+					text = <"Somatic mutation">
+					description = <"Mutation acquired after conception.">
+				>
+				["at0024"] = <
+					text = <"Germline mutations">
+					description = <"Mutations inherited from germcells.">
+				>
+				["at0025"] = <
+					text = <"Unknown">
+					description = <"Not able to decided whether or not the variant causes disease.">
+				>
+				["at0026"] = <
+					text = <"No mutation detected">
+					description = <"No mutation detected in gene.">
+				>
+			>
+		>
+	>
