@@ -1,0 +1,1876 @@
+archetype (adl_version=1.4; uid=cebc81e3-90ab-4343-b158-49a9c3c7a9f7)
+	openEHR-EHR-OBSERVATION.multiple_sclerosis_impact_scale.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2023-01-09">
+		["name"] = <"John Tore Valand">
+		["organisation"] = <"Helse Vest IKT AS">
+		["email"] = <"john.tore.valand@helse-vest-ikt.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere Multiple Sclerosis Impact Scale (MSIS-29).">
+			keywords = <"MS, prom", ...>
+			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
+			use = <"Brukes for å registrere Multiple Sclerosis Impact Scale (MSIS-29).
+
+openEHR-arketyper er fritt tilgjengelige under en åpen lisens, men det spesifikke innholdet i denne arketypen kan være opphavsrettslig beskyttet. All bruk av denne arketypen i implementasjoner må gjøres i henhold til vilkår gitt av innehaverne av opphavsretten.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record Multiple Sclerosis Impact Scale (MSIS-29).">
+			keywords = <"MS, prom", ...>
+			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
+			use = <"Use to record Multiple Sclerosis Impact Scale (MSIS-29).
+
+While openEHR archetypes are all freely available under an open license, the specific content of this archetype may be copyright protected. Any use of this archetype within implementations must be in compliance with the terms established by the copyright owners where a copyright exists.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Hobart Jeremy, Lamping Donna, Fitzpatrick Ray, Riazi Afsane, Thompson Alan. The Multiple Sclerosis Impact Scale (MSIS-29) – a new patient-based outcome measure, Brain 2001 May;124:962-73, 
+
+tinyurl.com/yc2x97ut
+
+© 2000 Neurological Outcome Measures Unit, 4th Floor Queen Mary Wing, NHNN, Queen Square, London WC1N 3BG, UK MSIS-29 NV: Department of Public Health and Primary Health Care, University of Bergen, Bergen, Norway, in collaboration with the Norwegian Multiple Sclerosis Competence Centre, Department of Neurology, Haukeland University Hospital, Bergen, Norway.">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"2752E26EF39FF877446D7E6956C96E86">
+		["build_uid"] = <"e3dd7fc5-6669-49dd-a38a-be70fb9058c3">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Multiple Sclerosis Impact Scale (MSIS-29)
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					INTERVAL_EVENT[at0002] occurrences matches {0..*} matches {    -- Over the past two weeks
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {    -- In the past two weeks, how much has your MS limited your ability to...
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {    -- 1. Do physically demanding tasks?
+												value matches {
+													1|[local::at0037],
+													2|[local::at0038],
+													3|[local::at0039],
+													4|[local::at0040],
+													5|[local::at0041]
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {    -- 2. Grip things tightly (e.g. turning on taps)?
+												value matches {
+													1|[local::at0042],
+													2|[local::at0043],
+													3|[local::at0044],
+													4|[local::at0045],
+													5|[local::at0046]
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {    -- 3. Carry things?
+												value matches {
+													1|[local::at0047],
+													2|[local::at0048],
+													3|[local::at0049],
+													4|[local::at0050],
+													5|[local::at0051]
+												}
+											}
+										}
+									}
+									CLUSTER[at0008] occurrences matches {0..1} matches {    -- In the past two weeks, how much have you been bothered by...
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0009] occurrences matches {0..1} matches {    -- 4. Problems with your balance?
+												value matches {
+													1|[local::at0052],
+													2|[local::at0053],
+													3|[local::at0054],
+													4|[local::at0055],
+													5|[local::at0056]
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {    -- 5. Difficulties moving about indoors?
+												value matches {
+													1|[local::at0057],
+													2|[local::at0058],
+													3|[local::at0059],
+													4|[local::at0060],
+													5|[local::at0061]
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {    -- 6. Being clumsy?
+												value matches {
+													1|[local::at0062],
+													2|[local::at0063],
+													3|[local::at0064],
+													4|[local::at0065],
+													5|[local::at0066]
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..1} matches {    -- 7. Stiffness?
+												value matches {
+													1|[local::at0067],
+													2|[local::at0068],
+													3|[local::at0069],
+													4|[local::at0070],
+													5|[local::at0071]
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {    -- 8. Heavy arms and/or legs?
+												value matches {
+													1|[local::at0072],
+													2|[local::at0073],
+													3|[local::at0074],
+													4|[local::at0075],
+													5|[local::at0076]
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {    -- 9. Tremor of your arms or legs?
+												value matches {
+													1|[local::at0077],
+													2|[local::at0078],
+													3|[local::at0079],
+													4|[local::at0080],
+													5|[local::at0081]
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {    -- 10. Spasms in your limbs?
+												value matches {
+													1|[local::at0082],
+													2|[local::at0083],
+													3|[local::at0084],
+													4|[local::at0085],
+													5|[local::at0086]
+												}
+											}
+											ELEMENT[at0016] occurrences matches {0..1} matches {    -- 11. Your body not doing what you want it to do?
+												value matches {
+													1|[local::at0087],
+													2|[local::at0088],
+													3|[local::at0089],
+													4|[local::at0090],
+													5|[local::at0091]
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {    -- 12. Having to depend on others to do things for you?
+												value matches {
+													1|[local::at0092],
+													2|[local::at0093],
+													3|[local::at0094],
+													4|[local::at0095],
+													5|[local::at0096]
+												}
+											}
+											ELEMENT[at0019] occurrences matches {0..1} matches {    -- 13. Limitations in your social and leisure activities at home?
+												value matches {
+													1|[local::at0097],
+													2|[local::at0098],
+													3|[local::at0099],
+													4|[local::at0100],
+													5|[local::at0101]
+												}
+											}
+											ELEMENT[at0020] occurrences matches {0..1} matches {    -- 14. Being stuck at home more than you would like to be?
+												value matches {
+													1|[local::at0102],
+													2|[local::at0103],
+													3|[local::at0104],
+													4|[local::at0105],
+													5|[local::at0106]
+												}
+											}
+											ELEMENT[at0021] occurrences matches {0..1} matches {    -- 15. Difficulties using your hands in everyday tasks?
+												value matches {
+													1|[local::at0107],
+													2|[local::at0108],
+													3|[local::at0109],
+													4|[local::at0110],
+													5|[local::at0111]
+												}
+											}
+											ELEMENT[at0022] occurrences matches {0..1} matches {    -- 16. Having to cut down the amount of time you spent on work or other daily activities?
+												value matches {
+													1|[local::at0112],
+													2|[local::at0113],
+													3|[local::at0114],
+													4|[local::at0115],
+													5|[local::at0116]
+												}
+											}
+											ELEMENT[at0023] occurrences matches {0..1} matches {    -- 17. Problems using transport (e.g. car, bus, train, taxi, etc.)?
+												value matches {
+													1|[local::at0117],
+													2|[local::at0118],
+													3|[local::at0119],
+													4|[local::at0120],
+													5|[local::at0121]
+												}
+											}
+											ELEMENT[at0024] occurrences matches {0..1} matches {    -- 18. Taking longer to do things?
+												value matches {
+													1|[local::at0122],
+													2|[local::at0123],
+													3|[local::at0124],
+													4|[local::at0125],
+													5|[local::at0126]
+												}
+											}
+											ELEMENT[at0025] occurrences matches {0..1} matches {    -- 19. Difficulty doing things spontaneously (e.g. going out on the spur of the moment)?
+												value matches {
+													1|[local::at0127],
+													2|[local::at0128],
+													3|[local::at0129],
+													4|[local::at0130],
+													5|[local::at0131]
+												}
+											}
+											ELEMENT[at0026] occurrences matches {0..1} matches {    -- 20. Needing to go to the toilet urgently?
+												value matches {
+													1|[local::at0132],
+													2|[local::at0133],
+													3|[local::at0134],
+													4|[local::at0135],
+													5|[local::at0136]
+												}
+											}
+											ELEMENT[at0027] occurrences matches {0..1} matches {    -- 21. Feeling unwell?
+												value matches {
+													1|[local::at0137],
+													2|[local::at0138],
+													3|[local::at0139],
+													4|[local::at0140],
+													5|[local::at0141]
+												}
+											}
+											ELEMENT[at0028] occurrences matches {0..1} matches {    -- 22. Problems sleeping?
+												value matches {
+													1|[local::at0142],
+													2|[local::at0143],
+													3|[local::at0144],
+													4|[local::at0145],
+													5|[local::at0146]
+												}
+											}
+											ELEMENT[at0029] occurrences matches {0..1} matches {    -- 23. Feeling mentally fatigued?
+												value matches {
+													1|[local::at0147],
+													2|[local::at0148],
+													3|[local::at0149],
+													4|[local::at0150],
+													5|[local::at0151]
+												}
+											}
+											ELEMENT[at0030] occurrences matches {0..1} matches {    -- 24. Worries related to your MS?
+												value matches {
+													1|[local::at0152],
+													2|[local::at0153],
+													3|[local::at0154],
+													4|[local::at0155],
+													5|[local::at0156]
+												}
+											}
+											ELEMENT[at0031] occurrences matches {0..1} matches {    -- 25. Feeling anxious or tense?
+												value matches {
+													1|[local::at0157],
+													2|[local::at0158],
+													3|[local::at0159],
+													4|[local::at0160],
+													5|[local::at0161]
+												}
+											}
+											ELEMENT[at0032] occurrences matches {0..1} matches {    -- 26. Feeling irritable, impatient, or short tempered?
+												value matches {
+													1|[local::at0162],
+													2|[local::at0163],
+													3|[local::at0164],
+													4|[local::at0165],
+													5|[local::at0166]
+												}
+											}
+											ELEMENT[at0033] occurrences matches {0..1} matches {    -- 27. Problems concentrating?
+												value matches {
+													1|[local::at0167],
+													2|[local::at0168],
+													3|[local::at0169],
+													4|[local::at0170],
+													5|[local::at0171]
+												}
+											}
+											ELEMENT[at0034] occurrences matches {0..1} matches {    -- 28. Lack of confidence?
+												value matches {
+													1|[local::at0172],
+													2|[local::at0173],
+													3|[local::at0174],
+													4|[local::at0175],
+													5|[local::at0176]
+												}
+											}
+											ELEMENT[at0035] occurrences matches {0..1} matches {    -- 29. Feeling depressed?
+												value matches {
+													1|[local::at0177],
+													2|[local::at0178],
+													3|[local::at0179],
+													4|[local::at0180],
+													5|[local::at0181]
+												}
+											}
+											ELEMENT[at0184] occurrences matches {0..1} matches {    -- Physical sum score
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
+											ELEMENT[at0185] occurrences matches {0..1} matches {    -- Psychological score
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						width matches {
+							DV_DURATION matches {
+								value matches {P2W}
+							}
+						}
+					}
+					EVENT[at0183] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0036] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0182] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Multiple Sclerosis Impact Scale (MSIS-29)">
+					description = <"For å registrere pasientrapporterte svar på spørsmål som omhandler individets oppfatning av hvordan MS har virket inn på
+dagliglivet i løpet av de siste to ukene">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"I løpet av de siste to ukene">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"I løpet av de siste to ukene, hvor mye har din MS begrenset din evne til å..">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"1. Gjøre fysisk krevende oppgaver?">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"2. Gripe fast rundt noe (f.eks. skru på en vannkran)?">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"3. Bære noe?">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"I løpet av de siste to ukene, hvor mye har du vært plaget av...">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"4. Problemer med balansen?">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"5. Vanskeligheter med å bevege deg rundt innendørs?">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"6. Å være klossete?">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"7. Stivhet?">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"8. Tunge armer og/eller bein?">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"9. Skjelving i armer og/eller bein?">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"10. Kramper (spasmer) i armer og/eller bein?">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"11. At kroppen ikke lystrer?">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"12. Å måtte være avhengig av at andre må gjøre ting for deg?">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"13. Begrensninger i sosiale aktiviteter og fritidsaktiviteter?">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"14. Å måtte oppholde deg hjemme mer enn du ønsker?">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"15. Vanskeligheter med å bruke hendene i daglige oppgaver?">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"16. Å måtte kutte ned på tiden som du ville ha brukt på arbeid eller andre daglige aktiviteter?">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"17. Problemer med å bruke offentlige transportmidler?">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"18. Å bruke lengre tid på å gjøre ting?">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"19. Vanskeligheter med å gjøre ting spontant (f.eks. gå ut helt impulsivt)?">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"20. Plutselig trang til å gå på toalettet?">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"21. Å føle deg uvel?">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"22. Problemer med å sove?">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"23. Å føle deg mentalt utmattet (fatigue)?">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"24. Bekymringer knyttet til din MS?">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"25. Å føle deg engstelig eller anspent?">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"26. Å føle deg irritabel, utålmodig eller hissig?">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"27. Konsentrasjonsproblemer?">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"28. Manglende selvtillit?">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"29. Å føle deg deprimert?">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0037"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0041"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0042"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0044"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0045"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0046"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0047"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0048"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0049"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0050"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0051"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0052"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0053"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0054"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0055"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0056"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0057"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0058"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0059"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0060"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0061"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0062"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0063"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0064"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0065"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0066"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0067"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0068"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0069"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0070"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0071"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0072"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0073"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0074"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0075"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0076"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0077"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0078"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0079"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0080"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0081"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0082"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0083"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0084"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0085"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0086"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0087"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0088"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0089"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0090"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0091"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0092"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0093"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0094"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0095"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0096"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0097"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0098"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0099"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0100"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0101"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0102"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0103"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0104"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0105"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0106"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0107"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0108"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0109"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0110"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0111"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0112"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0114"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0115"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0116"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0117"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0118"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0119"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0120"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0121"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0122"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0123"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0124"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0125"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0126"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0127"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0128"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0129"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0130"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0131"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0132"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0133"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0134"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0135"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0136"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0137"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0138"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0139"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0140"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0141"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0142"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0143"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0144"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0145"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0146"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0147"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0148"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0149"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0150"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0151"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0152"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0153"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0154"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0155"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0156"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0157"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0158"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0159"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0160"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0161"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0162"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0163"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0164"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0165"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0166"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0167"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0168"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0169"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0170"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0171"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0172"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0173"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0174"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0175"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0176"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0177"] = <
+					text = <"Ikke i det hele tatt">
+					description = <"">
+				>
+				["at0178"] = <
+					text = <"Litt">
+					description = <"">
+				>
+				["at0179"] = <
+					text = <"Moderat">
+					description = <"">
+				>
+				["at0180"] = <
+					text = <"Mye">
+					description = <"">
+				>
+				["at0181"] = <
+					text = <"Svært mye">
+					description = <"">
+				>
+				["at0182"] = <
+					text = <"Tilleggsinformasjon">
+					description = <"Ytterligere informasjon som trengs for å kunne registrere lokalt definert innhold eller for å tilpasse til andre referansemodeller/formalismer.">
+					comment = <"For eksempel lokale informasjonsbehov eller ytterligere metadata for å kunne tilpasse til tilsvarende konsepter i FHIR.">
+				>
+				["at0183"] = <
+					text = <"Uspesifisert hendelse">
+					description = <"Uspesifisert tidspunkt som kan defineres mer eksplisitt i en templat eller i en applikasjon.">
+				>
+				["at0184"] = <
+					text = <"Fysisk sumskår">
+					description = <"Summen av elementene fra 1-20.">
+					comment = <"(Summen av elementene fra 1-20. -20) * 100/80.">
+				>
+				["at0185"] = <
+					text = <"Psykisk sumskår">
+					description = <"Summen av elmentene fra 21-29">
+					comment = <"(Summen av elmentene fra 21-29. -9) * 100/36.">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Multiple Sclerosis Impact Scale (MSIS-29)">
+					description = <"To record patient reported answers to questions  about the impact of MS on the individuals day-to-day life during the past two weeks.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Over the past two weeks">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"In the past two weeks, how much has your MS limited your ability to...">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"1. Do physically demanding tasks?">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"2. Grip things tightly (e.g. turning on taps)?">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"3. Carry things?">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"In the past two weeks, how much have you been bothered by...">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"4. Problems with your balance?">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"5. Difficulties moving about indoors?">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"6. Being clumsy?">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"7. Stiffness?">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"8. Heavy arms and/or legs?">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"9. Tremor of your arms or legs?">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"10. Spasms in your limbs?">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"11. Your body not doing what you want it to do?">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"12. Having to depend on others to do things for you?">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"13. Limitations in your social and leisure activities at home?">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"14. Being stuck at home more than you would like to be?">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"15. Difficulties using your hands in everyday tasks?">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"16. Having to cut down the amount of time you spent on work or other daily activities?">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"17. Problems using transport (e.g. car, bus, train, taxi, etc.)?">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"18. Taking longer to do things?">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"19. Difficulty doing things spontaneously (e.g. going out on the spur of the moment)?">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"20. Needing to go to the toilet urgently?">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"21. Feeling unwell?">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"22. Problems sleeping?">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"23. Feeling mentally fatigued?">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"24. Worries related to your MS?">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"25. Feeling anxious or tense?">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"26. Feeling irritable, impatient, or short tempered?">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"27. Problems concentrating?">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"28. Lack of confidence?">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"29. Feeling depressed?">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0037"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0041"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0042"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0044"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0045"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0046"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0047"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0048"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0049"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0050"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0051"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0052"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0053"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0054"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0055"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0056"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0057"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0058"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0059"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0060"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0061"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0062"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0063"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0064"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0065"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0066"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0067"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0068"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0069"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0070"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0071"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0072"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0073"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0074"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0075"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0076"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0077"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0078"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0079"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0080"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0081"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0082"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0083"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0084"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0085"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0086"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0087"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0088"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0089"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0090"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0091"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0092"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0093"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0094"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0095"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0096"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0097"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0098"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0099"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0100"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0101"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0102"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0103"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0104"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0105"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0106"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0107"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0108"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0109"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0110"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0111"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0112"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0114"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0115"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0116"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0117"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0118"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0119"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0120"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0121"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0122"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0123"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0124"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0125"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0126"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0127"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0128"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0129"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0130"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0131"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0132"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0133"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0134"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0135"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0136"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0137"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0138"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0139"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0140"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0141"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0142"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0143"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0144"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0145"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0146"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0147"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0148"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0149"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0150"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0151"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0152"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0153"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0154"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0155"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0156"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0157"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0158"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0159"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0160"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0161"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0162"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0163"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0164"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0165"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0166"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0167"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0168"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0169"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0170"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0171"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0172"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0173"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0174"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0175"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0176"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0177"] = <
+					text = <"Not at all">
+					description = <"">
+				>
+				["at0178"] = <
+					text = <"A little">
+					description = <"">
+				>
+				["at0179"] = <
+					text = <"Moderately">
+					description = <"">
+				>
+				["at0180"] = <
+					text = <"Quite a bit">
+					description = <"">
+				>
+				["at0181"] = <
+					text = <"Extremely">
+					description = <"">
+				>
+				["at0182"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+				["at0183"] = <
+					text = <"Any event">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0184"] = <
+					text = <"Physical sum score">
+					description = <"The sum of the elements for 1-20.">
+					comment = <"(The sum of the elements from 1 - 20. -20) * 100/80.">
+				>
+				["at0185"] = <
+					text = <"Psychological score">
+					description = <"The sum of the elements from 21 - 29.
+">
+					comment = <"(The sum of the elements from 21 - 29. -9) * 100/36.">
+				>
+			>
+		>
+	>
