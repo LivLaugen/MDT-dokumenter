@@ -1,0 +1,403 @@
+archetype (adl_version=1.4; uid=cf91bdcd-2d73-4c5b-a540-a56e01b1cf59)
+	openEHR-EHR-EVALUATION.intubation_problem_summary.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"Silje Ljosland Bakke / John Tore Valand">
+				["organisation"] = <"Nasjonal IKT HF / Helse Bergen HF">
+				["email"] = <"arketyper@nasjonalikt.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2016-03-02">
+		["name"] = <"John Tore Valand / Silje Ljosland Bakke">
+		["organisation"] = <"Helse Bergen HF / Nasjonal IKT HF">
+		["email"] = <"arketyper@nasjonalikt.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere en oppdaterbar oppsummering om tidligere problemer med endotrakeal intubasjon.">
+			keywords = <"intubasjon","endotrakeal">
+			use = <"Brukes for å registrere en oppdaterbar oppsummering om tidligere problemer med endotrakeal intubasjon, som del av en oversikt over anestesiproblemer.">
+			misuse = <"Brukes ikke for å registrere antakelser om mulige fremtidige intubasjonsproblemer kun basert på en fysisk undersøkelse.
+
+Brukes ikke for å registrere problemer med andre typer intubasjon enn endotrakeal.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record a persistent summary statement about any problems with endotracheal intubation the indvidual has experienced in the past.">
+			copyright = <"*(nb)">
+			use = <"Use to record a persistent summary statement about any problems with endotracheal intubation the indvidual has experienced in the past as part of a record of anaestesia problems.">
+			misuse = <"Not to be used to record assumptions about possible future intubation problems based on a physical examination alone.
+
+Not to be used to record problems with other types of intubations than endotracheal intubation.">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"7EDCB32F4F816FA84112014E714C77A3">
+		["build_uid"] = <"a5ce6b0e-f9cd-453d-8d71-415419fc016a">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Intubation problem summary
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Status
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0019,    -- Never been intubated
+									at0020,    -- Has been intubated without problems
+									at0021]    -- Has been intubated with problems
+								}
+							}
+						}
+					}
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Clinical description
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					CLUSTER[at0004] occurrences matches {0..*} matches {    -- Intubation problem
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0018] occurrences matches {0..1} matches {    -- Problem
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0010] occurrences matches {0..1} matches {    -- Problem description
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0007] occurrences matches {0..1} matches {    -- Reason for intubation
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0006] occurrences matches {0..1} matches {    -- Date of the intubation
+								value matches {
+									DV_DATE_TIME matches {*}
+								}
+							}
+							ELEMENT[at0022] occurrences matches {0..1} matches {    -- Urgency
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0023,    -- Emergency
+											at0024]    -- Elective
+										}
+									}
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0011] occurrences matches {0..1} matches {    -- Mask ventilation
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0015,    -- Easy
+											at0016,    -- Difficult
+											at0017]    -- Not possible
+										}
+									}
+								}
+							}
+							ELEMENT[at0025] occurrences matches {0..1} matches {    -- Muscle relaxants
+								value matches {
+									DV_TEXT matches {*}
+									DV_BOOLEAN matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0012] occurrences matches {0..*} matches {    -- Details
+								include
+									archetype_id/value matches {/.*/}
+							}
+							ELEMENT[at0026] occurrences matches {0..1} matches {    -- Solution
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0027] occurrences matches {0..1} matches {    -- Extubation
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0028] occurrences matches {0..1} matches {    -- Comment
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0013] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Last updated
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0030] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sammendrag av intubasjonsproblemer">
+					description = <"En oppsummering av problemer med intubasjon.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Klinisk beskrivelse">
+					description = <"Fritekstbeskrivelse av intubasjonsproblemer individet har opplevd tidligere.">
+				>
+				["at0003"] = <
+					text = <"Status">
+					description = <"En uttalelse om hvorvidt individet har blitt intubert tidligere, og hvorvidt det oppsto problemer.">
+				>
+				["at0004"] = <
+					text = <"Intubasjonsproblem">
+					description = <"Spesifikke detaljer om ett enkelt intubasjonsproblem. Dette clusteret kan repeteres for å kunne representere flere ulike problemer, eller flere forekomster av det samme problemet.">
+				>
+				["at0006"] = <
+					text = <"Intubasjonsdato">
+					description = <"Datoen da intubasjonen ble gjennomført.">
+				>
+				["at0007"] = <
+					text = <"Intubasjonsårsak">
+					description = <"Beskrivelse av årsaken for hvorfor intubasjon ble utført.">
+				>
+				["at0010"] = <
+					text = <"Problembeskrivelse">
+					description = <"Fritekstbeskrivelse av intubasjonsproblemet.">
+				>
+				["at0011"] = <
+					text = <"Maskeventilasjon">
+					description = <"Utsagn om vanskelighetsgrad for maskeventilasjon.">
+				>
+				["at0012"] = <
+					text = <"Detaljer">
+					description = <"Detaljer om problemene.">
+					comment = <"For eksempel forskjellige skåringer eller graderinger.">
+				>
+				["at0013"] = <
+					text = <"*Tree(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0014"] = <
+					text = <"Sist oppdatert">
+					description = <"Datoen da sammendraget om intubasjonsproblemer sist ble oppdatert.">
+				>
+				["at0015"] = <
+					text = <"Enkelt">
+					description = <"Maskeventilasjon kunne utføres enkelt.">
+				>
+				["at0016"] = <
+					text = <"Vanskelig">
+					description = <"Maskeventilasjon kunne utføres med vanskelighet.">
+				>
+				["at0017"] = <
+					text = <"Umulig">
+					description = <"Maskeventilasjon var umulig.">
+				>
+				["at0018"] = <
+					text = <"Problem">
+					description = <"Et ord eller en kort frase som identifiserer intubasjonsproblemet.">
+					comment = <"For eksempel vanskelig laryngoskopi, vanskelig intubasjon, eller mislykket intubasjon.">
+				>
+				["at0019"] = <
+					text = <"Aldri intubert">
+					description = <"Individet har aldri blitt intubert.">
+				>
+				["at0020"] = <
+					text = <"Intubert uten problemer">
+					description = <"Individet har blitt intubert uten identifiserte problemer.">
+				>
+				["at0021"] = <
+					text = <"Intubert med problemer">
+					description = <"Individet har blitt intubert med identifiserte problemer.">
+				>
+				["at0022"] = <
+					text = <"Hastegrad">
+					description = <"Intubasjonens hastegrad">
+				>
+				["at0023"] = <
+					text = <"Akutt">
+					description = <"Intubasjonen ble utført som en akutt prosedyre.">
+				>
+				["at0024"] = <
+					text = <"Planlagt">
+					description = <"Intubasjonen ble utført som en planlagt prosedyre.">
+				>
+				["at0025"] = <
+					text = <"Muskelrelakserende">
+					description = <"Ble det administrert muskelrelakserende legemidler?">
+				>
+				["at0026"] = <
+					text = <"Løsning">
+					description = <"Hvordan intubasjonsproblemet ble løst.">
+					comment = <"For eksempel: En larynxmaske ble brukt, intubasjon ble gjennomført ved hjelp av videoassistert laryngoskopi eller med fiberoptisk bronkskop, det ble utført akutt trakeotomi, eller prosedyren ble utsatt.">
+				>
+				["at0027"] = <
+					text = <"Ekstubasjon">
+					description = <"Detaljer om ekstubasjonen. For eksempel: Ekstubasjon ble utført rutinemessig eller med mandreng.">
+				>
+				["at0028"] = <
+					text = <"Kommentar">
+					description = <"Fritekstbeskrivelse av det spesifikke intubasjonsproblemet, som ikke dekkes i andre elementer.">
+				>
+				["at0030"] = <
+					text = <"Utvidelse">
+					description = <"Ytterligere informasjon som trengs for å kunne registrere lokalt definert innhold eller for å tilpasse til andre referansemodeller/formalismer.">
+					comment = <"For eksempel lokale informasjonsbehov eller ytterligere metadata for å kunne tilpasse til tilsvarende konsepter i FHIR eller CIMI.">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Intubation problem summary">
+					description = <"A summary about problem with intubation.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Clinical description">
+					description = <"A narrative description of any problems the individual has had with intubation in the past.">
+				>
+				["at0003"] = <
+					text = <"Status">
+					description = <"Statement about whether the individual has been intubated in the past, and whether there were any problems.">
+				>
+				["at0004"] = <
+					text = <"Intubation problem">
+					description = <"Specific details about a single intubation problem. This cluster may be repeated to represent several different problems, or several occurrences of the same problem.">
+				>
+				["at0006"] = <
+					text = <"Date of the intubation">
+					description = <"The date the intubation was performed.">
+				>
+				["at0007"] = <
+					text = <"Reason for intubation">
+					description = <"Description of the reason why intubation was perfomed.">
+				>
+				["at0010"] = <
+					text = <"Problem description">
+					description = <"Narrative description of the intubation problem.">
+				>
+				["at0011"] = <
+					text = <"Mask ventilation">
+					description = <"Statement about the ease of mask ventilation.">
+				>
+				["at0012"] = <
+					text = <"Details">
+					description = <"Details about the problems.">
+					comment = <"For example: Different scorings or gradings.">
+				>
+				["at0013"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0014"] = <
+					text = <"Last updated">
+					description = <"The date this intubation problem summary was last updated.">
+				>
+				["at0015"] = <
+					text = <"Easy">
+					description = <"Mask ventilation could be performed easily.">
+				>
+				["at0016"] = <
+					text = <"Difficult">
+					description = <"Mask ventilation could be performed with difficulty.">
+				>
+				["at0017"] = <
+					text = <"Not possible">
+					description = <"Mask ventilation was not possible.">
+				>
+				["at0018"] = <
+					text = <"Problem">
+					description = <"A word or phrase identifying the intubation problem.">
+					comment = <"Coding of the intubation problem with a terminology is preferred, where possible. For example: Difficult laryngoscopy, difficult intubation or failed intubation.">
+				>
+				["at0019"] = <
+					text = <"Never been intubated">
+					description = <"The individual has never been intubated.">
+				>
+				["at0020"] = <
+					text = <"Has been intubated without problems">
+					description = <"The individual has been intubated without any identified problems.">
+				>
+				["at0021"] = <
+					text = <"Has been intubated with problems">
+					description = <"The individual has been intubated with identified problems.">
+				>
+				["at0022"] = <
+					text = <"Urgency">
+					description = <"The urgency of the intubation.">
+				>
+				["at0023"] = <
+					text = <"Emergency">
+					description = <"The intubation was performed as an emergency procedure.">
+				>
+				["at0024"] = <
+					text = <"Elective">
+					description = <"The intubation was performed as an elective procedure.">
+				>
+				["at0025"] = <
+					text = <"Muscle relaxants">
+					description = <"Were muscle relaxants administered?">
+				>
+				["at0026"] = <
+					text = <"Solution">
+					description = <"How the the intubation problem was solved.">
+					comment = <"For example: An LMA was placed, intubation was performed through a Fast track laryngeal mask airway, with video assisted laryngoscopy or with fiberoptic brochosope guidance, emergyncy tracheostomy was perfomed, the procedure was resceduled.">
+				>
+				["at0027"] = <
+					text = <"Extubation">
+					description = <"Details about the extubation. For example: Extubation was performed routinely or over a stylet.">
+				>
+				["at0028"] = <
+					text = <"Comment">
+					description = <"Narrative description of the specific intubation problem not covered in other fields.">
+				>
+				["at0030"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local content or to align with other reference models/formalisms.">
+					comment = <"For example: Local information requirements or additional metadata to align with FHIR or CIMI equivalents.">
+				>
+			>
+		>
+	>
