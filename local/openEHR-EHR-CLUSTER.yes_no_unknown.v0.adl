@@ -1,0 +1,124 @@
+archetype (adl_version=1.4; uid=679a0a00-fe84-4498-91a6-4b75d2d87918)
+	openEHR-EHR-CLUSTER.yes_no_unknown.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"Bjørn Næss">
+				["organisation"] = <"DIPS AS">
+				["email"] = <"bna@dips.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2022-02-18">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS AS">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Arketypen er utviklet for å være et svaralternativ til den godkjente arketypen \"helserisiko\". 
+Her er alternativene \"tilstede\", \"uviss\", \"fraværende\". I mange spørreskjema relatert til helserisiko benyttes alternativene \"Ja\", \"Nei\" og \"Ukjent\". Sluttbruker ønsker å få presentert disse alternativene. Arketypen er utviklet for å dekke en presentasjon av disse alternativene og det bør være en skjemalogikk som oversetter konseptene">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Benyttes i screening/spørreskjema registreringer som har andre svaralternativ som sin primærform. ">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The archetype is designed to be a response alternative to the approved archetype \"health risk\".
+Here the options are \"present\", \"uncertain\", \"absent\". In many questionnaires related to health risk, the options \"Yes\", \"No\" and \"Unknown\" are used. The end user wants to be presented with these options. The archetype is designed to cover a presentation of these options and there should be a form logic that translates the concepts.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Used in screening / questionnaire registrations that have other answer alternatives as their primary form.">
+			misuse = <"Not be used when null flavor is an option. ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"8104A151EB87D574E916EFACF42E2A7A">
+		["build_uid"] = <"f55cbf74-1389-4783-bbdf-397ba47ddc28">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Ja/Nei/Ukjent
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Spørsmål
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0002,    -- Ja
+							at0003,    -- Nei
+							at0004]    -- Ukjent
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Ja/Nei/Ukjent">
+					description = <"Arketypen er utviklet for å være et svaralternativ til den godkjente arketypen \"helserisiko\". ">
+				>
+				["at0001"] = <
+					text = <"Spørsmål">
+					description = <"">
+				>
+				["at0002"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Ukjent">
+					description = <"">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Yes/No/Unknown">
+					description = <"The archetype is designed to be a response alternative to the reviewed archetype \"health risk\".">
+				>
+				["at0001"] = <
+					text = <"Question">
+					description = <"">
+				>
+				["at0002"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Unknown">
+					description = <"">
+				>
+			>
+		>
+	>
