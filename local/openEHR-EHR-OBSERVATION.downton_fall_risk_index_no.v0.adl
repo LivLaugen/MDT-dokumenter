@@ -1,0 +1,233 @@
+archetype (adl_version=1.4; uid=16f78569-d95b-4557-a734-6fc6c880068f)
+	openEHR-EHR-OBSERVATION.downton_fall_risk_index_no.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2021-01-18">
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Atomica Informatics">
+		["email"] = <"heather.leslie@atomicainformatics.com">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","Ivar Berge, Oslo Universitetssykehus, Norway (Nasjonal IKT redaktør)","Gunn Elin Blakkisrud, DIPS ASA, Norway","Hanne Marte Bårholm, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Marte Rime Bø, Direktoratet for e-helse, Norway","Kåre Flø, DIPS ASA, Norway","Mikkel Johan Gaup Grønmo, Helse Nord IKT, Norway (Nasjonal IKT redaktør)","Nina Hauge, Helse Fonna, Norway","June Marie Knappskog, Helse Nord IKT, Norway (Nasjonal IKT redaktør)","Lise Kristin Knutsen, Oslo universitetssykehus, Norway","Kanika Kuwelker, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Liv Laugen, Oslo universitetssykehus, Norway","Bjørn Næss, DIPS AS, Norway","Vilde Richardsen, Universitetssykehuset Nord-Norge, Norway","Terje Sagmyr, Helse Vest IKT, Norway","John Tore Valand, Helse Vest IKT, Norway">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere resultat av Downton fall risk index. Denne arketypen er laget spesifikt for den norske modifikasjonen av Downton fall risk index.">
+			keywords = <"Downton Fall Risk Index","DFRI","eldre","fall","risiko","senior alert","modifisert","fallrisiko">
+			use = <"Brukes for å registrere resultat av Downton fall risk index.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Downton JH, Andrews K. Prevalence, characteristics and factors associated with falls among the elderly living at home. Aging (Milano). 1991 Sep;3(3):219-28. doi: 10.1007/BF03324009. PMID: 1764490.
+
+Rosendahl E, Lundin-Olsson L, Kallin K, Jensen J, Gustafson Y, Nyberg L. Prediction of falls among older people in residential care facilities by the Downton index. Aging Clin Exp Res. 2003 Apr;15(2):142-7. doi: 10.1007/BF03324492. PMID: 12889846. Available from: https://www.researchgate.net/publication/6432597_Prediction_of_falls_among_older_people_in_residential_care_facilities_by_the_Downton_index.
+
+Downton fall risk index [Internett], l.c. 27.03.2022, Tilgjengelig på: https://www.itryggehender24-7.no/reduser-pasientskader/fallskader/_/attachment/download/086b4c7c-532f-454f-b3f3-57e770f2b2a3:af896ea71016c887ded040bfe3e8bbd30f76035e/downton-fall-risk-index-norsk2022.docx.
+
+Fall Risk Assessment Predicts Fall-Related Injury, Hip Fracture, and Head Injury in Older Adults, Tilgjengelig på: https://agsjournals.onlinelibrary.wiley.com/doi/10.1111/jgs.14439.">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"AB86B34E2412B37AF2FEF494D85470ED">
+		["build_uid"] = <"e519ee57-1866-4154-a1c2-162b4d6404e8">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Downton fall risk index (NO)
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					POINT_EVENT[at0002] occurrences matches {0..*} matches {    -- Uspesifisert tidspunkthendelse
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Tidligere kjente fall
+										value matches {
+											0|[local::at0005],
+											1|[local::at0006]
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..6} matches {    -- Bruk av legemidler
+										value matches {
+											0|[local::at0008],
+											1|[local::at0009],
+											1|[local::at0010],
+											1|[local::at0011],
+											1|[local::at0012],
+											1|[local::at0013],
+											0|[local::at0014]
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..3} matches {    -- Sensorisk funksjon
+										value matches {
+											0|[local::at0016],
+											1|[local::at0017],
+											1|[local::at0018],
+											1|[local::at0019]
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {    -- Kognitiv funksjon
+										value matches {
+											0|[local::at0022],
+											1|[local::at0023]
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {    -- Gangfunksjon
+										value matches {
+											0|[local::at0024],
+											1|[local::at0025],
+											0|[local::at0026]
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {    -- Sum risikofaktorer
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..11|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0028] matches {*}    -- Item tree
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Downton fall risk index (NO)">
+					description = <"Et verktøy som brukes for å kartlegge fallrisiko.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Uspesifisert tidspunkthendelse">
+					description = <"Standard uspesifisert tidspunkthendelse som kan defineres mer eksplisitt i et templat eller i en applikasjon.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Tidligere kjente fall">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Nei">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Bruk av legemidler">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Ingen">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Beroligende/sovetabletter/neuroleptika">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Diuretika">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Antihypertensiva (ikke diuretika)">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Antiparkinson-midler">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Antidepressiva">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Andre legemidler">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Sensorisk funksjon">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Ingen nedsatt funksjon">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Nedsatt syn">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Nedsatt hørsel">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Nedsatt motorikk (tegn på lammelse)">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Kognitiv funksjon">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Gangfunksjon">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Orientert">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Ikke orientert (nedsatt kognitiv funksjon)">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Sikker gange (med eller uten hjelpemiddel)">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Usikker gange">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Mangler gangfunksjon">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Sum risikofaktorer">
+					description = <"Den totale summen av de enkelte parameterne for Downton fall risk index.">
+				>
+				["at0028"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+			>
+		>
+	>
