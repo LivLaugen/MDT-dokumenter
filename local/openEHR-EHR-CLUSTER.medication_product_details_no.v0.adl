@@ -1,0 +1,219 @@
+archetype (adl_version=1.4; uid=616d6013-2b6b-4fa1-ba2d-09430a987b5a)
+	openEHR-EHR-CLUSTER.medication_product_details_no.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"Hilde Hollås">
+		["organisation"] = <"DIPS AS">
+		["email"] = <"hho@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Registrering av legemiddeldetaljer fra FEST, som må lagres bl.a. pga manglende historikk i FEST.">
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"F33D3230693B0E7C0EE44FF56E67C8E4">
+		["build_uid"] = <"d0d46292-7b97-4605-8eee-f0c4acf508ee">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Legemiddel produktdetaljer NO
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Produsent
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {    -- Reseptgruppe
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0033] occurrences matches {0..1} matches {    -- ATC
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0034] occurrences matches {0..1} matches {    -- MedikamentId
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0011] occurrences matches {0..1} matches {    -- Medikamenthåndtering
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Knuses?
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {    -- Åpnes?
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Deling
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {    -- Bolus
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0016] occurrences matches {0..1} matches {    -- Infusjonshastighet bolus
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0017] occurrences matches {0..1} matches {    -- Konservering
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0018] occurrences matches {0..1} matches {    -- Oppevaring
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0019] occurrences matches {0..1} matches {    -- Smak
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0021] occurrences matches {0..1} matches {    -- Markedsføringstillatelse
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0022] occurrences matches {0..1} matches {    -- Markedsføringstillatelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0023] occurrences matches {0..1} matches {    -- Begrunnelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0024] occurrences matches {0..1} matches {    -- Direktesøknad SLV
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0026] occurrences matches {0..1} matches {    -- Opioidsøknad
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0032] occurrences matches {0..*} matches {    -- Ytterligere detaljer
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Legemiddel produktdetaljer NO">
+					description = <"Legemiddel produktdetaljer fra FEST.">
+				>
+				["at0001"] = <
+					text = <"Produsent">
+					description = <"Produsent av legemidlet.">
+				>
+				["at0009"] = <
+					text = <"Reseptgruppe">
+					description = <"Identifiserer hvilken reseptgruppe legemidlet tilhører (A, B, C eller F).">
+				>
+				["at0011"] = <
+					text = <"Medikamenthåndtering">
+					description = <"Anbefalt legemiddelhåndtering fra FEST.">
+				>
+				["at0012"] = <
+					text = <"Knuses?">
+					description = <"Angir om legemidlet kan knuses.">
+				>
+				["at0013"] = <
+					text = <"Åpnes?">
+					description = <"Angir om legemidlet kan åpnes.">
+				>
+				["at0014"] = <
+					text = <"Deling">
+					description = <"Angir om legemidlet kan deles. Kan angis kun for tabletter.">
+				>
+				["at0015"] = <
+					text = <"Bolus">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Infusjonshastighet bolus">
+					description = <"Angir injeksjonshastighet på legemidler som kan gis som bolus.">
+				>
+				["at0017"] = <
+					text = <"Konservering">
+					description = <"Angir om legemidlet inneholder konserveringsmiddel.">
+				>
+				["at0018"] = <
+					text = <"Oppevaring">
+					description = <"Angir hvilken temperatur pakningen må oppbevares ved.">
+				>
+				["at0019"] = <
+					text = <"Smak">
+					description = <"Angir smak på legemidlet dersom legemidlet er tilsatt smak.">
+				>
+				["at0021"] = <
+					text = <"Markedsføringstillatelse">
+					description = <"Detaljer om markedsføringstillatelse">
+				>
+				["at0022"] = <
+					text = <"Markedsføringstillatelse">
+					description = <"Angir om det må søkes om markedsføringstillatelse for legemidlet. Eks. Skal ikke søkes, søknad vurderes apotek, må søkes.">
+				>
+				["at0023"] = <
+					text = <"Begrunnelse">
+					description = <"Søknadstekst/begrunnelse til SLV, for hvorfor legemiddelet ordineres til tross for at det ikke har markedsføringstillatelse.">
+				>
+				["at0024"] = <
+					text = <"Direktesøknad SLV">
+					description = <"Det er sendt direktesøknad til Statens Legemiddelverk. (Stemmer denne txt?)">
+				>
+				["at0026"] = <
+					text = <"Opioidsøknad">
+					description = <"Angir om legemidlet krever Opioidsøknad til Helfo i forbindelse med søknad om individuell refusjon.">
+				>
+				["at0032"] = <
+					text = <"Ytterligere detaljer">
+					description = <"Ytterligere strukturerte detaljer om legemidlet som ikke omfattes av andre felt.">
+				>
+				["at0033"] = <
+					text = <"ATC">
+					description = <"ATC-koden på legemidlet (definert av WHOCC).">
+				>
+				["at0034"] = <
+					text = <"MedikamentId">
+					description = <"Angir legemidlets Id fra en av katalogene i FEST (+kodeverksverdi som angir hvilken katalog).">
+				>
+			>
+		>
+	>
