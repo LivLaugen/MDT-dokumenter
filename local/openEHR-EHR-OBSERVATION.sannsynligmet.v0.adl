@@ -1,0 +1,150 @@
+archetype (adl_version=1.4; uid=0cfb0d66-f2da-404e-bf0e-fd10fcdcc16b)
+	openEHR-EHR-OBSERVATION.sannsynligmet.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"E3E94E15E71F647692A47163A4D58AD9">
+		["build_uid"] = <"f21204b1-086a-4ff2-9527-aa50dfa0eaba">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Sannsynligmet
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- SannsynligLymfeknutemet
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005,    -- Ja
+													at0006,    -- Nei
+													at0007]    -- Ukjent
+												}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {    -- DatoSannsynligLymfeknutemet
+										value matches {
+											DV_DATE matches {
+												value matches {yyyy-mm-dd}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- SannsynligFjernmet
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0009,    -- Ja
+													at0010,    -- Nei
+													at0011]    -- Ukjent
+												}
+											}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {    -- DatoSannsynligFjernmet
+										value matches {
+											DV_DATE matches {
+												value matches {yyyy-mm-dd}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sannsynligmet">
+					description = <"Brukes sammen med TNM. Ved NX og MX, vil man vite om det er sannsynlig om det foreligger regionale lymfeknutemetastase eller fjernmetastaser">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"SannsynligLymfeknutemet">
+					description = <"Sannsynlig forekomst av regionale lymfeknutemetastaser">
+				>
+				["at0005"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Ukjent">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"SannsynligFjernmet">
+					description = <"Sannsynlig forekomst av fjernmetastaser">
+				>
+				["at0009"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Ukjent">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"DatoSannsynligLymfeknutemet">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"DatoSannsynligFjernmet">
+					description = <"*">
+				>
+			>
+		>
+	>
