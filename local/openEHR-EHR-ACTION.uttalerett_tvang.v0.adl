@@ -1,0 +1,116 @@
+archetype (adl_version=1.4; uid=b4ed4194-084c-448c-85ce-9ff30ee83a4f)
+	openEHR-EHR-ACTION.uttalerett_tvang.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Benyttes i samband med dokumentasjon av tvunget psykisk helsevern for å dokumentere at informasjon knyttet til klagerett er gitt">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Til bruk ved registrering av vedtak i TPH">
+			misuse = <"Alle andre">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"042C3C87CB58FAB2E5D3646B9666A9E2">
+		["build_uid"] = <"7f7eb225-6f42-4d1a-9b4f-865616f2d6a2">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Uttalerett
+		ism_transition matches {
+			ISM_TRANSITION[at0008] matches {    -- Uttale dokumentert
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0008]    -- Uttale dokumentert
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0003] occurrences matches {0..1} matches {    -- Uttalerett
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0004] occurrences matches {0..1} matches {    -- Den som har fremsatt begjæring etter psykisk helsevernloven paragraf 3-6 er gitt anledning til å uttale seg
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0005] occurrences matches {0..1} matches {    -- Pasientens nærmeste pårørende er gitt anledning til å uttale seg
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+							ELEMENT[at0007] occurrences matches {0..1} matches {    -- Pasienten er gitt anledning til å uttale seg
+								value matches {
+									DV_BOOLEAN matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Uttalerett">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Uttalerett">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Den som har fremsatt begjæring etter psykisk helsevernloven paragraf 3-6 er gitt anledning til å uttale seg">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Pasientens nærmeste pårørende er gitt anledning til å uttale seg">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Pasienten er gitt anledning til å uttale seg">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Uttale dokumentert">
+					description = <"">
+				>
+			>
+		>
+	>
