@@ -1,0 +1,278 @@
+archetype (adl_version=1.4; uid=a81f8c15-3bc9-4d0f-8008-0e9a3614a8a9)
+	openEHR-EHR-OBSERVATION.basic_demographic_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2017-03-27">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"*Test archetype(en)">
+			copyright = <"© DIPS ASA">
+			use = <"*Test archetype(en)">
+			misuse = <"*Test archetype(en)">
+		>
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Lokal arketype for registrering av grunnleggende demografiske data til bruk i DIPS innkomst-journal.">
+			copyright = <"© DIPS ASA">
+			use = <"Lokal arketype for registrering av grunnleggende demografiske data til bruk i DIPS innkomst-journal.">
+			misuse = <"Annen bruk.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Test archetype">
+			copyright = <"© DIPS ASA">
+			use = <"Test archetype">
+			misuse = <"Test archetype">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"6D459D527D8604B5B9EDFEB0424C50EF">
+		["build_uid"] = <"e015d013-55d6-4841-afd7-10a97eb9ba4f">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Basic demographic
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Gender
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005,    -- Male
+													at0006]    -- Female
+												}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- Birthdate
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..*} matches {    -- Languages
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {    -- Place of residence
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {    -- County
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {    -- Municipality
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Basic demographic">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Gender">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Male">
+					description = <"Male">
+				>
+				["at0006"] = <
+					text = <"Female">
+					description = <"Female">
+				>
+				["at0008"] = <
+					text = <"Birthdate">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Languages">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Place of residence">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"County">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Municipality">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Grundläggande demografi">
+					description = <"okänd">
+				>
+				["at0001"] = <
+					text = <"Händelser">
+					description = <"@ intern@">
+				>
+				["at0002"] = <
+					text = <"Alla händelser">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"Träd">
+					description = <"@ intern@">
+				>
+				["at0004"] = <
+					text = <"Kön">
+					description = <"**(en)">
+				>
+				["at0005"] = <
+					text = <"Man">
+					description = <"Man">
+				>
+				["at0006"] = <
+					text = <"Kvinna">
+					description = <"Kvinna">
+				>
+				["at0008"] = <
+					text = <"Födelsedatum">
+					description = <"**(en)">
+				>
+				["at0009"] = <
+					text = <"Språk">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"*Place of residence(en)">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"*County(en)">
+					description = <"**(en)">
+				>
+				["at0012"] = <
+					text = <"*Municipality(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Grunnleggende demografiske data">
+					description = <"Grunnleggende demografiske data">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Kjønn">
+					description = <"Kjønn">
+				>
+				["at0005"] = <
+					text = <"Mann">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Kvinne">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Fødselsdato">
+					description = <"Fødselsdato">
+				>
+				["at0009"] = <
+					text = <"Språk">
+					description = <"Språk">
+				>
+				["at0010"] = <
+					text = <"Bosted">
+					description = <"Bosted">
+				>
+				["at0011"] = <
+					text = <"Fylke">
+					description = <"Fylke">
+				>
+				["at0012"] = <
+					text = <"Kommune">
+					description = <"Kommune">
+				>
+			>
+		>
+	>
