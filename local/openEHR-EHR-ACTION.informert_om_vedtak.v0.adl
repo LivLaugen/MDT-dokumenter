@@ -1,0 +1,121 @@
+archetype (adl_version=1.4; uid=7ca2d050-377e-45aa-b5cc-7ecc618b77a5)
+	openEHR-EHR-ACTION.informert_om_vedtak.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2014-02-07">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For registrering av vedtak om tvungen urinprøve.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes til registrering av vedtak om tvungen urinprøve.">
+			misuse = <"Alt annet.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"400E7ECEE4C0D9FE1C478E3B71703FB6">
+		["build_uid"] = <"cd7b5f5a-0270-49f4-b73f-8bf4f01b88bb">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {    -- Informasjon om vedtak
+		ism_transition matches {
+			ISM_TRANSITION[at0008] matches {    -- Informert
+				current_state matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[openehr::532]
+						}
+					}
+				}
+				careflow_step matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::at0008]    -- Informert
+						}
+					}
+				}
+			}
+		}
+		description matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Pasienten er informert om sin klageadgang
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- Om informasjon til nærmeste pårørende
+						value matches {
+							0|[local::at0004],
+							1|[local::at0005],
+							2|[local::at0006],
+							3|[local::at0007]
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Informasjon om vedtak">
+					description = <"Dokumentasjon av informering av pasient og pårørende.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Pasienten er informert om sin klageadgang">
+					description = <"Dokumentasjon av pasientinformasjon om klageadgang.">
+				>
+				["at0003"] = <
+					text = <"Om informasjon til nærmeste pårørende">
+					description = <"Dokumentasjon om informasjon til pårørende.">
+				>
+				["at0004"] = <
+					text = <"Nærmeste pårørende informeres om Nærmeste pårørende informeres om vedtaket og sin klageadgang.">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Nærmeste pårørende informeres ikke da pasienten motsetter seg dette.">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Nærmeste pårørende informeres ikke da denne ikke har kjent adresse og ettersporing vil kreve urimelig mye tid eller arbeid.">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Nærmeste pårørende informeres ikke da denne ved tidligere anledning har gitt uttrykk for ikke å ønske informasjon om hvert enkelt vedtak av den aktuelle typen.">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Informert">
+					description = <"">
+				>
+			>
+		>
+	>
