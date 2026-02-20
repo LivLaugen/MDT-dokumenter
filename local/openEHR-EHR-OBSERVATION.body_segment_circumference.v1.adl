@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=4c55110d-adbe-4737-aad3-39e433fb908c)
+﻿archetype (adl_version=1.4; uid=5cadc966-530f-4f77-8215-ec9db8d9fb61)
 	openEHR-EHR-OBSERVATION.body_segment_circumference.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Body segment circumference
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -16,22 +15,17 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2019-03-07">
 		["name"] = <"Heather Leslie">
 		["organisation"] = <"Atomica Informatics, Australia">
 		["email"] = <"heather.leslie@atomicainformatics.com">
+		["date"] = <"2019-03-07">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","Randi Brendberg, Helse Nord RHF, Norway","Angela Crovetti, CDC/NIOSH, United States","Anne M Gromsrud, DIPS AS, Norway","Mikkel Gaup Grønmo, FSE, Helse Nord, Norway (Nasjonal IKT redaktør)","Evelyn Hovenga, EJSH Consulting, Australia","Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway","Heidi Koikkalainen, United Kingdom (openEHR Editor)","Tomi Laptoš, Marand, Slovenia","Liv Laugen, Oslo universitetssykehus, Norway","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","Priscila Maranhão, MEDCIDS-FMUP, Portugal","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Lars Ivar Mehlum, Nasjonal IKT HF, Norway","Svenne Naumann, Finnmarkssykehuset, Norway","Bjørn Næss, DIPS ASA, Norway","Jayashree Panickar, Karolinska Institute, Sweden","Norwegian Review Summary, Nasjonal IKT HF, Norway","Line Silsand, univertsity hospital of northern norway, Norway (openEHR Editor)","Trine Strand, Oslo Universitetssykehus (OUS), Norway","Johannes Michael Strehle, Helse-Nord, Norway","Micaela Thierley, Helse Bergen, Norway","John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)","Marit Alice Venheim, Helse Vest IKT, Norway">
 	details = <
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere måling av distansen rundt en bestemt kroppsdel, vanligvis identifisert i forhold til punkter på kroppsoverflaten.">
-			keywords = <"antropometri","måling","omkrets","omfang">
-			copyright = <"© openEHR Foundation">
 			use = <"Brukes for å registrere måling av distansen rundt en bestemt kroppsdel, vanligvis identifisert i forhold til punkter på kroppsoverflaten. Ved behov kan dette inkludere en indikasjon av den relative plasseringen av målepunktet. For eksempel: For å registrere at en måling rundt leggen ble tatt 10 cm distalt for tuberositas tibiae.
 
 Antropometriske målinger som er vanlige, og ofte er brukt som en del av vekstdiagrammer i barndommen, er modellert som egne arketyper.
@@ -40,6 +34,7 @@ Hensikten med denne arketypen er å tilby en standard måte å registrere en ell
 Denne målingen kan registreres og følges over tid, for eksempel å følge utvikling av et barns vekst, eller for å gi innblikk i formen og proporsjonene av et individs kropp i en klinisk, antropometrisk eller ergonomisk vurdering. Man kan også følge utviklingen av en tilstand eller sykdom ved å registrere målinger av unormale kliniske funn eller observasjoner i denne arketypen.
 
 De vanligste parametrene som blir målt som omkrets er lagt til DV_CODED_TEXT-datatype i elementet \"Kroppsdel\". Når behovet flere målinger blir identifisert kan disse etter hvert bli lagt til listen.">
+			keywords = <"antropometri", "måling", "omkrets", "omfang">
 			misuse = <"Brukes ikke til å registrere allment utbredte kliniske målinger, som har sine egne spesifikke arketyper, for eksempel:
 
 - bruk OBSERVATION.head_circumference (Hodeomkrets) for å måle hodeomkrets.
@@ -52,12 +47,11 @@ Skal ikke brukes til å registrere omkretsen på et indre organ eller en lesjon.
 Skal ikke brukes til å registrere lengde, høyde eller bredde mellom to identifiserte punkter på kroppen. Bruk OBSERVATION.body_segment_length (Kroppsmåling - lengde) for dette formålet.
 
 Skal ikke brukes til å registrere areal av kroppsegmenter, bruk arketypen OBSERVATION.body_segment_area (Kroppsmåling - areal) for dette formålet.">
+			copyright = <"© openEHR Foundation">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the measurement of the distance around a part of the body, usually identified in relation to points of surface anatomy.">
-			keywords = <"anthropometry","measurement","circumference">
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record the measurement of the distance around a part of the body, usually identified in relation to points of surface anatomy, including an indication of the relative location of the measurement start/endpoint, if required. For example: to record that a measurement around the calf was taken 10cm distal to the tibial tuberosity.
 
 Body segment measurements that are ubiquitous and, most commonly, used as part of growth charting in childhood have been modelled as unique and discrete archetypes. Rather than create an archetype for every single possible body segment measurement, the intent of this archetype is to use a common recording pattern to capture any, or all, other possible measurements of measurements around a part of the body, identified by the 'Body segment name' data element.
@@ -65,6 +59,7 @@ Body segment measurements that are ubiquitous and, most commonly, used as part o
 This measurement may be recorded and tracked over time, for example to provide insight into the shape and proportions of an individual's body for purposes of clinical, anthropometric or ergonomic assessment, to record the measurement of abnormal clinical findings or observations in order to track the progress of a condition or disease.
 
 Common parameters that are measured as circumferences have been added to the DV_CODED_TEXT data type in the 'Body segment name' data element. As further parameters are identified, these can be added to this list over time.">
+			keywords = <"anthropometry", "measurement", "circumference">
 			misuse = <"Not to be used to record common body segment measurements that have been modelled as separate archetypes, including, but not limited to:
 - for Head circumference - use OBSERVATION.head_circumference;
 - for Hip circumference - use OBSERVATION.hip_circumference;
@@ -76,8 +71,11 @@ Not to be used to record the circumference of an internal body organ or a lesion
 Not to be used to record the length, height or width measured between two identified points on the body - use OBSERVATION.body_segment_length for this purpose.
 
 Not to be used to record the area of a body segment - use OBSERVATION.body_segment_area for this purpose.">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Marit Alice Venheim, Helse Vest IKT, Norway", "Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)", "Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)", "Randi Brendberg, Helse Nord RHF, Norway", "Angela Crovetti, CDC/NIOSH, United States", "Mikkel Gaup Grønmo, FSE, Helse Nord, Norway (Nasjonal IKT redaktør)", "Evelyn Hovenga, EJSH Consulting, Australia", "Lars Ivar Mehlum, Nasjonal IKT HF, Norway", "Lars Morgan Karlsen, DIPS ASA, Norway", "Heidi Koikkalainen, United Kingdom (openEHR Editor)", "Tomi Laptoš, Marand, Slovenia", "Liv Laugen, Oslo universitetssykehus, Norway", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "Anne M Gromsrud, DIPS AS, Norway", "Priscila Maranhão, MEDCIDS-FMUP, Portugal", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Johannes Michael Strehle, Helse-Nord, Norway", "Svenne Naumann, Finnmarkssykehuset, Norway", "Bjørn Næss, DIPS ASA, Norway", "Jayashree Panickar, Karolinska Institute, Sweden", "Line Silsand, univertsity hospital of northern norway, Norway (openEHR Editor)", "Trine Strand, Oslo Universitetssykehus (OUS), Norway", "Norwegian Review Summary, Nasjonal IKT HF, Norway", "Micaela Thierley, Helse Bergen, Norway", "John Tore Valand, Helse Bergen, Norway (openEHR Editor)">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -93,9 +91,9 @@ National health and nutrition examination survey III: Body Measurements (Anthrop
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"68AEE6D97D26CE0011FB14CC0F54748A">
-		["build_uid"] = <"acdca500-f9b3-4ebf-b88a-67f99d0a7580">
-		["revision"] = <"1.0.0">
+		["MD5-CAM-1.0.1"] = <"AC30F8E50737FAE49F4196AEF19D5A8A">
+		["build_uid"] = <"ec4ac54b-8c6d-4a31-8b5b-fb9cc7b44e95">
+		["revision"] = <"1.0.1">
 	>
 
 definition
@@ -236,6 +234,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
