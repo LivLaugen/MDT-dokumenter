@@ -1,0 +1,122 @@
+archetype (adl_version=1.4; uid=9d7b01b1-09e1-486a-b03a-e7b00887f6c3)
+	openEHR-EHR-OBSERVATION.genetic_lab_analysis.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2016-02-09">
+		["name"] = <"Hallvard Lærum">
+		["organisation"] = <"Oslo Universitetssykehus HF">
+		["email"] = <"hallar@ous-hf.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To describe how a certain genetic variant has been sequenced and identified, usually in the laboratory.">
+			keywords = <"gene","allele","variant","genetic laboratory test","lab test","method","sequencing method">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Used for genetic lab tests that identifies nucleotid sequences or recognizes specific variants.">
+			misuse = <"Not to be used for description of chromosomes or chromosomal abnormalities.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["current_contact"] = <"Hallvard Lærum, Oslo Universitetssykehus HF, hallar@ous-hf.no">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"C3CC25AEC0ABAD55699BE0A2EC09808E">
+		["build_uid"] = <"2b5d33ab-f7ef-48f7-acdf-d6550a1b39e3">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Genetic lab analysis
+		protocol matches {
+			ITEM_TREE[at0005] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- Method class
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0008,    -- Sanger sequencing
+									at0009,    -- High throughput sequencing
+									at0010,    -- Polymerase Chain Reaction
+									at0011]    -- Other
+								}
+							}
+						}
+					}
+					allow_archetype ELEMENT[at0006] occurrences matches {0..*} matches {    -- Method details
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0030] occurrences matches {0..1} matches {    -- Method description
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype ELEMENT[at0013] occurrences matches {0..1} matches {    -- Specimen
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Genetic lab analysis">
+					description = <"Description of a genetic laboratory analysis, e.g. method, date and laboratory used.">
+				>
+				["at0005"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Method details">
+					description = <"Details of the method used to sequence the genes.">
+				>
+				["at0007"] = <
+					text = <"Method class">
+					description = <"Main class of method used to sequence the genes.">
+				>
+				["at0008"] = <
+					text = <"Sanger sequencing">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"High throughput sequencing">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Polymerase Chain Reaction">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Other">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Specimen">
+					description = <"The type of specimen used for the genetic analyses.">
+				>
+				["at0030"] = <
+					text = <"Method description">
+					description = <"Details on method use for analyzing the gene, including applicability of method.">
+				>
+			>
+		>
+	>
