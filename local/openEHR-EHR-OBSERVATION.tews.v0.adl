@@ -1,0 +1,484 @@
+archetype (adl_version=1.4; uid=824f85b1-cfcf-4dc0-a426-0925b7168c16)
+	openEHR-EHR-OBSERVATION.tews.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"Magnus Alvestad">
+				["organisation"] = <"Helse Bergen HF">
+				["email"] = <"magnus.alvestad@helse-bergen.no">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2014-12-02">
+		["name"] = <"Magnus Alvestad">
+		["organisation"] = <"Helse Bergen HF">
+		["email"] = <"magnus.alvestad@helse-bergen.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Stephen Chu, NEHTA, Australia","Sam Heard, Ocean Informatics, Australia (Editor)","Oliver Hosking, Remote Health NT, Australia","Heather Leslie, Ocean Informatics, Australia (Editor)","Ian McNicoll, Ocean Informatics UK, United Kingdom","Gary Sinclair, NT DoH, Australia","Silje Ljosland Bakke, Helse Bergen HF, Norway">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Anvendes for å registrere en sammensatt score basert på strukturerte fysiologiske målinger og observasjoner, som en enkel metode for å støtte en objektiv vurdering av graden av sykdom hos en uvel pasient over 14 år.">
+			keywords = <"MEWS","varsling","AVPU (Våken, stemme, smerte, bevistløs (en forenklet Glasgow coma scoring))","RF","P","BT","Tp","SBT","triage","respirasjonsfrekvens","pulsl","bodtrykk","temperatur","TEWS">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Anvendes til å registrere en sammensatt score for å støtte vurderingen av grad av sykdom i en uvel pasient over en alder av 14 år. 
+">
+			misuse = <"Anvendes ikke for registrering av hver enkelt fysiologisk parameter eller klinisk observasjon. Bruk spesifikke OBSERVATION-arketyper for dette formål - OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu og OBSERVATION.glasgow_coma.
+
+Anvendes ikke til barn og unge under 14 år.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record provide a composite score based on categorising physiological readings and observations, as a simple method to support objective assessment of the degree of illness in an unwell patient over the age of 14 years.">
+			keywords = <"MEWS","warning","AVPU","RR","HR","BP","Temp","SBP","triage">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to record a composite score to support assessmennt of the degree of illness in an unwell patient, over the age of 14 years. A score >5 has been correlated to an increased risk of death, HDU admission and ICU admission.
+
+
+
+
+
+
+
+MEWS is based on data derived from four physiological readings (systolic blood pressure, heart rate, respiratory rate, body temperature) and one observation (level of consciousness) which are compared to normal ranges. The score for each parameter is added to generate a single composite score.">
+			misuse = <"Not to be used to record each physical measurement or clinical observation. Use specific OBSERVATION archetypes for this purpose - OBSERVATION.blood_pressure, OBSERVATION.heart_rate, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu and OBSERVATION.glasgow_coma.
+
+
+
+
+
+
+
+Not to be used for children/teens under the age of 14 years.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Pasientsikkerhet ved bruk av Modified Early Warning Score (Anne Kristin Ihle Melby) [PDF]. NSFLIS fagkongress; September 2013. Available from: https://www.nsf.no/Content/1312284/Bruk%20av%20kliniske%20observasjoner-%20MEWS%20til%20%C3%A5%20styrke%20pasientsikkerheten.%20Anne%20Kristin%20Ihle%20Melby.pdf">
+		["current_contact"] = <"Magnus Alvestad, Helse Bergen HF, magnus.alvestad@helse-bergen.no">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"C0D3E6705558540D22F71F2ABBEB9982">
+		["build_uid"] = <"fbc13a25-3708-4ed1-a83c-eab6688b022b">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Triage Early Warning Score (TEWS)
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					POINT_EVENT[at0002] occurrences matches {0..1} matches {    -- Tidspunkt
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0006] occurrences matches {0..1} matches {    -- Respirasjonsfrekvens
+										value matches {
+											0|[local::at0018],
+											2|[local::at0020],
+											3|[local::at0021]
+										}
+									}
+									ELEMENT[at0030] occurrences matches {0..1} matches {    -- Blodoksygen
+										value matches {
+											0|[local::at0031],
+											1|[local::at0032],
+											3|[local::at0033]
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {    -- Hjertefrekvens
+										value matches {
+											0|[local::at0013],
+											1|[local::at0012],
+											2|[local::at0011],
+											3|[local::at0010]
+										}
+									}
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Systolisk blodtrykk
+										value matches {
+											0|[local::at0014],
+											1|[local::at0015],
+											2|[local::at0016],
+											3|[local::at0017]
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- AVPU (Våken, tale, smerte, bevisstløs- vurdering)
+										value matches {
+											0|[local::at0024],
+											1|[local::at0025],
+											2|[local::at0026],
+											3|[local::at0027]
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {    -- Temperatur
+										value matches {
+											0|[local::at0022],
+											1|[local::at0029],
+											2|[local::at0023]
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {    -- Skade
+										value matches {
+											0|[local::at0035],
+											1|[local::at0036]
+										}
+									}
+									ELEMENT[at0037] occurrences matches {0..1} matches {    -- Mobilitet
+										value matches {
+											0|[local::at0038],
+											1|[local::at0039],
+											2|[local::at0040]
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {    -- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..20|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Triage Early Warning Score">
+					description = <"A simple score used to provide an objective indication of the degree of illness of a patient.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Point in time">
+					description = <"A specific date and/or time which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Systolic Blood Pressure">
+					description = <"Range category for the systolic blood pressure (SBP) measurement of a patient.">
+				>
+				["at0005"] = <
+					text = <"Heart Rate">
+					description = <"Range category for the heart rate (HR) measurement of a patient.">
+				>
+				["at0006"] = <
+					text = <"Respiratory Rate">
+					description = <"Range category for the respiratory rate (RR) measurement of a patient.">
+				>
+				["at0007"] = <
+					text = <"Temperature">
+					description = <"Range category for the body temperature (Temp) measurement of a patient.">
+				>
+				["at0008"] = <
+					text = <"AVPU">
+					description = <"Observed category for the AVPU scale rating of a patient's conscious state.">
+				>
+				["at0010"] = <
+					text = <">129">
+					description = <"The heart rate measurement is greater than 129 beats/min; scored as 3 points.">
+				>
+				["at0011"] = <
+					text = <"<41 or 111-129">
+					description = <"The heart rate measurement is less than 41 beats/min or between 111 and 129 beats/min; scored as 2 points.">
+				>
+				["at0012"] = <
+					text = <"41-50 or 101-110">
+					description = <"The heart rate measurement is between 41 and 50 beats/min or between 101 and 110 beats/min; scored as 1 point.">
+				>
+				["at0013"] = <
+					text = <"51-100">
+					description = <"The heart rate measurement is between 51 and 100 beats/min; scored as 0 points.">
+				>
+				["at0014"] = <
+					text = <"101-199">
+					description = <"The systolic blood pressure measurement is between 101 and 199 mmHg; scored as 0 points.">
+				>
+				["at0015"] = <
+					text = <"81-100">
+					description = <"The systolic blood pressure measurement is between 81 and 100 mmHg; scored as 1 point.">
+				>
+				["at0016"] = <
+					text = <"71-80 or >199">
+					description = <"The systolic blood pressure measurement is between 71 and 80 mmHg or greater than 199 mmHg; scored as 2 points.">
+				>
+				["at0017"] = <
+					text = <"<71">
+					description = <"The systolic blood pressure measurement is less than 71 mmHg; scored as 3 points.">
+				>
+				["at0018"] = <
+					text = <"9-14">
+					description = <"The respiratory rate measurement is between 9 and 14 breaths/min; scored as 0 points.">
+				>
+				["at0020"] = <
+					text = <"<9 or 21-29">
+					description = <"The respiratory rate measurement is less than 9 breaths/min or between 21 and 29 breaths/min; scored as 2 points.">
+				>
+				["at0021"] = <
+					text = <">29">
+					description = <"The respiratory rate measurement is greater than 29 breaths/min; scored as 3 points.">
+				>
+				["at0022"] = <
+					text = <"36.1-38">
+					description = <"The body temperature measurement is between 36.1 and 38 degrees Celsius; scored as 0 points.">
+				>
+				["at0023"] = <
+					text = <"<=35 or >38.5">
+					description = <"The body temperature measurement is less than or equal to 35 degrees Celsius or greater than 38.5 degrees Celsius; scored as 2 points.">
+				>
+				["at0024"] = <
+					text = <"A">
+					description = <"The patient is alert or awake; scored as 0 points.">
+				>
+				["at0025"] = <
+					text = <"V">
+					description = <"The patient responds to verbal stimulus or has a new confusion; scored as 1 point.">
+				>
+				["at0026"] = <
+					text = <"P">
+					description = <"The patient responds to painful stimulus; scored as 2 points.">
+				>
+				["at0027"] = <
+					text = <"U">
+					description = <"The patient is unconscious and not responding to stimulation; scored as 3 points.">
+				>
+				["at0028"] = <
+					text = <"Total Score">
+					description = <"The composite total score of each MEWS parameter category.">
+				>
+				["at0029"] = <
+					text = <"35.1-36 or 38.1-38.5">
+					description = <"The body temperature measurement is between 35.1 and 36 degrees Celsius or between 38.1 and 38.5 degrees Celsius; scored as 1 point.">
+				>
+				["at0030"] = <
+					text = <"Blood oxygen">
+					description = <"Blood oxygen">
+				>
+				["at0031"] = <
+					text = <"95-100% u/O2">
+					description = <"Blood oxygen measured at 95-100%; scores 0 points">
+				>
+				["at0032"] = <
+					text = <"90-95% u/O2">
+					description = <"Blood oxygen measured at 90-95%; scores 1 point">
+				>
+				["at0033"] = <
+					text = <"<90% u/O2">
+					description = <"Blood oxygen measured at less than 90%; scores 3 points">
+				>
+				["at0034"] = <
+					text = <"Injury">
+					description = <"Category for visible injuries">
+				>
+				["at0035"] = <
+					text = <"No">
+					description = <"Patient is not injured; scores 0 points">
+				>
+				["at0036"] = <
+					text = <"Yes">
+					description = <"Patient is injured; scores 1 point">
+				>
+				["at0037"] = <
+					text = <"Mobility">
+					description = <"Category for the patient's ability to move around">
+				>
+				["at0038"] = <
+					text = <"Walks unassisted">
+					description = <"The patient can walk without assistance; scores 0 points">
+				>
+				["at0039"] = <
+					text = <"With help">
+					description = <"The patient can walk with assistance; scores 1 point">
+				>
+				["at0040"] = <
+					text = <"Stretcher / immobile">
+					description = <"The patient is unable to walk, even with assistance; scores 2 points">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Triage Early Warning Score (TEWS)">
+					description = <"En enkel scoring anvendt til å gi objektiv indikasjon om en pasients grad av kritisk sykdom.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Tidspunkt">
+					description = <"Et spesifikt dato/tidspunkt som kan være definert i en mal eller template eller i tidsforløp.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Systolisk blodtrykk">
+					description = <"Område kategori for det målte systoliske blodtrykket (SBT) til en pasient.">
+				>
+				["at0005"] = <
+					text = <"Hjertefrekvens">
+					description = <"Områdekategori for måling av en pasients hjertefrekvens.">
+				>
+				["at0006"] = <
+					text = <"Respirasjonsfrekvens">
+					description = <"Områdekategori for respirasjonsfrekvensen til en pasient.">
+				>
+				["at0007"] = <
+					text = <"Temperatur">
+					description = <"Områdekategori for kroppstemperatur til en pasient.">
+				>
+				["at0008"] = <
+					text = <"AVPU (Våken, tale, smerte, bevisstløs- vurdering)">
+					description = <"Observert kategori for APVU scoring av pasientens bevissthetstilstand.">
+				>
+				["at0010"] = <
+					text = <">129">
+					description = <"Hjertefrekvens målt høyere enn 129 pulsslag per min; scores som 3 poeng.">
+				>
+				["at0011"] = <
+					text = <"<41 eller 111-129">
+					description = <"Hjertefrekvensen målt som mindre enn 41 pulsslag per min eller mellom 111-129 pulsslag; scores som 2 poeng.">
+				>
+				["at0012"] = <
+					text = <"41-50 eller 91-110">
+					description = <"Hjertefrekvensen målt mellom 41-50 eller mellom 101 og 110 pulsslag per min; scores som 1 poeng.">
+				>
+				["at0013"] = <
+					text = <"51-90">
+					description = <"Hjertefrekvensen målt mellom 51-90 pulsslag per min; scores som 0 poeng.">
+				>
+				["at0014"] = <
+					text = <"101-199">
+					description = <"Det systoliske blodtrykket målt mellom 101-199 mmHg; scores som 0 poeng.">
+				>
+				["at0015"] = <
+					text = <"81-100">
+					description = <"Det systoliske blodtrykket målt mellom 81-101 mm Hg; scores som 1 poeng.">
+				>
+				["at0016"] = <
+					text = <"71-80 eller >199">
+					description = <"Det systoliske blodtrykket målt mellom 71-101 mm Hg eller høyere enn 199 mm Hg; scores som 2 poeng.">
+				>
+				["at0017"] = <
+					text = <"<71">
+					description = <"Det systoliske blodtrykket målt som mindre enn 71 mm Hg; scores som 3 poeng.">
+				>
+				["at0018"] = <
+					text = <"9-20">
+					description = <"Respirasjonsfrekvensen målt mellom 9 og 14 pust per min; scores som 0 poeng.">
+				>
+				["at0020"] = <
+					text = <"<9 eller 21-29">
+					description = <"Respirasjonsfrekvensen målt, mindre enn 9 eller mellom 21 og 29 pust per min; scores som 2 poeng.">
+				>
+				["at0021"] = <
+					text = <">29">
+					description = <"Respirasjonsfrekvensen målt, høyere enn 29 pust per min; scores som 3 poeng.">
+				>
+				["at0022"] = <
+					text = <"36-38">
+					description = <"Kroppstemperaturen målt mellom 36,1 og 38 grader Celsius; scores til 0 poeng.">
+				>
+				["at0023"] = <
+					text = <"< 36 eller > 39">
+					description = <"Kroppstemperaturen målt til til mindre enn 35,5 grader Celcius eller høyere enn 38,5 grader Celsius; scores som 2 poeng.">
+				>
+				["at0024"] = <
+					text = <"Våken">
+					description = <"Pasienten er alert eller våken; scores som 0 poeng.">
+				>
+				["at0025"] = <
+					text = <"Reagerer på tiltale">
+					description = <"Pasienten svarer på verbale stimuli eller er nylig blitt konfus; scores som 1 poeng.">
+				>
+				["at0026"] = <
+					text = <"Reagerer kun på smertestimuli, eller ny forvirring">
+					description = <"Pasienten responderer KUN på smertestimuli; scores som 2 poeng.">
+				>
+				["at0027"] = <
+					text = <"Reagerer ikke">
+					description = <"Pasienten er bevisstløs og responderer ikke på stimuli; scores som 3 poeng.">
+				>
+				["at0028"] = <
+					text = <"Total score">
+					description = <"Summen av scoren til hvert enkelt TEWS-parameter.">
+				>
+				["at0029"] = <
+					text = <"38,1-39">
+					description = <"Kroppstemperaturen målt mellom 35,1 og 36 grader Celsius eller mellom 38,1 og 35,5 grader Celsius; scores til 1 poeng.">
+				>
+				["at0030"] = <
+					text = <"Blodoksygen">
+					description = <"Kategori for oksygenmetning i blodet">
+				>
+				["at0031"] = <
+					text = <"95-100% u/O2">
+					description = <"Oksygenmetning målt til 95-100%; scores til 0 poeng">
+				>
+				["at0032"] = <
+					text = <"90-95% u/O2">
+					description = <"Oksygenmetning målt til 90-95%; scores til 1 poeng">
+				>
+				["at0033"] = <
+					text = <"<90% u/O2">
+					description = <"Oksygenmetning målt til mindre enn 90%; scores til 3 poeng">
+				>
+				["at0034"] = <
+					text = <"Skade">
+					description = <"Kategori for om pasienten er synlig skadd">
+				>
+				["at0035"] = <
+					text = <"Nei">
+					description = <"Pasienten er uskadd; scores til 0 poeng">
+				>
+				["at0036"] = <
+					text = <"Ja">
+					description = <"Pasienten er skadd; scores til 1 poeng">
+				>
+				["at0037"] = <
+					text = <"Mobilitet">
+					description = <"Kategori for i hvilken grad pasienten selv klarer å bevege seg">
+				>
+				["at0038"] = <
+					text = <"Går selv">
+					description = <"Pasienten kan gå selv; scores til 0 poeng">
+				>
+				["at0039"] = <
+					text = <"Med hjelp">
+					description = <"Pasienten kan gå med hjelp; scores til 1 poeng">
+				>
+				["at0040"] = <
+					text = <"Båre / immobil">
+					description = <"Pasienten kan ikke gå; scores til 2 poeng">
+				>
+			>
+		>
+	>
