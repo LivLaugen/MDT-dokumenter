@@ -1,0 +1,90 @@
+archetype (adl_version=1.4; uid=a3606d08-5855-4582-8018-0c49a09a568c)
+	openEHR-EHR-CLUSTER.exam_skin_OUS.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-11-17">
+		["name"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere funn ved fysiskk undersøkelse av hud.">
+			keywords = <"Hudfunn", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Midertidig arketype som ble tatt i bruk ved Olafiaklinikken, OUS i november 2015.">
+			misuse = <"Skal bare brukes ved Olafiaklinikken, OUS inntil det er laget en godkjent og publisert arketype for samme konsept.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"A82DA714DF354DF2A5531FC1F55E74CC">
+		["build_uid"] = <"f65c4eaf-9be6-4ad8-8af7-ae00f4749693">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Exam skin
+		items cardinality matches {1..*; unordered} matches {
+			CLUSTER[at0004] occurrences matches {0..*} matches {    -- Hudfunn
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Funn
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Grad
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Beskriv
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Exam skin">
+					description = <"For å registrere funn ved fysisk undersøkelse av et invidids hud. Foreløpig arketyope som ble tatt i bruk ved Olafaiaklinikken, OUS i november 2015.">
+				>
+				["at0002"] = <
+					text = <"Funn">
+					description = <"Type funn.">
+					comment = <"F.eks vorter, sår, etc.">
+				>
+				["at0004"] = <
+					text = <"Hudfunn">
+					description = <"Funn ved fysisk undersøkelse av hud.">
+				>
+				["at0005"] = <
+					text = <"Grad">
+					description = <"Gradering av funn.">
+					comment = <"Bruk gjerne terminologi eller et verdisett i templat.">
+				>
+				["at0006"] = <
+					text = <"Beskriv">
+					description = <"Beskrivelse av hudfunn.">
+				>
+			>
+		>
+	>
