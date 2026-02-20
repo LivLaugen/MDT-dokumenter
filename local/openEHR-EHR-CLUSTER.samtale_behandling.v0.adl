@@ -1,0 +1,126 @@
+archetype (adl_version=1.4; uid=efe0c4e4-6daa-4ba5-b0df-3ffbc4a59df7)
+	openEHR-EHR-CLUSTER.samtale_behandling.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2010-09-28">
+		["name"] = <"Arne Løberg Sæter">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"asa@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Nasrin Amele Jamedari, DIPS ASA","Vebjørn Arntzen, Oslo universitetssykehus HF">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"En sjekkliste til hjelp for behandler å kunne gjennomføre en god behandlingskonsultasjon.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Inneholder en rekke punkter der det er mulig å legge til svaralternativer i templat. Arketypen er svært uferdig. Den er knyttet til SOI-pasienter ved Olafiaklinikken, og er dermed en spesialisering. Samtidig bør flere av elementene høre til andre arketyper - hvis de i det hele tatt bør forefinnes som strukturerte elementer. Noen av elementene er av administrativ art.">
+			misuse = <"(Ikke utarbeidet tekst).">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"9764F2064D95B5532604BA7F4F72975A">
+		["build_uid"] = <"eaf2a682-bf38-4c8b-9d83-91db256046c9">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Samtale behandling
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0022] occurrences matches {0..*} matches {    -- Årsak til behandling
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {    -- Behandling avklart med lege
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0024] occurrences matches {0..*} matches {    -- Type infeksjon
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0023] occurrences matches {0..*} matches {    -- Informasjon gitt til pasient
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0029] occurrences matches {0..*} matches {    -- Behandling av partner
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0027] occurrences matches {0..1} matches {    -- Tilbud om blodprøve
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0031] occurrences matches {0..1} matches {    -- Utfyllende opplysninger
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0032] occurrences matches {0..*} matches {    -- Symptomer
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Samtale behandling">
+					description = <"Midlertidig arketype for sjekkliste for en behandlingskonsultasjon for pasienter med SOI ved Olafiaklinikken, OUS.">
+				>
+				["at0009"] = <
+					text = <"Behandling avklart med lege">
+					description = <"Element som ikke er relevant i denne arketypen lenger.">
+				>
+				["at0022"] = <
+					text = <"Årsak til behandling">
+					description = <"Kategorisering av årsaken pasienten er til behandling.">
+				>
+				["at0023"] = <
+					text = <"Informasjon gitt til pasient">
+					description = <"Element for å kunne legge til liste over typer informasjon pasienten bør ha ila konsultasjonen.">
+				>
+				["at0024"] = <
+					text = <"Type infeksjon">
+					description = <"Hvilken type infeksjon pasienten har.">
+				>
+				["at0027"] = <
+					text = <"Tilbud om blodprøve">
+					description = <"Markering om blodprøve er tatt, ikke ønsket eller ikke aktuell.">
+				>
+				["at0029"] = <
+					text = <"Behandling av partner">
+					description = <"Informasjon om pasientens partner er behandlet eller ikke og status på denne.">
+				>
+				["at0031"] = <
+					text = <"Utfyllende opplysninger">
+					description = <"Fritekstlig informasjon som ikke er dekket andre steder.">
+				>
+				["at0032"] = <
+					text = <"Symptomer">
+					description = <"SLOT for å registrere symptomer.">
+				>
+			>
+		>
+	>
