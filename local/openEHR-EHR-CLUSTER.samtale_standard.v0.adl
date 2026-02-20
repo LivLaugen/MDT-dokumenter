@@ -1,0 +1,88 @@
+archetype (adl_version=1.4; uid=3ae9abe2-677e-4ece-807b-eaeb64b81b7c)
+	openEHR-EHR-CLUSTER.samtale_standard.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2015-11-10">
+		["name"] = <"DIPS ASA">
+		["organisation"] = <"DIPS ASA">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+			misuse = <"Foreløpig arketype for Olafiaklinikken, OUS.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"4C246397B4428D0ECF9A4A7BCDFFFF0D">
+		["build_uid"] = <"e37a3775-44d3-4992-8cf5-7d4518cf2eaa">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Samtale standard
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0021] occurrences matches {0..*} matches {    -- Interaksjoner/kontraindikasjoner til standardbehandling
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0020] occurrences matches {0..*} matches {    -- Informasjon gitt til pasienten
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0015] occurrences matches {0..1} matches {    -- Annet
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0022] occurrences matches {0..*} matches {    -- Annet
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Samtale standard">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0015"] = <
+					text = <"Annet">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0020"] = <
+					text = <"Informasjon gitt til pasienten">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0021"] = <
+					text = <"Interaksjoner/kontraindikasjoner til standardbehandling">
+					description = <"Beskrivelse burde vært her.">
+				>
+				["at0022"] = <
+					text = <"Annet">
+					description = <"Beskrivelse burde vært her.">
+				>
+			>
+		>
+	>
