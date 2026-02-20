@@ -1,0 +1,56 @@
+archetype (adl_version=1.4; uid=4b43342a-8c20-4e64-9c76-e1ab0d2da80b)
+	openEHR-EHR-SECTION.diagnosis_list.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"D4319359BB652B88D1F3ACEAEF6BEB77">
+		["build_uid"] = <"93a643b2-fced-4970-9b22-0bd9ecd270ca">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	SECTION[at0000] matches {    -- Diagnosis list
+		items cardinality matches {1..*; unordered} matches {
+			allow_archetype EVALUATION[at0001] occurrences matches {0..*} matches {    -- Diagnosis
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.problem_diagnosis(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-EVALUATION\.bup_diagnose(-[a-zA-Z0-9_]+)*\.v0/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diagnosis list">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Diagnosis">
+					description = <"*">
+				>
+			>
+		>
+	>
