@@ -1,0 +1,322 @@
+archetype (adl_version=1.4; uid=a4e62c66-0b5c-44f6-aeb7-501754b8f30c)
+	openEHR-EHR-OBSERVATION.timed_balance.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2022-08-10">
+		["name"] = <"Kanika Kuwelker">
+		["organisation"] = <"Helse Vest IKT">
+		["email"] = <"kanika.kuwelker@helse-vest-ikt.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the time used to execute a defined balance task.">
+			keywords = <"balance, static postural stability", ...>
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to record the time used to execute a defined balance task.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"6C09EDA5F708DAD4C808E8CB984E28E8">
+		["build_uid"] = <"f6ab2ac9-d667-4d56-836a-fed5c55b1429">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Timed balance
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Task
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005,    -- Side-by-side stand
+													at0006,    -- Semi-tandem stand
+													at0007,    -- Tandem stand
+													at0008,    -- Single leg stance right foot
+													at0009,    -- Sitting
+													at0039]    -- Single leg stance left foot
+												}
+											}
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {    -- Time
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"s">
+														magnitude = <|>=0.0|>
+														precision = <|2|>
+													>
+													["2"] = <
+														units = <"min">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {    -- Clinical description
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {    -- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0013] matches {    -- Item tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0024] occurrences matches {0..1} matches {    -- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {    -- Eyes
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0027,    -- Open
+													at0028]    -- Closed
+												}
+											}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..2} matches {    -- Assistive device
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0019,    -- Ankle-foot orthosis
+													at0020,    -- Cane
+													at0021,    -- Crutch
+													at0022]    -- Walker/rollator
+												}
+											}
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0012] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0031] occurrences matches {0..1} matches {    -- Surface
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0032,    -- Floor inside
+									at0033,    -- Treadmill
+									at0034,    -- Stairs
+									at0035,    -- Running track
+									at0036,    -- Road
+									at0037,    -- Rough terrain
+									at0038]    -- Foam pad
+								}
+							}
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0023] occurrences matches {0..1} matches {    -- Specific protocol
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0025] occurrences matches {0..1} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Timed balance">
+					description = <"The time used to execute a defined balance task.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Task">
+					description = <"The specific task executed during the test.">
+					comment = <"Coding of the 'Task' with a terminology is preferred, where possible.
+For example: side-by-side stand, semi-tandem stand, tandem stand, single leg stance, sitting, etc.">
+				>
+				["at0005"] = <
+					text = <"Side-by-side stand">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Semi-tandem stand">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Tandem stand">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Single leg stance right foot">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Sitting">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Time">
+					description = <"The time used to execute the task.">
+					comment = <"The time can either be predefined or manually recorded after the task.
+For exampel: 30-Second Chair Stand where the time is set to 30 seconds.">
+				>
+				["at0011"] = <
+					text = <"Comment">
+					description = <"Additional narrative about the task not covered in other fields.">
+				>
+				["at0012"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0013"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0018"] = <
+					text = <"Assistive device">
+					description = <"The type of assistive device(s) used during the task.">
+					comment = <"Occurence is set to 0..2 to support cases where bilateral assisitve device is utilized.">
+				>
+				["at0019"] = <
+					text = <"Ankle-foot orthosis">
+					description = <"Ankle-Foot Orthosis (AFO).">
+				>
+				["at0020"] = <
+					text = <"Cane">
+					description = <"Walking stick or cane.">
+				>
+				["at0021"] = <
+					text = <"Crutch">
+					description = <"Underarm crutch.">
+				>
+				["at0022"] = <
+					text = <"Walker/rollator">
+					description = <"Walker or rollator device.">
+				>
+				["at0023"] = <
+					text = <"Specific protocol">
+					description = <"The context or method for the recording.">
+					comment = <"For example: Used standardised protocols when recording semi-tandem to calculate the Berg Balance Scale.
+">
+				>
+				["at0024"] = <
+					text = <"Confounding factors">
+					description = <"Narrative description of any issues or factors that may impact on the measurement.">
+					comment = <"For example: \"The patient had a cold\" or \"The patient tripped but did not fall\".">
+				>
+				["at0025"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local context or to align with other reference models/formalisms.">
+					comment = <"For example: Local hospital departmental infomation or additional metadata to align with FHIR.">
+				>
+				["at0026"] = <
+					text = <"Eyes">
+					description = <"Eyes open or closed during the task.">
+				>
+				["at0027"] = <
+					text = <"Open">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Closed">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Clinical description">
+					description = <"A clinical description of the execution of the task.">
+				>
+				["at0031"] = <
+					text = <"Surface">
+					description = <"The type of surface during the task.">
+				>
+				["at0032"] = <
+					text = <"Floor inside">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"Treadmill">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"Stairs">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"Running track">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Road">
+					description = <"">
+				>
+				["at0037"] = <
+					text = <"Rough terrain">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"Foam pad">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"Single leg stance left foot">
+					description = <"">
+				>
+			>
+		>
+	>
