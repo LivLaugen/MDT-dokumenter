@@ -1,0 +1,194 @@
+archetype (adl_version=1.4; uid=f9207a2e-841a-4f12-a7dc-8200b9c5518f)
+	openEHR-EHR-OBSERVATION.functioning_assessment.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2017-03-06">
+		["name"] = <"Silje Ljosland Bakke">
+		["organisation"] = <"Nasjonal IKT HF">
+		["email"] = <"silje.ljosland.bakke@nasjonalikt.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Hilde Hollås, DIPS AS, Norway","Annette Hole Sjøborg, DIPS AS, Norway","Anine Ramberg, DIPS AS, Norway","Nasrin Amele Jamedari, DIPS AS, Norway","John Tore Valand, Helse Bergen HF, Norway">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"*(nb)">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Effekt av problemer/diagnoser
+Effekter av familie/sosialt">
+			misuse = <"Konkrete fakta om familie/sosialt
+Anamnese
+Problem/diagnose">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"E3C70D5E4D6A6050935E25EF90C3EFF7">
+		["build_uid"] = <"a36ac017-4750-498e-a888-2933073fd5ff">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Functioning assessment
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- *New element(nb)
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {    -- *New element(nb)
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {    -- *New element(nb)
+										value matches {
+											DV_TEXT matches {*}
+											DV_COUNT matches {*}
+											DV_QUANTITY matches {*}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {    -- *New element(nb)
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0008] matches {    -- *Tree(nb)
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0009] occurrences matches {0..*} matches {    -- *Cluster(nb)
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Functioning assessment">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0005"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0006"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0007"] = <
+					text = <"*New element(nb)">
+					description = <"**(nb)">
+				>
+				["at0008"] = <
+					text = <"*Tree(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0009"] = <
+					text = <"*Cluster(nb)">
+					description = <"**(nb)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Functioning assessment(nb)">
+					description = <"*unknown(nb)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0002"] = <
+					text = <"*Any event(nb)">
+					description = <"**(nb)">
+				>
+				["at0003"] = <
+					text = <"*Tree(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0004"] = <
+					text = <"Function">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Description">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Grading">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Comment">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0009"] = <
+					text = <"Extension">
+					description = <"*">
+				>
+			>
+		>
+	>
