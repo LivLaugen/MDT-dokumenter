@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=9c2e5b1d-9d64-4f24-bfc6-2864be857ba1)
+﻿archetype (adl_version=1.4; uid=7dd1af1f-22c6-47bd-97bc-152f642a5bb6)
 	openEHR-EHR-OBSERVATION.fetal_biometry.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Fetal biometry
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -16,25 +15,21 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2021-12-14">
 		["name"] = <"Heather Leslie">
 		["organisation"] = <"Atomica Informatics">
 		["email"] = <"heather.leslie@atomicainformatics.com">
+		["date"] = <"2021-12-14">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","SB Bhattacharyya, Bhattacharyyas Clinical Records Research & Informatics LLP, India","Randi Brendberg, Helse Nord RHF, Norway","Peter Fedorcsak, University of Oslo, Norway (openEHR Editor)","Heather Grain, Llewelyn Grain Informatics, Australia","Mikkel Johan Gaup Grønmo, Regional forvaltning EPJ, Helse Nord, Norway (Nasjonal IKT redaktør)","Anne Helbig, MD PhD, Oslo University Hospital, Norway","Anca Heyd, DIPS ASA, Norway","Evelyn Hovenga, EJSH Consulting, Australia","Anjali Kulkarni, Karkinos, India","Kanika Kuwelker, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","Mikael Nyström, Cambio Healthcare Systems AB, Sweden","Norwegian Review Summary, Norwegian Public Hospitals, Norway","Tina Tellum, Oslo Universitetssykehus, Norway","John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)","Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Ina Wille, Helse-Vest RHF, Norway">
 	details = <
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere målinger av av et embryo eller foster gjort ved ultralyd og doppler.">
-			keywords = <"foster","embryo","femur","lårben","humerus","overarm","isse","sete","hode","abdomen","ultralyd","svangerskap","antenatal","obstetrisk">
-			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
 			use = <"Bruk for å registrere målinger av av et embryo eller foster gjort ved ultralyd og doppler.
 
 Denne arketypen ble utviklet som en komponent i en bildediagnostisk undersøkelse, og må bli lagt til i et templat sammen med OBSERVATION.imaging_exam_result (Bildediagnostisk svar) og gruppen av CLUSTER-arketyper som omhandler Bildediagnostiske undersøkelser.">
+			keywords = <"foster", "embryo", "femur", "lårben", "humerus", "overarm", "isse", "sete", "hode", "abdomen", "ultralyd", "svangerskap", "antenatal", "obstetrisk">
 			misuse = <"Skal ikke brukes til å registrere direkte målinger av et barn. Bruk OBSERVATION.height (Høyde/Lengde), OBSERVATION.head_circumference (Hodeomkrets), OBSERVATION.body_segment_length (Kroppsmåling - lengde) and OBSERVATION.body_weight (Kroppsvekt) for slike målinger.
 
 Skal ikke brukes til å registrere informasjon om gestasjonssekk. Bruk arketypen CLUSTER.imaging_exam-gestational_sac (Bildediagnostisk undersøkelse - gestasjonssekk) for dette formålet.">
@@ -42,31 +37,33 @@ Skal ikke brukes til å registrere informasjon om gestasjonssekk. Bruk arketypen
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record ultrasound and doppler measurements of an embryo or fetus in utero.">
-			keywords = <"fetus, embryo, femur, humerus, crown-rump, head, abdomen, ultrasound, antenatal, obstetric", ...>
-			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
 			use = <"Use to record ultrasound and doppler measurements of an embryo or fetus in utero.
 
 This archetype has been designed as one component of an imaging examination and will need to be added in a template alongside the OBSERVATION.imaging_exam_result and the imaging family of CLUSTERs..">
+			keywords = <"fetus, embryo, femur, humerus, crown-rump, head, abdomen, ultrasound, antenatal, obstetric, foetus", ...>
 			misuse = <"Not to be used to record direct measurements of an infant. Use OBSERVATION.height, OBSERVATION.head_circumference, OBSERVATION.body_segment_length and OBSERVATION.body_weight for equivalent measurements.
 
 Not to be used to record information about the gestational sac, use openEHR-EHR-CLUSTER.imaging_exam-gestational_sac.">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)", "Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)", "Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)", "SB Bhattacharyya, Bhattacharyyas Clinical Records Research & Informatics LLP, India", "Randi Brendberg, Helse Nord RHF, Norway", "Peter Fedorcsak, University of Oslo, Norway (openEHR Editor)", "Heather Grain, Llewelyn Grain Informatics, Australia", "Anne Helbig, MD PhD, Oslo University Hospital, Norway", "Anca Heyd, DIPS ASA, Norway", "Evelyn Hovenga, EJSH Consulting, Australia", "Mikkel Johan Gaup Grønmo, Regional forvaltning EPJ, Helse Nord, Norway (Nasjonal IKT redaktør)", "Anjali Kulkarni, Karkinos, India", "Kanika Kuwelker, Helse Vest IKT, Norway (Nasjonal IKT redaktør)", "Liv Laugen, ​Oslo University Hospital, Norway, Norway (openEHR Editor)", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "Mikael Nyström, Cambio Healthcare Systems AB, Sweden", "Norwegian Review Summary, Norwegian Public Hospitals, Norway", "Tina Tellum, Oslo Universitetssykehus, Norway", "John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)", "Ina Wille, Helse-Vest RHF, Norway">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
-		["custodian_organisation"] = <"Nasjonal IKT">
+		["custodian_organisation"] = <"openEHR Foundation">
 		["references"] = <"Radiopaedia [Internet]. Radiopaedia.org; 2005-2022. Fetal biometric parameters; [revised 2021 Sep 20; cited 2022 May 25]. Available from: https://radiopaedia.org/articles/fetal-biometric-parameters.
 
 Wong L, Paul E, Murday HK, Fang J, Lavender I, Coombs PR, Teoh M. Biparietal diameter measurements using the outer-to-outer versus outer-to-inner measurement: A question of pedantry? Australas J Ultrasound Med. 2018 Apr 16;21(3):161-168. doi: 10.1002/ajum.12091. PMID: 34760517; PMCID: PMC8409806.
 
 https://helse-bergen.no/seksjon/Kvinneklinikken/Documents/Ultralydkurs%20vekst%20Doppler/Biometrihefte.pdf">
-		["original_namespace"] = <"no.nasjonalikt">
-		["original_publisher"] = <"Nasjonal IKT">
-		["custodian_namespace"] = <"no.nasjonalikt">
-		["MD5-CAM-1.0.1"] = <"EFF33E2FEF2AD8A47A98682BE99B3D54">
-		["build_uid"] = <"93cef5a0-72ce-4f49-9453-2c4cab043f17">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"F9DA5EDDFF41C6521DF3CA4CB54CC795">
+		["build_uid"] = <"6c48fb43-841a-4397-9c4d-5f73f9bbd693">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
-		["revision"] = <"1.0.0">
+		["revision"] = <"1.0.3">
 	>
 
 definition
@@ -78,7 +75,7 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Crown-rump lenght (CRL)
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Crown-rump length (CRL)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::122]>
@@ -343,8 +340,9 @@ definition
 		}
 	}
 
+
 ontology
-	terminologies_available = <"SNOMED-CT","LOINC">
+	terminologies_available = <"SNOMED-CT", "LOINC">
 	term_definitions = <
 		["en"] = <
 			items = <
@@ -365,7 +363,7 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0004"] = <
-					text = <"Crown-rump lenght (CRL)">
+					text = <"Crown-rump length (CRL)">
 					description = <"The length of the embryo or fetus from the top of its head to bottom of its rump.">
 				>
 				["at0006"] = <
@@ -517,7 +515,7 @@ ontology
 			>
 		>
 	>
-	term_binding = <
+	term_bindings = <
 		["SNOMED-CT"] = <
 			items = <
 				["at0004"] = <[SNOMED-CT::276352009]>
