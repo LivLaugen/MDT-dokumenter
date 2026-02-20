@@ -1,0 +1,102 @@
+archetype (adl_version=1.4; uid=f5cbcc10-093e-4d65-baa6-5a21a43d3a88)
+	openEHR-EHR-EVALUATION.social_summary_simple.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2013-02-03">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Forenklet sosial status for bruk i pasientens journal. ">
+			keywords = <"familie","sosialt">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Brukes for enkel registrering av familie og sosialt">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"*Forenklet sosial status for bruk i pasientens journal. (nb)">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"*(nb)">
+			misuse = <"*(nb)">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"B1B431E712C8BCFCE07F15CE791BC4C3">
+		["build_uid"] = <"8c6e9cf0-118e-460a-a949-f9cc46a1c5f0">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Sosial status
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Sosial status
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Sosial status(nb)">
+					description = <"*Forenklet sosial status for bruk i faste oppføringer i pasientens journal (nb)">
+				>
+				["at0001"] = <
+					text = <"*Tree(nb)">
+					description = <"*@ internal @(nb)">
+				>
+				["at0002"] = <
+					text = <"*Sosial status(nb)">
+					description = <"*Sivil- og trygdestatus (sykemeldt/ufør?), daglig funksjon, boforhold, nettverk, hjelp. (nb)">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sosial status">
+					description = <"Forenklet sosial status for bruk i faste oppføringer i pasientens journal ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Sosial status">
+					description = <"Sivil- og trygdestatus (sykemeldt/ufør?), daglig funksjon, boforhold, nettverk, hjelp. ">
+				>
+			>
+		>
+	>
