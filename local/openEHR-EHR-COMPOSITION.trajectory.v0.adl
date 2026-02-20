@@ -1,0 +1,58 @@
+archetype (adl_version=1.4; uid=905b23fe-a781-49db-b3c3-e74d57c54dba)
+	openEHR-EHR-COMPOSITION.trajectory.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2015-06-20">
+		["name"] = <"Bjørn Næss">
+		["organisation"] = <"DIPS ASA">
+		["email"] = <"bna@dips.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Use to initiate and/or follow up trajectory. ">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Use to initiate and/or follow up trajectory. ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"AA21B2F49F56C55B1BC53344E4C10435">
+		["build_uid"] = <"95be9059-d6ec-4407-93da-0ed604377c7c">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	COMPOSITION[at0000] matches {    -- Trajectory
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {
+					[openehr::433]
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Trajectory">
+					description = <"Composition to be used when initiating and following up a trajectory">
+				>
+			>
+		>
+	>
