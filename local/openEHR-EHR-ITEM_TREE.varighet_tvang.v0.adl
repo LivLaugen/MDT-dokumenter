@@ -1,0 +1,103 @@
+archetype (adl_version=1.4; uid=0e6af448-5c4a-49b7-9fad-a24565c1f3ca)
+	openEHR-EHR-ITEM_TREE.varighet_tvang.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"E312DB376A32EFB79A7A9A0741769042">
+		["build_uid"] = <"20904022-f1d3-497b-9f9b-416d79a94749">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ITEM_TREE[at0000] occurrences matches {0..*} matches {    -- Varighet tvang
+		items cardinality matches {0..*; unordered} matches {
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Utløpsdato
+				value matches {
+					DV_DATE matches {
+						value matches {yyyy-mm-dd}
+					}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Første 3-månederskontroll
+				value matches {
+					DV_DATE matches {
+						value matches {yyyy-mm-dd}
+					}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Andre 3-månederskontroll
+				value matches {
+					DV_DATE matches {
+						value matches {yyyy-mm-dd}
+					}
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..1} matches {    -- Tredje  3-månederskontroll
+				value matches {
+					DV_DATE matches {
+						value matches {yyyy-mm-dd}
+					}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Neste årskontroll
+				value matches {
+					DV_DATE matches {
+						value matches {yyyy-mm-dd}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Varighet tvang">
+					description = <"unknown">
+				>
+				["at0002"] = <
+					text = <"Utløpsdato">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Første 3-månederskontroll">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Neste årskontroll">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Andre 3-månederskontroll">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Tredje  3-månederskontroll">
+					description = <"">
+				>
+			>
+		>
+	>
