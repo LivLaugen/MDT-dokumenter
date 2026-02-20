@@ -1,0 +1,256 @@
+archetype (adl_version=1.4; uid=be42759e-6f98-4cf3-be3e-6b8e1505d18c)
+	openEHR-EHR-OBSERVATION.smertereg_tilleggsopplysninger.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2019-01-15">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"C2B80724AA7FDC80F63104EAE4B51CE0">
+		["build_uid"] = <"fb5e4984-5c64-4a05-9ab6-8f54d33ffe29">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Smerteregisteret tilleggsopplysninger
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {0..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Uspesifisert hendelse
+						data matches {
+							ITEM_TREE[at0003] matches {    -- ItemTree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Henvist dato
+										value matches {
+											DV_DATE matches {
+												value matches {yyyy-mm-dd}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..2} matches {    -- Henvist via
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0006,    -- Tilsynsanmodning
+													at0007]    -- Telefon/calling
+												}
+											}
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {    -- Startdato
+										value matches {
+											DV_DATE matches {
+												value matches {yyyy-mm-dd}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- Har pasienten fått tilsyn?
+										value matches {
+											1|[local::at0029],
+											2|[local::at0030],
+											3|[local::at0031],
+											4|[local::at0032],
+											5|[local::at0033]
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {    -- Norsktalende
+										value matches {
+											0|[local::at0015],
+											1|[local::at0016],
+											9|[local::at0017]
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {    -- Pasientens alder
+										value matches {
+											DV_DURATION matches {
+												value matches {PY/|>=P0Y|}
+											}
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {    -- Kognitivt svekket
+										value matches {
+											0|[local::at0015],
+											1|[local::at0016],
+											9|[local::at0017]
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {    -- Skriftlig samtykke
+										value matches {
+											0|[local::at0015],
+											1|[local::at0016]
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {    -- Dato for innhentet samtykke
+										value matches {
+											DV_DATE matches {
+												value matches {yyyy-mm-dd}
+											}
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {    -- Type manglende samtykke
+										value matches {
+											1|[local::at0037],
+											2|[local::at0038],
+											3|[local::at0039],
+											4|[local::at0040]
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0028] matches {*}    -- ItemTree
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Smerteregisteret tilleggsopplysninger">
+					description = <"smertereg_tilleggsopplysninger">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Uspesifisert hendelse">
+					description = <"Standard, uspesifisert tidspunkt eller tidsintervall som kan defineres mer eksplisitt i en template eller i en applikasjon.">
+				>
+				["at0003"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Henvist dato">
+					description = <"Dato da pasienten ble henvist.">
+				>
+				["at0005"] = <
+					text = <"Henvist via">
+					description = <"Ved hvilken metode er pasienten henvist?">
+				>
+				["at0006"] = <
+					text = <"Tilsynsanmodning">
+					description = <"Hovedsakelig skal pasienter henvises i EPJ. Kun pasienter som formelt er henvist inngår i det nasjonale registeret.">
+				>
+				["at0007"] = <
+					text = <"Telefon/calling">
+					description = <"Benyttes for korte tilsyn eller dersom pasient er kjent fra før. Det er ønskelig at det bes om skriftlig tilsynsanmodning ved behov for lengre oppfølging.">
+				>
+				["at0008"] = <
+					text = <"Har pasienten fått tilsyn?">
+					description = <"Har pasienten fått tilsyn av smerteteamet?">
+				>
+				["at0014"] = <
+					text = <"Norsktalende">
+					description = <"Pasient forstår og kan gjøre seg forstått på norsk.">
+				>
+				["at0015"] = <
+					text = <"Nei">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Vet ikke">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Pasientens alder">
+					description = <"Pasientens alder, angitt i antall år.">
+				>
+				["at0019"] = <
+					text = <"Kognitivt svekket">
+					description = <"Pasient er betydelig påvirket, kan ikke gjøre rede for seg, er forvirret eller ikke orientert for tid og sted (for eksempel: delir, psykose, demens, betydelig medikamentpåvirkning eller betydelig utmattelse).">
+					comment = <"Det er ikke nødvendig å besvare spørsmålet allerede ved 1. tilsyn. Den kognitive tilstanden til pasienten kan endre seg i løpet av behandlingen. Spørsmålet må besvares senest ved avsluttende tilsyn.">
+				>
+				["at0020"] = <
+					text = <"Skriftlig samtykke">
+					description = <"Samtykke bør innhentes så snart som mulig. Feltet kan stå tomt i påvente av innhenting av samtykke. Ved skriftlig samtykke (Ja) må også dato for innhentet samtykke fylles ut. Ved skriftlig samtykke (Nei) må det velges «Type manglende samtykke». Negativt samtykke fra tidligere registrering kan endres ved evt ny registrering til positivt samtykke.">
+				>
+				["at0021"] = <
+					text = <"Dato for innhentet samtykke">
+					description = <"Dato for innhentingstidspunkt for samtykke.">
+				>
+				["at0022"] = <
+					text = <"Type manglende samtykke">
+					description = <"Type manglende samtykke.">
+					comment = <"Presisering:
+1 - Aktivt: Pasient sier tydelig «NEI» til å være med i register denne gang. Kan spørres på nytt ved evt ny registrering 
+2 - Passivt: Alle andre tilfeller hvor samtykkeerklæringen ikke blir signert. Eks. 1: Pasienten er forespurt om å gi sitt samtykke og sier ikke direkte \"Nei\", men man får aldri underskrift. Eks 2: Pasient er blitt forespurt om samtykke, men blir tidligere utskrevet fra sykehus enn antatt og man ender opp med ikke å få underskrift. 
+3 - Ikke aktuelt: Brukes når inklusjonskriteriene ikke er oppfylte eller om pasienten ikke tilses.
+4 - Ikke spurt: Eks 1: Behandler vurderer at det ikke vil være etisk riktig/forsvarlig å spørre pasient om samtykke pga pasient har generell dårlig helsetilstand eller er i «Krise». Eks 2: Pasient blir faktisk ikke spurt om samtykke ">
+				>
+				["at0023"] = <
+					text = <"Startdato">
+					description = <"Dato behandlingen starter, dvs 1. tilsyn, evt telefonråd til henvisende lege dersom henvisningen håndteres sent på dagen.">
+				>
+				["at0028"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0029"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Nei, ikke behov">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Nei, ikke kapasitet">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Nei, ikke prioritert, men gitt råd">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Nei, annen årsak">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Aktivt">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Passivt">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Ikke aktuelt">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Ikke spurt">
+					description = <"*">
+				>
+			>
+		>
+	>
