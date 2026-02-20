@@ -1,0 +1,372 @@
+archetype (adl_version=1.4; uid=0e3c3cf7-554e-4472-bdaa-20c3f2cbd8e5)
+	openEHR-EHR-CLUSTER.stools.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© Nasjonal IKT HF">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"77ABFDC99423BA12354E0745D285D39E">
+		["build_uid"] = <"ca381476-ab00-4e31-8857-f4c585ed3cda">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Avføring
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Uten anmerkning?
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Beskrivelse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0014] occurrences matches {0..1} matches {    -- Frekvens og volum
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0038] occurrences matches {0..1} matches {    -- Beskrivelse frekvens og volum
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0033] occurrences matches {0..1} matches {    -- Typisk mengde for hver avføring
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0020] occurrences matches {0..1} matches {    -- Antall avføringer per døgn
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::118]>							>
+						}
+					}
+				}
+			}
+			CLUSTER[at0023] occurrences matches {0..1} matches {    -- Selve defekeringen
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0039] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0032] occurrences matches {0..1} matches {    -- Unormalt kraftig tømming?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0035] occurrences matches {0..1} matches {    -- Tømming detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0025] occurrences matches {0..1} matches {    -- Kramper ved avføring?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0036] occurrences matches {0..1} matches {    -- Kramper detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0024] occurrences matches {0..1} matches {    -- Smerter ved avføring?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0037] occurrences matches {0..1} matches {    -- Smerter detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0022] occurrences matches {0..1} matches {    -- Utseende og lukt
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0041] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0030] occurrences matches {0..1} matches {    -- Unormal farge?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0021] occurrences matches {0..1} matches {    -- Farge detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0029] occurrences matches {0..1} matches {    -- Flyter i skålen?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0042] occurrences matches {0..1} matches {    -- Gradert form og konsistens
+						value matches {
+							0|[local::at0043],
+							1|[local::at0044],
+							2|[local::at0045],
+							3|[local::at0046]
+						}
+					}
+					ELEMENT[at0028] occurrences matches {0..1} matches {    -- Form og konsistens detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0027] occurrences matches {0..1} matches {    -- Unormal lukt?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0026] occurrences matches {0..1} matches {    -- Forminsket diameter?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0031] occurrences matches {0..1} matches {    -- Synlig blod?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0040] occurrences matches {0..1} matches {    -- Synlig blod detaljer
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Inkontinens?
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			CLUSTER[at0003] occurrences matches {0..1} matches {    -- Inkontinens detaljer
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Beskrivelse
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Frekvens av ufrivillig avføring
+						value matches {
+							0|[local::at0007],
+							1|[local::at0008],
+							2|[local::at0009],
+							3|[local::at0010]
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {    -- Mengde avføring når ufrivillig
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Bruker bleie?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {    -- Type bleier
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Avføring">
+					description = <"For å registrere individets detaljerte informasjon om avføring, som regel brukt som del av beskrivelsen av naturlige funksjoner.">
+				>
+				["at0001"] = <
+					text = <"Uten anmerkning?">
+					description = <"Om avføring er uten arnmerkning, dvs. formodet normal.">
+				>
+				["at0002"] = <
+					text = <"Beskrivelse">
+					description = <"Overordnet beskrivelse av individets avføring og avføringsfunksjon, evt. med detaljer som ikke passer med øvrig struktur.">
+				>
+				["at0003"] = <
+					text = <"Inkontinens detaljer">
+					description = <"Detaljer om individets inkontinens for avføring.">
+				>
+				["at0004"] = <
+					text = <"Inkontinens?">
+					description = <"Om individet har problemer med å holde seg ved trang til å ha avføring, eller ikke rekker frem til toilettet i tide.">
+				>
+				["at0005"] = <
+					text = <"Beskrivelse">
+					description = <"Fritekst beskrivelse av inkontinens for avføring; type og frekvens.">
+				>
+				["at0006"] = <
+					text = <"Frekvens av ufrivillig avføring">
+					description = <"Hvor ofte individet har ufrivillig avføring. OBS! Denne er tentativ, bør erstattes av standardiserte scoringer">
+				>
+				["at0007"] = <
+					text = <"0 - Er kontinent for avføring">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"1 - Har ufrivillig avføring av og til">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"2 - Har ufrivillig avføring hyppig">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"3 - Er helt inkontent for avføring">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Mengde avføring når ufrivillig">
+					description = <"Beskrivelse av mengde avføring når den er ufrivillig. Skal skille mellom små mengder, delsvis og fullstendig tømming av endetarmen.">
+				>
+				["at0012"] = <
+					text = <"Bruker bleie?">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Type bleier">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Frekvens og volum">
+					description = <"Frekvens og volum av avføring. Brukes bl.a. til å skille diare og obstipasjon fra normal avføring. OBS! Bør legge til eventuelle scoringssystemer for frekvens og volum av avføring">
+				>
+				["at0020"] = <
+					text = <"Antall avføringer per døgn">
+					description = <"Omtrentlig antall avføringer per døgn">
+				>
+				["at0021"] = <
+					text = <"Farge detaljer">
+					description = <"Fritekst beskrivelse av avføringens farge.">
+				>
+				["at0022"] = <
+					text = <"Utseende og lukt">
+					description = <"Detaljerte opplysninger om utseende, form og lukt av avføring.">
+				>
+				["at0023"] = <
+					text = <"Selve defekeringen">
+					description = <"Detaljerte opplysninger om hvordan tømming av tarmen foregår hos individet.">
+				>
+				["at0024"] = <
+					text = <"Smerter ved avføring?">
+					description = <"Om individet opplever smerter ved avføring">
+				>
+				["at0025"] = <
+					text = <"Kramper ved avføring?">
+					description = <"Om individet opplever kramper under avføring.">
+				>
+				["at0026"] = <
+					text = <"Forminsket diameter?">
+					description = <"Om formet avføring har innskrenket diameter, f.eks. blyanttynn avføring.">
+				>
+				["at0027"] = <
+					text = <"Unormal lukt?">
+					description = <"Om avføringen har unormal lukt.">
+				>
+				["at0028"] = <
+					text = <"Form og konsistens detaljer">
+					description = <"Fritekst beskrivelse av avføringens form og konsistens, eks. vanntynn, hard, oppdelt, med eller uten sprekker.">
+					comment = <"Det er mulig denne skal slås sammen med Beskrivelse. ">
+				>
+				["at0029"] = <
+					text = <"Flyter i skålen?">
+					description = <"Om avføringen flyter oppå vannet i skålen.">
+				>
+				["at0030"] = <
+					text = <"Unormal farge?">
+					description = <"Om avføringen har unormal farge.">
+				>
+				["at0031"] = <
+					text = <"Synlig blod?">
+					description = <"Om avføringen har synlig blod">
+				>
+				["at0032"] = <
+					text = <"Unormalt kraftig tømming?">
+					description = <"Om pasienten har unormalt kraftig evt. rask tømming av tarmen. ">
+				>
+				["at0033"] = <
+					text = <"Typisk mengde for hver avføring">
+					description = <"Fritekst beskrivelse av mengde for hver avføring. Angivelsen vil som regel være et grovt estimat.">
+				>
+				["at0035"] = <
+					text = <"Tømming detaljer">
+					description = <"Fritekst beskrivelse av mekaniske aspekter ved tømming av tarmen.">
+				>
+				["at0036"] = <
+					text = <"Kramper detaljer">
+					description = <"Fritekst beskrivelse av eventuelle kramper under eller etter avføring.">
+				>
+				["at0037"] = <
+					text = <"Smerter detaljer">
+					description = <"Fritekst beskrivelse av eventuelle smerter ved avføring.">
+				>
+				["at0038"] = <
+					text = <"Beskrivelse frekvens og volum">
+					description = <"Fritekst beskrivelse av frekvens og volum av avføring.">
+				>
+				["at0039"] = <
+					text = <"Beskrivelse">
+					description = <"Fritekst beskrivelse av hvordan tømming av tarmen foregår hos individet. Brukes der eksistrende detaljering ikke er egnet, eller ikke dekker opplysningene som ønskes registrert.">
+				>
+				["at0040"] = <
+					text = <"Synlig blod detaljer">
+					description = <"Fritekst  beskrivelse av blod i avføringen, f.eks. friskt rødt, svart oljete, kaffegrut.">
+				>
+				["at0041"] = <
+					text = <"Beskrivelse">
+					description = <"Fritekst beskrivelse av utseende, form og lukt av avføringen. Brukes der mer detaljerte angivelser ikke er egnet, eller til informasjon som ikke passer med øvrige detaljer.">
+				>
+				["at0042"] = <
+					text = <"Gradert form og konsistens">
+					description = <"Angivelse av form og konsistens ut fra antatt vanninnhold. OBS! Bør erstattes med publisert scoring.">
+				>
+				["at0043"] = <
+					text = <"Hard avføring">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Normal avføring">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Løs formet avføring">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Vandig avføring">
+					description = <"*">
+				>
+			>
+		>
+	>
