@@ -1,0 +1,144 @@
+archetype (adl_version=1.4; uid=b5589fec-4785-4c9f-88e4-139792599b4d)
+	openEHR-EHR-CLUSTER.fracture.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2015-09-25">
+		["name"] = <"Terje Meling og Knut Harboe">
+		["organisation"] = <"Stavanger Universitetssjukehus">
+		["email"] = <"terje.meling@sus.no, knut.harboe@sus.no">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Terje Meling","Knut Harboe","Lars Fosse","Ane Djuv","Aksel Paulsen">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Å beskrive en skade på en knokkel med eller uten avbrudd av knokkelen.">
+			keywords = <"Brudd","Fraktur","Bøyningsfraktur","Fracture","Bucklefracture","Buckle fraktur","Greenstick brudd","Green stick fracture","Tilstand">
+			copyright = <"© *© Nasjonal IKT HF(nb), Nasjonal IKT HF">
+			use = <"Tillater registrering av en tilstand med skade på kontinuitet av knokkel.
+
+Hos voksne er brudd definert til å være gjennomgående bruddlinje gjennom knokkelen. 
+
+Hos barn er brudd definert til å ikke nødvendigvis være gjennomgående. Det kan være bøyningsbrudd, greenstick brudd, torus/buckle brudd.
+
+">
+			misuse = <"Hos voksne er ikke gjennomgående brudd i en knokkel ikke brudd, ofte kalt fissur.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For describing an injury to a bone, with or without disjoining of the bone.">
+			keywords = <"*Brudd(nb)","*Fraktur(nb)","*Bøyningsfraktur(nb)","*Fracture(nb)","*Bucklefracture(nb)","*Buckle fraktur(nb)","*Greenstick brudd(nb)","*Green stick fracture(nb)","*Tilstand(nb)">
+			copyright = <"© *© Nasjonal IKT HF(nb), Nasjonal IKT HF">
+			use = <"*Tillater registrering av en tilstand med skade på kontinuitet av knokkel.
+
+Hos voksne er brudd definert til å være gjennomgående bruddlinje gjennom knokkelen. 
+
+Hos barn er brudd definert til å ikke nødvendigvis være gjennomgående. Det kan være bøyningsbrudd, greenstick brudd, torus/buckle brudd.
+
+(nb)">
+			misuse = <"*Hos voksne er ikke gjennomgående brudd i en knokkel ikke brudd, ofte kalt fissur.(nb)">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"https://en.wikipedia.org/wiki/Bone_fracture
+https://no.wikipedia.org/wiki/Beinbrudd">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"968BE23698D9CE7DEC936B4123B47911">
+		["build_uid"] = <"012b25ee-e6d6-4cac-a151-b9de81e763b3">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Fracture
+		items cardinality matches {1..*; unordered} matches {
+			allow_archetype ELEMENT[at0001] occurrences matches {0..*} matches {    -- *Bruddklassifisering(nb)
+				include
+					archetype_id/value matches {/.*/}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- *Åpent brudd(nb)
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			allow_archetype ELEMENT[at0003] occurrences matches {0..*} matches {    -- *Klassifisering av åpent brudd(nb)
+				include
+					archetype_id/value matches {/.*/}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- *Morfologisk inndeling(nb)
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Brudd">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Bruddklassifisering">
+					description = <"Kan være AO klassifisering, Neers klassifisering osv">
+				>
+				["at0002"] = <
+					text = <"Åpent brudd">
+					description = <"Åpen/Lukket">
+				>
+				["at0003"] = <
+					text = <"Klassifisering av åpent brudd">
+					description = <"Som regel Gustilo Anderson">
+				>
+				["at0004"] = <
+					text = <"Morfologisk inndeling">
+					description = <"Bøyningsbrudd, greenstick brudd, bucklebrudd, komplett brudd, epifysiolyse brudd, apofysiolyse">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Fracture">
+					description = <"*unknown(nb)">
+				>
+				["at0001"] = <
+					text = <"*Bruddklassifisering(nb)">
+					description = <"*Kan være AO klassifisering, Neers klassifisering osv(nb)">
+				>
+				["at0002"] = <
+					text = <"*Åpent brudd(nb)">
+					description = <"*Åpen/Lukket(nb)">
+				>
+				["at0003"] = <
+					text = <"*Klassifisering av åpent brudd(nb)">
+					description = <"*Som regel Gustilo Anderson(nb)">
+				>
+				["at0004"] = <
+					text = <"*Morfologisk inndeling(nb)">
+					description = <"*Bøyningsbrudd, greenstick brudd, bucklebrudd, komplett brudd, epifysiolyse brudd, apofysiolyse(nb)">
+				>
+			>
+		>
+	>
