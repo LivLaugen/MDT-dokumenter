@@ -1,0 +1,102 @@
+archetype (adl_version=1.4; uid=7e426a7f-e878-40b7-b6c9-393b67bf631b)
+	openEHR-EHR-CLUSTER.dagens_koder_dips.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			copyright = <"© OUS HF / DIPS ASA">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"FF670F08A2AF063F3089C915B70C6F10">
+		["build_uid"] = <"ead3c81f-ea57-40fd-87f6-97d882cfea99">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Dagens koder dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0006] occurrences matches {0..1} matches {    -- Navn
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0001] occurrences matches {0..*} matches {    -- ICD-10
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..*} matches {    -- Prosedyrer
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..*} matches {    -- Takster
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..*} matches {    -- ATC-koder
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..*} matches {    -- Annet
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dagens koder dips">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"ICD-10">
+					description = <"Eventuelle ICD-10 koder.">
+				>
+				["at0002"] = <
+					text = <"Prosedyrer">
+					description = <"Prosedyrekoder ifm. aktivitet.">
+				>
+				["at0003"] = <
+					text = <"Takster">
+					description = <"Takster ifm. aktivitet.">
+				>
+				["at0004"] = <
+					text = <"ATC-koder">
+					description = <"ATC-koder ifm. aktivitet.">
+				>
+				["at0005"] = <
+					text = <"Annet">
+					description = <"Evt. annet som gis som beskjed til kontor.">
+				>
+				["at0006"] = <
+					text = <"Navn">
+					description = <"Navn på aktivitet.">
+				>
+			>
+		>
+	>
